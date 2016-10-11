@@ -1,0 +1,27 @@
+package com.misys.gameofcodes.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.bson.types.ObjectId;
+
+import com.sun.javafx.collections.MappingChange.Map;
+
+@XmlRootElement
+public class Badge {
+	
+	private ObjectId id;
+	
+	private String badgename;
+	private String description;
+	private Date dateStarted;
+	private String badgeType;
+	private String imageId;
+	
+	public Badge (){}
+	
+
+	
+}

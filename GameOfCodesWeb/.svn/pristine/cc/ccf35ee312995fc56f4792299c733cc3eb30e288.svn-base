@@ -1,0 +1,49 @@
+package com.misys.gameofcodes.service;
+
+import java.util.Map;
+
+import com.misys.gameofcodes.dao.HeroesDAO;
+import com.misys.gameofcodes.dao.HeroesDAOImpl;
+import com.misys.gameofcodes.model.Hero;
+import com.misys.gameofcodes.model.House;
+import com.mongodb.MongoClient;
+
+public class HeroService {
+	
+	private HeroService() {}
+	private static HeroService heroService;
+	
+    public static HeroService getHeroService(){
+        if(heroService == null){
+        	heroService = new HeroService();
+        }
+        return heroService;
+    }
+	
+	public Hero fetchHero(Hero hero) {
+		HeroesDAO heroDAO = new HeroesDAOImpl();
+		return heroDAO.getHero(hero);		
+		
+	}
+	
+	public Map<String, Hero> fetchHeroes() {
+		HeroesDAO heroDAO = new HeroesDAOImpl();
+		return heroDAO.getAllHeroes();		
+	}
+	public void addHero(Hero hero) {
+		HeroesDAO heroDAO = new HeroesDAOImpl();
+		heroDAO.addHero(hero);
+	}
+	public void deleteHero(Hero hero) {
+		HeroesDAO heroDAO = new HeroesDAOImpl();
+		heroDAO.deleteHero(hero);
+	}
+	public void updateHero(Hero hero) {
+		HeroesDAO heroDAO = new HeroesDAOImpl();
+		heroDAO.updateHero(hero);
+	}
+	public void updateHeroHouse(Hero hero, House house) {
+		HeroesDAO heroDAO = new HeroesDAOImpl();
+		heroDAO.updateHeroHouse(hero, house);
+	}
+}
