@@ -20,6 +20,9 @@ public class Quest {
 	private Hero hero;	
 	private int storyPoints;
 	private Ticket jiraTicket;
+	private String status;
+	
+	
 	public ObjectId getId() {
 		return id;
 	}
@@ -67,6 +70,12 @@ public class Quest {
 	}
 	public void setJiraTicket(Ticket jiraTicket) {
 		this.jiraTicket = jiraTicket;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	
