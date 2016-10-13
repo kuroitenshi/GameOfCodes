@@ -15,7 +15,8 @@ public interface QuestDAO
 	public WriteResult addQuest(Quest Quest);
 	public WriteResult updateQuest(Quest Quest);
 	public WriteResult deleteQuest(Quest Quest);
-	public WriteResult setInactiveQuest(Quest Quest);
+	public WriteResult setQuestToActive(Quest Quest);
+	public WriteResult setQuestToInactive(Quest Quest);
 	public List<Quest> getQuestsPerHero (Hero hero);
 	
 }

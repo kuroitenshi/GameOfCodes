@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 import com.misys.gameofcodes.connection.CollectionProvider;
 import com.misys.gameofcodes.model.Adventure;
 import com.misys.gameofcodes.model.Hero;
+import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.model.Quest;
 import com.misys.gameofcodes.model.Ticket;
 import com.mongodb.BasicDBObject;
@@ -80,15 +81,28 @@ public class QuestDAOImpl implements QuestDAO
 				  .append("adventure", quest.getAdventure())
 				  .append("hero", quest.getHero())
 				  .append("storyPoints", quest.getStoryPoints())
-				  .append("jiraTicket", quest.getJiraTicket());
+				  .append("jiraTicket", quest.getJiraTicket())
+				  .append("status", quest.getStatus());
 		
 		return questCollection.insert(questObject);		
 	}
 
+	/* 
+	 * Update date start, end, adventure, hero, storypoints, jiraTicket for quests
+	 */
 	@Override
-	public WriteResult updateQuest(Quest Quest) {
-		// TODO Auto-generated method stub
-		return null;
+	public WriteResult updateQuest(Quest quest) {
+		BasicDBObject query = new BasicDBObject();
+	    query.put("questname", quest.getQuestname());
+	    query.put("jiraTicket", quest.getJiraTicket());
+	    DBObject dbQuest = questCollection.findOne(query);
+	    	dbQuest.put("dateStart", quest.getDateStart());
+	    	dbQuest.put("dateEnd", quest.getDateEnd());
+	    	dbQuest.put("adventure", quest.getAdventure());
+	    	dbQuest.put("hero", quest.getHero());
+	    	dbQuest.put("storyPoints", quest.getStoryPoints());
+	    	dbQuest.put("jiraTicket", quest.getJiraTicket());	    	
+	    return questCollection.update(query, dbQuest); 
 	}
 
 	/* 
@@ -101,16 +115,51 @@ public class QuestDAOImpl implements QuestDAO
 		return questCollection.remove(query);
 	}
 
+	/* 
+	 * Sets the quest to be "Inactive"
+	 */
 	@Override
-	public WriteResult setInactiveQuest(Quest Quest) {
-		// TODO Auto-generated method stub
-		return null;
+	public WriteResult setQuestToInactive(Quest quest) {
+		
+		BasicDBObject query = new BasicDBObject();
+	    query.put("questname", quest.getQuestname());
+	    query.put("jiraTicket", quest.getJiraTicket());
+	    DBObject dbQuest = questCollection.findOne(query);
+	    	dbQuest.put("status", new String("Inactive"));
+	    return questCollection.update(query, dbQuest); 
+	}
+	
+	/* 
+	 * Sets the quest to be "Active"
+	 */
+	@Override
+	public WriteResult setQuestToActive(Quest quest) {
+		BasicDBObject query = new BasicDBObject();
+	    query.put("questname", quest.getQuestname());
+	    query.put("jiraTicket", quest.getJiraTicket());
+	    DBObject dbQuest = questCollection.findOne(query);
+	    	dbQuest.put("status", new String("Active"));
+	    return questCollection.update(query, dbQuest); 
 	}
 
+	/* 
+	 * Returns all the quests assigned to a Hero
+	 */
 	@Override
 	public List<Quest> getQuestsPerHero(Hero hero) {
-		// TODO Auto-generated method stub
-		return null;
+		BasicDBObject query = new BasicDBObject();
+		query.put("hero", hero);
+		DBCursor cursor = questCollection.find(query);
+        List<Quest> quests = new ArrayList<Quest>();
+        while(cursor.hasNext()){
+        	DBObject dbQuest = cursor.next();
+    		Quest quest = getQuest(dbQuest);
+    		quests.add(quest);
+        }
+        
+        return quests;
 	}
+
+	
 
 }
