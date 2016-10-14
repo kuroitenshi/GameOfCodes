@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="hero.js"></script>
 <meta charset="ISO-8859-1">
 <title>Hello World</title>
 </head>
 <body>
-Hello World
+
+<div ng-app="herodemo" ng-controller="hero">
+ 
+<p>Input something in the input box:</p>
+<p>Name: <input type="text" ng-model="name"></p>
+<p ng-bind="name"></p>
+
+	<ul>
+  		<li ng-repeat="x in heroes">
+    	{{ x.username + ', ' + x.name + ', ' + x.email }}
+	</li>
+</ul>
+
+
+
+</div>
+
 </body>
 </html>

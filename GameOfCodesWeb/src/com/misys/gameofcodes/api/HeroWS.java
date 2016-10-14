@@ -5,6 +5,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.misys.gameofcodes.model.Hero;
@@ -24,6 +25,14 @@ public class HeroWS {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   public Hero getAccount(Hero hero) {  
+    return  HeroService.fetchHero(hero);  
+  }
+  @GET  @Path("username/{username}")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  public Hero getAccount(@PathParam("username") String username) {
+	  Hero hero = new Hero();
+	  hero.setUsername(username);
     return  HeroService.fetchHero(hero);  
   }
 }  

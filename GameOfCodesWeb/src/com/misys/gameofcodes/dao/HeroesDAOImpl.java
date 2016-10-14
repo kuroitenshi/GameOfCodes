@@ -44,7 +44,12 @@ public class HeroesDAOImpl implements HeroesDAO {
 	}
 	public Hero getHero(Hero hero) {
 	    BasicDBObject query = new BasicDBObject();
-	    query.put("_id", new ObjectId(hero.getId()));
+	    if(hero.getId() != null) {
+	    	query.put("_id", new ObjectId(hero.getId()));
+	    }
+	    if(hero.getUsername() != null) {
+	    	query.put("username", hero.getUsername());
+	    }
 	    DBObject dbHero = heroesCollection.findOne(query);
 	    return getHero(dbHero);
 	}
