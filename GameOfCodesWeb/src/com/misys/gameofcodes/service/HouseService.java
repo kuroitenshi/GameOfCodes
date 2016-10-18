@@ -23,8 +23,8 @@ public class HouseService {
         return houseService;
     }
 	
-	public static void addHouse(House house) {
-		houseDAO.addHouse(house);		
+	public static void createHouse(House house) {
+		houseDAO.createHouse(house);		
 	}
 	
 	public static List<House> fetchHouses() {
@@ -35,6 +35,9 @@ public class HouseService {
 	}
 	public static void deleteHouse(House house) {
 		houseDAO.deleteHouse(house);
+	}
+	public static void updateHouse(House house) {
+		houseDAO.updateHouse(house);
 	}
 	public static void addHouseHero(House house, Hero hero) {
 		houseDAO.addHouseHero(house, hero);

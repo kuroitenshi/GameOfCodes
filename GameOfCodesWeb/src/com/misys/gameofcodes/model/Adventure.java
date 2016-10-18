@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.bson.types.ObjectId;
 
-import com.sun.javafx.collections.MappingChange.Map;
+import java.util.Map;
 
 @XmlRootElement
 public class Adventure {
@@ -20,6 +20,9 @@ public class Adventure {
 	private String storyPoints;
 	private Map<String, Integer> storyPointsMonth;
 	private Map<String, Quest> quests;
+	
+	public Adventure(){}
+	
 	public String getId() {
 		return id;
 	}

@@ -22,6 +22,7 @@ public class Quest {
 	private Ticket jiraTicket;
 	private String status;
 	
+	public Quest(){}
 	
 	public ObjectId getId() {
 		return id;

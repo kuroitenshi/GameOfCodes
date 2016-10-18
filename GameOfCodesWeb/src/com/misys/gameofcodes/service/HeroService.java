@@ -26,7 +26,7 @@ public class HeroService {
 	public static List<Hero> fetchHeroes() {
 		return heroDAO.getAllHeroes();		
 	}
-	public static void addHero(Hero hero) {
+	public static void createHero(Hero hero) {
 		heroDAO.addHero(hero);
 	}
 	public static void deleteHero(Hero hero) {

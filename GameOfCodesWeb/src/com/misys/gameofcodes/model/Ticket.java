@@ -25,6 +25,9 @@ public class Ticket {
 	private Date dateEnd;
 	private List<String> developers;
 	private int storyPoints;
+	
+	public Ticket(){}
+	
 	public String getId() {
 		return id;
 	}

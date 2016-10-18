@@ -20,6 +20,8 @@ public class Item {
 	private String itemType;
 	private String rarity;
 	private String imageId;
+	public Item(){}
+	
 	public String getId() {
 		return id;
 	}

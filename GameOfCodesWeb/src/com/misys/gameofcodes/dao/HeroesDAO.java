@@ -15,5 +15,7 @@ public interface HeroesDAO  {
 	public WriteResult updateHero(Hero hero);
 	public WriteResult deleteHero(Hero hero);
 	public WriteResult updateHeroHouse(Hero hero, House house);
+	public WriteResult setActiveHero(Hero hero);
 	public WriteResult setInactiveHero(Hero hero);
+
 }

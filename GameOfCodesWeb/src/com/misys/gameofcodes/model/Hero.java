@@ -6,9 +6,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.bson.types.ObjectId;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @XmlRootElement
 public class Hero {
-	
 	private String id;
 	
 	private String username;
@@ -28,14 +31,13 @@ public class Hero {
 	private String equipmentWings;
 	private String isActive;
 	private String isGameMaster;
-	private Map<String, Badge> badges;
+//	private Map<String, Badge> badges;
 	
 	public Hero (){}
 	
 	public Hero(String username, String name) {
 		this.setUsername(username);
 		this.setName(name);
-		
 	}
 	
 	public String getId() {
@@ -181,13 +183,13 @@ public class Hero {
 		this.isGameMaster = isGameMaster;
 	}
 
-	public Map<String, Badge> getBadges() {
-		return badges;
-	}
-
-	public void setBadges(Map<String, Badge> badges) {
-		this.badges = badges;
-	}
+//	public Map<String, Badge> getBadges() {
+//		return badges;
+//	}
+//
+//	public void setBadges(Map<String, Badge> badges) {
+//		this.badges = badges;
+//	}
 
 	
 }

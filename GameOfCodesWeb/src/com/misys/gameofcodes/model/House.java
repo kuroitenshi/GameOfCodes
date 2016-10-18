@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.bson.types.ObjectId;
 
-import com.sun.javafx.collections.MappingChange.Map;
+import java.util.Map;
 
 @XmlRootElement
 public class House {

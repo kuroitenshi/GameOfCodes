@@ -18,6 +18,9 @@ public class Badge {
 	private String description;
 	private String badgeType;
 	private String imageId;
+	
+	public Badge() {};
+	
 	public String getId() {
 		return id;
 	}
