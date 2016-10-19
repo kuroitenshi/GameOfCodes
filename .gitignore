@@ -48,3 +48,9 @@ Temporary Items
 
 #Eclipse dependency ignores
 .metadata
+RemoteSystemsTempFiles/
+
+#GOC specific ignores
+GameOfCodes/target/
+GameOfCodesWeb/target/
+
