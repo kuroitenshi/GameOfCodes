@@ -1,20 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controller/hero.js"></script>
+
+<!-- Normalize -->
+<link rel="stylesheet" type="text/css" href="css/normalize.css">
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<!-- Owl -->
+<link rel="stylesheet" type="text/css" href="css/owl.css">
+<!-- Animate.css -->
+<link rel="stylesheet" type="text/css" href="css/animate.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" type="text/css"
+	href="fonts/font-awesome-4.1.0/css/font-awesome.min.css">
+<!-- Elegant Icons -->
+<link rel="stylesheet" type="text/css"
+	href="fonts/eleganticons/et-icons.css">
+<!-- Main style -->
+<link rel="stylesheet" type="text/css" href="css/cardio.css">
+
 <meta charset="ISO-8859-1">
-<title>Hello World</title>
+<title>Game Of Codes</title>
 </head>
 <body>
 
-<div ng-app="GameOfCodes" ng-controller="heroController">
- 
+	<div class="container" style="margin-top: 400px">
+		<div class="table">
+			<div class="header-text">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<h1 class="white typed">Game of Codes</h1>
+						<span class="typed-cursor">|</span>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<a href="#" data-toggle="modal" data-target="#modal1"
+							class="btn btn-gray-fill ripple">Login</a>
+					</div>
 
-Hello World
+				</div>
 
-</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="modal fade" id="modal1" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<h3 class="white">Login</h3>
+				<form action="" class="popup-form">
+					<input type="text" class="form-control form-white"
+						placeholder="Username"> <input type="text"
+						class="form-control form-white" placeholder="Password">
+
+					<div class="checkbox-holder text-left">
+						<div class="checkbox">
+							<input type="checkbox" value="None" id="squaredOne" name="check" />
+						</div>
+					</div>
+					<button type="submit" class="btn btn-submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Holder for mobile navigation -->
+	<div class="mobile-nav">
+		<ul>
+		</ul>
+		<a href="#" class="close-link"><i class="arrow_up"></i></a>
+	</div>
+	<!-- Scripts -->
+	<script src="js/bootstrap/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap/owl.carousel.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<script src="js/bootstrap/wow.min.js"></script>
+	<script src="js/bootstrap/typewriter.js"></script>
+	<script src="js/bootstrap/jquery.onepagenav.js"></script>
+	<script src="js/bootstrap/main.js"></script>
+
+
 
 </body>
 </html>
