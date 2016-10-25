@@ -6,9 +6,12 @@
 app.controller('loginController', function($scope) {
     
    
+	$scope.interacted = function(field) {
+	      return $scope.submitted || field.$dirty;
+	    
+	};
     $scope.loginValidate = function() {
-       
-    	alert(JSON.stringify($scope.user));
+           	
         $http({
             method: 'POST',
             url: url,

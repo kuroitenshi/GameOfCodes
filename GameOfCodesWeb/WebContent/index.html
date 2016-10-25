@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="GameOfCodes">
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.js"></script>
 <script src="js/app.js"></script>
-<script src="js/controller/hero.js"></script>
+<script src="js/controller/login.js"></script>
 
 <!-- Normalize -->
 <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -23,10 +26,14 @@
 <!-- Main style -->
 <link rel="stylesheet" type="text/css" href="css/cardio.css">
 
+<!-- Icons-->
+<link rel="icon" type="image/png" href="/img/icon/GOC_tab_icon_raw.png" sizes="32x32">
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/GOC_favicon.ico" />
+
 <meta charset="ISO-8859-1">
 <title>Game Of Codes</title>
 </head>
-<body>
+<body ng-controller="loginController">
 
 	<div class="container" style="margin-top: 400px">
 		<div class="table">
@@ -40,7 +47,7 @@
 				<br>
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<a href="#" data-toggle="modal" data-target="#modal1"
+						<a style="font-family: Cardo-Bold; font-size: 20px" href="#" data-toggle="modal" data-target="#modal1"
 							class="btn btn-gray-fill ripple">Login</a>
 					</div>
 
@@ -50,30 +57,42 @@
 		</div>
 	</div>
 
+
+
+
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
 				<h3 class="white">Login</h3>
-				<form action="" class="popup-form">
-					
-					<input type="text" class="form-control form-white"
-						placeholder="Username"> 
-						
-					<input type="password"
-						class="form-control form-white" placeholder="Password">
+				<form name="userEntry" class="popup-form">
 
-					<div class="checkbox-holder text-left">
-						<div class="checkbox">
-							<input type="checkbox" value="None" id="squaredOne" name="check" />
-						</div>
-					</div>
-					<button type="submit" class="btn btn-submit">Submit</button>
+					<input type="text" style="font-family: Cardo-Italic; font-size: 20px"  class="form-control form-white"
+						placeholder="Username" id="username" name="username" ng-model="user.username" ng-required="true">
+					
+					<div class="error-messages" ng-if="interacted(userEntry.username)" ng-messages="userEntry.username.$error">
+      					<div ng-message="required">
+       						 What about your username my liege...
+     					 </div>
+     				</div>
+
+					<input type="password" style="font-size: 20px"class="form-control form-white"
+						placeholder="Password" id="password" name="password" ng-model="user.password" ng-required="true">
+			
+					<div class="error-messages" ng-if="interacted(userEntry.password)" ng-messages="userEntry.password.$error">
+      					<div ng-message="required">
+       						 A password is required my liege...
+     					 </div>
+     				</div>
+     				
+					<button type="submit" style="font-family: Cardo-Italic; font-size: 20px" class="btn btn-submit" ng-click="loginValidate()">Submit</button>
 				</form>
+				
 			</div>
 		</div>
 	</div>
+	
 
 	<!-- Holder for mobile navigation -->
 	<div class="mobile-nav">
@@ -81,6 +100,7 @@
 		</ul>
 		<a href="#" class="close-link"><i class="arrow_up"></i></a>
 	</div>
+	
 	<!-- Scripts -->
 	<script src="js/bootstrap/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap/owl.carousel.min.js"></script>
