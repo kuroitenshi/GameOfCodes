@@ -63,6 +63,20 @@ body {
 	src: url('../fonts/Cardo/Cardo-Italic.ttf') format('truetype');
 }
 
+/* Panel Customizations*/
+.panel-body{
+	background-color: #526687;
+	color: #526687;
+}
+.panel-heading{
+	font-family: 'GOT';
+}
+.fixed-panel{
+  min-height: 10;
+  max-height: 10;
+  overflow: scroll;
+}
+
 
 .parallax img {
 	width: 100%;
