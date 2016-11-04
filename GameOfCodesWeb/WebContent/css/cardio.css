@@ -10,6 +10,10 @@ body {
 	color: #2a3237;
 }
 
+/*Hero Page Customizations*/
+.heroPage{
+	background-image: url("../img/bg/hero-main-bg.jpg");
+}
 .parallax {
 	position: absolute;
 	overflow: hidden;
@@ -309,7 +313,7 @@ nav.navbar-fixed-top .navbar-nav>li>a:not (.btn ) {
 }
 
 .navbar {
-	top: 50px;
+	top: 30px;
 }
 
 .container {

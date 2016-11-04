@@ -6,6 +6,10 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+<script src="js/app.js"></script>
+
 
 <!-- Normalize -->
 <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -34,8 +38,36 @@
 <title>Game Of Codes - HERO</title>
 </head>
 <body>
+	<nav class="navbar">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href=""><img
+					src="img/icon/GOC_favicon.ico"
+					data-active-url="img/icon/GOC_favicon.ico" alt=""></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right main-nav">
+					<li><a href="/quests" ng-click="go('/quests')"><h6>Quests</h6></a></li>
+					<li><a href="#Adventures"><h6>Adventures</h6></a></li>
+					<li><a href="#Houses"><h6>Houses</h6></a></li>
+					<li><a href="#Market"><h6>Market</h6></a></li>
+					<li><a href="#" class="btn btn-gray-fill">Log Out</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
 
-	<div class="container" style="margin-top: 100px">
+	<div class="container" style="margin-top: 130px">
 		<div class="row text-center title">
 			<h2>Welcome to the Realm</h2>
 			<h4 class="light muted">Prepare your Hero</h4>
@@ -52,12 +84,12 @@
 					clickable to go to customization page.</p>
 			</div>
 		</div>
-		<div class="col-md-9"style="margin-top: 80px;">
-			<div class="panel panel-default" >
+		<div class="col-md-9" style="margin-top: 80px;">
+			<div class="panel panel-default">
 				<div class="panel-body est">
 					<div class="panel panel-default">
 						<div class="panel-heading">Current Adventure</div>
-						<div class="panel-body fixed-panel" >
+						<div class="panel-body fixed-panel">
 							<div class="table">
 								<div class="row">
 									<div class="col-md-12 text-center">Adventure 1</div>
@@ -68,7 +100,7 @@
 					<div class="panel panel-default ">
 						<div class="panel-heading">Active Quests</div>
 						<div class="panel-body fixed-panel">
-						
+
 							<div class="table">
 								<div class="row">
 									<div class="col-md-12 text-center">Quest 1</div>
@@ -93,6 +125,7 @@
 		</div>
 
 	</div>
+
 
 
 
