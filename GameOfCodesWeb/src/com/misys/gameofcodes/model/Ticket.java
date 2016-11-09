@@ -12,7 +12,7 @@ import com.sun.javafx.collections.MappingChange.Map;
 @XmlRootElement
 public class Ticket {
 	
-	private String id;
+	private ObjectId id;
 	
 	private String jiraId;
 	private String title;
@@ -26,83 +26,105 @@ public class Ticket {
 	private List<String> developers;
 	private int storyPoints;
 	
-	public Ticket(){}
+	public Ticket (){}
 	
-	public String getId() {
+	public Ticket(String jiraId){
+		this.setJiraId(jiraId);
+	}
+	
+	public ObjectId getId() {
 		return id;
 	}
-	public void setId(String id) {
+	
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
-	public String getJiraId() {
+	
+	public String getJiraId(){
 		return jiraId;
 	}
-	public void setJiraId(String jiraId) {
+	
+	public void setJiraId(String jiraId){
 		this.jiraId = jiraId;
 	}
-	public String getTitle() {
+	
+	public String getTitle(){
 		return title;
 	}
-	public void setTitle(String title) {
+	
+	public void setTitle(String title){
 		this.title = title;
 	}
-	public String getDescription() {
+	
+	public String getDescription(){
 		return description;
 	}
-	public void setDescription(String description) {
+	
+	public void setDescription(String description){
 		this.description = description;
 	}
-	public Date getDateStarted() {
+	
+	public Date getDateStarted(){
 		return dateStarted;
 	}
-	public void setDateStarted(Date dateStarted) {
+	
+	public void setDateStarted(Date dateStarted){
 		this.dateStarted = dateStarted;
 	}
-	public Date getDateVerified() {
+	
+	public Date getDateVerified(){
 		return dateVerified;
 	}
-	public void setDateVerified(Date dateVerified) {
+	
+	public void setDateVerified(Date dateVerified){
 		this.dateVerified = dateVerified;
 	}
-	public String getStatus() {
+	
+	public String getStatus(){
 		return status;
 	}
-	public void setStatus(String status) {
+	
+	public void setStatus(String status){
 		this.status = status;
 	}
-	public String getSeverity() {
+	
+	public String getSeverity(){
 		return severity;
 	}
-	public void setSeverity(String severity) {
+	
+	public void setSeverity(String severity){
 		this.severity = severity;
 	}
-	public String getPriority() {
-		return priority;
+	
+	public String getPriority(){
+		return priority;			
 	}
-	public void setPriority(String priority) {
+	
+	public void setPriority(String priority){
 		this.priority = priority;
 	}
-	public Date getDateEnd() {
+	
+	public Date getDateEnd(){
 		return dateEnd;
 	}
-	public void setDateEnd(Date dateEnd) {
+	
+	public void setDateEnd(Date dateEnd){
 		this.dateEnd = dateEnd;
 	}
-	public List<String> getDevelopers() {
+	
+	public List<String> getDevelopers(){
 		return developers;
 	}
-	public void setDevelopers(List<String> developers) {
+	
+	public void setDevelopers(List<String> developers){
 		this.developers = developers;
 	}
-	public int getStoryPoints() {
+	
+	public int getStoryPoints(){
 		return storyPoints;
 	}
-	public void setStoryPoints(int storyPoints) {
+	
+	public void setStoryPoints(int storyPoints){
 		this.storyPoints = storyPoints;
 	}
-	
-	
-	
-
-	
 }
