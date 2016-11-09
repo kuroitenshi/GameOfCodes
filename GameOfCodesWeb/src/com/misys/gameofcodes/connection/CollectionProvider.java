@@ -29,4 +29,15 @@ public class CollectionProvider
         System.out.println("Collection mycol selected successfully");
 		return dbCollection;
 	}
+	
+	/**
+	 * Returns collection of tickets
+	 * @return ticket collection
+	 */
+	public DBCollection getTicketCollection()
+	{
+		DBCollection dbCollection = gameOfCodesDB.getCollection("tickets");
+		System.out.println("Collection mycol selected successfully");
+		return dbCollection;
+	}
 }
