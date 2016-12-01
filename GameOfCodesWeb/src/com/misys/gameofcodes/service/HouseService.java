@@ -33,6 +33,9 @@ public class HouseService {
 	public static House fetchHouse(House house) {
 		return houseDAO.getHouse(house);		
 	}
+	public static void deleteHouse(String id) {
+		houseDAO.deleteHouse(id);
+	}
 	public static void deleteHouse(House house) {
 		houseDAO.deleteHouse(house);
 	}

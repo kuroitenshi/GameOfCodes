@@ -10,6 +10,10 @@ body {
 	color: #2a3237;
 }
 
+/*Hero Page Customizations*/
+.heroPage{
+	background-image: url("../img/bg/hero-main-bg.jpg");
+}
 .parallax {
 	position: absolute;
 	overflow: hidden;
@@ -61,6 +65,20 @@ body {
 @font-face {
 	font-family: 'Cardo-Italic';
 	src: url('../fonts/Cardo/Cardo-Italic.ttf') format('truetype');
+}
+
+/* Panel Customizations*/
+.panel-body{
+	background-color: #526687;
+	color: #526687;
+}
+.panel-heading{
+	font-family: 'GOT';
+}
+.fixed-panel{
+  min-height: 10;
+  max-height: 10;
+  overflow: scroll;
 }
 
 
@@ -295,7 +313,7 @@ nav.navbar-fixed-top .navbar-nav>li>a:not (.btn ) {
 }
 
 .navbar {
-	top: 50px;
+	top: 30px;
 }
 
 .container {
