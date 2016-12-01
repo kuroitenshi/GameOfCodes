@@ -4,34 +4,38 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="js/app.js"></script>
-<script src="js/controller/hero.js"></script>
+<script src="js/controller/houses.js"></script>
 <meta charset="ISO-8859-1">
 <title>Hero CRUD</title>
 </head>
 <body>
 
-<div  ng-controller="heroController">
+<div  ng-controller="housesController">
  
            <!-- Table-to-load-the-data Part -->
             <table class="table">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Username</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th><button id="btn-add" class="btn btn-primary btn-xs" ng-click="toggle('add', 0)">Add New Hero</button></th>
+                        <th>Housename</th>
+                        <th>Banner</th>
+                        <th>Domain</th>
+						<th>Story Points</th>
+						<th>Level</th>
+                        <th><button id="btn-add" class="btn btn-primary btn-xs" ng-click="toggle('add', 0)">Add New House</button></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="hero in heroes">
-                        <td>{{ hero.id }}</td>
-                        <td>{{ hero.username }}</td>
-                        <td>{{ hero.name }}</td>
-                        <td>{{ hero.email }}</td>
+                    <tr ng-repeat="house in houses">
+                        <td>{{ house.id }}</td>
+                        <td>{{ house.housename }}</td>
+                        <td>{{ house.banner }}</td>
+                        <td>{{ house.domain }}</td>
+						<td>{{ house.storyPoints }}</td>
+						<td>{{ house.level }}</td>
                         <td>
-                            <button class="btn btn-default btn-xs btn-detail" ng-click="toggle('edit', hero.username)">Edit</button>
-                            <button class="btn btn-danger btn-xs btn-delete" ng-click="confirmDelete(hero.id)">Delete</button>
+                            <button class="btn btn-default btn-xs btn-detail" ng-click="toggle('edit', house.id)">Edit</button>
+                            <button class="btn btn-danger btn-xs btn-delete" ng-click="confirmDelete(house.id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -45,41 +49,41 @@
                             <h4 class="modal-title" id="myModalLabel">{{form_title}}</h4>
                         </div>
                         <div class="modal-body">
-                            <form name="frmHeroes" class="form-horizontal" novalidate="">
+                            <form name="frmHouses" class="form-horizontal" novalidate="">
                             
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Housename</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{username}}" 
-                                        ng-model="hero.username" ng-required="true">
+                                        <input type="text" class="form-control" id="housename" name="housename" placeholder="Housename" value="{{housename}}" 
+                                        ng-model="house.housename" ng-required="true">
                                     <span class="help-inline" 
-                                        ng-show="frmHeroes.username.$invalid && frmHeroes.username.$touched">Username field is required</span>
+                                        ng-show="frmHouses.housename.$invalid && frmHouses.housename.$touched">Housename field is required</span>
                                     </div>
                                 </div>
                                 <div class="form-group error">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Name</label>
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Banner</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control has-error" id="name" name="name" placeholder="Fullname" value="{{name}}" 
-                                        ng-model="hero.name" ng-required="true">
+                                        <input type="text" class="form-control has-error" id="banner" name="banner" placeholder="Banner" value="{{banner}}" 
+                                        ng-model="house.banner" ng-required="true">
                                         <span class="help-inline" 
-                                        ng-show="frmHeroes.name.$invalid && frmHeroes.name.$touched">Name field is required</span>
+                                        ng-show="frmHouses.banner.$invalid && frmHouses.banner.$touched">Banner field is required</span>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Domain</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" value="{{email}}" 
-                                        ng-model="hero.email" ng-required="true">
+                                        <input type="text" class="form-control" id="domain" name="domain" placeholder="Domain" value="{{domain}}" 
+                                        ng-model="house.domain" ng-required="true">
                                         <span class="help-inline" 
-                                        ng-show="frmHeroes.email.$invalid && frmHeroes.email.$touched">Valid Email field is required</span>
+                                        ng-show="frmHouses.domain.$invalid && frmHouses.domain.$touched">Domain field is required</span>
                                     </div>
                                 </div>
 
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(modalstate)" ng-disabled="frmHeroes.$invalid">Save changes</button>
+                            <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(modalstate)" ng-disabled="frmHouses.$invalid">Save changes</button>
                         </div>
                     </div>
                 </div>
