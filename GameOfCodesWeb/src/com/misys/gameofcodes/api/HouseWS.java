@@ -2,9 +2,11 @@ package com.misys.gameofcodes.api;
 
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.misys.gameofcodes.model.Hero;
@@ -44,6 +46,16 @@ public class HouseWS {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createHouse(House house) {  
 		  HouseService.createHouse(house);;  
+	}
+	/**
+	 * delete a house via DELETE
+	 * /house/delete
+	 */
+	@DELETE  @Path("delete/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void deleteHouseByID(@PathParam("id") String id) {  
+		  HouseService.deleteHouse(id);  
 	}
 	/**
 	 * delete a house via POST

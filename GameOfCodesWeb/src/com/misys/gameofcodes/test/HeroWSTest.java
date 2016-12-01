@@ -9,8 +9,8 @@ public class HeroWSTest {
 
 	public static void main(String[] args) {
 		HeroWSTest test = new HeroWSTest();
+		test.newHeroes();
 		test.fetchAll();
-		
 		
 	}
 	

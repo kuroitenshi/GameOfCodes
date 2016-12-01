@@ -131,6 +131,16 @@ public class HousesDAOImpl implements HousesDAO {
 	}
 	/**
 	 * deletes a house by object id
+	 * @param id
+	 * @return WriteResult
+	 */
+	@Override
+	public WriteResult deleteHouse(String id) {
+		BasicDBObject query = new BasicDBObject("_id", new ObjectId(id));
+		return houseCollection.remove(query);
+	}
+	/**
+	 * deletes a house by object id
 	 * @param house
 	 * @return WriteResult
 	 */
