@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/*!
+Leaderboard.css 
+Licensed under the MIT license
+
+Copyright (c) 2016 Edgar Resma
+*/
+	
+	body {
+    	color: #FFF;
+	}
+	/* Leaderboard Related CSS */
+	.leaderboard-avatar {
+		height: 130px;
+    	width: 130px;
+		padding: 10px;
+	}
+	.leaderboard-bg {  
+		background: url('../img/bg/medieval-bg.jpg') top center;
+	}
+	.leaderboard-div-bg { 
+		display: inline-block;
+		background-color: rgba(0, 0, 0, 0.7);
+		background-clip: content-box;
+	}
+	.leaderboard-div-entry { 
+		background-color: rgba(0, 0, 0, 0.7);
+		background-clip: content-box;
+		border-top: 1px solid transparent;
+		border-bottom: 1px solid transparent;
+	}
+	.leaderboard-font { 
+		 font-size: 40px;
+	}
+	.leaderboard-font-header{ 
+		font-size: 30px;
+		font-family: 'GOT';
+		color: #FFFFFF;
+	}
+	.leaderboard-list {
+    	padding-top: 15x;
+	}
+	.vertical-align {
+		display: flex;
+		align-items: center;
+	}
+	.center-block {
+	    display: block;
+	    margin-left: auto;
+	    margin-right: auto;
+	 }
+	/*Font Declarations*/
+
+	@font-face {
+		font-family: 'GOT';
+		src: url('../fonts/GOT/Game-of-Thrones.ttf') format('truetype');
+	}
+		
+	@media screen and (max-width: 991px) {
+    .leaderboard-font {
+        font-size:20px;
+    	}
+	}
+	/* Carousel Related CSS */
+	.carousel .carousel-control {
+		visibility: hidden;
+	}
+	.carousel:hover .carousel-control {
+		visibility: visible;
+	}
+	.carousel-indicators {
+  		bottom:-50px;
+	}	
+
+	.navbar {
+		background-color: #000000;
+		padding-top: 13px;
+		border: 0;
+		opacity:0.85;
+		min-height: 30px;
+	}
+	.navbar-header {
+	    float: left;
+	    text-align: center;
+	    width: 100%;
+	}
+	.navbar-brand
+	{
+		float:none;
+		min-height: 30px;
+	}
+	.item:active { 
+		cursor: url(images/grabbing.cur);
+	    cursor: -webkit-grabbing;
+	    cursor:    -moz-grabbing;
+	    cursor:         grabbing;
+	}
