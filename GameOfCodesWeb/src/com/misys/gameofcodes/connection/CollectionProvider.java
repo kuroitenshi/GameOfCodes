@@ -20,24 +20,13 @@ public class CollectionProvider
 	}
 	
 	/**
-	 * Returns collection of heroes
-	 * @return hero collection
+	 * Returns collection of input parameter
+	 * @return of input collection
 	 */
 	public DBCollection getCollection(String collectionName) 
 	{
         DBCollection dbCollection = gameOfCodesDB.getCollection(collectionName);
         System.out.println("Collection mycol selected successfully");
-		return dbCollection;
-	}
-	
-	/**
-	 * Returns collection of tickets
-	 * @return ticket collection
-	 */
-	public DBCollection getTicketCollection()
-	{
-		DBCollection dbCollection = gameOfCodesDB.getCollection("tickets");
-		System.out.println("Collection mycol selected successfully");
 		return dbCollection;
 	}
 }

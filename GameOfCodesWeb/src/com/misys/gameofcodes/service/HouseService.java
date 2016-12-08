@@ -1,15 +1,10 @@
 package com.misys.gameofcodes.service;
 
 import java.util.List;
-import java.util.Map;
 
-import com.misys.gameofcodes.dao.HeroesDAO;
-import com.misys.gameofcodes.dao.HeroesDAOImpl;
-import com.misys.gameofcodes.dao.HousesDAO;
 import com.misys.gameofcodes.dao.HousesDAOImpl;
 import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
-import com.mongodb.MongoClient;
 
 public class HouseService {
 	

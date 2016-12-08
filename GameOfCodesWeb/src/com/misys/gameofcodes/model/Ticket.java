@@ -7,8 +7,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.bson.types.ObjectId;
 
-import com.sun.javafx.collections.MappingChange.Map;
-
 @XmlRootElement
 public class Ticket {
 	
@@ -25,6 +23,7 @@ public class Ticket {
 	private Date dateEnd;
 	private List<String> developers;
 	private int storyPoints;
+	private String isAssigned;
 	
 	public Ticket (){}
 	
@@ -126,5 +125,13 @@ public class Ticket {
 	
 	public void setStoryPoints(int storyPoints){
 		this.storyPoints = storyPoints;
+	}
+
+	public String getIsAssigned() {
+		return isAssigned;
+	}
+
+	public void setIsAssigned(String isAssigned) {
+		this.isAssigned = isAssigned;
 	}
 }

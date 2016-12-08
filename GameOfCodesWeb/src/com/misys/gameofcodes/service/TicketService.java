@@ -1,6 +1,6 @@
 package com.misys.gameofcodes.service;
 
-import java.util.Map;
+import java.util.List;
 
 import com.misys.gameofcodes.dao.TicketsDAO;
 import com.misys.gameofcodes.dao.TicketsDAOImpl;
@@ -10,36 +10,32 @@ public class TicketService {
 
 	private TicketService() { }
 	private static TicketService ticketService;
-	
+	private static TicketsDAO ticketDAO = new TicketsDAOImpl();
 	public static TicketService getTicketService(){
 		if (ticketService == null){
 			ticketService = new TicketService();
 		}
 		return ticketService;
 	}
-	
-	public Ticket fetchTicket(Ticket ticket){
-		TicketsDAO ticketDAO = new TicketsDAOImpl();
+	public static Ticket fetchTicket(Ticket ticket){
 		return ticketDAO.getTicket(ticket);		
 	}
-	
-	public Map<String, Ticket> fetchTickets(){
-		TicketsDAO ticketDAO = new TicketsDAOImpl();
+	public static List<Ticket> fetchTickets(){
 		return ticketDAO.getAllTickets();
 	}
-	
-	public void addTicket(Ticket ticket){
-		TicketsDAO ticketDAO = new TicketsDAOImpl();
+	public static void addTicket(Ticket ticket){
 		ticketDAO.addTicket(ticket);
 	}
-	
-	public void updateTicket(Ticket ticket){
-		TicketsDAO ticketDAO = new TicketsDAOImpl();
+	public static void updateTicket(Ticket ticket){
 		ticketDAO.updateTicket(ticket);
 	}
-	
-	public void deleteTicket(Ticket ticket){
-		TicketsDAO ticketsDAO = new TicketsDAOImpl();
-		ticketsDAO.deleteTicket(ticket);
+	public static void deleteTicket(Ticket ticket){
+		ticketDAO.deleteTicket(ticket);
+	}
+	public static void updateTicketAssign(Ticket ticket){
+		ticketDAO.updateTicketAssign(ticket);
+	}
+	public static void udpateTicketUnassign(Ticket ticket){
+		ticketDAO.updateTicketUnassign(ticket);
 	}
 }
