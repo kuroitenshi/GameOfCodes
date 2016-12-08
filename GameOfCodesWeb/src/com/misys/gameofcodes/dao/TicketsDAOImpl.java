@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 
 import com.misys.gameofcodes.connection.CollectionProvider;
 import com.misys.gameofcodes.model.Ticket;
+import com.misys.gameofcodes.utility.EncoderUtility;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
@@ -59,15 +60,13 @@ public class TicketsDAOImpl implements TicketsDAO {
 			try {
 				ticket.setDateStarted(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(dbTicket.get("dateStarted").toString()));
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 		}
-		if (dbTicket.get("dateVerified").toString().isEmpty()) {
+		if (dbTicket.get("dateVerified").toString() != null) {
 			try {
-				ticket.setDateStarted(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(dbTicket.get("dateVerified").toString()));
+				ticket.setDateVerified(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(dbTicket.get("dateVerified").toString()));
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}  
 		}
@@ -82,7 +81,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 		}
 		if (dbTicket.get("dateEnd").toString() != null) {
 			try {
-				ticket.setDateStarted(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(dbTicket.get("dateEnd").toString()));
+				ticket.setDateEnd(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(dbTicket.get("dateEnd").toString()));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
