@@ -19,7 +19,7 @@ public class Hero {
 	private House house;
 	private String email;
 	private int storyPoints;
-	private String level;
+	private int level;
 	private String equipmentHead1;
 	private String equipmentHead2;
 	private String equipmentHead3;
@@ -75,11 +75,11 @@ public class Hero {
 		this.storyPoints = storyPoints;
 	}
 
-	public String getLevel() {
+	public int getLevel() {
 		return level;
 	}
 
-	public void setLevel(String level) {
+	public void setLevel(int level) {
 		this.level = level;
 	}
 

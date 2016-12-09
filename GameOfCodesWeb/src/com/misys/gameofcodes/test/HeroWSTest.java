@@ -17,24 +17,34 @@ public class HeroWSTest {
 	public void newHeroes() {
 		Hero hero = new Hero();
 		// Add first hero
-		hero.setUsername("flash");
-		hero.setName("Barry Allen");
-		hero.setEmail("speedoflight@misys.com");
+		hero.setUsername("edgresma");
+		hero.setName("Edgar Resma");
+		hero.setEmail("Edgar.Resma@misys.com");
 		HeroService.createHero(hero);
 		// Add second hero
-		hero.setUsername("wonderwoman");
-		hero.setName("Diana Prince");
-		hero.setEmail("amazonian@misys.com");
+		hero.setUsername("agutierr");
+		hero.setName("Aldrich Gutierrez");
+		hero.setEmail("AldrichPhilbert.Gutierrez@misys.com");
 		HeroService.createHero(hero);
 		// Add second hero
-		hero.setUsername("vision");
-		hero.setName("Victor Shade");
-		hero.setEmail("godlike@misys.com");
+		hero.setUsername("aclimaco");
+		hero.setName("April Alcantara");
+		hero.setEmail("April.Alcantara@misys.com");
 		HeroService.createHero(hero);
 		// Add second hero
-		hero.setUsername("spiderman");
-		hero.setName("Peter Parker");
-		hero.setEmail("webslinger@misys.com");
+		hero.setUsername("rcajigas");
+		hero.setName("Rea Cajigas");
+		hero.setEmail("Realeen.Cajigas@misys.com");
+		HeroService.createHero(hero);
+		// Add second hero
+		hero.setUsername("jayperez");
+		hero.setName("Jason Perez");
+		hero.setEmail("Jayson.Perez@misys.com");
+		HeroService.createHero(hero);
+		// Add second hero
+		hero.setUsername("jpbautist");
+		hero.setName("Peter Bautista");
+		hero.setEmail("JanPeter.Bautista@misys.com");
 		HeroService.createHero(hero);
 	}
 	public void fetchAll() {

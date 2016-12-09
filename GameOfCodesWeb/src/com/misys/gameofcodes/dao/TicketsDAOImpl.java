@@ -3,6 +3,7 @@ package com.misys.gameofcodes.dao;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -10,10 +11,13 @@ import org.bson.types.ObjectId;
 import com.misys.gameofcodes.connection.CollectionProvider;
 import com.misys.gameofcodes.model.Ticket;
 import com.misys.gameofcodes.utility.EncoderUtility;
+import com.mongodb.AggregationOutput;
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+
 
 public class TicketsDAOImpl implements TicketsDAO {
 
@@ -24,7 +28,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 		collectionProvider = new CollectionProvider();
 		ticketCollection = collectionProvider.getCollection("Ticket");
 	}
-	
+	@Override
 	public List<Ticket> getAllTickets() {
 		DBCursor cursor = ticketCollection.find();
 		List<Ticket> tickets = new ArrayList<Ticket>();
@@ -35,18 +39,36 @@ public class TicketsDAOImpl implements TicketsDAO {
         }
 		return tickets;
 	}
-	
+	@Override
+	public int getUserTicketSum(String username) {
+		BasicDBObject query = new BasicDBObject();
+		query.put("developers", username);
+		BasicDBObject match = new BasicDBObject(
+			    "$match", new BasicDBObject("developers", username)
+			);
+		BasicDBObject group = new BasicDBObject(
+			    "$group", new BasicDBObject("_id", "").append(
+			        "total", new BasicDBObject( "$sum", "$storyPoints" )
+			    )
+			);
+		AggregationOutput sumTickets = ticketCollection.aggregate(match, group);
+		for (DBObject result : sumTickets.results()) {
+			return Integer.parseInt(result.get("total").toString());
+        }
+		return 0;
+	}
+	@Override
 	public Ticket getTicket(Ticket ticket) {
 		BasicDBObject query = new BasicDBObject();
 		query.put("jiraId", ticket.getJiraId());
 		DBObject dbTicket = ticketCollection.findOne(query);
 		return getTicket(dbTicket);
 	}
-	
+	@Override
 	public Ticket getTicket(DBObject dbTicket){
 		Ticket ticket = new Ticket();
-		ObjectId objId = (ObjectId) dbTicket.get("_id");
-		ticket.setId(objId);
+	  	ObjectId objId = (ObjectId) dbTicket.get("_id");
+		ticket.setId(objId.toString());
 		if (dbTicket.get("jiraId").toString() != null) {
 			ticket.setJiraId(dbTicket.get("jiraId").toString()); 
 		}
@@ -87,20 +109,28 @@ public class TicketsDAOImpl implements TicketsDAO {
 				e.printStackTrace();
 			}   
 		}
-		if (dbTicket.get("developers").toString() != null) {
-			List<String> developers = new ArrayList<String>();
-			developers.add(dbTicket.get("developers").toString());
-			ticket.setDevelopers(developers); 
+		if (dbTicket.get("developers") != null) {
+			
+			BasicDBList developers = (BasicDBList) dbTicket.get("developers");;
+			List<String> heroList = new ArrayList<String>();
+			Iterator iterator = developers.iterator();
+			while (iterator.hasNext()) {
+				heroList.add(iterator.next().toString());
+			}
+			ticket.setDevelopers(heroList); 
 		}
 		if (dbTicket.get("storyPoints").toString() != null) {
 			ticket.setStoryPoints((int) Double.parseDouble(dbTicket.get("storyPoints").toString())); 
 		}
 		return ticket;
 	}
-	
+	@Override
 	public void addTicket(Ticket ticket){
 		BasicDBObject query = new  BasicDBObject();
-			query.put("jiraId", ticket.getJiraId());
+		query.put("jiraId", ticket.getJiraId());
+		List<String> developerList = ticket.getDevelopers();
+		BasicDBList dbDevelopers = new BasicDBList();
+		dbDevelopers.addAll(developerList);
 		DBObject dbTicket = new BasicDBObject();	
 			dbTicket.put("$set", new BasicDBObject().append("jiraId", ticket.getJiraId())
 				.append("title", ticket.getTitle())
@@ -111,25 +141,29 @@ public class TicketsDAOImpl implements TicketsDAO {
 				.append("severity", ticket.getSeverity())
 				.append("priority", ticket.getPriority())
 				.append("dateEnd", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(ticket.getDateEnd()))
-				.append("developers", ticket.getDevelopers().get(0))
+				.append("developers", dbDevelopers)
 				.append("storyPoints", ticket.getStoryPoints()));
 		ticketCollection.update(query, dbTicket, true, false);	
 	}
-	
+	@Override
 	public void updateTicket(Ticket ticket){
 		BasicDBObject query = new BasicDBObject();
-		query.put("_id", ticket.getId());
-		
+		query.put("_id", new ObjectId(ticket.getId()));
 		DBObject dbTicket = ticketCollection.findOne(query);
 		dbTicket.put("jiraId", ticket.getJiraId());
 		ticketCollection.update(query, dbTicket);
 	}
-
+	@Override
 	public void deleteTicket(Ticket ticket) {
 		BasicDBObject query = new BasicDBObject("jiraId", ticket.getJiraId());
 		System.out.println(ticketCollection.remove(query));
-		
 	}
+	@Override
+	public void deleteTicketById(String id) {
+		BasicDBObject query = new BasicDBObject("_id", new ObjectId(id));
+		System.out.println(ticketCollection.remove(query));
+	}
+	@Override
 	public void updateTicketAssign(Ticket ticket) {
 		BasicDBObject query = new BasicDBObject();
 		query.put("_id", ticket.getId());
@@ -138,6 +172,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 		dbTicket.put("isAssigned", "Y");
 		ticketCollection.update(query, dbTicket);
 	}
+	@Override
 	public void updateTicketUnassign(Ticket ticket) {
 		BasicDBObject query = new BasicDBObject();
 		query.put("_id", ticket.getId());

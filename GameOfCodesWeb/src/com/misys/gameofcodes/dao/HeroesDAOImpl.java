@@ -34,6 +34,7 @@ public class HeroesDAOImpl implements HeroesDAO {
 	/** 
 	 * Get all heroes
 	 */
+	@Override
 	public List<Hero> getAllHeroes() {   
 		DBCursor cursor = heroesCollection.find();
         List<Hero> heroes = new ArrayList<Hero>();
@@ -49,6 +50,7 @@ public class HeroesDAOImpl implements HeroesDAO {
 	 * @param Hero with object id or username
 	 * @returns Hero with complete details from database
 	 */
+	@Override
 	public Hero getHero(Hero hero) {
 	    BasicDBObject query = new BasicDBObject();
 	    if(hero.getId() != null) {
@@ -65,6 +67,7 @@ public class HeroesDAOImpl implements HeroesDAO {
 	 * @param DBObject hero object from database
 	 * @returns Hero with complete details from database
 	 */
+	@Override
 	public Hero getHero(DBObject dbhero) {
 		Hero hero = new Hero();
     	ObjectId heroObjId = (ObjectId) dbhero.get("_id");
@@ -72,9 +75,9 @@ public class HeroesDAOImpl implements HeroesDAO {
     	hero.setUsername(dbhero.get("username").toString());
     	hero.setName(dbhero.get("name").toString());
     	hero.setEmail(dbhero.get("email").toString());
-//    	hero.setStoryPoints(Integer.parseInt(dbhero.get("story_points").toString()));
-//    	hero.setLevel(dbhero.get("level").toString());
-//    	hero.setIsActive(dbhero.get("isActive").toString());
+    	hero.setStoryPoints((int) dbhero.get("storyPoints"));
+    	hero.setLevel((int) dbhero.get("level"));
+    	hero.setIsActive(dbhero.get("isActive").toString());
 //    	hero.setIsGameMaster(dbhero.get("isGameMaster").toString());
 //    	hero.setEquipmentHead1(dbhero.get("equipmentHead1").toString());
 //    	hero.setEquipmentHead2(dbhero.get("equipmentHead2").toString());
@@ -94,15 +97,16 @@ public class HeroesDAOImpl implements HeroesDAO {
 	}
 	/** 
 	 * Adds new hero to database with values for username, name and email
-	 * and defaults is_active and story_points
+	 * and defaults isActive and storyPoints
 	 * @param Hero
 	 * @returns WriteResult default output for mongodb requests
 	 */
+	@Override
 	public WriteResult addHero(Hero hero) {
 		BasicDBObject heroObject = new BasicDBObject("username", hero.getUsername())
 			  .append("name", hero.getName())
       		  .append("email", hero.getEmail())
-			  .append("story_points", 0)
+			  .append("storyPoints", 0)
 			  .append("level", 1)
 			  .append("isActive", 'Y');
 		return heroesCollection.insert(heroObject);
@@ -112,6 +116,7 @@ public class HeroesDAOImpl implements HeroesDAO {
 	 * @param Hero with object id value and new name
 	 * @return WriteResult default output for mongodb requests
 	 */
+	@Override
 	public WriteResult updateHero(Hero hero) {
 	    BasicDBObject query = new BasicDBObject();
 	    query.put("_id", new ObjectId(hero.getId()));
@@ -124,19 +129,21 @@ public class HeroesDAOImpl implements HeroesDAO {
 	 * @param Hero with object id value and new name
 	 * @return WriteResult default output for mongodb requests
 	 */
+	@Override
 	public WriteResult updateHeroPoints(Hero hero) {
 	    BasicDBObject query = new BasicDBObject();
 	    query.put("_id", new ObjectId(hero.getId()));
 	    DBObject dbHero = heroesCollection.findOne(query);
 	    	dbHero.put("storyPoints",hero.getStoryPoints());
 	    	dbHero.put("level",hero.getLevel());
-	    	return heroesCollection.update(query, dbHero); 
+	    return heroesCollection.update(query, dbHero); 
 	}
 	/**
 	 * delete here using username or id
 	 * @param Hero with username value
 	 * @return WriteResult default output for mongdb requests
 	 */
+	@Override
 	public WriteResult deleteHero(Hero hero) {
 		BasicDBObject query = new BasicDBObject();
 	    if(hero.getId() != null) {

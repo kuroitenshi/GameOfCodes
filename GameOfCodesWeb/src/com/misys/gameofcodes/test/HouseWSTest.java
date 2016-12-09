@@ -10,6 +10,7 @@ public class HouseWSTest {
 
 	public static void main(String[] args) {
 		HouseWSTest test = new HouseWSTest();
+		//test.newHouses();
 		test.fetchAll();
 	}
 	
@@ -19,17 +20,17 @@ public class HouseWSTest {
 		//add house 1
 		house.setHousename("House Stark");
 		house.setBanner("Wolf");
-		house.setDomain("domain1");
+		house.setDomain("Essence Core");
 		HouseService.createHouse(house);
 		//add house 2
 		house.setHousename("House Lannister");
 		house.setBanner("Lion");
-		house.setDomain("domain2");
+		house.setDomain("Essence Teller");
 		HouseService.createHouse(house);
 		//add house 3
 		house.setHousename("House Barratheon");
 		house.setBanner("Stag");
-		house.setDomain("domain3");
+		house.setDomain("Essence Party");
 		HouseService.createHouse(house);
 	}
 	public void fetchAll() {

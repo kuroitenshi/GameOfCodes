@@ -35,6 +35,9 @@ public class HeroService {
 	public static void updateHero(Hero hero) {
 		heroDAO.updateHero(hero);
 	}
+	public static void updateHeroPoints(Hero hero) {
+		heroDAO.updateHeroPoints(hero);
+	}
 	public static void updateHeroHouse(Hero hero, House house) {
 		heroDAO.updateHeroHouse(hero, house);
 	}
