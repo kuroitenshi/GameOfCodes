@@ -22,8 +22,10 @@ import com.atlassian.jira.rest.client.api.domain.SearchResult;
 import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientFactory;
 import com.misys.gameofcodes.dao.TicketsDAOImpl;
 import com.misys.gameofcodes.model.Hero;
+import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.model.Ticket;
 import com.misys.gameofcodes.service.HeroService;
+import com.misys.gameofcodes.service.HouseService;
 import com.misys.gameofcodes.service.LevelService;
 import com.misys.gameofcodes.service.TicketService;
 
@@ -37,10 +39,26 @@ public class FetchTicket {
 		jiraServerUri = new URI("http://almtools/jira/");
 	}
 	
-	public static void main(String[] args) throws IOException, URISyntaxException, JSONException {
-		FetchTicket ft = new FetchTicket();
+	public static void main(String[] args) throws IOException {
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 		//ArrayList<Ticket> tickets = ft.fetchTicket(ft.fetchJQLQuery("test"));
 		//ft.getTickets(tickets);
+		ft.computeTickets();
+	}
+	public void runScript() {
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		ArrayList<Ticket> tickets = ft.fetchTicket(ft.fetchJQLQuery("test"));
+		ft.getTickets(tickets);
 		ft.computeTickets();
 	}
 	
@@ -51,6 +69,10 @@ public class FetchTicket {
 		}
 	}
 	private void computeTickets() {
+		getHousePoints();
+		getHeroPoints();
+	}
+	private void getHeroPoints() {
 		List<Hero> heroes = HeroService.fetchHeroes();
 		for (Hero hero: heroes) {
 			hero.setStoryPoints(TicketService.getUserTicketSum(hero.getUsername()));
@@ -58,8 +80,14 @@ public class FetchTicket {
 			HeroService.updateHeroPoints(hero);
 		}
 	}
-
-	private SearchResult fetchJQLQuery(String jqlQuery) throws IOException {
+	private void getHousePoints() {
+		House house = new House();
+		house.setStoryPoints(HouseService.getHousePoints("Essence Core"));
+		house.setLevel(LevelService.fetchHouseLevel(HouseService.getHousePoints("Essence Core")).getLevel());
+		HouseService.updateHousePoints(house);
+	}
+	
+	private SearchResult fetchJQLQuery(String jqlQuery) {
 		try {
 			restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "edgresma", "#10@MIsys2");
 			//return	restClient.getSearchClient().searchJql("assignee = abianb1 and status = open").claim();
@@ -68,12 +96,16 @@ public class FetchTicket {
 			} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			restClient.close();
+			try {
+				restClient.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return null;
 	}
 	
-	private ArrayList<Ticket> fetchTicket(SearchResult searchResult) throws JSONException {
+	private ArrayList<Ticket> fetchTicket(SearchResult searchResult) {
 		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 		Iterator iterator = searchResult.getIssues().iterator();
 		while (iterator.hasNext()) {
@@ -127,7 +159,11 @@ public class FetchTicket {
 			// Severity
 			if (issue.getField(ConstantKeys.CUSTFIELD_SEVERITY) != null) {
 				JSONObject severity = (JSONObject) issue.getField(ConstantKeys.CUSTFIELD_SEVERITY).getValue();
-				ticket.setSeverity(severity.getString("value"));
+				try {
+					ticket.setSeverity(severity.getString("value"));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
 			} else {
 				ticket.setSeverity("");
 			}

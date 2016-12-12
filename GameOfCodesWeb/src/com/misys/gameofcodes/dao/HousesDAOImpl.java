@@ -113,7 +113,6 @@ public class HousesDAOImpl implements HousesDAO {
 		for (Entry<String, Hero> entry : heroes.entrySet())
 		{
 			Hero hero = entry.getValue();
-			System.out.println(hero.getStoryPoints());
 			housePoints += hero.getStoryPoints();
 		}
 		
@@ -141,8 +140,9 @@ public class HousesDAOImpl implements HousesDAO {
 	 */
 	@Override
 	public WriteResult updateHouse(House house) {
+		House updateHouse = getHouse(house);
 	    BasicDBObject query = new BasicDBObject();
-	    query.put("_id", new ObjectId(house.getId()));
+	    query.put("_id", new ObjectId(updateHouse.getId()));
 	    DBObject dbHouse = houseCollection.findOne(query);
 	    	dbHouse.put("housename",house.getHousename());
 	    	dbHouse.put("banner",house.getBanner());
@@ -157,8 +157,9 @@ public class HousesDAOImpl implements HousesDAO {
 	 */
 	@Override
 	public WriteResult updateHousePoints(House house) {
+		House updateHouse = getHouse(house);
 	    BasicDBObject query = new BasicDBObject();
-	    query.put("_id", new ObjectId(house.getId()));
+	    query.put("_id", new ObjectId(updateHouse.getId()));
 	    DBObject dbHouse = houseCollection.findOne(query);
 	    	dbHouse.put("storyPoints",house.getStoryPoints());
 	    	dbHouse.put("level",house.getLevel());
