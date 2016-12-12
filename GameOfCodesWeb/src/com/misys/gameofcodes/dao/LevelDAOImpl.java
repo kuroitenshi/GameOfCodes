@@ -90,6 +90,15 @@ public class LevelDAOImpl implements LevelDAO {
 	    return getLevel(dbLevel);
 	}
 	@Override
+	public Level getHouseLevel(int points) {
+	    BasicDBObject query = new BasicDBObject();
+	    	query.put("storyPoints", new BasicDBObject("$lte", points));
+	    	query.put("type", "house");
+	    DBCursor cursor = levelsCollection.find(query).sort(new BasicDBObject("level",-1)).limit(1);
+	    DBObject dbLevel = cursor.next();
+	    return getLevel(dbLevel);
+	}
+	@Override
 	public WriteResult addHeroLevel(Level level) {
 		BasicDBObject levelObject = new BasicDBObject("type", "hero")
 				  .append("name", level.getName())

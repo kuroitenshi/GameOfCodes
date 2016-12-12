@@ -30,6 +30,9 @@ public class LevelService {
 	public static Level fetchHeroLevel(int points){
 		return levelDAO.getHeroLevel(points);	
 	}
+	public static Level fetchHouseLevel (int points){
+		return levelDAO.getHouseLevel(points);	
+	}
 	public static WriteResult addHouseLevel(Level level){
 		return levelDAO.addHouseLevel(level);	
 	}

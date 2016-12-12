@@ -20,4 +20,5 @@ public interface LevelDAO  {
 	Level getLevel(Level level);
 	Level getLevel(DBObject dbLevel);
 	Level getHeroLevel(int points);
+	Level getHouseLevel(int points);
 }

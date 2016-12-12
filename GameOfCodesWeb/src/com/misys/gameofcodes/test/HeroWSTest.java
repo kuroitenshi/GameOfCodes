@@ -46,6 +46,11 @@ public class HeroWSTest {
 		hero.setName("Peter Bautista");
 		hero.setEmail("JanPeter.Bautista@misys.com");
 		HeroService.createHero(hero);
+		// Add second hero
+		hero.setUsername("arlozano");
+		hero.setName("Arman Lozano");
+		hero.setEmail("Arman.Lozano@misys.com");
+		HeroService.createHero(hero);
 	}
 	public void fetchAll() {
 		System.out.println("Getting all users");
