@@ -17,18 +17,22 @@ Copyright (c) 2016 Edgar Resma
 		padding: 10px;
 	}
 	.leaderboard-bg {  
-		background: url('../img/bg/medieval-bg.jpg') top center;
+		background: url('../img/textures/wood_texture.jpg') top right;
+		background-attachment: fixed; 
 	}
 	.leaderboard-div-bg { 
 		display: inline-block;
+		background-image: url('../img/textures/mettalic_scratched_texture.jpg') ;
+		border-style: solid;
+		border-color: #aaaaa9 #848380 #848380 #aaaaa9;
 		background-color: rgba(0, 0, 0, 0.7);
 		background-clip: content-box;
 	}
 	.leaderboard-div-entry { 
+		background-image: url('../img/textures/parchment_texture.png') ;
 		background-color: rgba(0, 0, 0, 0.7);
 		background-clip: content-box;
-		border-top: 1px solid transparent;
-		border-bottom: 1px solid transparent;
+
 	}
 	.leaderboard-font { 
 		 font-size: 40px;
@@ -95,4 +99,44 @@ Copyright (c) 2016 Edgar Resma
 	    cursor: -webkit-grabbing;
 	    cursor:    -moz-grabbing;
 	    cursor:         grabbing;
+	}
+	
+	h1 {
+		font-family: 'GOT';
+		margin: 20px 0;
+	}
+	
+	h1 span{
+		color: #3d3c3a;
+	}
+	
+	h2 {
+		font-family: 'Almendra';
+		margin: 20px 0;
+		font-size: 30px;
+	}
+	
+	h3 {
+		font-family: 'BridgeNorthReg';
+		margin: 20px 0;
+		font-size: 40px;
+		color: #3d3c3a;
+	}
+	
+	
+	/*Font Declarations*/
+	
+	@font-face {
+		font-family: 'Almendra';
+		src: url('../fonts/Almendra/AlmendraSC-Regular.ttf') format('truetype');
+	}
+	
+	@font-face {
+		font-family: 'BridgeNorthReg';
+		src: url('../fonts/BridgeNorth/bridgnorth.regular.ttf') format('truetype');
+	}
+	
+	@font-face {
+		font-family: 'GOT';
+		src: url('../fonts/GOT/Game-of-Thrones.ttf') format('truetype');
 	}
