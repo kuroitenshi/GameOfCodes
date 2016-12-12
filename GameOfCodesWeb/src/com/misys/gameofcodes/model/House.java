@@ -14,9 +14,9 @@ public class House {
 	private String housename;
 	private String banner;
 	private String domain;
-	private String storyPoints;
+	private int storyPoints;
 	private Map<String, Integer> storyPointsMonth;
-	private String level;
+	private int level;
 	private String isActive;
 	private Map<String, Hero> heroes;
 	private Map<String, Badge> badges;
@@ -55,11 +55,11 @@ public class House {
 		this.domain = domain;
 	}
 
-	public String getStoryPoints() {
+	public int getStoryPoints() {
 		return storyPoints;
 	}
 
-	public void setStoryPoints(String storyPoints) {
+	public void setStoryPoints(int storyPoints) {
 		this.storyPoints = storyPoints;
 	}
 
@@ -71,11 +71,11 @@ public class House {
 		this.storyPointsMonth = storyPointsMonth;
 	}
 
-	public String getLevel() {
+	public int getLevel() {
 		return level;
 	}
 
-	public void setLevel(String level) {
+	public void setLevel(int level) {
 		this.level = level;
 	}
 

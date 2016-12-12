@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.bson.BasicBSONObject;
 import org.bson.types.ObjectId;
@@ -15,6 +16,7 @@ import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.service.HeroService;
 import com.misys.gameofcodes.utility.EncoderUtility;
+import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -57,10 +59,10 @@ public class HousesDAOImpl implements HousesDAO {
 	    	query.put("_id", new ObjectId(house.getId()));
 	    }
 	    if (house.getHousename() != null) {
-	    	query.put("housename", new ObjectId(house.getHousename()));
+	    	query.put("housename", house.getHousename());
 	    }
 	    if (house.getDomain() != null) {
-	    	query.put("domain", new ObjectId(house.getDomain()));
+	    	query.put("domain", house.getDomain());
 	    }
 	    DBObject dbHouse = houseCollection.findOne(query);
 	    return getHouse(dbHouse);
@@ -78,10 +80,43 @@ public class HousesDAOImpl implements HousesDAO {
     	house.setHousename(dbHouse.get("housename").toString());
     	house.setDomain(dbHouse.get("domain").toString());
     	house.setBanner(dbHouse.get("banner").toString());
-    	house.setStoryPoints(dbHouse.get("storyPoints").toString());
-    	house.setLevel(dbHouse.get("level").toString());
+    	house.setStoryPoints((int) dbHouse.get("storyPoints"));
+    	house.setLevel((int) dbHouse.get("level"));
     	house.setIsActive(dbHouse.get("isActive").toString());
+    	Map<String, Hero> heroes = new HashMap<>();
+    	List<BasicDBObject> heroesList = new ArrayList<>();
+	    if(dbHouse.get("heroes")!= null) {
+	    	heroesList = (List<BasicDBObject>) dbHouse.get("heroes");
+		    Iterator<BasicDBObject> iterator = heroesList.iterator();
+		    while (iterator.hasNext()) {
+		    	ObjectId heroObjId = (ObjectId) iterator.next().get("_id");;
+		    	Hero hero = new Hero();
+		    	hero.setId(heroObjId.toString());
+		    	heroes.put(heroObjId.toString(), HeroService.fetchHero(hero));
+		    }
+	    }
+
+    	house.setHeroes(heroes);
     	return house;
+	}
+	/**
+	 * Get House Total Points
+	 * @param House
+	 * @return WriteResult
+	 */
+	@Override
+	public int getHousePoints(String domain) {
+		int housePoints = 0;
+		House house = new House();
+		house.setDomain(domain);
+		Map<String, Hero> heroes = getHouse(house).getHeroes();
+		for (Entry<String, Hero> entry : heroes.entrySet())
+		{
+			Hero hero = entry.getValue();
+			housePoints += hero.getStoryPoints();
+		}
+		
+		return housePoints;
 	}
 	/**
 	 * create a new house
@@ -105,8 +140,9 @@ public class HousesDAOImpl implements HousesDAO {
 	 */
 	@Override
 	public WriteResult updateHouse(House house) {
+		House updateHouse = getHouse(house);
 	    BasicDBObject query = new BasicDBObject();
-	    query.put("_id", new ObjectId(house.getId()));
+	    query.put("_id", new ObjectId(updateHouse.getId()));
 	    DBObject dbHouse = houseCollection.findOne(query);
 	    	dbHouse.put("housename",house.getHousename());
 	    	dbHouse.put("banner",house.getBanner());
@@ -121,8 +157,9 @@ public class HousesDAOImpl implements HousesDAO {
 	 */
 	@Override
 	public WriteResult updateHousePoints(House house) {
+		House updateHouse = getHouse(house);
 	    BasicDBObject query = new BasicDBObject();
-	    query.put("_id", new ObjectId(house.getId()));
+	    query.put("_id", new ObjectId(updateHouse.getId()));
 	    DBObject dbHouse = houseCollection.findOne(query);
 	    	dbHouse.put("storyPoints",house.getStoryPoints());
 	    	dbHouse.put("level",house.getLevel());
@@ -160,8 +197,11 @@ public class HousesDAOImpl implements HousesDAO {
 	    query.put("_id", new ObjectId(house.getId()));
 		BasicDBObject heroesObject = new BasicDBObject("_id",new ObjectId(hero.getId()));	    
 	    DBObject dbHouse = houseCollection.findOne(query);
-	    	List<BasicDBObject> heroesList = (List<BasicDBObject>) dbHouse.get("heroes");
-	    	heroesList.add(heroesObject);
+    	List<BasicDBObject> heroesList = new ArrayList<>();
+	    if(dbHouse.get("heroes")!= null) {
+	    	heroesList = (List<BasicDBObject>) dbHouse.get("heroes");
+	    }
+	    heroesList.add(heroesObject);
 	    dbHouse.put("heroes", heroesList);
 		return houseCollection.update(query, dbHouse);
 	}
@@ -176,8 +216,11 @@ public class HousesDAOImpl implements HousesDAO {
 	    query.put("_id", new ObjectId(house.getId()));
 		BasicDBObject heroesObject = new BasicDBObject("_id",new ObjectId(hero.getId()));	    
 	    DBObject dbHouse = houseCollection.findOne(query);
-	    	List<BasicDBObject> heroesList = (List<BasicDBObject>) dbHouse.get("heroes");
+    	List<BasicDBObject> heroesList = new ArrayList<>();
+	    if(dbHouse.get("heroes")!= null) {
+	    	heroesList = (List<BasicDBObject>) dbHouse.get("heroes");
 	    	heroesList.remove(heroesObject);
+	    }
 	    dbHouse.put("heroes", heroesList);
 		return houseCollection.update(query, dbHouse);
 	}

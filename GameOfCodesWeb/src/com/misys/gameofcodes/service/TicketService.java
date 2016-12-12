@@ -23,6 +23,9 @@ public class TicketService {
 	public static List<Ticket> fetchTickets(){
 		return ticketDAO.getAllTickets();
 	}
+	public static int getUserTicketSum(String username){
+		return ticketDAO.getUserTicketSum(username);
+	}
 	public static void addTicket(Ticket ticket){
 		ticketDAO.addTicket(ticket);
 	}
@@ -31,6 +34,9 @@ public class TicketService {
 	}
 	public static void deleteTicket(Ticket ticket){
 		ticketDAO.deleteTicket(ticket);
+	}
+	public static void deleteTicketById(String id){
+		ticketDAO.deleteTicketById(id);
 	}
 	public static void updateTicketAssign(Ticket ticket){
 		ticketDAO.updateTicketAssign(ticket);

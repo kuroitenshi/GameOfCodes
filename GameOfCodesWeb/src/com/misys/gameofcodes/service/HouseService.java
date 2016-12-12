@@ -37,8 +37,14 @@ public class HouseService {
 	public static void updateHouse(House house) {
 		houseDAO.updateHouse(house);
 	}
+	public static void updateHousePoints(House house) {
+		houseDAO.updateHousePoints(house);
+	}
 	public static void addHouseHero(House house, Hero hero) {
 		houseDAO.addHouseHero(house, hero);
+	}
+	public static int getHousePoints(String domain) {
+		return houseDAO.getHousePoints(domain);
 	}
 	
 }

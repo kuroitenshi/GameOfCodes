@@ -1,35 +1,61 @@
 package com.misys.gameofcodes.test;
 
+import java.util.List;
+
 import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.service.HeroService;
 import com.misys.gameofcodes.service.HouseService;
+import com.misys.gameofcodes.service.LevelService;
 import com.misys.gameofcodes.utility.EncoderUtility;
 
 public class HouseWSTest {
 
 	public static void main(String[] args) {
 		HouseWSTest test = new HouseWSTest();
-		test.fetchAll();
+		//test.newHouses();
+		//test.addHeroesToHouse();
+		//test.fetchAll();
+		test.getHousePoints();
 	}
 	
+	private void getHousePoints() {
+		House house = new House();
+		System.out.println("Hello");
+		house.setStoryPoints(HouseService.getHousePoints("Essence Core"));
+		house.setLevel(LevelService.fetchHouseLevel(HouseService.getHousePoints("Essence Core")).getLevel());
+		HouseService.updateHousePoints(house);
+	}
+
+	private void addHeroesToHouse() {
+		House house = new House();
+		house.setDomain("Essence Core");
+		List<Hero> heroes = HeroService.fetchHeroes();
+		for (Hero hero: heroes) {
+			HouseService.addHouseHero(
+					HouseService.fetchHouse(house),
+					hero
+					);
+		}
+	}
+
 	public void newHouses() {
 		System.out.println("Adding New Houses");
 		House house = new House();
 		//add house 1
 		house.setHousename("House Stark");
 		house.setBanner("Wolf");
-		house.setDomain("domain1");
+		house.setDomain("Essence Core");
 		HouseService.createHouse(house);
 		//add house 2
 		house.setHousename("House Lannister");
 		house.setBanner("Lion");
-		house.setDomain("domain2");
+		house.setDomain("Essence Teller");
 		HouseService.createHouse(house);
 		//add house 3
 		house.setHousename("House Barratheon");
 		house.setBanner("Stag");
-		house.setDomain("domain3");
+		house.setDomain("Essence Party");
 		HouseService.createHouse(house);
 	}
 	public void fetchAll() {

@@ -10,15 +10,16 @@ import com.mongodb.WriteResult;
 
 public interface HousesDAO  {
 
-	public List<House> getAllHouses();
-	public House getHouse(House house);
-	public WriteResult createHouse(House house);
-	public WriteResult updateHouse(House house);
-	public WriteResult deleteHouse(House house);
-	public WriteResult deleteHouse(String id);
-	public WriteResult addHouseHero(House house, Hero hero);
-	public House getHouse(DBObject dbHouse);
-	public WriteResult updateHousePoints(House house);
-	public WriteResult removeHouseHero(House house, Hero hero);
+	List<House> getAllHouses();
+	House getHouse(House house);
+	WriteResult createHouse(House house);
+	WriteResult updateHouse(House house);
+	WriteResult deleteHouse(House house);
+	WriteResult deleteHouse(String id);
+	WriteResult addHouseHero(House house, Hero hero);
+	House getHouse(DBObject dbHouse);
+	WriteResult updateHousePoints(House house);
+	WriteResult removeHouseHero(House house, Hero hero);
+	int getHousePoints(String username);
 	
 }
