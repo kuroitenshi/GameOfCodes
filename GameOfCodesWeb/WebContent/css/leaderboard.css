@@ -12,9 +12,9 @@ Copyright (c) 2016 Edgar Resma
 	}
 	/* Leaderboard Related CSS */
 	.leaderboard-avatar {
-		height: 130px;
-    	width: 130px;
-		padding: 10px;
+		height: 150px;
+    	width: 109px;
+		padding: 2px;
 	}
 	.leaderboard-bg {  
 		background: url('../img/textures/wood_texture.jpg') top right;

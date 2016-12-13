@@ -1,5 +1,7 @@
-app.controller('heroesController', function($scope, $http, API_URL) {
+app.controller('heroesController', function($scope, HeroLevelsFactory, $http, API_URL) {
     //retrieve employees listing from API
+	$scope.heroLevels = HeroLevelsFactory.query();
+	
     $http.get(API_URL + "hero/all")
             .success(function(response) {
                 $scope.heroes = response;

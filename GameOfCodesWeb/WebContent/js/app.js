@@ -1,2 +1,2 @@
-var app = angular.module('GameOfCodes', ['ngMessages'])
-        .constant('API_URL', 'http://localhost:8080/GameOfCodesWeb-App/rest/');
+var app = angular.module('GameOfCodes', ['ngResource'])
+        .constant('API_URL', 'http://mancswfbedv0004:8081/GameOfCodesWeb-App/rest/');
