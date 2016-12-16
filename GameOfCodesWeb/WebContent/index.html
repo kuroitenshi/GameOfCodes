@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<html ng-app="GameOfCodes">
+<html ng-app="GOC">
 <head>
+
 <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.js"></script>
-<script src="js/app.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-messages.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-route.js"></script>
+
+<script src="js/modules/mainModule.js"></script>
 <script src="js/controller/login.js"></script>
 
+<link rel="icon" type="image/png" style = "height:50px;width:50px;"href="img/icon/GOC_favicon.ico">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/animate.css/animate.min.css">
+<link rel="stylesheet" href="assets/socicon/css/socicon.min.css">
+<link rel="stylesheet" href="assets/mobirise/css/style.css">
+<link rel="stylesheet" href="assets/mobirise-slider/style.css">
+<link rel="stylesheet" href="assets/mobirise-gallery/style.css">
+<link rel="stylesheet" href="assets/hero-slider/heroSlider.css">
+<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css"
+	type="text/css">
 <!-- Normalize -->
 <link rel="stylesheet" type="text/css" href="css/normalize.css">
 <!-- Bootstrap -->
@@ -27,74 +41,20 @@
 <link rel="stylesheet" type="text/css" href="css/cardio.css">
 
 <!-- Icons-->
-<link rel="icon" type="image/png" href="/img/icon/GOC_tab_icon_raw.png" sizes="32x32">
-<link rel="shortcut icon" type="image/x-icon" href="/img/icon/GOC_favicon.ico" />
+<link rel="icon" type="image/png" href="/img/icon/GOC_tab_icon_raw.png"
+	sizes="32x32">
+<link rel="shortcut icon" type="image/x-icon"
+	href="/img/icon/GOC_favicon.ico" />
 
 <meta charset="ISO-8859-1">
 <title>Game Of Codes</title>
 </head>
-<body ng-controller="loginController">
-
-	<div class="container" style="margin-top: 400px">
-		<div class="table">
-			<div class="header-text">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<h1 class="white typed">Game of Codes</h1>
-						<span class="typed-cursor">|</span>
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<a style="font-family: Cardo-Bold; font-size: 20px" href="#" data-toggle="modal" data-target="#modal1"
-							class="btn btn-gray-fill ripple">Login</a>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
+<body >
 
 
+	<div class="ng-view" ></div>
 
-
-	<div class="modal fade" id="modal1" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-				<h3 class="white">Login</h3>
-				<form name="userEntry" class="popup-form">
-
-					<input type="text" style="font-family: Cardo-Italic; font-size: 20px"  class="form-control form-white"
-						placeholder="Username" id="username" name="username" ng-model="user.username" ng-required="true">
-					
-					<div class="error-messages" ng-if="interacted(userEntry.username)" ng-messages="userEntry.username.$error">
-      					<div ng-message="required">
-       						 What about your username my liege...
-     					 </div>
-     				</div>
-
-					<input type="password" style="font-size: 20px"class="form-control form-white"
-						placeholder="Password" id="password" name="password" ng-model="user.password" ng-required="true">
-			
-					<div class="error-messages" ng-if="interacted(userEntry.password)" ng-messages="userEntry.password.$error">
-      					<div ng-message="required">
-       						 A password is required my liege...
-     					 </div>
-     				</div>
-     				
-					<button type="submit" style="font-family: Cardo-Italic; font-size: 20px" class="btn btn-submit" ng-click="loginValidate()">Submit</button>
-				</form>
-				
-			</div>
-		</div>
-	</div>
-	
-
-	<!-- Holder for mobile navigation -->
+	<!-- Holder for mobile navigation --> 
 	<div class="mobile-nav">
 		<ul>
 		</ul>
@@ -109,6 +69,16 @@
 	<script src="js/bootstrap/typewriter.js"></script>
 	<script src="js/bootstrap/jquery.onepagenav.js"></script>
 	<script src="js/bootstrap/main.js"></script>
+	<script src="assets/smooth-scroll/SmoothScroll.js"></script>
+	<script
+		src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.js"></script>
+	<script src="assets/jarallax/jarallax.js"></script>
+	<script src="assets/masonry/masonry.pkgd.min.js"></script>
+	<script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
+	<script src="assets/social-likes/social-likes.js"></script>
+	<script src="assets/mobirise/js/script.js"></script>
+	<script src="assets/mobirise-gallery/script.js"></script>
+	
 
 
 
