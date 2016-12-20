@@ -52,10 +52,11 @@
 					ng-messages="userEntry.password.$error">
 					<div ng-message="required">A password is required my liege...</div>
 				</div>
-				
+				|
 				<button type="submit"
 					style="font-family: Cardo-Italic; font-size: 20px"
-					class="btn btn-submit" ng-click="loginValidate('/home')">Submit</button>
+					class="btn btn-submit" ui-sref = "home" ng-click = "loginValidate()">Submit</button>
+
 			</form>
 
 		</div>

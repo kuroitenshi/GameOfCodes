@@ -14,6 +14,7 @@ body {
 .heroPage{
 	background-image: url("../img/bg/hero-main-bg.jpg");
 }
+
 .parallax {
 	position: absolute;
 	overflow: hidden;
@@ -225,6 +226,7 @@ nav.navbar {
 
 nav.navbar .navbar-nav li.active a:not (.btn ) {
 	color: #00a8ff !important;
+	
 }
 
 nav.navbar-fixed-top {
@@ -234,7 +236,9 @@ nav.navbar-fixed-top {
 	opacity: 0;
 	background: white;
 	box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
+	
 }
+
 
 nav.navbar-fixed-top .navbar-nav>li>a:not (.btn ) {
 	color: #bbb;
@@ -701,8 +705,8 @@ to {
 }
 /* Footer */
 footer {
-	padding: 140px 0 40px;
-	background: url('../img/footer.jpg');
+	padding: 100px 0 0px;
+	background-color: #6b6565;
 	-webkit-background-size: cover;
 	background-size: cover;
 }
@@ -829,7 +833,7 @@ footer .social-footer li:hover a {
 	position: relative;
 	padding: 45px 30px;
 	text-align: center;
-	background: url('../img/popup.jpg');
+	background-color: #1d1d1e;	
 	box-shadow: none;
 	border-radius: 2px;
 }

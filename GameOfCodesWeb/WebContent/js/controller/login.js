@@ -3,7 +3,7 @@
  * 
  */
 
-GOCapp.controller('loginController', function($scope, $http, $location) {
+GOCApp.controller('loginController', function($scope, $http, $state) {
 
 	
 	$scope.interacted = function(field) {
@@ -11,9 +11,8 @@ GOCapp.controller('loginController', function($scope, $http, $location) {
 	    
 	};	
 	
-    $scope.loginValidate = function(path) {
+    $scope.loginValidate = function() {
            
-    	$location.path(path);	
     	$('#modal1').modal('hide');
     
     	/*

@@ -1,17 +1,10 @@
-<html ng-app="GOC">
+<!DOCTYPE html>
+<html>
 <head>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-messages.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-route.js"></script>
-
-<script src="js/modules/mainModule.js"></script>
-<script src="js/controller/login.js"></script>
-
-<link rel="icon" type="image/png" style = "height:50px;width:50px;"href="img/icon/GOC_favicon.ico">
+<!-- CSS (load bootstrap) -->
+<link rel="icon" type="image/png" style="height:50px;width:50px;"
+	href="img/icon/GOC_favicon.ico">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -46,21 +39,45 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="/img/icon/GOC_favicon.ico" />
 
+<!-- JS (load angular, ui-router, and our custom js file) -->
+<script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-messages.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+<script src="js/modules/mainModule.js"></script>
+<script src="js/controller/login.js"></script>
+</head>
+
 <meta charset="ISO-8859-1">
 <title>Game Of Codes</title>
-</head>
-<body >
+<!-- apply our angular app to our site -->
+<body ng-app="GOC">
+
+	<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+	<section>
+		<div ui-view="header"></div>
+	</section>
+	<div></div>
+	<br>
+	<section>
+		<div class="container">
+			<div ui-view="content"></div>
+		</div>
 
 
-	<div class="ng-view" ></div>
+	</section>
 
-	<!-- Holder for mobile navigation --> 
+
+
+
+	<!-- Holder for mobile navigation -->
 	<div class="mobile-nav">
 		<ul>
 		</ul>
 		<a href="#" class="close-link"><i class="arrow_up"></i></a>
 	</div>
-	
+
 	<!-- Scripts -->
 	<script src="js/bootstrap/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap/owl.carousel.min.js"></script>
@@ -69,18 +86,5 @@
 	<script src="js/bootstrap/typewriter.js"></script>
 	<script src="js/bootstrap/jquery.onepagenav.js"></script>
 	<script src="js/bootstrap/main.js"></script>
-	<script src="assets/smooth-scroll/SmoothScroll.js"></script>
-	<script
-		src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.js"></script>
-	<script src="assets/jarallax/jarallax.js"></script>
-	<script src="assets/masonry/masonry.pkgd.min.js"></script>
-	<script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
-	<script src="assets/social-likes/social-likes.js"></script>
-	<script src="assets/mobirise/js/script.js"></script>
-	<script src="assets/mobirise-gallery/script.js"></script>
-	
-
-
-
 </body>
 </html>
