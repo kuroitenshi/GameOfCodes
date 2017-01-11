@@ -10,6 +10,79 @@ body {
 	color: #2a3237;
 }
 
+/*House Page - Customizations*/
+.houseContainer{
+	width: 100%;
+	margin-top: 120px;
+}
+
+/*FBE*/
+.houseEssenceContainer{
+	margin 0 auto;
+	background-color: black;
+	text-align: center;
+}
+
+.kingdomEssenceFragment
+{
+	background-image: url("../img/bg/FBE_bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 100%;
+	
+}
+
+.houseEssenceContainer h3{
+	color: white;
+}
+
+
+.intro-essence
+{
+	background-image: url("../img/domain_logos/FBE/FBE_logo.png");
+}
+
+/*Equation*/
+.houseEquationContainer{
+	margin 0 auto;
+	background-color: black;
+	text-align: center;
+}
+.houseEquationContainer h3{
+	color: white;
+}
+
+.kingdomEquationFragment
+{
+	background-image: url("../img/bg/EQ_bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 100%;
+	
+}
+
+/*Equation*/
+.houseMidasContainer{
+	margin 0 auto;
+	background-color: black;
+	text-align: center;
+}
+.houseMidasContainer h3{
+	color: white;
+}
+
+.kingdomMidasFragment
+{
+	background-image: url("../img/bg/MIDAS_bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 100%;
+	
+}
+
 /*Hero Page Customizations*/
 .heroPage{
 	background-image: url("../img/bg/hero-main-bg.jpg");
@@ -378,11 +451,6 @@ section {
 	background-image: url('../img/table-1.jpg');
 }
 
-.intro-table-hover {
-	-webkit-transition: background-image 0.3s ease, background-position 0.3s;
-	transition: background-image 0.3s ease, background-position 0.3s;
-	background-image: url('../img/table-2.jpg');
-}
 
 .intro-table-hover h4 {
 	-webkit-transform: translateY(170px);
@@ -392,13 +460,15 @@ section {
 }
 
 .intro-table-hover:hover {
-	background-image: url('../img/table-2-hover.jpg');
+	background-color: black;
 	background-position: 50% 50%;
 }
 
 .intro-table-third {
 	background-image: url('../img/table-3.jpg');
 }
+
+
 
 .intro-table-hover .expand {
 	margin: 30px;
@@ -432,16 +502,16 @@ section {
 	opacity: 0;
 }
 
+.intro-table{
+	height: 100%;
+}
 .intro-tables .intro-table {
 	position: relative;
 	width: 100%;
-	height: 300px;
-	margin: 20px 0;
 }
 
 .intro-tables .intro-table .heading {
 	margin: 0;
-	padding: 30px;
 }
 
 .intro-tables .intro-table .small-heading {

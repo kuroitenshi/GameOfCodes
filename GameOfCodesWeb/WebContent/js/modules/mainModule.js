@@ -25,8 +25,45 @@ GOCApp.config(function($stateProvider, $urlRouterProvider) {
 			'header' : {
 				templateUrl : 'modulePages/home_page.html',
 
+			},
+			'content' : {
+				templateUrl : 'modulePages/hero_page.html',
+
 			}
-		// Add default view for Hero Here
+		}
+
+	})
+	
+	// QUEST PAGE =================================
+	.state('quest', {
+		url : '^/quest',
+		views : {
+			'header' : {
+				templateUrl : 'modulePages/home_page.html',
+
+			},
+			'content' : {
+				templateUrl : 'modulePages/quest_page.html',
+
+			}
+
+		}
+
+	})
+
+	// ADVENTURE PAGE =================================
+	.state('adventure', {
+		url : '^/adventure',
+		views : {
+			'header' : {
+				templateUrl : 'modulePages/home_page.html',
+
+			},
+			/*'content' : {
+				templateUrl : 'modulePages/quest_page.html',
+
+			}*/
+
 		}
 
 	})
