@@ -121,7 +121,7 @@
 											<div class="row ">
 												<div class="col-sm-2 ">
 													<h1>
-														<span>1</span>
+														<span>{{$index+1}}</span>
 													</h1>
 												</div>
 
@@ -140,7 +140,9 @@
 										</div>
 
 										<div class="col-sm-3 hidden-xs hidden-xs">
-											<h3 ng-repeat="level in heroLevels | filter:{level:hero.level}:true"> {{level.icon}}.png </h3>
+											<h3 ng-repeat="level in heroLevels | filter:{level:hero.level}:true"> <img class="leaderboard-avatar"
+														src="img/ranks/{{level.icon}}.png"
+														alt="..."> </h3>
 										</div>
 										<div class="col-sm-2 col-xs-4">
 											<h3>{{hero.storyPoints}}</h3>

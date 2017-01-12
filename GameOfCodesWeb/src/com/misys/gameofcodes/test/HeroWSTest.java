@@ -38,7 +38,7 @@ public class HeroWSTest {
 		HeroService.createHero(hero);
 		// Add second hero
 		hero.setUsername("jayperez");
-		hero.setName("Jason Perez");
+		hero.setName("Jayson Perez");
 		hero.setEmail("Jayson.Perez@misys.com");
 		HeroService.createHero(hero);
 		// Add second hero

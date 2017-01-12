@@ -76,7 +76,7 @@ public class HeroesDAOImpl implements HeroesDAO {
     	hero.setName(dbhero.get("name").toString());
     	hero.setEmail(dbhero.get("email").toString());
     	hero.setStoryPoints((int) dbhero.get("storyPoints"));
-    	hero.setLevel((int) dbhero.get("level"));
+    	hero.setLevel((String) dbhero.get("level"));
     	hero.setIsActive(dbhero.get("isActive").toString());
 //    	hero.setIsGameMaster(dbhero.get("isGameMaster").toString());
 //    	hero.setEquipmentHead1(dbhero.get("equipmentHead1").toString());
