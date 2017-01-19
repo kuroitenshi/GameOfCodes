@@ -261,3 +261,45 @@
 #msg-box3-117 .mbr-article P {
   text-align: left;
 }
+
+/* ADVENTURE TABLE CSS */
+
+.mbr-table-editable {
+  position: relative;
+  
+  .glyphicon {
+    font-size: 20px;
+  }
+}
+
+.mbr-table-remove {
+  color: #700;
+  cursor: pointer;
+  
+  &:hover {
+    color: #f00;
+  }
+}
+
+.mbr-table-up, .mbr-table-down {
+  color: #007;
+  cursor: pointer;
+  
+  &:hover {
+    color: #00f;
+  }
+}
+
+.mbr-table-add {
+  color: #070;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 0;
+  
+  &:hover {
+    color: #0b0;
+  }
+}
+
+

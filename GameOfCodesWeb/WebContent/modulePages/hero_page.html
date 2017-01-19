@@ -4,29 +4,54 @@
         <div class="mbr-row">
             <div class="mbr-box mbr-box--fixed mbr-box--adapted">
                 <div class="mbr-box__magnet mbr-box__magnet--top-right mbr-section__left mbr-col-sm-6">
-                    <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img class="mbr-figure__img" src="assets/images/character.jpg"></figure>
+                    <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img class="mbr-figure__img" src="img/avatar/hero/goc_jpbautist.png"></figure>
                 </div>
                 <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left mbr-col-sm-6 mbr-section__right">
                     <div class="mbr-section__container mbr-section__container--middle">
                         <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
-                            <h3 class="mbr-header__text">Ser Lancelot</h3>
+                            <h3 class="mbr-header__text">Ser {{Hero.Name}}</h3>
                             
                         </div>
                     </div>
                     <div class="mbr-section__container mbr-section__container--middle">
-                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p class="mbr-p">Etiam euismod, elit non efficitur commodo, est nisl dictum lacus, a congue felis ex ut nibh. Sed cursus accumsan justo, luctus malesuada lectus feugiat vitae. Duis quis malesuada lectus, vitae mollis urna. Maecenas sit amet ipsum ipsum. Etiam varius sapien ac odio eleifend pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.&nbsp;</p></div>
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p class="mbr-p">Rank: {{Hero.Rank}}</p></div>
                     </div>
-                    <div class="mbr-section__container">
-                        <div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-default" href="#adventure">Set on Adventure</a></div>
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p class="mbr-p">EXP: {{Hero.EXP}}</p></div>
                     </div>
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p class="mbr-p">Maester Name: {{Hero.Manager}}</p></div>
+                    </div>
+                  
+                   		<div class="mbr-buttons btn-inverse mbr-buttons--left">
+	                    	<a class="mbr-buttons__btn btn btn-lg mbr-btn-default animated" href="#" data-toggle="modal" data-target="#modal1">Customize Hero</a> 
+	                    	<!-- <a class="mbr-buttons__btn btn btn-lg mbr-btn-default animated" href="https://mobirise.com/bootstrap-template/">View Hero Details</a>  -->
+                    	</div>
+
                 </div>
                 
             </div>
         </div>
     </div>
+    
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="margin-top: 120px">
+			<div class="modal-content modal-popup">
+				<h3 class="white">Login</h3>
+				<form name="userEntry" class="popup-form">
+	    
+	    
+	    		</form>
+		
+			</div>
+		</div>
+	</div>
 </section>
 
-<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="msg-box3-81" style="background-color: rgb(239, 239, 239);">
+
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="msg-box3-27" style="background-color: rgb(239, 239, 239);">
     
     <div class="mbr-section__container container mbr-section__container--isolated">
         <div class="mbr-header mbr-header--wysiwyg row">
@@ -37,49 +62,276 @@
         </div>
     </div>
     
+    
 </section>
 
-<section class="content-2 col-3" id="features1-31" style="background-color: rgb(239, 239, 239);">
-       
-    <div class="container">
-        <div class="row">
-            <div>
-                <div class="thumbnail">
-                    <div class="image"><img class="undefined" src="assets/images/phone-350x350-12.png"></div>
-                    <div class="caption">
-                        <div>
-                            <h3>Slay the Dragon!</h3>
-                            <p>Sed vel vulputate lacus. Nulla et fringilla turpis. Etiam non urna magna. Fusce rutrum nec eros id dapibus. In tincidunt mi eget molestie condimentum.</p>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="thumbnail">
-                    <div class="image"><img class="undefined" src="assets/images/anemone-350x350-67.png"></div>
-                    <div class="caption">
-                        <div>
-                            <h3>Clean the house</h3>
-                            <p>Sed vel vulputate lacus. Nulla et fringilla turpis. Etiam non urna magna. Fusce rutrum nec eros id dapibus. In tincidunt mi eget molestie condimentum.</p>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="thumbnail">
-                    <div class="image"><img class="undefined" src="assets/images/clear-350x350-99.png"></div>
-                    <div class="caption">
-                        <div>
-                            <h3>Prepare Breakfast</h3>
-                            <p>Sed vel vulputate lacus. Nulla et fringilla turpis. Etiam non urna magna. Fusce rutrum nec eros id dapibus. In tincidunt mi eget molestie condimentum.</p>
-                        </div>
-                        
-                    </div>
-                </div>
+<section class="mbr-slider mbr-section mbr-section--no-padding carousel slide" data-ride="carousel" data-wrap="true" data-interval="5000" id="slider-38" style="background-color: rgb(255, 255, 255);">
+    <div class="mbr-section__container">
+        <div>
+            <ol class="carousel-indicators">
+                <li data-app-prevent-settings="" data-target="#slider-38" class="active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider-38" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider-38" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox" style="background-color:rgb(239, 239, 239)">
+	            
+		            <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item center active" style="background-color:rgb(239, 239, 239)">
+		            	<div class="content-2 col-4 container">
+		         			<div class="row">
+		                
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/icon/dragon.ico"></div>
+				                    <div class="caption">
+				                        <div>
+				                            <h3>Slay the Dragon!</h3>
+				                            <p>Sed vel vulputate lacus. Nulla et fringilla turpis. Etiam non urna magna. Fusce rutrum nec eros id dapibus. In tincidunt mi eget molestie condimentum.</p>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+				        
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="assets/images/anemone-350x350-67.png"></div>
+				                    <div class="caption">
+				                        <div>
+				                            <h3>Clean the house</h3>
+				                            <p>Sed vel vulputate lacus. Nulla et fringilla turpis. Etiam non urna magna. Fusce rutrum nec eros id dapibus. In tincidunt mi eget molestie condimentum.</p>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+				        
+				            
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/icon/dragon.ico"></div>
+				                    <div class="caption">
+				                        <div>
+				                            <h3>Prepare Breakfast</h3>
+				                            <p>Sed vel vulputate lacus. Nulla et fringilla turpis. Etiam non urna magna. Fusce rutrum nec eros id dapibus. In tincidunt mi eget molestie condimentum.</p>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+				          
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/icon/dragon.ico"></div>
+				                    <div class="caption">
+				                        <div>
+				                            <h3>Slay the Dragon!</h3>
+				                            <p>Sed vel vulputate lacus. Nulla et fringilla turpis. Etiam non urna magna. Fusce rutrum nec eros id dapibus. In tincidunt mi eget molestie condimentum.</p>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+		                   
+			                </div>
+			              </div>
+						</div>
+                
+		                <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center" style="background-color: rgb(239, 239, 239);">
+	                        <div class="content-2 col-4 container">
+	         					<div class="row">
+		                            
+		                        	<div class="thumbnail">
+				                    	<div class="image"><img class="undefined" src="assets/images/anemone-350x350-67.png"></div>
+			                    		<div class="caption">
+				                       		<div>
+				                            	<h3>Clean the house</h3>
+				                            	<p>[TITLE]</p>
+				                            	<p>[STATUS]</p>
+				                        	</div>	                        
+					                    </div>
+				                	</div>
+					               
+					                <div class="thumbnail">
+					                    <div class="image"><img class="undefined" src="img/icon/dragon.ico"></div>
+					                    <div class="caption">
+					                        <div>
+					                            <h3>Prepare Breakfast</h3>
+					                            <p>Sed vel vulputate lacus. Nulla et fringilla turpis. Etiam non urna magna. Fusce rutrum nec eros id dapibus. In tincidunt mi eget molestie condimentum.</p>
+					                        </div>
+					                        
+					                    </div>
+						            </div>
+					          
+					                <div class="thumbnail">
+					                    <div class="image"><img class="undefined" src="img/icon/dragon.ico"></div>
+					                    <div class="caption">
+					                        <div>
+					                            <h3>Slay the Dragon!</h3>
+					                            <p>Sed vel vulputate lacus. Nulla et fringilla turpis. Etiam non urna magna. Fusce rutrum nec eros id dapibus. In tincidunt mi eget molestie condimentum.</p>
+					                        </div>					                        
+					                    </div>
+					                </div>
+					                
+					                 <div class="thumbnail">
+					                  
+					                    <div class="caption">
+					                        <div>
+					                            <h3></h3>
+					                            <p></p>
+					                        </div>					                        
+					                    </div>
+					                </div>
+			                                                     
+		                        </div>
+		                    </div>
+		                </div>
+
             </div>
             
+            <a data-app-prevent-settings="" class="left mbr-carousel-control" role="button" data-slide="prev" href="#slider-38">
+                <span class="fa fa-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a data-app-prevent-settings="" class="right mbr-carousel-control" role="button" data-slide="next" href="#slider-38">
+                <span class="fa fa-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
- </section>
+
+</section>
+ 
+ 
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="msg-box5-25" style="background-color:  rgb(68, 68, 68);">
+    
+    <div class="mbr-section__container container mbr-section__container--isolated">
+        <div class="mbr-header mbr-header--wysiwyg row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h3 class="mbr-header__text" style="text-align: center;">Achievements</h3>
+                
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+<section class="mbr-slider mbr-section mbr-section--no-padding carousel slide" data-ride="carousel" data-wrap="true" data-interval="5000" id="slider-39" style="background-color: rgb(68, 68, 68);">
+    <div class="mbr-section__container">
+        <div>
+            <ol class="carousel-indicators">
+                <li data-app-prevent-settings="" data-target="#slider-39" class="active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider-39" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider-39" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox" style="background-color:rgb(68, 68, 68);">
+	            
+		            <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item center active" style="background-color:rgb(68, 68, 68);">
+		            	<div class="content-2 col-5 container">
+		         			<div class="row">
+		                
+				                <div class="thumbnail">
+                    				<div class="image"><img class="undefined" src="img/achievement/iron.png"></div>
+                    				<div class="caption">
+	              				        <div>
+	              			         		<h3>DragonSlayer</h3>
+	                			        </div>
+	                        
+               					    </div>
+              					</div>
+
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/achievement/iron.png"></div>
+				                    <div class="caption">
+				                        <div>
+				                       		<h3>DragonSlayer</h3>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+				         
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/achievement/star.png"></div>
+				                    <div class="caption">
+				                        <div>
+				                       		<h3>DragonSlayer</h3>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+				            
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/achievement/iron.png"></div>
+				                    <div class="caption">
+				                        <div>
+				                       		<h3>DragonSlayer</h3>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+				            
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/achievement/star.png"></div>
+				                    <div class="caption">
+				                        <div>
+				                       		<h3>DragonSlayer</h3>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+          
+			                </div>
+			              </div>
+						</div>
+                
+		          	<div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item center" style="background-color:rgb(68, 68, 68);">
+		            	<div class="content-2 col-5 container">
+		         			<div class="row">
+		                
+				                <div class="thumbnail">
+                    				<div class="image"><img class="undefined" src="img/achievement/iron.png"></div>
+                    				<div class="caption">
+	              				        <div>
+	              			         		<h3>DragonSlayer</h3>
+	                			        </div>
+	                        
+               					    </div>
+              					</div>
+
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/achievement/iron.png"></div>
+				                    <div class="caption">
+				                        <div>
+				                       		<h3>DragonSlayer</h3>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+				            
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/achievement/iron.png"></div>
+				                    <div class="caption">
+				                        <div>
+				                       		<h3>DragonSlayer</h3>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+				            
+				                <div class="thumbnail">
+				                    <div class="image"><img class="undefined" src="img/achievement/star.png"></div>
+				                    <div class="caption">
+				                        <div>
+				                       		<h3>DragonSlayer</h3>
+				                        </div>
+				                        
+				                    </div>
+				                </div>
+          
+			                </div>
+			              </div>
+						</div>
+
+
+            </div>
+            
+			    <a data-app-prevent-settings="" class="left mbr-carousel-control" role="button" data-slide="prev" href="#slider-39">
+			   		<span class="fa fa-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+			    </a>
+				<a data-app-prevent-settings="" class="right mbr-carousel-control" role="button" data-slide="next" href="#slider-39">
+					<span class="fa fa-chevron-right" aria-hidden="true"></span>
+			        <span class="sr-only">Next</span>
+			    </a>
+        </div>
+    </div>
+
+</section>

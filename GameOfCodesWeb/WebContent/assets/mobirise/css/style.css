@@ -3,7 +3,8 @@ html {
   min-height: 100%;
 }
 .mbr-p {
-  color:white;	
+  color:white;
+  font-size:20px;
 }
 .mbr-transparent {
   opacity: 0;
@@ -135,16 +136,16 @@ html {
 .msgbox-1.dark p {
   color: #fff;
 }
-.msgbox-1.dark .btn-default {
+.msgbox-1.dark .mbr-btn-default {
   border-color: #fff;
   color: #fff;
 }
-.msgbox-1.dark .btn-default:hover,
-.msgbox-1.dark .btn-default:focus,
-.msgbox-1.dark .btn-default.focus,
-.msgbox-1.dark .btn-default:active,
-.msgbox-1.dark .btn-default.active,
-.open > .dropdown-toggle.msgbox-1.dark .btn-default {
+.msgbox-1.dark .mbr-btn-default:hover,
+.msgbox-1.dark .mbr-btn-default:focus,
+.msgbox-1.dark .mbr-btn-default.focus,
+.msgbox-1.dark .mbr-btn-default:active,
+.msgbox-1.dark .mbr-btn-default.active,
+.open > .dropdown-toggle.msgbox-1.dark .mbr-btn-default {
   background-color: #fff;
   border-color: #fff;
   color: #252525;
@@ -180,6 +181,7 @@ html {
   }
   .content-2.col-5 .thumbnail h3 {
     margin-top: 15px;
+    color: #fff;
   }
   .content-2.col-5 .thumbnail h3 + h3 {
     margin-top: -33px;
@@ -294,6 +296,7 @@ html {
   }
   .content-2.col-5 .thumbnail h3 {
     margin-top: 10px;
+    color: #fff;
   }
   .content-2.col-5 .thumbnail h3 + h3 {
     margin-top: -33px;
@@ -349,9 +352,11 @@ html {
 .content-2 .row {
   margin-left: -24px;
   margin-right: -24px;
+
 }
 .content-2 .thumbnail {
   background: none;
+  
   border: 0;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -383,7 +388,7 @@ html {
   }
 }
 .content-2 .thumbnail h3 {
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 1px;
   margin-bottom: 32px;
   margin-top: 11px;
@@ -405,9 +410,9 @@ html {
 }
 .content-2 .thumbnail p {
   color: #999;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 26px;
-  text-align: left;
+  text-align: center;
 }
 .content-2 .thumbnail p + p {
   margin-top: -10px;
@@ -518,16 +523,16 @@ html {
 .content-2.dark p {
   color: #fff;
 }
-.content-2.dark .btn-default {
+.content-2.dark .mbr-btn-default {
   border-color: #fff;
   color: #fff;
 }
-.content-2.dark .btn-default:hover,
-.content-2.dark .btn-default:focus,
-.content-2.dark .btn-default.focus,
-.content-2.dark .btn-default:active,
-.content-2.dark .btn-default.active,
-.open > .dropdown-toggle.content-2.dark .btn-default {
+.content-2.dark .mbr-btn-default:hover,
+.content-2.dark .mbr-btn-default:focus,
+.content-2.dark .mbr-btn-default.focus,
+.content-2.dark .mbr-btn-default:active,
+.content-2.dark .mbr-btn-default.active,
+.open > .dropdown-toggle.content-2.dark .mbr-btn-default {
   background-color: #fff;
   border-color: #fff;
   color: #252525;
@@ -747,7 +752,7 @@ html {
   }
 }
 .mbr-navbar {
-	font-family: 'GOT';
+	font-family: 'Roboto';
   position: relative;
   width: 100%;
 }
@@ -1239,6 +1244,7 @@ html {
   background-color: #3c3c3c;
 }
 .mbr-section__container {
+	font-family: 'Roboto';
   padding: 0;
   position: relative;
   z-index: 3;
@@ -1444,7 +1450,7 @@ html {
   display: block;
 }
 .mbr-hero {
-	font-family: 'GOT';
+	font-family: 'Reboto';
   color: #fff;
   position: relative;
 }
@@ -1831,6 +1837,7 @@ html {
 .mbr-buttons__btn,
 .mbr-buttons__link {
   margin: 0 10px 13px 0;
+  font-size:14px;
 }
 .mbr-buttons__btn,
 .mbr-buttons__link,
