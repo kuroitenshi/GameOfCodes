@@ -12,8 +12,8 @@ Copyright (c) 2016 Edgar Resma
 	}
 	/* Leaderboard Related CSS */
 	.leaderboard-avatar {
-		height: 150px;
-    	width: 109px;
+		height: 90px;
+    	width: 70px;
 		padding: 2px;
 	}
 	.leaderboard-bg {  
@@ -23,15 +23,12 @@ Copyright (c) 2016 Edgar Resma
 	.leaderboard-div-bg { 
 		display: inline-block;
 		background-image: url('../img/textures/mettalic_scratched_texture.jpg') ;
-		border-style: solid;
-		border-color: #aaaaa9 #848380 #848380 #aaaaa9;
-		background-color: rgba(0, 0, 0, 0.7);
 		background-clip: content-box;
 	}
 	.leaderboard-div-entry { 
-		background-image: url('../img/textures/parchment_texture.png') ;
-		background-color: rgba(0, 0, 0, 0.7);
+		background-color: rgba(255,255,255,0.5);
 		background-clip: content-box;
+		height: 100px;
 
 	}
 	.leaderboard-font { 
@@ -54,6 +51,35 @@ Copyright (c) 2016 Edgar Resma
 	    margin-left: auto;
 	    margin-right: auto;
 	 }
+	 /*House Header Customizations*/
+	 .houseHeader{
+	 	padding: 0px 40px 60px 40px; /*top , right, bottom, left*/
+	 	min-width: 1700px;
+	 	min-height: 250px;
+	 }
+	 
+	 .houseFlagContainer{
+	 
+	 }
+	 
+	 .houseHeaderContent{
+	 	float: left;
+	 }
+	 /*Leaderboard Subheader customizations*/
+	 .leaderboardSubHeader{
+		background-image: url('../img/textures/mettalic_scratched_texture.jpg') ;
+		background-color: rgba(0, 0, 0, 0.7);
+		background-clip: content-box;
+		min-height: 30px;
+	 }
+	 .subHeaderLeftAlign{
+	 	text-align:  left;
+	 }
+	 .subHeaderCenterAlign{
+	 	text-align:  center;
+	 }
+	 
+	 
 	/*Font Declarations*/
 
 	@font-face {
