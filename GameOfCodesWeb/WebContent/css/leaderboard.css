@@ -4,165 +4,214 @@
 Leaderboard.css 
 Licensed under the MIT license
 
-Copyright (c) 2016 Edgar Resma
+Copyright (c) 2016 FBE Core Manila Team
 */
-	
-	body {
-    	color: #FFF;
-	}
-	/* Leaderboard Related CSS */
-	.leaderboard-avatar {
-		height: 90px;
-    	width: 70px;
-		padding: 2px;
-	}
-	.leaderboard-bg {  
-		background: url('../img/textures/wood_texture.jpg') top right;
-		background-attachment: fixed; 
-	}
-	.leaderboard-div-bg { 
-		display: inline-block;
-		background-image: url('../img/textures/mettalic_scratched_texture.jpg') ;
-		background-clip: content-box;
-	}
-	.leaderboard-div-entry { 
-		background-color: rgba(255,255,255,0.5);
-		background-clip: content-box;
-		height: 100px;
+body {
+	color: #FFF;
+}
 
-	}
-	.leaderboard-font { 
-		 font-size: 40px;
-	}
-	.leaderboard-font-header{ 
-		font-size: 30px;
-		font-family: 'GOT';
-		color: #FFFFFF;
-	}
-	.leaderboard-list {
-    	padding-top: 15x;
-	}
-	.vertical-align {
-		display: flex;
-		align-items: center;
-	}
-	.center-block {
-	    display: block;
-	    margin-left: auto;
-	    margin-right: auto;
-	 }
-	 /*House Header Customizations*/
-	 .houseHeader{
-	 	padding: 0px 40px 60px 40px; /*top , right, bottom, left*/
-	 	min-width: 1700px;
-	 	min-height: 250px;
-	 }
-	 
-	 .houseFlagContainer{
-	 
-	 }
-	 
-	 .houseHeaderContent{
-	 	float: left;
-	 }
-	 /*Leaderboard Subheader customizations*/
-	 .leaderboardSubHeader{
-		background-image: url('../img/textures/mettalic_scratched_texture.jpg') ;
-		background-color: rgba(0, 0, 0, 0.7);
-		background-clip: content-box;
-		min-height: 30px;
-	 }
-	 .subHeaderLeftAlign{
-	 	text-align:  left;
-	 }
-	 .subHeaderCenterAlign{
-	 	text-align:  center;
-	 }
-	 
-	 
-	/*Font Declarations*/
+/* Leaderboard Customizations */
+.leaderboard-avatar {
+	height: 90px;
+	width: 70px;
+	padding: 2px;
+}
 
-	@font-face {
-		font-family: 'GOT';
-		src: url('../fonts/GOT/Game-of-Thrones.ttf') format('truetype');
-	}
-		
-	@media screen and (max-width: 991px) {
-    .leaderboard-font {
-        font-size:20px;
-    	}
-	}
-	/* Carousel Related CSS */
-	.carousel .carousel-control {
-		visibility: hidden;
-	}
-	.carousel:hover .carousel-control {
-		visibility: visible;
-	}
-	.carousel-indicators {
-  		bottom:-50px;
-	}	
+.leaderboard-bg {
+	background: url('../img/bg/woodenbg.jpg') top right;
+	background-attachment: fixed;
+	background-size: cover;
+}
 
-	.navbar {
-		background-color: #000000;
-		padding-top: 13px;
-		border: 0;
-		opacity:0.85;
-		min-height: 30px;
+.leaderboard-div-bg {
+	background-image: url('../img/textures/header.jpg');
+	background-clip: content-box;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.leaderboard-div-entry {
+	background-color: rgba(255, 255, 255, 0.6);
+	background-clip: content-box;
+	height: 100px;
+}
+
+.leaderboard-font {
+	font-size: 40px;
+}
+
+.leaderboard-font-header {
+	font-size: 30px;
+	font-family: 'GOT';
+	color: #FFFFFF;
+}
+
+.leaderboard-list {
+	padding-top: 15x;
+}
+
+.vertical-align {
+	display: flex;
+	align-items: center;
+}
+
+.center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*House Header Customizations*/
+.houseHeader {
+	/*padding: 0px 40px 60px 40px; /*top , right, bottom, left*/
+	margin-right: 40px;
+	margin-left: 30px;
+	margin-bottom: 50px;
+	min-width: 1700;
+	min-height: 240px;
+}
+
+.houseHeaderIcons {
+	padding-right: 10px;
+}
+
+.houseFlagContainer {
+	height: 250px;
+	width: 200px;
+}
+
+.houseHeaderContent {
+	float: left;
+}
+
+/*Leaderboard Subheader customizations*/
+.leaderboardSubHeader {
+	background-color: rgba(234, 220, 184, 0.6); background-clip :
+	content-box;
+	min-height: 30px;
+	background-clip: content-box;
+}
+
+.subHeaderLeftAlign {
+	text-align: left;
+}
+
+.subHeaderCenterAlign {
+	text-align: center;
+}
+
+@media screen and (max-width: 991px) {
+	.leaderboard-font {
+		font-size: 20px;
 	}
-	.navbar-header {
-	    float: left;
-	    text-align: center;
-	    width: 100%;
-	}
-	.navbar-brand
-	{
-		float:none;
-		min-height: 30px;
-	}
-	.item:active { 
-		cursor: url(images/grabbing.cur);
-	    cursor: -webkit-grabbing;
-	    cursor:    -moz-grabbing;
-	    cursor:         grabbing;
-	}
-	
-	h1 {
-		font-family: 'GOT';
-		margin: 20px 0;
-	}
-	
-	h1 span{
-		color: #3d3c3a;
-	}
-	
-	h2 {
-		font-family: 'Almendra';
-		margin: 20px 0;
-		font-size: 30px;
-	}
-	
-	h3 {
-		font-family: 'BridgeNorthReg';
-		margin: 20px 0;
-		font-size: 40px;
-		color: #3d3c3a;
-	}
-	
-	
-	/*Font Declarations*/
-	
-	@font-face {
-		font-family: 'Almendra';
-		src: url('../fonts/Almendra/AlmendraSC-Regular.ttf') format('truetype');
-	}
-	
-	@font-face {
-		font-family: 'BridgeNorthReg';
-		src: url('../fonts/BridgeNorth/bridgnorth.regular.ttf') format('truetype');
-	}
-	
-	@font-face {
-		font-family: 'GOT';
-		src: url('../fonts/GOT/Game-of-Thrones.ttf') format('truetype');
-	}
+}
+/* Carousel Related CSS */
+.carousel .carousel-control {
+	visibility: hidden;
+}
+
+.carousel:hover .carousel-control {
+	visibility: visible;
+}
+
+.carousel-indicators {
+	bottom: -50px;
+}
+
+.navbar {
+	background-color: #000000;
+	padding-top: 13px;
+	border: 0;
+	opacity: 0.85;
+	min-height: 30px;
+}
+
+.navbar-header {
+	float: left;
+	text-align: center;
+	width: 100%;
+}
+
+.navbar-brand {
+	float: none;
+	min-height: 30px;
+}
+
+.item:active {
+	cursor: url(images/grabbing.cur);
+	cursor: -webkit-grabbing;
+	cursor: -moz-grabbing;
+	cursor: grabbing;
+}
+
+/* Text Customizations*/
+h1 {
+	font-family: 'GOT';
+	margin: 20px 0;
+}
+
+h1 span {
+	color: #3d3c3a;
+}
+
+h2 {
+	font-family: 'Almendra';
+	margin: 20px 0;
+	font-size: 30px;
+}
+
+h1.houseName {
+	font-family: 'Almendra';
+	font-size: 80px;
+	font-weight: bold;
+	color: #660000;
+}
+
+h2.headerText {
+	font-family: 'AgencyFB';
+	font-size: 40px;
+	font-weight: bold;
+	color: #660000;
+}
+
+h3.largeContentText {
+	font-family: 'AgencyFB';
+	font-size: 50px;
+	font-weight: bold;
+	color: #660000;
+}
+
+h4.mediumContentText {
+	font-family: 'AgencyFB';
+	font-size: 35px;
+	font-weight: bold;
+	color: #660000;
+}
+
+
+/*Font Declarations*/
+@font-face {
+	font-family: 'GOT';
+	src: url('../fonts/GOT/Game-of-Thrones.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'AgencyFB';
+	src: url('../fonts/AgencyFB/agency-fb.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Almendra';
+	src: url('../fonts/Almendra/AlmendraSC-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'BridgeNorthReg';
+	src: url('../fonts/BridgeNorth/bridgnorth.regular.ttf')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'GOT';
+	src: url('../fonts/GOT/Game-of-Thrones.ttf') format('truetype');
+}
