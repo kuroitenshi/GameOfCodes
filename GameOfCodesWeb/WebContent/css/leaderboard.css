@@ -81,15 +81,16 @@ body {
 }
 
 .houseHeaderContent {
-	float: left;
+	 float: none;
+     margin-left: auto;
+     margin-right: auto;
 }
 
 /*Leaderboard Subheader customizations*/
 .leaderboardSubHeader {
-	background-color: rgba(234, 220, 184, 0.6); background-clip :
-	content-box;
+	background-color: rgba(234, 220, 184, 0.6);
+	background-clip : content-box;
 	min-height: 30px;
-	background-clip: content-box;
 }
 
 .subHeaderLeftAlign {
@@ -172,6 +173,7 @@ h2.headerText {
 	font-size: 40px;
 	font-weight: bold;
 	color: #660000;
+	display: inline;
 }
 
 h3.largeContentText {
@@ -186,6 +188,15 @@ h4.mediumContentText {
 	font-size: 35px;
 	font-weight: bold;
 	color: #660000;
+	display: inline;
+}
+
+img.floatLeft {
+	float: left;
+}
+
+img.floatRight {
+	float: right;
 }
 
 
