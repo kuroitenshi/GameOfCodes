@@ -1,4 +1,4 @@
-app.controller('housesController', function($scope, $http, API_URL) {
+/*app.controller('housesController', function($scope, $http, API_URL) {
     //retrieve employees listing from API
     $http.get(API_URL + "house/all")
             .success(function(response) {
@@ -73,4 +73,37 @@ app.controller('housesController', function($scope, $http, API_URL) {
             return false;
         }
     }
-});
+});*/
+
+function showFlagName(imgFlag) {
+	var domain = imgFlag.id;
+	var domainDiv = document.getElementById(domain + "Div");
+	var domainName = document.getElementById(domain + "Name");
+	
+	domainName.style.setProperty("-webkit-transform", "translateY(0)");
+	domainName.style.setProperty("transform", "translateY(0)");
+	
+	domainDiv.style.setProperty("opacity", "1");
+	domainDiv.style.setProperty("-webkit-transform", "scale(1)");	
+	domainDiv.style.setProperty("-ms-transform", "scale(1)");	
+	domainDiv.style.setProperty("transform", "scale(1)");	
+}
+
+function hideFlagName(imgFlag) {
+	var domain = imgFlag.id;
+	var domainDiv = document.getElementById(domain + "Div");
+	var domainName = document.getElementById(domain + "Name");
+	
+	domainName.style.setProperty("-webkit-transform", "translateY(170px)");
+	domainName.style.setProperty("transform", "translateY(170px)");
+	domainName.style.setProperty("-webkit-transition", "-webkit-transform 0.3s");
+	domainName.style.setProperty("transition", "transform 0.3s");
+	
+	domainDiv.style.setProperty("opacity", "0");
+	domainDiv.style.setProperty("-webkit-transition", "-webkit-transform 0.3s, opacity 0.3s");
+	domainDiv.style.setProperty("transition", "transform 0.3s ease, opacity 0.3s");
+	domainDiv.style.setProperty("-webkit-transform", "scale(0.6)");	
+	domainDiv.style.setProperty("-ms-transform", "scale(0.6)");	
+	domainDiv.style.setProperty("transform", "scale(0.6)");	
+	
+}

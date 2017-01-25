@@ -24,6 +24,38 @@ body {
 
 .flagPointer {
 	cursor:pointer;
+	display:block;
+    margin:auto;
+    height: 250px;
+}
+
+.flagContainer {
+	width: 250px;
+}
+
+.intro-table-hover-house h4 {
+	-webkit-transform: translateY(170px);
+	transform: translateY(170px);
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+.intro-table-hover-house .expand {
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s ease, opacity 0.3s;
+	-webkit-transform: scale(0.6);
+	-ms-transform: scale(0.6);
+	transform: scale(0.6);
+}
+
+.intro-table-hover-house .hide-hover {
+	-webkit-transition: opacity 0.3s ease;
+	transition: opacity 0.3s ease;
+}
+
+.intro-table-hover-house:hover .hide-hover {
+	opacity: 0;
 }
 
 /*FBE*/
@@ -55,10 +87,6 @@ body {
 	background-size: 250px;
 }
 
-.essenceFlag {
-	background-image: url("../img/domain_logos/FBE/FBE_logo.png");
-}
-
 /*Equation*/
 .houseEquationContainer{
 	margin 0 auto;
@@ -77,18 +105,6 @@ body {
 	background-attachment: fixed;
 	height: 100%;
 	
-}
-
-.lendingEQFlag {
-	background-image: url("../img/domain_logos/FBEQ/EQ_Lending.png");
-}
-
-.accountsFlag {
-	background-image: url("../img/domain_logos/FBEQ/EQ_AccountsCMS.png");
-}
-
-.cashierFlag {
-	background-image: url("../img/domain_logos/FBEQ/EQ_CashierDeals.png");
 }
 
 /*Midas*/
