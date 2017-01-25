@@ -61,6 +61,23 @@ body {
 	margin-right: auto;
 }
 
+.num-row{
+	padding-top: 110px;
+	display: flex;
+}
+
+.num-block {
+	border-radius: 12px;
+	background: #f0e2c5;	
+	border: 1px solid #c8b495;
+	width: 120px;
+	height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+	margin-right: 10px;
+}
+
 /*House Header Customizations*/
 .houseHeader {
 	/*padding: 0px 40px 60px 40px; /*top , right, bottom, left*/
@@ -81,15 +98,15 @@ body {
 }
 
 .houseHeaderContent {
-	 float: none;
-     margin-left: auto;
-     margin-right: auto;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /*Leaderboard Subheader customizations*/
 .leaderboardSubHeader {
 	background-color: rgba(234, 220, 184, 0.6);
-	background-clip : content-box;
+	background-clip: content-box;
 	min-height: 30px;
 }
 
@@ -191,6 +208,14 @@ h4.mediumContentText {
 	display: inline;
 }
 
+h4.smallContentText {
+	font-family: 'AgencyFB';
+	font-size: 25px;
+	font-weight: bold;
+	color: #660000;
+	display: inline;
+}
+
 img.floatLeft {
 	float: left;
 }
@@ -198,7 +223,6 @@ img.floatLeft {
 img.floatRight {
 	float: right;
 }
-
 
 /*Font Declarations*/
 @font-face {
