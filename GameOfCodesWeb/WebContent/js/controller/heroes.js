@@ -1,4 +1,4 @@
-app.controller('heroesController', function($scope, HeroLevelsFactory, $http, API_URL) {
+GOCapp.controller('heroesController', function($scope, HeroLevelsFactory, $http, API_URL) {
     //retrieve employees listing from API
 	$scope.heroLevels = HeroLevelsFactory.query();
 	

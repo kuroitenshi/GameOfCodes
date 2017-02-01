@@ -1,4 +1,4 @@
-/*app.controller('housesController', function($scope, $http, API_URL) {
+GOCapp.controller('housesController', function($scope, $http, API_URL) {
     //retrieve employees listing from API
     $http.get(API_URL + "house/all")
             .success(function(response) {
@@ -73,7 +73,7 @@
             return false;
         }
     }
-});*/
+});
 
 function showFlagName(imgFlag) {
 	var domain = imgFlag.id;
