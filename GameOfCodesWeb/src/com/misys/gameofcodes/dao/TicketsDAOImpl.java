@@ -84,7 +84,6 @@ public class TicketsDAOImpl implements TicketsDAO {
 	}
 	public Date getMonthCurr() {
 		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.MONTH, -1);
 		calendar.set(Calendar.DAY_OF_MONTH, 1);
 		return calendar.getTime();
 	}
