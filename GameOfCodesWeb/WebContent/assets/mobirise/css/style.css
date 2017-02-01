@@ -237,6 +237,14 @@ html {
   padding-left: 15px;
   padding-right: 15px;
 }
+.content-2.col-2 .row h4 {
+  color:#fff;
+  text-align:left;
+}
+.content-2.col-2 .row p {
+  color:#fff;
+  text-align: left;
+}
 @media (min-width: 768px) {
   .content-2.col-2 .row > div {
     float: left;
@@ -389,6 +397,7 @@ html {
 }
 .content-2 .thumbnail h3 {
   font-size: 18px;
+  color: #fff;
   letter-spacing: 1px;
   margin-bottom: 32px;
   margin-top: 11px;
@@ -409,7 +418,7 @@ html {
   }
 }
 .content-2 .thumbnail p {
-  color: #999;
+  color: #fff;
   font-size: 18px;
   line-height: 26px;
   text-align: center;

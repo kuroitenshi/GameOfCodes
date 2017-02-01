@@ -48,13 +48,13 @@ Temporary Items
 
 #Eclipse dependency ignores
 .metadata
-.classpath
-.project
 RemoteSystemsTempFiles/
+.recommenders/
 
 #GOC specific ignores
 GameOfCodes/target/
+GameOfCodesWeb/build/
 GameOfCodesWeb/target/
 
 *.properties
-
+GameOfCodesWeb/target/m2e-wtp/web-resources/META-INF/maven/GameOfCodesWeb/GameOfCodesWeb/pom.properties
