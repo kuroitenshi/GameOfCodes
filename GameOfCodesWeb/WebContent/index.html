@@ -40,14 +40,17 @@
 	href="/img/icon/GOC_favicon.ico" />
 
 <!-- JS (load angular, ui-router, and our custom js file) -->
-<script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+<script src="http://code.angularjs.org/1.6.0/angular.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-messages.js"></script>
 <script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-cookies.js"></script>
+<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
 <script src="js/modules/mainModule.js"></script>
-<script src="js/controller/login.js"></script>
+<script src="js/modules/authModule.js"></script>
 <script src="js/controller/houses.js"></script>
+<script src="js/controller/login.js"></script>
 </head>
 
 <meta charset="ISO-8859-1">
@@ -56,11 +59,11 @@
 <body ng-app="GOC">
 
 	<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-	
-		<div ui-view="header"></div>
-	
-		<div ui-view="content"></div>
-	
+
+	<div ui-view="header"></div>
+
+	<div ui-view="content"></div>
+
 
 
 
@@ -69,7 +72,9 @@
 	<div class="mobile-nav">
 		<ul>
 		</ul>
-		<a href="#" class="close-link"><i class="arrow_up"></i></a>
+		<a href="#" class="close-link">
+			<i class="arrow_up"></i>
+		</a>
 	</div>
 
 	<!-- Scripts -->
