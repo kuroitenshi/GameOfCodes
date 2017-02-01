@@ -19,6 +19,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.QueryBuilder;
 
 
 public class TicketsDAOImpl implements TicketsDAO {
@@ -61,27 +62,29 @@ public class TicketsDAOImpl implements TicketsDAO {
 	}
 	@Override
 	public int getUserTicketSumMonth(String username) {
-		BasicDBObject query = new BasicDBObject();
-		query.append("developers", username)
-		.append("verifiedDate", 
-				new BasicDBObject("$gte", this.getMonthCurr())
-				.append("$lt", this.getMonthNext()));
+		DBObject query = new BasicDBObject();
+		query = QueryBuilder.start().put("developers").is(username)
+				.and("dateVerified").greaterThanEquals(this.getMonthCurr())
+				.and("dateVerified").lessThan(this.getMonthNext())
+				.get();
 		BasicDBObject match = new BasicDBObject(
 			    "$match", query
 			);
 		BasicDBObject group = new BasicDBObject(
 			    "$group", new BasicDBObject("_id", "").append(
-			        "total", new BasicDBObject( "$sum", "$storyPointsMonth" )
+			        "total", new BasicDBObject( "$sum", "$storyPoints" )
 			    )
 			);
 		AggregationOutput sumTickets = ticketCollection.aggregate(match, group);
+
 		for (DBObject result : sumTickets.results()) {
-			return Integer.parseInt(result.get("total").toString());
+			return (int) result.get("total");
         }
 		return 0;
 	}
 	public Date getMonthCurr() {
 		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.MONTH, -1);
 		calendar.set(Calendar.DAY_OF_MONTH, 1);
 		return calendar.getTime();
 	}

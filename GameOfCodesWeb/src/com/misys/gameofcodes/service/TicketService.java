@@ -45,7 +45,6 @@ public class TicketService {
 		ticketDAO.updateTicketUnassign(ticket);
 	}
 	public static int getUserTicketSumMonth(String username) {
-		ticketDAO.getUserTicketSumMonth(username);
-		return 0;
+		return ticketDAO.getUserTicketSumMonth(username);
 	}
 }

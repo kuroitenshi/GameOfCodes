@@ -46,8 +46,8 @@ public class FetchTicket {
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-		ArrayList<Ticket> tickets = ft.fetchTicket(ft.fetchJQLQuery("test"));
-		ft.getTickets(tickets);
+		//ArrayList<Ticket> tickets = ft.fetchTicket(ft.fetchJQLQuery("test"));
+		//ft.getTickets(tickets);
 		ft.computeTickets();
 	}
 	public void runScript() {
@@ -78,6 +78,7 @@ public class FetchTicket {
 			hero.setStoryPoints(TicketService.getUserTicketSum(hero.getUsername()));
 			hero.setStoryPointsMonth(TicketService.getUserTicketSumMonth(hero.getUsername()));
 			hero.setLevel(LevelService.fetchHeroLevel(TicketService.getUserTicketSum(hero.getUsername())).getLevel());
+			System.out.println(EncoderUtility.toJSON(hero));
 			HeroService.updateHeroPoints(hero);
 		}
 	}
@@ -107,7 +108,6 @@ public class FetchTicket {
 	}
 	
 	private ArrayList<Ticket> fetchTicket(SearchResult searchResult) {
-		System.out.println(searchResult);
 		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 		Iterator iterator = searchResult.getIssues().iterator();
 		while (iterator.hasNext()) {
