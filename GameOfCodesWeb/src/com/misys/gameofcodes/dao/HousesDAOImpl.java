@@ -113,6 +113,7 @@ public class HousesDAOImpl implements HousesDAO {
 		for (Entry<String, Hero> entry : heroes.entrySet())
 		{
 			Hero hero = entry.getValue();
+			System.out.println(hero.getStoryPoints());
 			housePoints += hero.getStoryPoints();
 		}
 		

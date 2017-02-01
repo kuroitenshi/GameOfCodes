@@ -3,6 +3,8 @@ package com.misys.gameofcodes.dao;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -44,7 +46,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 		BasicDBObject query = new BasicDBObject();
 		query.put("developers", username);
 		BasicDBObject match = new BasicDBObject(
-			    "$match", new BasicDBObject("developers", username)
+			    "$match", query
 			);
 		BasicDBObject group = new BasicDBObject(
 			    "$group", new BasicDBObject("_id", "").append(
@@ -56,6 +58,38 @@ public class TicketsDAOImpl implements TicketsDAO {
 			return Integer.parseInt(result.get("total").toString());
         }
 		return 0;
+	}
+	@Override
+	public int getUserTicketSumMonth(String username) {
+		BasicDBObject query = new BasicDBObject();
+		query.append("developers", username)
+		.append("verifiedDate", 
+				new BasicDBObject("$gte", this.getMonthCurr())
+				.append("$lt", this.getMonthNext()));
+		BasicDBObject match = new BasicDBObject(
+			    "$match", query
+			);
+		BasicDBObject group = new BasicDBObject(
+			    "$group", new BasicDBObject("_id", "").append(
+			        "total", new BasicDBObject( "$sum", "$storyPointsMonth" )
+			    )
+			);
+		AggregationOutput sumTickets = ticketCollection.aggregate(match, group);
+		for (DBObject result : sumTickets.results()) {
+			return Integer.parseInt(result.get("total").toString());
+        }
+		return 0;
+	}
+	public Date getMonthCurr() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		return calendar.getTime();
+	}
+	public Date getMonthNext() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.MONTH, 1);
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		return calendar.getTime();
 	}
 	@Override
 	public Ticket getTicket(Ticket ticket) {
@@ -79,18 +113,10 @@ public class TicketsDAOImpl implements TicketsDAO {
 			ticket.setDescription(dbTicket.get("description").toString()); 
 		}
 		if (dbTicket.get("dateStarted").toString() != null) {
-			try {
-				ticket.setDateStarted(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(dbTicket.get("dateStarted").toString()));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			} 
+			ticket.setDateStarted((Date) dbTicket.get("dateStarted")); 
 		}
 		if (dbTicket.get("dateVerified").toString() != null) {
-			try {
-				ticket.setDateVerified(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(dbTicket.get("dateVerified").toString()));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}  
+			ticket.setDateVerified((Date) dbTicket.get("dateVerified"));  
 		}
 		if (dbTicket.get("status").toString() != null) {
 			ticket.setStatus(dbTicket.get("status").toString()); 
@@ -102,12 +128,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 			ticket.setPriority(dbTicket.get("priority").toString()); 
 		}
 		if (dbTicket.get("dateEnd").toString() != null) {
-			try {
-				ticket.setDateEnd(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(dbTicket.get("dateEnd").toString()));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}   
+			ticket.setDateEnd((Date) dbTicket.get("dateEnd"));   
 		}
 		if (dbTicket.get("developers") != null) {
 			
@@ -135,12 +156,12 @@ public class TicketsDAOImpl implements TicketsDAO {
 			dbTicket.put("$set", new BasicDBObject().append("jiraId", ticket.getJiraId())
 				.append("title", ticket.getTitle())
 				.append("description", "")
-				.append("dateStarted", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(ticket.getDateStarted()))
-				.append("dateVerified", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(ticket.getDateVerified()))
+				.append("dateStarted", ticket.getDateStarted())
+				.append("dateVerified", ticket.getDateVerified())
 				.append("status", ticket.getStatus())
 				.append("severity", ticket.getSeverity())
 				.append("priority", ticket.getPriority())
-				.append("dateEnd", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(ticket.getDateEnd()))
+				.append("dateEnd",ticket.getDateEnd())
 				.append("developers", dbDevelopers)
 				.append("storyPoints", ticket.getStoryPoints()));
 		ticketCollection.update(query, dbTicket, true, false);	

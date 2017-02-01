@@ -16,6 +16,7 @@ public interface TicketsDAO {
 	void updateTicketAssign(Ticket ticket);	
 	void updateTicketUnassign(Ticket ticket);
 	Ticket getTicket(DBObject dbTicket);
-	int getUserTicketSum(String username);	
+	int getUserTicketSum(String username);
+	int getUserTicketSumMonth(String username);	
 
 }

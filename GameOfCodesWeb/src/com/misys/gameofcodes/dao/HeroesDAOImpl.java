@@ -76,7 +76,8 @@ public class HeroesDAOImpl implements HeroesDAO {
     	hero.setName(dbhero.get("name").toString());
     	hero.setEmail(dbhero.get("email").toString());
     	hero.setStoryPoints((int) dbhero.get("storyPoints"));
-    	hero.setLevel((String) dbhero.get("level"));
+    	hero.setStoryPointsMonth((int) dbhero.get("storyPointsMonth"));
+    	hero.setLevel((int) dbhero.get("level"));
     	hero.setIsActive(dbhero.get("isActive").toString());
 //    	hero.setIsGameMaster(dbhero.get("isGameMaster").toString());
 //    	hero.setEquipmentHead1(dbhero.get("equipmentHead1").toString());
@@ -107,6 +108,7 @@ public class HeroesDAOImpl implements HeroesDAO {
 			  .append("name", hero.getName())
       		  .append("email", hero.getEmail())
 			  .append("storyPoints", 0)
+			  .append("storyPointsMonth", 0)
 			  .append("level", 1)
 			  .append("isActive", 'Y');
 		return heroesCollection.insert(heroObject);
@@ -135,6 +137,7 @@ public class HeroesDAOImpl implements HeroesDAO {
 	    query.put("_id", new ObjectId(hero.getId()));
 	    DBObject dbHero = heroesCollection.findOne(query);
 	    	dbHero.put("storyPoints",hero.getStoryPoints());
+	    	dbHero.put("storyPointsMonth",hero.getStoryPointsMonth());
 	    	dbHero.put("level",hero.getLevel());
 	    return heroesCollection.update(query, dbHero); 
 	}

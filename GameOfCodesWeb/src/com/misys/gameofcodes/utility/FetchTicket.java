@@ -46,8 +46,8 @@ public class FetchTicket {
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-		//ArrayList<Ticket> tickets = ft.fetchTicket(ft.fetchJQLQuery("test"));
-		//ft.getTickets(tickets);
+		ArrayList<Ticket> tickets = ft.fetchTicket(ft.fetchJQLQuery("test"));
+		ft.getTickets(tickets);
 		ft.computeTickets();
 	}
 	public void runScript() {
@@ -69,13 +69,14 @@ public class FetchTicket {
 		}
 	}
 	private void computeTickets() {
-		getHousePoints();
 		getHeroPoints();
+		getHousePoints();
 	}
 	private void getHeroPoints() {
 		List<Hero> heroes = HeroService.fetchHeroes();
 		for (Hero hero: heroes) {
 			hero.setStoryPoints(TicketService.getUserTicketSum(hero.getUsername()));
+			hero.setStoryPointsMonth(TicketService.getUserTicketSumMonth(hero.getUsername()));
 			hero.setLevel(LevelService.fetchHeroLevel(TicketService.getUserTicketSum(hero.getUsername())).getLevel());
 			HeroService.updateHeroPoints(hero);
 		}
@@ -89,7 +90,7 @@ public class FetchTicket {
 	
 	private SearchResult fetchJQLQuery(String jqlQuery) {
 		try {
-			restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "edgresma", "#10@MIsys2");
+			restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "edgresma", "#01@MIsys3");
 			//return	restClient.getSearchClient().searchJql("assignee = abianb1 and status = open").claim();
 			//return	restClient.getSearchClient().searchJql("developers=edgresma and status = closed").claim();
 			return	restClient.getSearchClient().searchJql("project in (\"Universal Banking\", \"Universal Banking Scrum\") AND Developers in (agutierr, edgresma, rcajigas, arlozano, yasisr1, fegarcia, jayperez, aclimaco, jpbautis) AND status in (Closed, Built, Verified) AND (Verified>=2016-06-01 OR \"Closed Date\" >= 2016-06-01)", -1, 0, new HashSet<String>()).claim();		
@@ -106,6 +107,7 @@ public class FetchTicket {
 	}
 	
 	private ArrayList<Ticket> fetchTicket(SearchResult searchResult) {
+		System.out.println(searchResult);
 		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 		Iterator iterator = searchResult.getIssues().iterator();
 		while (iterator.hasNext()) {

@@ -19,6 +19,7 @@ public class Hero {
 	private House house;
 	private String email;
 	private int storyPoints;
+	private int storyPointsMonth;
 	private int level;
 	private String equipmentHead1;
 	private String equipmentHead2;
@@ -181,6 +182,14 @@ public class Hero {
 
 	public void setIsGameMaster(String isGameMaster) {
 		this.isGameMaster = isGameMaster;
+	}
+
+	public int getStoryPointsMonth() {
+		return storyPointsMonth;
+	}
+
+	public void setStoryPointsMonth(int storyPointsMonth) {
+		this.storyPointsMonth = storyPointsMonth;
 	}
 
 //	public Map<String, Badge> getBadges() {
