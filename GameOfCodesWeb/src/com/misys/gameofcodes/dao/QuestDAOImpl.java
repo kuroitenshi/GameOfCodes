@@ -114,6 +114,16 @@ public class QuestDAOImpl implements QuestDAO
 					.append("jiraTicket", quest.getJiraTicket());
 		return questCollection.remove(query);
 	}
+	
+	/* 
+	 * Deletes a quest by id
+	 */
+		
+	@Override
+	public WriteResult deleteQuestByID(String id) {
+		BasicDBObject query = new BasicDBObject("_id", new ObjectId(id));
+		return questCollection.remove(query);
+	}
 
 	/* 
 	 * Sets the quest to be "Inactive"
@@ -159,6 +169,8 @@ public class QuestDAOImpl implements QuestDAO
         
         return quests;
 	}
+
+
 
 	
 
