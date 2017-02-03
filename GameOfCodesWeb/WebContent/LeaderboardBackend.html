@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script type="text/javascript" 
+<script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script type="text/javascript" 
+<script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -66,8 +66,10 @@
 
 			<!-- Wrapper for slides -->
 			<!-- Added Houses Controller for Backend -->
-			<div class="carousel-inner" role="listbox" ng-controller="housesController">
-				<div class="item active" ng-repeat="house in houses | filter:{domain:'Essence Core'}">
+			<div class="carousel-inner" role="listbox"
+				ng-controller="housesController">
+				<div class="item active"
+					ng-repeat="house in houses | filter:{domain:'Essence Core'}">
 					<div class="container-fluid">
 						<div class="leaderboard-div-bg leaderboard-font houseHeader">
 							<div class="media">
@@ -88,7 +90,7 @@
 									<div class="col-md-2">
 										<div class="num-row">
 											<div class="num-block">
-												<h4 class="mediumContentText">Exp  {{house.storyPoints}}</h4>
+												<h4 class="mediumContentText">Exp {{house.storyPoints}}</h4>
 											</div>
 											<!-- div class="num-block">
 												<h4 class="mediumContentText">Quests  10 </h4>
@@ -144,7 +146,8 @@
 									<!-- Leaderboard SubHeader END -->
 									<!-- Leaderboard elements Start -->
 									<div ng-controller="heroesController">
-										<div class="row vertical-align leaderboard-div-entry" ng-repeat="hero in heroes | orderBy : '-storyPoints'">
+										<div class="row vertical-align leaderboard-div-entry"
+											ng-repeat="hero in heroes | orderBy : '-storyPoints'">
 											<div class="col-sm-1"></div>
 											<div class="col-sm-3 subHeaderLeftAlign">
 												<div class="houseHeaderContent">
@@ -152,24 +155,29 @@
 														src="img/avatar/hero/goc_{{hero.username}}.png" alt="...">
 													<h4 class="mediumContentText">{{hero.name}}</h4>
 												</div>
-	
+
 											</div>
 											<div class="col-sm-3 subHeaderLeftAlign">
-												<div class="houseHeaderContent" ng-repeat="level in heroLevels | filter:{level:hero.level}:true">
-													<img class="leaderboard-avatar" src="img/ranks/{{level.icon}}.png"
-														alt="...">
-													<h4 class="mediumContentText" >{{level.name}}</h4>
+												<div class="houseHeaderContent"
+													ng-repeat="level in heroLevels | filter:{level:hero.level}:true">
+													<img class="leaderboard-avatar"
+														src="img/ranks/{{level.icon}}.png" alt="...">
+													<h4 class="mediumContentText">{{level.name}}</h4>
 												</div>
-	
+
 											</div>
-	
+
 											<div class="col-sm-2 col-xs-4">
 												<h3 class="largeContentText">{{hero.storyPoints}}</h3>
-												<div class="progress" ng-repeat="level in heroLevels | filter:{level:hero.level+1}:true">
-													<div class="progress-bar progress-bar-striped active"
-														role="progressbar" aria-valuenow="70" aria-valuemin="0"
-														aria-valuemax="100"
-														style="margin-bottom: 20px; width: 80%; text-align: center">
+												<div class="progress"
+													ng-repeat="level in heroLevels | filter:{level:hero.level+1}:true track by $index">
+													<div
+														class="progress-bar progress-bar-striped progress-bar-danger active"
+														role="progressbar"
+														aria-valuenow="{{(hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)}}"
+														aria-valuemin="0"
+														aria-valuemax="{{level.points - heroLevels[heroLevels.indexOf(level) - 1].points}}"
+														style="margin-bottom: 20px; width: {{((hero.storyPoints- heroLevels[heroLevels.indexOf(level)- 1].points)/(level.points- heroLevels[heroLevels.indexOf(level)- 1].points))*100">
 														{{level.points-hero.storyPoints}} to rank up</div>
 												</div>
 											</div>
