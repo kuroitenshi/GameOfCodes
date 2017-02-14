@@ -1,9 +1,13 @@
-GOCapp.controller('housesController', function($scope, $http, API_URL) {
-    //retrieve employees listing from API
-    $http.get(API_URL + "house/all")
-            .success(function(response) {
-                $scope.houses = response;
-            });
+GOCApp.controller('housesController', function($scope, $http, API_URL) {
+    //retrieve houses
+    $http({
+    	  method : 'GET',
+    	  url: API_URL + 'house/all'
+    	}).then(function successCallback(response) {
+    		$scope.houses = response.data;
+    	 }, function errorCallback(response) {
+    
+    });
     
     //show modal form
     $scope.toggle = function(modalstate, houseid) {
@@ -16,11 +20,15 @@ GOCapp.controller('housesController', function($scope, $http, API_URL) {
             case 'edit':
                 $scope.form_title = "House Detail";
                 $scope.houseid = houseid;
-                $http.get(API_URL + 'house/id/' + houseid)
-                        .success(function(response) {
-                            console.log(response);
-                            $scope.hero = response;
-                        });
+                $http({
+              	  method: 'GET',
+              	  url: API_URL + 'house/id/' + houseid
+              	}).then(function successCallback(response) {
+              		console.log(response);
+                    $scope.house = response.data;
+              	  }, function errorCallback(response) {
+              
+              	});               
                 break;
             default:
                 break;

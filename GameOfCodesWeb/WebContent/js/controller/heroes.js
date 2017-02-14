@@ -1,11 +1,16 @@
-GOCapp.controller('heroesController', function($scope, HeroLevelsFactory, $http, API_URL) {
-    //retrieve employees listing from API
+GOCApp.controller('heroesController', function($scope, HeroLevelsFactory, $http, API_URL) {
+    //retrieve heroes
 	$scope.heroLevels = HeroLevelsFactory.query();
 	
-    $http.get(API_URL + "hero/all")
-            .success(function(response) {
-                $scope.heroes = response;
-            });
+	$http({
+  	  method : 'GET',
+  	  url: API_URL + 'hero/all'
+  	 }).then(function successCallback(response) {  	  		
+  		$scope.heroes = response.data;  		
+  	 }, function errorCallback(response) {
+  
+  	 });
+  
     
     //show modal form
     $scope.toggle = function(modalstate, username) {
@@ -18,11 +23,15 @@ GOCapp.controller('heroesController', function($scope, HeroLevelsFactory, $http,
             case 'edit':
                 $scope.form_title = "Hero Detail";
                 $scope.username = username;
-                $http.get(API_URL + 'hero/username/' + username)
-                        .success(function(response) {
-                            console.log(response);
-                            $scope.hero = response;
-                        });
+                $http({
+                	  method : 'GET',
+                	  url: API_URL + 'hero/username/' + username
+                	 }).then(function successCallback(response) {
+                		$scope.hero = response.data;
+                	 }, function errorCallback(response) {
+                
+                });
+                              
                 break;
             default:
                 break;

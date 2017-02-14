@@ -1,4 +1,4 @@
-GOCapp.controller('ticketsController', function($scope, $http, API_URL) {
+GOCApp.controller('ticketsController', function($scope, $http, API_URL) {
     //retrieve employees listing from API
     $http.get(API_URL + "ticket/all")
             .success(function(response) {

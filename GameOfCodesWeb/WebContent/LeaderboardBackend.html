@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="GameOfCodes">
+<html lang="en" ng-app="GOC">
 <head>
 <title>Game Of Codes Leaderboards</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -36,10 +32,24 @@
     });
 		});
 	</script>
-<script src="js/app.js"></script>
+	
+<!-- JS (load angular, ui-router, and our custom js file) -->
+<script src="http://code.angularjs.org/1.6.0/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-messages.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-cookies.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-resource.js"></script>	
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+	
+<script src="js/modules/mainModule.js"></script>
+<script src="js/modules/authModule.js"></script>
 <script src="js/controller/heroes.js"></script>
-<script src="js/controller/houses.js"></script>
 <script src="js/controller/services.js"></script>
+<script src="js/controller/houses.js"></script>
+<script src="js/controller/login.js"></script>
 <style>
 </style>
 </head>
@@ -48,7 +58,7 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand leaderboard-font-header" href="#">Game of
+				<a class="navbar-brand leaderboard-font-header" href="#" ui-sref = "home">Game of
 					Codes</a>
 			</div>
 		</div>

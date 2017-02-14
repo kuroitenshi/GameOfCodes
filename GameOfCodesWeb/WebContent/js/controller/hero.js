@@ -1,5 +1,5 @@
-app.controller('heroController', function($scope, $http, API_URL) {
-    //retrieve employees listing from API
+GOCApp.controller('heroController', function($scope, $http, API_URL) {
+    //retrieve hero
     $http.get(API_URL + "hero/all")
             .success(function(response) {
                 $scope.heroes = response;
