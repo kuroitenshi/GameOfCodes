@@ -34,7 +34,7 @@
 				<div class="flagContainer centerBox">
 					<a id="eqLending" data-toggle="modal" data-target="#GL"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Midas Lending')">
+						ng-click="housenamefilter('Essence Teller')">
 
 						<img src="img/domain_logos/FBEQ/EQ_Lending.png"
 							class="flagPointer" />
@@ -48,7 +48,8 @@
 				</div>
 				<div class="flagContainer centerBox">
 					<a id="eqCashiers" data-toggle="modal" data-target="#GL"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
+						ng-click="housenamefilter('Equation Cashier & Deals')">
 
 						<img src="img/domain_logos/FBEQ/EQ_CashierDeals.png"
 							class="flagPointer" />
@@ -62,7 +63,8 @@
 				</div>
 				<div class="flagContainer centerBox">
 					<a id="eqAccounts" data-toggle="modal" data-target="#GL"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
+						ng-click="housenamefilter('Equation Accounts & CMS')">
 
 						<img src="img/domain_logos/FBEQ/EQ_AccountsCMS.png"
 							class="flagPointer" />
@@ -82,7 +84,8 @@
 				</div>
 				<div class="flagContainer centerBox">
 					<a id="midasGL" data-toggle="modal" data-target="#GL"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
+						ng-click="housenamefilter('Midas General Ledger & Retail')">
 
 						<img src="img/domain_logos/FBM/Midas_GeneralLedger.png"
 							class="flagPointer" />
@@ -96,7 +99,8 @@
 				</div>
 				<div class="flagContainer centerBox">
 					<a id="midasTP" data-toggle="modal" data-target="#GL"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
+						ng-click="housenamefilter('Midas Technical Platform')">
 
 						<img src="img/domain_logos/FBM/Midas_TP.png" class="flagPointer" />
 					</a>
@@ -108,7 +112,8 @@
 				</div>
 				<div class="flagContainer centerBox">
 					<a id="midasLending" data-toggle="modal" data-target="#GL"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
+						ng-click="housenamefilter('Midas Lending')">
 
 						<img src="img/domain_logos/FBM/Midas_lending.png"
 							class="flagPointer" />
@@ -123,7 +128,8 @@
 				</div>
 				<div class="flagContainer centerBox">
 					<a id="midasDealing" data-toggle="modal" data-target="#GL"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
+						ng-click="housenamefilter('Midas Dealing & Securities')">
 
 						<img src="img/domain_logos/FBM/Midas_Dealing.png"
 							class="flagPointer" />
@@ -137,7 +143,8 @@
 				</div>
 				<div class="flagContainer centerBox">
 					<a id="midasFT" data-toggle="modal" data-target="#GL"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
+						ng-click="housenamefilter('Midas Funds Transfer')">
 
 						<img src="img/domain_logos/FBM/Midas_FundsTransfer.png"
 							class="flagPointer" />
@@ -152,10 +159,10 @@
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog"
 			style="margin-top: 100px; min-width: 900px; max-height: 400px;"
-			ng-controller= "housesController" >
+			ng-controller= "houseBoardController" >
 			<!--  TO BE CHANGED ON CLICK OF A MODAL -->
 			<div class="modal-content modal-popup"
-				ng-repeat="house in houses | filter:{domain:'Essence Core'}">
+				ng-repeat="house in houses | filter:{domain:selectedHouse}">
 
 				<h1 class="white heading centerBox">{{house.housename}}</h1>
 				<h4 class="houseBoardLargeText">Meet the heroes of

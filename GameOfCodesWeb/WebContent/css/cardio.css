@@ -3,6 +3,10 @@
 
 body {
 	background-image: url("../img/bg/medieval-bg.jpg");
+	 -webkit-background-size: cover;
+  	 -moz-background-size: cover;
+  	 -o-background-size: cover;
+  	background-size: cover;
 	font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial,
 		sans-serif;
 	font-size: 14px;

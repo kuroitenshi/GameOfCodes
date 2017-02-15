@@ -1,4 +1,23 @@
-GOCApp.controller('housesController', function($scope, $http, API_URL) {
+GOCApp.service('houseFilterService', function() {
+	var selectedHouse;
+
+	var filterHouse = function(house) {
+		selectedHouse = "";
+		selectedHouse = house;
+	};
+	
+	var returnSelectedHouse = function() {
+		return selectedHouse;
+	};
+
+	return {
+		filterHouse : filterHouse,
+		returnSelectedHouse : returnSelectedHouse
+	};
+
+});
+
+GOCApp.controller('housesController', function($scope, $http, API_URL, houseFilterService) {
     //retrieve houses
     $http({
     	  method : 'GET',
@@ -10,12 +29,8 @@ GOCApp.controller('housesController', function($scope, $http, API_URL) {
     });
     
     $scope.housenamefilter = function(housename){
-    	$scope.selectedHouse = housename;    	
-    }
-    
-    $scope.checkHouseName = function(house){
-    	return house.domain == 'Essence Core';    	
-    }
+    	houseFilterService.filterHouse(housename);   	
+    }    
     
     //show modal form
     $scope.toggle = function(modalstate, houseid) {
@@ -90,6 +105,7 @@ GOCApp.controller('housesController', function($scope, $http, API_URL) {
         }
     }
 });
+
 
 function showFlagName(imgFlag) {
 	var domain = imgFlag.id;
