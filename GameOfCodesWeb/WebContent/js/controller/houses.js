@@ -9,6 +9,14 @@ GOCApp.controller('housesController', function($scope, $http, API_URL) {
     
     });
     
+    $scope.housenamefilter = function(housename){
+    	$scope.selectedHouse = housename;    	
+    }
+    
+    $scope.checkHouseName = function(house){
+    	return house.domain == 'Essence Core';    	
+    }
+    
     //show modal form
     $scope.toggle = function(modalstate, houseid) {
         $scope.modalstate = modalstate;

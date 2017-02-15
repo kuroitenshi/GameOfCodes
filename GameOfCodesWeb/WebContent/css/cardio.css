@@ -16,6 +16,54 @@ body {
 	margin-top: 120px;
 }
 
+.houseBoard-avatar {
+	height: 90px;
+	width: 70px;
+	padding: 2px;
+}
+
+.houseBoardFragmentContainer {	
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 400px;
+}
+
+.houseBoardFragment {
+	background-clip: content-box;
+	height: 100px;
+}
+.houseBoardContent {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.vertical-align {
+	display: flex;
+	align-items: center;
+}
+
+.subHeaderLeftAlign {
+	text-align: left;
+}
+
+h4.houseBoardSubHeaderText{
+	font-family: 'GOT';
+	font-size: 15px;
+	font-weight: bold;
+	color: #BDBDBD;
+	display: inline;
+}
+
+h4.houseBoardMediumText{
+	font-family: 'AgencyFB';
+	font-size: 20px;
+	font-weight: bold;
+	color: #FFFFFF;
+	display: inline;
+}
+/*House Page - Customizations END*/
+
 .centerBox {
 	 float: none;
      margin-left: auto;
@@ -262,6 +310,11 @@ body {
 	font-family: 'Cardo-Italic';
 	src: url('../fonts/Cardo/Cardo-Italic.ttf') format('truetype');
 }
+@font-face {
+	font-family: 'AgencyFB';
+	src: url('../fonts/AgencyFB/agency-fb.ttf') format('truetype');
+}
+
 
 /* Panel Customizations*/
 .panel-body{

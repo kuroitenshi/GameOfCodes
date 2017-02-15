@@ -1,144 +1,203 @@
 <div></div>
-<br/>
+<br />
 <section>
-<div class="houseContainer">
+	<div class="houseContainer" >
 
-	<div class="row houseEssenceContainer">
-		<h3>Kingdom Essence</h3>
-	</div>
-	<div class="row kingdomEssenceFragment">
-		<div class="col-md-4 centerBox intro-table-hover-house">
-			<div id="essenceDiv" class="expand">
-				<h4 id="essenceName" class="white heading">House Essence</h4>
-			</div>
-			<div class="flagContainer centerBox">
-				<a id="essence" data-toggle="modal" data-target="#GL" 
-					onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
-					
-					<img src="img/domain_logos/FBE/FBE_logo.png" class="flagPointer" />
-				</a>
+		<div class="row houseEssenceContainer">
+			<h3>Kingdom Essence</h3>
+		</div>
+		<div class="row kingdomEssenceFragment">
+			<div class="col-md-4 centerBox intro-table-hover-house" ng-controller= "housesController" >
+				<div id="essenceDiv" class="expand">
+					<h4 id="essenceName" class="white heading">House Essence</h4>
+				</div>
+				<div class="flagContainer centerBox">
+					<a id="essence" data-toggle="modal" data-target="#GL"
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
+						ng-click= "housenamefilter('Essence Core')">
+
+						<img src="img/domain_logos/FBE/FBE_logo.png" class="flagPointer" />
+					</a>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="row houseEquationContainer">
-		<h3>Kingdom Equation</h3>
+
+		<div class="row houseEquationContainer">
+			<h3>Kingdom Equation</h3>
+		</div>
+
+		<div class="row kingdomEquationFragment">
+			<div class="col-md-4  intro-table-hover-house">
+				<div id="eqLendingDiv" class="expand">
+					<h4 id="eqLendingName" class="white heading">House Lending</h4>
+				</div>
+				<div class="flagContainer centerBox">
+					<a id="eqLending" data-toggle="modal" data-target="#GL"
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
+						ng-click="housenamefilter('Midas Lending')">
+
+						<img src="img/domain_logos/FBEQ/EQ_Lending.png"
+							class="flagPointer" />
+					</a>
+				</div>
+			</div>
+			<div class="col-md-4 intro-table-hover-house">
+				<div id="eqCashiersDiv" class="expand">
+					<h4 id="eqCashiersName" class="white heading">House Cashier &
+						Deals</h4>
+				</div>
+				<div class="flagContainer centerBox">
+					<a id="eqCashiers" data-toggle="modal" data-target="#GL"
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+
+						<img src="img/domain_logos/FBEQ/EQ_CashierDeals.png"
+							class="flagPointer" />
+					</a>
+				</div>
+			</div>
+			<div class="col-md-4 intro-table-hover-house">
+				<div id="eqAccountsDiv" class="expand">
+					<h4 id="eqAccountsName" class="white heading">House Accounts &
+						CMS</h4>
+				</div>
+				<div class="flagContainer centerBox">
+					<a id="eqAccounts" data-toggle="modal" data-target="#GL"
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+
+						<img src="img/domain_logos/FBEQ/EQ_AccountsCMS.png"
+							class="flagPointer" />
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row houseMidasContainer">
+			<h3>Kingdom Midas</h3>
+		</div>
+		<div class="row kingdomMidasFragment">
+			<div class="col-md-4 intro-table-hover-house">
+				<div id="midasGLDiv" class="expand">
+					<h4 id="midasGLName" class="white heading">House General
+						Ledger & Retail</h4>
+				</div>
+				<div class="flagContainer centerBox">
+					<a id="midasGL" data-toggle="modal" data-target="#GL"
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+
+						<img src="img/domain_logos/FBM/Midas_GeneralLedger.png"
+							class="flagPointer" />
+					</a>
+				</div>
+			</div>
+			<div class="col-md-4 intro-table-hover-house">
+				<div id="midasTPDiv" class="expand">
+					<h4 id="midasTPName" class="white heading">House Technical
+						Platform</h4>
+				</div>
+				<div class="flagContainer centerBox">
+					<a id="midasTP" data-toggle="modal" data-target="#GL"
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+
+						<img src="img/domain_logos/FBM/Midas_TP.png" class="flagPointer" />
+					</a>
+				</div>
+			</div>
+			<div class="col-md-4 intro-table-hover-house">
+				<div id="midasLendingDiv" class="expand">
+					<h4 id="midasLendingName" class="white heading">House Lending</h4>
+				</div>
+				<div class="flagContainer centerBox">
+					<a id="midasLending" data-toggle="modal" data-target="#GL"
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+
+						<img src="img/domain_logos/FBM/Midas_lending.png"
+							class="flagPointer" />
+					</a>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+			<div class="col-md-4 intro-table-hover-house">
+				<div id="midasDealingDiv" class="expand">
+					<h4 id="midasDealingName" class="white heading">House Dealing
+						& Securities</h4>
+				</div>
+				<div class="flagContainer centerBox">
+					<a id="midasDealing" data-toggle="modal" data-target="#GL"
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+
+						<img src="img/domain_logos/FBM/Midas_Dealing.png"
+							class="flagPointer" />
+					</a>
+				</div>
+			</div>
+			<div class="col-md-4 intro-table-hover-house">
+				<div id="midasFTDiv" class="expand">
+					<h4 id="midasFTName" class="white heading">House Funds
+						Transfer</h4>
+				</div>
+				<div class="flagContainer centerBox">
+					<a id="midasFT" data-toggle="modal" data-target="#GL"
+						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
+
+						<img src="img/domain_logos/FBM/Midas_FundsTransfer.png"
+							class="flagPointer" />
+					</a>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
-	<div class="row kingdomEquationFragment">
-		<div class="col-md-4  intro-table-hover-house">
-			<div id="eqLendingDiv" class="expand">
-				<h4 id="eqLendingName" class="white heading">House Lending</h4>
-			</div>
-			<div class="flagContainer centerBox">
-				<a id="eqLending" data-toggle="modal" data-target="#GL"
-					onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
-					
-					<img src="img/domain_logos/FBEQ/EQ_Lending.png" class="flagPointer" />
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4 intro-table-hover-house">
-			<div id="eqCashiersDiv" class="expand">
-				<h4 id="eqCashiersName" class="white heading">House Cashier & Deals</h4>
-			</div>
-			<div class="flagContainer centerBox">
-				<a id="eqCashiers" data-toggle="modal" data-target="#GL"
-					onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
-					
-					<img src="img/domain_logos/FBEQ/EQ_CashierDeals.png" class="flagPointer" />
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4 intro-table-hover-house">
-			<div id="eqAccountsDiv" class="expand">
-				<h4 id="eqAccountsName" class="white heading">House Accounts & CMS</h4>
-			</div>
-			<div class="flagContainer centerBox">
-				<a id="eqAccounts" data-toggle="modal" data-target="#GL"
-					onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
-					
-					<img src="img/domain_logos/FBEQ/EQ_AccountsCMS.png" class="flagPointer" />
-				</a>
-			</div>
-		</div>
-	</div>
+	<div class="modal fade " id="GL" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog"
+			style="margin-top: 100px; min-width: 900px; max-height: 400px;"
+			ng-controller= "housesController" >
+			<!--  TO BE CHANGED ON CLICK OF A MODAL -->
+			<div class="modal-content modal-popup"
+				ng-repeat="house in houses | filter:{domain:'Essence Core'}">
 
-	<div class="row houseMidasContainer">
-		<h3>Kingdom Midas</h3>
-	</div>
-	<div class="row kingdomMidasFragment">
-		<div class="col-md-4 intro-table-hover-house">
-			<div id="midasGLDiv" class="expand">
-				<h4 id="midasGLName" class="white heading">House General Ledger & Retail</h4>
-			</div>
-			<div class="flagContainer centerBox">
-				<a id="midasGL" data-toggle="modal" data-target="#GL"
-					onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
-					
-					<img src="img/domain_logos/FBM/Midas_GeneralLedger.png" class="flagPointer" />
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4 intro-table-hover-house">
-			<div id="midasTPDiv" class="expand">
-				<h4 id="midasTPName" class="white heading">House Technical Platform</h4>
-			</div>
-			<div class="flagContainer centerBox">
-				<a id="midasTP" data-toggle="modal" data-target="#GL"
-					onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
-					
-					<img src="img/domain_logos/FBM/Midas_TP.png" class="flagPointer" />
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4 intro-table-hover-house">
-			<div id="midasLendingDiv" class="expand">
-				<h4 id="midasLendingName" class="white heading">House Lending</h4>
-			</div>
-			<div class="flagContainer centerBox">
-				<a id="midasLending" data-toggle="modal" data-target="#GL"
-					onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
-					
-					<img src="img/domain_logos/FBM/Midas_lending.png" class="flagPointer" />
-				</a>
-			</div>
-		</div>
-		<div class="col-md-2"></div>
-		<div class="col-md-4 intro-table-hover-house">
-			<div id="midasDealingDiv" class="expand">
-				<h4 id="midasDealingName" class="white heading">House Dealing & Securities</h4>
-			</div>
-			<div class="flagContainer centerBox">
-				<a id="midasDealing" data-toggle="modal" data-target="#GL"
-					onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
-					
-					<img src="img/domain_logos/FBM/Midas_Dealing.png" class="flagPointer" />
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4 intro-table-hover-house">
-			<div id="midasFTDiv" class="expand">
-				<h4 id="midasFTName" class="white heading">House Funds Transfer</h4>
-			</div>
-			<div class="flagContainer centerBox">
-				<a id="midasFT" data-toggle="modal" data-target="#GL"
-					onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)">
-					
-					<img src="img/domain_logos/FBM/Midas_FundsTransfer.png" class="flagPointer" />
-				</a>
-			</div>
-		</div>
-	</div>
-	
-</div>
+				<h1 class="white heading centerBox">{{house.housename}}</h1>
+				<h4 class="houseBoardLargeText">Meet the heroes of
+					{{house.domain}}</h4>
+				<br>
+				<div ng-controller="heroesController"
+					class="houseBoardFragmentContainer">
+					<div class="row vertical-align houseBoardFragment"
+						ng-repeat="hero in heroes | orderBy : '-storyPoints'">
+						<div class="col-sm-4 subHeaderLeftAlign">
+							<div class="houseBoardContent">
+								<img class="houseBoard-avatar"
+									src="img/avatar/hero/goc_{{hero.username}}.png" alt="...">
+								<h4 class="houseBoardMediumText">{{hero.name}}</h4>
+							</div>
+						</div>
+						<div class="col-sm-3 subHeaderLeftAlign">
+							<div class="houseBoardContent"
+								ng-repeat="level in heroLevels | filter:{level:hero.level}:true">
+								<h4 class="houseBoardMediumText">{{level.name}}</h4>
+							</div>
 
-<div class="modal fade" id="GL" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" style="margin-top: 120px">
-		<div class="modal-content modal-popup">
-			<h5 class="white heading centerBox">House Name</h5>
+						</div>
+						<div class="col-sm-4">
+							<div class="progress"
+								ng-repeat="level in heroLevels | filter:{level:hero.level+1}:true">
+								<div
+									class="progress-bar progress-bar-striped progress-bar-danger active"
+									role="progressbar"
+									aria-valuenow="{{(hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)}}"
+									aria-valuemin="0"
+									aria-valuemax="{{level.points - heroLevels[heroLevels.indexOf(level) - 1].points}}"
+									style="font-weight: bold; margin-bottom: 20px; width: {{((hero.storyPoints- heroLevels[heroLevels.indexOf(level)- 1].points)/(level.points- heroLevels[heroLevels.indexOf(level)- 1].points))*100}}%">
+									{{level.points-hero.storyPoints}} to rank up</div>
+							</div>
+						</div>
+						<div class="col-sm-1"></div>
+
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
-</div>
 </section>
