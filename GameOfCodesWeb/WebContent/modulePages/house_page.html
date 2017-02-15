@@ -7,12 +7,12 @@
 			<h3>Kingdom Essence</h3>
 		</div>
 		<div class="row kingdomEssenceFragment">
-			<div class="col-md-4 centerBox intro-table-hover-house" ng-controller= "housesController" >
+			<div class="col-md-4 centerBox intro-table-hover-house" ng-controller= "housesController">
 				<div id="essenceDiv" class="expand">
 					<h4 id="essenceName" class="white heading">House Essence</h4>
 				</div>
 				<div class="flagContainer centerBox">
-					<a id="essence" data-toggle="modal" data-target="#GL"
+					<a id="essence" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
 						ng-click= "housenamefilter('Essence Core')">
 
@@ -27,12 +27,12 @@
 		</div>
 
 		<div class="row kingdomEquationFragment">
-			<div class="col-md-4  intro-table-hover-house">
+			<div class="col-md-4  intro-table-hover-house" ng-controller= "housesController">
 				<div id="eqLendingDiv" class="expand">
 					<h4 id="eqLendingName" class="white heading">House Lending</h4>
 				</div>
 				<div class="flagContainer centerBox">
-					<a id="eqLending" data-toggle="modal" data-target="#GL"
+					<a id="eqLending" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
 						ng-click="housenamefilter('Essence Teller')">
 
@@ -41,13 +41,13 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-md-4 intro-table-hover-house">
+			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
 				<div id="eqCashiersDiv" class="expand">
 					<h4 id="eqCashiersName" class="white heading">House Cashier &
 						Deals</h4>
 				</div>
 				<div class="flagContainer centerBox">
-					<a id="eqCashiers" data-toggle="modal" data-target="#GL"
+					<a id="eqCashiers" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
 						ng-click="housenamefilter('Equation Cashier & Deals')">
 
@@ -56,13 +56,13 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-md-4 intro-table-hover-house">
+			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
 				<div id="eqAccountsDiv" class="expand">
 					<h4 id="eqAccountsName" class="white heading">House Accounts &
 						CMS</h4>
 				</div>
 				<div class="flagContainer centerBox">
-					<a id="eqAccounts" data-toggle="modal" data-target="#GL"
+					<a id="eqAccounts" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
 						ng-click="housenamefilter('Equation Accounts & CMS')">
 
@@ -77,13 +77,13 @@
 			<h3>Kingdom Midas</h3>
 		</div>
 		<div class="row kingdomMidasFragment">
-			<div class="col-md-4 intro-table-hover-house">
+			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
 				<div id="midasGLDiv" class="expand">
 					<h4 id="midasGLName" class="white heading">House General
 						Ledger & Retail</h4>
 				</div>
 				<div class="flagContainer centerBox">
-					<a id="midasGL" data-toggle="modal" data-target="#GL"
+					<a id="midasGL" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
 						ng-click="housenamefilter('Midas General Ledger & Retail')">
 
@@ -92,13 +92,13 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-md-4 intro-table-hover-house">
+			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
 				<div id="midasTPDiv" class="expand">
 					<h4 id="midasTPName" class="white heading">House Technical
 						Platform</h4>
 				</div>
 				<div class="flagContainer centerBox">
-					<a id="midasTP" data-toggle="modal" data-target="#GL"
+					<a id="midasTP" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
 						ng-click="housenamefilter('Midas Technical Platform')">
 
@@ -106,12 +106,12 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-md-4 intro-table-hover-house">
+			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
 				<div id="midasLendingDiv" class="expand">
 					<h4 id="midasLendingName" class="white heading">House Lending</h4>
 				</div>
 				<div class="flagContainer centerBox">
-					<a id="midasLending" data-toggle="modal" data-target="#GL"
+					<a id="midasLending" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
 						ng-click="housenamefilter('Midas Lending')">
 
@@ -121,13 +121,13 @@
 				</div>
 			</div>
 			<div class="col-md-2"></div>
-			<div class="col-md-4 intro-table-hover-house">
+			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
 				<div id="midasDealingDiv" class="expand">
 					<h4 id="midasDealingName" class="white heading">House Dealing
 						& Securities</h4>
 				</div>
 				<div class="flagContainer centerBox">
-					<a id="midasDealing" data-toggle="modal" data-target="#GL"
+					<a id="midasDealing" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
 						ng-click="housenamefilter('Midas Dealing & Securities')">
 
@@ -136,13 +136,13 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-md-4 intro-table-hover-house">
+			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
 				<div id="midasFTDiv" class="expand">
 					<h4 id="midasFTName" class="white heading">House Funds
 						Transfer</h4>
 				</div>
 				<div class="flagContainer centerBox">
-					<a id="midasFT" data-toggle="modal" data-target="#GL"
+					<a id="midasFT" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
 						ng-click="housenamefilter('Midas Funds Transfer')">
 
@@ -155,7 +155,7 @@
 
 	</div>
 
-	<div class="modal fade " id="GL" tabindex="-1" role="dialog"
+	<div class="modal fade " id="houseModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog"
 			style="margin-top: 100px; min-width: 900px; max-height: 400px;"
