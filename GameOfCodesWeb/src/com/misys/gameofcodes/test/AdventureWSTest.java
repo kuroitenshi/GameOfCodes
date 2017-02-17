@@ -18,8 +18,7 @@ public class AdventureWSTest {
 		Adventure adventure = new Adventure();
 		adventure.setAdventurename("adventurename");
 		adventure.setDateStart(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse("013-10-07T23:59:51.205-07:00"));
-		adventure.setDateEnd(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse("013-10-07T23:59:51.205-07:00"));
-		adventure.setStoryPoints(3);
+		adventure.setDateEnd(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse("013-10-07T23:59:51.205-07:00"));		
 		adventure.setHouse("House of Essence");
 //		adventure.setStoryPointsMonth(storyPointsMonth);
 		

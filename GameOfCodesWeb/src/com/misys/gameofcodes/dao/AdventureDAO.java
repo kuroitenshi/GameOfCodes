@@ -12,8 +12,8 @@ import com.mongodb.WriteResult;
 public interface AdventureDAO  {
 
 	List<Adventure> getAllAdventures();
-	Hero getAdventure(Adventure adventure);
-	Hero getAdventure(DBObject dbhero);
+	Adventure getAdventure(Adventure adventure);
+	Adventure getAdventure(DBObject dbhero);
 	WriteResult addAdventure(Adventure adventure);
 	WriteResult updateAdventure(Adventure adventure);
 	WriteResult deleteAdventure(Adventure adventure);

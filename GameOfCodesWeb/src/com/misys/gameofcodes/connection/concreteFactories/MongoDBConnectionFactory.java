@@ -18,7 +18,7 @@ public class MongoDBConnectionFactory extends AbstractConnectionFactory
 	public void createDatabaseConnection() {
 		
 		MongoClient mongoClient = null;
-		String mongoIpAddress = "localhost";
+		String mongoIpAddress = "mancswfbedv0004";
 		int mongoPort = 27017;
 		
 		if(mongoClient == null)

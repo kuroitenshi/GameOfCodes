@@ -11,23 +11,23 @@ import java.util.Map;
 @XmlRootElement
 public class Adventure {
 	
-	private String id;
+	private ObjectId id;
 	
 	private String adventurename;
 	private Date dateStart;
 	private Date dateEnd;
 	private String house;
-	private String storyPoints;
+	private int storyPoints;
 	private Map<String, Integer> storyPointsMonth;
 	private Map<String, Ticket> tickets;
 	
 	public Adventure(){}
 	
-	public String getId() {
+	public ObjectId getId() {
 		return id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(ObjectId objId) {
+		this.id = objId;
 	}
 	public String getAdventurename() {
 		return adventurename;
@@ -53,10 +53,10 @@ public class Adventure {
 	public void setHouse(String house) {
 		this.house = house;
 	}
-	public String getStoryPoints() {
+	public int getStoryPoints() {
 		return storyPoints;
 	}
-	public void setStoryPoints(String storyPoints) {
+	public void setStoryPoints(int storyPoints) {
 		this.storyPoints = storyPoints;
 	}
 	public Map<String, Integer> getStoryPointsMonth() {

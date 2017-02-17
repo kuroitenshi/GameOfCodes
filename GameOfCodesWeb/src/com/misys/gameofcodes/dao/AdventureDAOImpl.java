@@ -15,6 +15,7 @@ import org.bson.types.ObjectId;
 
 import com.misys.gameofcodes.connection.CollectionProvider;
 import com.misys.gameofcodes.model.Adventure;
+import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.model.Ticket;
 import com.misys.gameofcodes.service.HouseService;
@@ -112,11 +113,18 @@ public class AdventureDAOImpl implements AdventureDAO {
 	}
 
 	@Override
-	public WriteResult deleteAdventure(Adventure adventure) {
-		BasicDBObject query = new BasicDBObject("adventureName", adventure.getAdventurename());
-		
-		return adventuresCollection.remove(query);
+	public Adventure getAdventure(Adventure adventure) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	@Override
+	public WriteResult deleteAdventure(Adventure adventure) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 	
 

@@ -17,8 +17,7 @@ public class Ticket {
 	private String description;
 	private Date dateStarted;
 	private Date dateVerified;
-	private String status;
-	private String severity;
+	private String status;	
 	private String priority;
 	private Date dateEnd;
 	private List<String> developers;
@@ -87,15 +86,7 @@ public class Ticket {
 	
 	public void setStatus(String status){
 		this.status = status;
-	}
-	
-	public String getSeverity(){
-		return severity;
-	}
-	
-	public void setSeverity(String severity){
-		this.severity = severity;
-	}
+	}	
 	
 	public String getPriority(){
 		return priority;			

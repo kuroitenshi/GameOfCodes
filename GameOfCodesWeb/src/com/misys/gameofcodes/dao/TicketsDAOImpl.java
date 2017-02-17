@@ -122,10 +122,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 		}
 		if (dbTicket.get("status").toString() != null) {
 			ticket.setStatus(dbTicket.get("status").toString()); 
-		}
-		if (dbTicket.get("severity").toString() != null) {
-			ticket.setSeverity(dbTicket.get("severity").toString()); 
-		}
+		}		
 		if (dbTicket.get("priority").toString() != null) {
 			ticket.setPriority(dbTicket.get("priority").toString()); 
 		}
@@ -160,8 +157,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 				.append("description", "")
 				.append("dateStarted", ticket.getDateStarted())
 				.append("dateVerified", ticket.getDateVerified())
-				.append("status", ticket.getStatus())
-				.append("severity", ticket.getSeverity())
+				.append("status", ticket.getStatus())				
 				.append("priority", ticket.getPriority())
 				.append("dateEnd",ticket.getDateEnd())
 				.append("developers", dbDevelopers)
@@ -171,7 +167,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 	@Override
 	public void updateTicket(Ticket ticket){
 		BasicDBObject query = new BasicDBObject();
-		query.put("_id", new ObjectId(ticket.getId()));
+		query.put("_id", ticket.getId());
 		DBObject dbTicket = ticketCollection.findOne(query);
 		dbTicket.put("jiraId", ticket.getJiraId());
 		ticketCollection.update(query, dbTicket);
