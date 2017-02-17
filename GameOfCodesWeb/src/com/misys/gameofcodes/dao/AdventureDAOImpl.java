@@ -16,9 +16,9 @@ import org.bson.types.ObjectId;
 import com.misys.gameofcodes.connection.CollectionProvider;
 import com.misys.gameofcodes.model.Adventure;
 import com.misys.gameofcodes.model.House;
-import com.misys.gameofcodes.model.Quest;
+import com.misys.gameofcodes.model.Ticket;
 import com.misys.gameofcodes.service.HouseService;
-import com.misys.gameofcodes.service.QuestService;
+import com.misys.gameofcodes.service.TicketService;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBAddress;
 import com.mongodb.DBCollection;
@@ -67,19 +67,19 @@ public class AdventureDAOImpl implements AdventureDAO {
 		adventure.setStoryPoints((Integer) dbAventure.get("storyPoints"));
 //		adventure.setStoryPointsMonth(storyPointsMonth);
 		
-		Map<String, Quest> quests = new HashMap<>();
-		List<BasicDBObject> questsList = new ArrayList<>();
-		if(dbAventure.get("quest") != null){
-			questsList = (List<BasicDBObject>) dbAventure.get("quest");
-			Iterator<BasicDBObject> iterator = questsList.iterator();
+		Map<String, Ticket> tickets = new HashMap<>();
+		List<BasicDBObject> ticketsList = new ArrayList<>();
+		if(dbAventure.get("ticket") != null){
+			ticketsList = (List<BasicDBObject>) dbAventure.get("ticket");
+			Iterator<BasicDBObject> iterator = ticketsList.iterator();
 			while(iterator.hasNext()){
-				ObjectId questObjId = (ObjectId) iterator.next().get("_id");
-				Quest quest = new Quest();
-				quest.setId(questObjId);
+				ObjectId ticketObjId = (ObjectId) iterator.next().get("_id");
+				Ticket ticket = new Ticket();
+				ticket.setId(ticketObjId);
 //				quests.put(questObjId, QuestService.fetchQuest(quest));
 			}
 		}
-		adventure.setQuests(quests); 
+		adventure.setTickets(tickets); 
 
 		
 		return adventure;
@@ -92,7 +92,7 @@ public class AdventureDAOImpl implements AdventureDAO {
 					.append("dateStart", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(adventure.getDateStart()))
 					.append("dateEnd", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(adventure.getDateEnd()))
 					.append("storyPoints", adventure.getStoryPoints())
-					.append("quest", adventure.getQuests())
+					.append("ticket", adventure.getTickets())
 					.append("storyPointsMonth", adventure.getStoryPointsMonth());
 				
 		return adventuresCollection.insert(adventureObject);

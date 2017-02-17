@@ -19,7 +19,7 @@ public class Adventure {
 	private String house;
 	private String storyPoints;
 	private Map<String, Integer> storyPointsMonth;
-	private Map<String, Quest> quests;
+	private Map<String, Ticket> tickets;
 	
 	public Adventure(){}
 	
@@ -65,11 +65,11 @@ public class Adventure {
 	public void setStoryPointsMonth(Map<String, Integer> storyPointsMonth) {
 		this.storyPointsMonth = storyPointsMonth;
 	}
-	public Map<String, Quest> getQuests() {
-		return quests;
+	public Map<String, Ticket> getTickets() {
+		return tickets;
 	}
-	public void setQuests(Map<String, Quest> quests) {
-		this.quests = quests;
+	public void setTickets(Map<String, Ticket> tickets) {
+		this.tickets = tickets;
 	}
 	
 	

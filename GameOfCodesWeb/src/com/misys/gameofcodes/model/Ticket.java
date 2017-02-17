@@ -10,7 +10,7 @@ import org.bson.types.ObjectId;
 @XmlRootElement
 public class Ticket {
 	
-	private String id;
+	private Object id;
 	
 	private String jiraId;
 	private String title;
@@ -24,18 +24,20 @@ public class Ticket {
 	private List<String> developers;
 	private int storyPoints;
 	private String isAssigned;
-	
+	private Adventure adventure;
+	private Hero hero;	
+
 	public Ticket (){}
 	
 	public Ticket(String jiraId){
 		this.setJiraId(jiraId);
 	}
 	
-	public String getId() {
+	public Object getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(Object id) {
 		this.id = id;
 	}
 	
@@ -133,5 +135,21 @@ public class Ticket {
 
 	public void setIsAssigned(String isAssigned) {
 		this.isAssigned = isAssigned;
+	}
+	
+	public Adventure getAdventure() {
+		return adventure;
+	}
+
+	public void setAdventure(Adventure adventure) {
+		this.adventure = adventure;
+	}
+
+	public Hero getHero() {
+		return hero;
+	}
+
+	public void setHero(Hero hero) {
+		this.hero = hero;
 	}
 }

@@ -8,7 +8,7 @@ import java.util.Map;
 import com.misys.gameofcodes.dao.AdventureDAO;
 import com.misys.gameofcodes.dao.AdventureDAOImpl;
 import com.misys.gameofcodes.model.Adventure;
-import com.misys.gameofcodes.model.Quest;
+import com.misys.gameofcodes.model.Ticket;;
 
 public class AdventureWSTest {
 
