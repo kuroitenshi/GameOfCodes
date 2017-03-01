@@ -180,12 +180,12 @@
 											<div class="col-sm-2 col-xs-4">
 												<h3 class="largeContentText">{{hero.storyPoints}}</h3>
 												<div class="progress-custom progress-striped" ng-repeat="level in heroLevels | filter:{level:hero.level+1}:true track by $index">
-+													<div class="progress-bar progress-bar-custom active"
-+														role="progressbar" aria-valuenow="{{(hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)}}" aria-valuemin="0"
-+														aria-valuemax="{{level.points - heroLevels[heroLevels.indexOf(level) - 1].points}}"
-+														style="margin-bottom: 20px; width: {{((hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)/(level.points - heroLevels[heroLevels.indexOf(level) - 1].points))*100}}%; text-align: center">
-+														{{level.points-hero.storyPoints}} to rank up
-+													</div>
+													<div class="progress-bar progress-bar-custom active"
+														role="progressbar" aria-valuenow="{{(hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)}}" aria-valuemin="0"
+														aria-valuemax="{{level.points - heroLevels[heroLevels.indexOf(level) - 1].points}}"
+														style="margin-bottom: 20px; width: {{((hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)/(level.points - heroLevels[heroLevels.indexOf(level) - 1].points))*100}}%; text-align: center">
+														{{level.points-hero.storyPoints}} to rank up
+													</div>
 												</div>
 											</div>
 											<div class="col-sm-3 hidden-xs hidden-xs">
