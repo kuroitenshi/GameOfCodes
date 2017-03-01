@@ -62,7 +62,7 @@ body {
 }
 
 .num-row{
-	padding-top: 110px;
+	padding-top: 40%;
 	display: flex;
 }
 
@@ -81,8 +81,8 @@ body {
 /*House Header Customizations*/
 .houseHeader {
 	/*padding: 0px 40px 60px 40px; /*top , right, bottom, left*/
-	margin-right: 40px;
-	margin-left: 30px;
+	margin-right: 5%;
+	margin-left: 5%;
 	margin-bottom: 50px;
 	min-width: 1700;
 	min-height: 240px;
@@ -142,6 +142,7 @@ body {
 	border: 0;
 	opacity: 0.85;
 	min-height: 30px;
+	margin-bottom: -1%
 }
 
 .navbar-header {
@@ -183,9 +184,21 @@ h1.houseName {
 	font-size: 80px;
 	font-weight: bold;
 	color: #660000;
+	margin-left:5%;
+	padding-top: 2%;
+	margin-bottom: 0;
 }
 
 h2.headerText {
+	font-family: 'AgencyFB';
+	font-size: 40px;
+	font-weight: bold;
+	color: #660000;
+	display: inline;
+	margin-left:5%;
+}
+
+h2.tableHeaderText{
 	font-family: 'AgencyFB';
 	font-size: 40px;
 	font-weight: bold;
@@ -223,6 +236,12 @@ img.floatLeft {
 img.floatRight {
 	float: right;
 }
+
+/*Custom progress bar*/
+
+.progress-custom {background: rgba(51, 35, 6, 0.45); border: 0px solid rgba(245, 245, 245, 1); border-radius: 9px; height: 20px;}
+.progress-bar-custom {background: rgba(54, 44, 33, 1);} 
+.progress-striped .progress-bar-custom {white-space: nowrap; border-radius: 9px; background-color: rgba(54, 44, 33, 1); background-image: -webkit-gradient(linear,0 100%,100% 0,color-stop(0.25,rgba(26, 19, 5, 0.89),color-stop(0.25,transparent),color-stop(0.5,transparent),color-stop(0.5,rgba(26, 19, 5, 0.89)),color-stop(0.75,rgba(26, 19, 5, 0.89)),color-stop(0.75,transparent),to(transparent))); background-image: -webkit-linear-gradient(45deg,rgba(26, 19, 5, 0.89) 25%,transparent 25%,transparent 50%,rgba(26, 19, 5, 0.89) 50%,rgba(26, 19, 5, 0.89) 75%,transparent 75%,transparent); background-image: linear-gradient(45deg,rgba(26, 19, 5, 0.89) 25%,transparent 25%,transparent 50%,rgba(26, 19, 5, 0.89) 50%,rgba(26, 19, 5, 0.89) 75%,transparent 75%,transparent); background-size: 29px 29px; color: #dcdcdc;}
 
 /*Font Declarations*/
 @font-face {
