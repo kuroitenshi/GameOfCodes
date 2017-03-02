@@ -219,12 +219,12 @@ h4.houseBoardMediumText{
 }
 
 .questBoard{
-	margin-top: 100px;
+	margin-top: 6%;
 	margin-left: 100px;
 	margin-right: 100px;
 	margin-bottom: 100px;
 	text-align: center;	
-	background-image: url("../img/bg/Quest_board_bg.jpg");
+	background-image: url("../img/bg/Quest_board_bg2.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;	
   	min-height: 900px;
@@ -233,21 +233,22 @@ h4.houseBoardMediumText{
 .questPanel{
 	overflow-y: auto;
 	overflow-x: hidden;
-	height: 700px;
+	height: 800px;
 	width: 1650px;
+	padding-top:2%;
 }
 
 .questRow{
-	margin-top: 50px;
+	margin-top: 40px;
 }
 
 .questFragment{
 	background-image: url("../img/bg/Quest_box.png");
 	background-size: 100% 100%;
-	margin-left: 150px;
+	margin-left: 20%;
 	width: 15vw;
 	height: 15vw;
-	border: 1px solid green ;
+	border: 1px solid transparent;
 }
 
 .questFragment:hover {
@@ -257,10 +258,30 @@ h4.houseBoardMediumText{
 .questContent {	
 	margin-top: 40px;
 	margin-left: 17px;
-	border: 1px solid red ;
-  	width: 250px
+	border: 1px solid transparent;
+  	width: 88%;
 }
 
+.questContent p{
+	color: black;
+	font-family: 'Cardo-Regular';
+	text-align: left;
+	margin-left: 10px;
+	line-height: 20px;
+	padding-top: 10px;
+}
+
+.questContent p.highlight{
+	font-family: 'Cardo-Bold';
+}
+
+.questHeader{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black; 
+	font-weight: bold;
+}
 
 .parallax {
 	position: absolute;
@@ -293,6 +314,20 @@ h4.houseBoardMediumText{
 	border-width: 5px;
 }
 
+.questContent .inprogress{
+	font-size: 15px;
+	margin-left:-40%;
+}
+
+.questContent .inprogress::before{
+	background: url("../img/icon/green-icon.png") no-repeat 0 27px;
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    content: " ";
+    display:inline-block;
+    margin-top:-50px;
+}
 /*Font Declarations*/
 
 @font-face {
@@ -386,7 +421,7 @@ h3 {
 }
 
 h4 {
-	font-size: 24px;
+	font-size: 28px;
 }
 
 h5 {
