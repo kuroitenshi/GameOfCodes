@@ -43,19 +43,24 @@ public class HouseWSTest {
 		System.out.println("Adding New Houses");
 		House house = new House();
 		//add house 1
-		house.setHousename("House Stark");
+//		house.setHousename("House Stark");
+//		house.setBanner("Wolf");
+//		house.setDomain("Essence Core");
+//		HouseService.createHouse(house);
+//		//add house 2
+//		house.setHousename("House Lannister");
+//		house.setBanner("Lion");
+//		house.setDomain("Essence Teller");
+//		HouseService.createHouse(house);
+//		//add house 3
+//		house.setHousename("House Barratheon");
+//		house.setBanner("Stag");
+//		house.setDomain("Essence Party");
+//		HouseService.createHouse(house);
+		
+		house.setHousename("House #EXODU");
 		house.setBanner("Wolf");
-		house.setDomain("Essence Core");
-		HouseService.createHouse(house);
-		//add house 2
-		house.setHousename("House Lannister");
-		house.setBanner("Lion");
-		house.setDomain("Essence Teller");
-		HouseService.createHouse(house);
-		//add house 3
-		house.setHousename("House Barratheon");
-		house.setBanner("Stag");
-		house.setDomain("Essence Party");
+		house.setDomain("Equation Lending");
 		HouseService.createHouse(house);
 	}
 	public void fetchAll() {

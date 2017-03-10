@@ -162,7 +162,130 @@
 											<div class="col-sm-3 subHeaderLeftAlign">
 												<div class="houseHeaderContent">
 													<img class="leaderboard-avatar"
-														src="img/avatar/hero/goc_{{hero.username}}.png" alt="...">
+														src="img/avatar/hero/EssenceCore/goc_{{hero.username}}.png" alt="...">
+													<h4 class="mediumContentText">{{hero.name}}</h4>
+												</div>
+
+											</div>
+											<div class="col-sm-3 subHeaderLeftAlign">
+												<div class="houseHeaderContent"
+													ng-repeat="level in heroLevels | filter:{level:hero.level}:true">
+													<img class="leaderboard-avatar"
+														src="img/ranks/{{level.icon}}.png" alt="...">
+													<h4 class="mediumContentText">{{level.name}}</h4>
+												</div>
+
+											</div>
+
+											<div class="col-sm-2 col-xs-4">
+												<h3 class="largeContentText">{{hero.storyPoints}}</h3>
+												<div class="progress-custom progress-striped" ng-repeat="level in heroLevels | filter:{level:hero.level+1}:true track by $index">
+													<div class="progress-bar progress-bar-custom active"
+														role="progressbar" aria-valuenow="{{(hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)}}" aria-valuemin="0"
+														aria-valuemax="{{level.points - heroLevels[heroLevels.indexOf(level) - 1].points}}"
+														style="margin-bottom: 20px; width: {{((hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)/(level.points - heroLevels[heroLevels.indexOf(level) - 1].points))*100}}%; text-align: center">
+														{{level.points-hero.storyPoints}} to rank up
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-3 hidden-xs hidden-xs">
+												<h3 class="largeContentText">{{hero.storyPointsMonth}}</h3>
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="item"
+					ng-repeat="house in houses | filter:{domain:'EQ_Lending'}">
+					<div class="container-fluid">
+						<div class="leaderboard-div-bg leaderboard-font houseHeader">
+							<div class="media">
+								<div class="row vertical-align">
+									<div class="col-md-2"></div>
+									<div class="col-md-8 col-sm-12 ">
+										<div class="col-sm-2">
+											<img class="houseFlagContainer"
+												src="img/houses/house_EXODU.png" alt="...">
+										</div>
+										<div class="col-sm-8 subHeaderLeftAlign"
+											style="padding-top: 10px">
+											<h1 class="houseName">{{house.domain}}</h1>
+											<h2 class="headerText">{{house.housename}}</h2>
+										</div>
+										<div class="col-sm-2 "></div>
+									</div>
+									<div class="col-md-2">
+										<div class="num-row">
+											<div class="num-block">
+												<h4 class="mediumContentText">Exp {{house.storyPoints}}</h4>
+											</div>
+											<!-- div class="num-block">
+												<h4 class="mediumContentText">Quests  10 </h4>
+											</div-->
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="leaderboard-font ">
+							<div class="media ">
+								<div class="media-body ">
+									<!-- Leaderboard SubHeader START -->
+									<div class="row vertical-align leaderboardSubHeader">
+										<div class="col-sm-1">
+											<img class="floatLeft" src="img/textures/dots.png" />
+										</div>
+										<div class="col-sm-3 subHeaderLeftAlign ">
+											<!-- Hero Logo here -->
+											<div class="houseHeaderContent">
+												<img class="houseHeaderIcons" src="img/icon/crown.png"
+													alt="...">
+												<h2 class="tableHeaderText">HERO</h2>
+											</div>
+										</div>
+										<div class="col-sm-3 subHeaderLeftAlign">
+											<!-- Rank Logo here -->
+											<div class="houseHeaderContent">
+												<img class="houseHeaderIcons" src="img/icon/star.png"
+													alt="...">
+												<h2 class="tableHeaderText">RANK</h2>
+											</div>
+										</div>
+										<div class="col-sm-2 col-xs-4 vertical-align">
+											<!-- Exp Logo here -->
+											<div class="houseHeaderContent">
+												<img class="houseHeaderIcons" src="img/icon/star.png"
+													alt="...">
+												<h2 class="tableHeaderText">EXP</h2>
+											</div>
+										</div>
+										<div class="col-sm-3 hidden-xs hidden-xs vertical-align">
+											<!-- Month Logo here -->
+											<div class="houseHeaderContent">
+												<img class="houseHeaderIcons iconRightAlign"
+													src="img/icon/month.png" alt="...">
+												<h2 class="tableHeaderText">FEBRUARY</h2>
+											</div>
+											<img class="floatRight" src="img/textures/dots.png" />
+										</div>
+									</div>
+									<!-- Leaderboard SubHeader END -->
+									<!-- Leaderboard elements Start -->
+									<div ng-controller="heroesController">
+										<div class="row vertical-align leaderboard-div-entry"
+											ng-repeat="hero in heroes | orderBy : '-storyPoints'">
+											<div class="col-sm-1"></div>
+											<div class="col-sm-3 subHeaderLeftAlign">
+												<div class="houseHeaderContent">
+													<img class="leaderboard-avatar"
+														src="img/avatar/hero/Equation/Lending/goc_{{hero.username}}.png" alt="...">
 													<h4 class="mediumContentText">{{hero.name}}</h4>
 												</div>
 
