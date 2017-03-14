@@ -25,6 +25,7 @@ import com.misys.gameofcodes.dao.TicketsDAOImpl;
 import com.misys.gameofcodes.model.CustomJQL;
 import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
+import com.misys.gameofcodes.model.JQLConstants;
 import com.misys.gameofcodes.model.Ticket;
 import com.misys.gameofcodes.service.HeroService;
 import com.misys.gameofcodes.service.HouseService;
@@ -43,7 +44,10 @@ public class FetchTicket {
 	}
 
 	public static void main(String[] args) throws IOException {
-
+		computeEQLendingTicketsForISTISNA();
+		computeEQLendingTicketsForEPA1();
+	}
+	public void computeEssenceCoreTickets() {
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("FBE Core");
 		projects.add("Universal Banking Scrum");
@@ -77,7 +81,93 @@ public class FetchTicket {
 		//ft.computeTickets();
 
 	}
+	
+	public static void computeEQLendingTicketsForISTISNA() {
+		ArrayList<String> projects = new ArrayList<String>();
+		projects.add("EQ");
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("domingw2");
+		developers.add("rogedian");
+		developers.add("mangunf1");
+		developers.add("marquel1");
+		developers.add("dalistal");
+		developers.add("blandich");
+		developers.add("jmarque2");
+		developers.add("jclemen2");
+		developers.add("jpardill");
+		developers.add("gladysyu");
+		developers.add("jcristob");
+		developers.add("ccalamba");
+		developers.add("bvictori");
+		ArrayList<String> affectedVersion = new ArrayList<String>();
+		affectedVersion.add("EMPTY");
+		affectedVersion.add("EQ 4.3.3.02");
+		affectedVersion.add("EQ 4.3.3.01");
+		affectedVersion.add("EQ 4.3.3.03");
+		affectedVersion.add("EQ 4.3.3.00");
+		affectedVersion.add("EQ 4.3.3.04");
+		ArrayList<String> module = new ArrayList<String>();
+		module.add("EQ - Lending");
+		ArrayList<String> status = new ArrayList<String>();
+		CustomJQL jql = new CustomJQL();
+		jql.setProjects(projects);
+		jql.setDevelopers(developers);
+		jql.setAffectedVersion(affectedVersion);
+		jql.setModule(module);
+		jql.setVerifiedDate("2016-06-01"); // YYYY-MM-DD
+		jql.setClosedDate("2016-06-01");// YYYY-MM-DD		
 
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			System.out.println(jql.returnJQLQuery() + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY);
+			//ft.fetchJQLQuery(jql.returnJQLQuery()); // ft.getTickets(tickets);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//ft.computeTickets();
+
+	}
+	
+	public static void computeEQLendingTicketsForEPA1() {
+		ArrayList<String> projects = new ArrayList<String>();
+		projects.add("EQ");
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("domingw2");
+		developers.add("rogedian");
+		developers.add("mangunf1");
+		developers.add("marquel1");
+		developers.add("dalistal");
+		developers.add("blandich");
+		developers.add("jmarque2");
+		developers.add("jclemen2");
+		developers.add("jpardill");
+		developers.add("gladysyu");
+		developers.add("jcristob");
+		developers.add("ccalamba");
+		developers.add("bvictori");
+		ArrayList<String> status = new ArrayList<String>();
+		CustomJQL jql = new CustomJQL();
+		jql.setProjects(projects);
+		jql.setDevelopers(developers);
+		jql.setVerifiedDate("2016-06-01"); // YYYY-MM-DD
+		jql.setClosedDate("2016-06-01");// YYYY-MM-DD		
+
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			System.out.println(jql.returnJQLQuery() + JQLConstants.EQ_LENDING_EPA1_SUMMARY);
+			//ft.fetchJQLQuery(jql.returnJQLQuery()); // ft.getTickets(tickets);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//ft.computeTickets();
+
+	}
 	public void runScript() {
 		FetchTicket ft = null;
 		try {

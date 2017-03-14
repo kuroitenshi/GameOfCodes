@@ -37,6 +37,107 @@ public class HouseWSTest {
 					hero
 					);
 		}
+	}*/
+	
+	private void addHeroesToHouse() {
+		House house = new House();
+		Hero hero = new Hero();
+		house.setDomain("EQ_Lending");
+		
+		
+		hero.setUsername("domingw2");
+		hero.setName("Wilson Domingo");
+		hero.setEmail("Wilson.Domingo@misys.com");
+		HeroService.createHero(hero);
+		
+		HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+		
+		// Add second hero
+		hero.setUsername("rogedian");
+		hero.setName("Rogelio Dian");
+		hero.setEmail("Rogelio.Dian@misys.com");
+		HeroService.createHero(hero);
+		
+		HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+		// Add second hero
+		hero.setUsername("mangunf1");
+		hero.setName("Felicisimo Mangundayao");
+		hero.setEmail("Felicisimo.Mangundayao@misys.com");
+		HeroService.createHero(hero);
+		
+		HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+		// Add second hero
+		hero.setUsername("marquel1");
+		hero.setName("Luzviminda Marquez");
+		hero.setEmail("Luzviminda.Marquez@misys.com");
+		HeroService.createHero(hero);
+		
+		HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+		// Add second hero
+		hero.setUsername("dalistal");
+		hero.setName("Lori Dalistan-Songco");
+		hero.setEmail("Lori.Dalistan-Songco@misys.com");
+		HeroService.createHero(hero);
+		
+		HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+		// Add second hero
+		hero.setUsername("blandich");
+		hero.setName("Benjamin Joseph Landicho");
+		hero.setEmail("BenjaminJoseph.Landicho@misys.com");
+		HeroService.createHero(hero);
+		
+		HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+		// Add second hero
+		hero.setUsername("jmarque2");
+		hero.setName("Joshua Marquez Lim");
+		hero.setEmail("Joshua.MarquezLim@misys.com");
+		HeroService.createHero(hero);
+		
+		HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+		// Add second hero
+				hero.setUsername("jclemen2");
+				hero.setName("Jose Maria Clemente");
+				hero.setEmail("JoseMaria.Clemente@misys.com");
+				HeroService.createHero(hero);
+				
+				HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+				// Add second hero
+				hero.setUsername("jpardill");
+				hero.setName("Jerico Pardillo");
+				hero.setEmail("Jerico.Pardillo@misys.com");
+				HeroService.createHero(hero);
+				
+				HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+				// Add second hero
+				hero.setUsername("gladysyu");
+				hero.setName("Gladys Joyce Yu");
+				hero.setEmail("GladysJoyce.Yu@misys.com");
+				HeroService.createHero(hero);
+				
+				HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+				// Add second hero
+				hero.setUsername("jcristob");
+				hero.setName("Jericho Cristobal");
+				hero.setEmail("Jericho.Cristobal@misys.com");
+				HeroService.createHero(hero);
+				
+				HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+				// Add second hero
+				hero.setUsername("ccalamba");
+				hero.setName("Catherine Calamba");
+				hero.setEmail("Catherine.Calamba@misys.com");
+				HeroService.createHero(hero);
+				
+				HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+				// Add second hero
+				hero.setUsername("bvictori");
+				hero.setName("Bianca Ysabel Victoria");
+				hero.setEmail("BiancaYsabel.Victoria@misys.com");
+				HeroService.createHero(hero);
+				
+				HouseService.addHouseHero(HouseService.fetchHouse(house),	HeroService.fetchHero(hero));
+
+
 	}
 
 	public void newHouses() {
@@ -62,6 +163,11 @@ public class HouseWSTest {
 		house.setBanner("Wolf");
 		house.setDomain("Equation Lending");
 		HouseService.createHouse(house);
+	}
+        public void deleteHouse() {
+		System.out.println("Deleting House...");
+		
+		HouseService.deleteHouse("58c23c3f0a51864b004a8ea2"); 
 	}
 	public void fetchAll() {
 		System.out.println("Getting all Houses");

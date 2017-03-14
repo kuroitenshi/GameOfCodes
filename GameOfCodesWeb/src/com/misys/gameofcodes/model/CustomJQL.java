@@ -7,6 +7,8 @@ public class CustomJQL {
 	private ArrayList<String> projects;
 	private ArrayList<String> developers;
 	private ArrayList<String> status;
+	private ArrayList<String> affectedVersion;
+	private ArrayList<String> module;
 	private int storyPoints;
 	private String priority;
 	private String verifiedDate;
@@ -69,6 +71,10 @@ public class CustomJQL {
 		this.closedDate = closedDate;
 	}
 	
+	public ArrayList<String> getAffectedVersion() {
+		return affectedVersion;
+	}
+
 	public ArrayList<String> getStatus() {
 		return status;
 	}
@@ -76,6 +82,19 @@ public class CustomJQL {
 	public void setStatus(ArrayList<String> status) {
 		this.status = status;
 	}
+
+	public void setAffectedVersion(ArrayList<String> affectedVersion) {
+		this.affectedVersion= affectedVersion;
+	}
+	
+	public ArrayList<String> getModule() {
+		return module;
+	}
+
+	public void setModule(ArrayList<String> module) {
+		this.module = module;
+	}
+
 
 	public String returnJQLQuery() {
 
@@ -86,6 +105,14 @@ public class CustomJQL {
 			JQLbuilder.append(" AND ");
 		}
 		if (addedStatus() && !isLast(2)) {
+			JQLbuilder.append(" AND ");
+		}
+		if(addedAffectedVersion() && !isLast(2))
+		{
+			JQLbuilder.append(" AND ");
+		}
+		if(addedModule() && !isLast(2))
+		{
 			JQLbuilder.append(" AND ");
 		}
 		if (storyPoints != 0 ) {
@@ -161,6 +188,45 @@ public class CustomJQL {
 				}
 			}
 			JQLbuilder.append(" ) ");
+
+			return true;
+		}
+		return false;
+
+	}
+	
+	private boolean addedAffectedVersion() {
+		if (affectedVersion != null) {
+			JQLbuilder.append("affectedVersion in (");
+			for (int i = 0; i < affectedVersion.size(); i++) {
+				if(affectedVersion.get(i).equals("EMPTY")) {
+					JQLbuilder.append(affectedVersion.get(i));
+				}
+				else {
+					JQLbuilder.append("\"" + affectedVersion.get(i) + "\"");
+				}
+				if (i != affectedVersion.size() - 1) {
+					JQLbuilder.append(", ");
+				}
+			}
+			JQLbuilder.append(") ");
+
+			return true;
+		}
+		return false;
+
+	}
+	
+	private boolean addedModule() {
+		if (module != null) {
+			JQLbuilder.append("module in (");
+			for (int i = 0; i < module.size(); i++) {
+				JQLbuilder.append("\"" + module.get(i) + "\"");
+				if (i != module.size() - 1) {
+					JQLbuilder.append(", ");
+				}
+			}
+			JQLbuilder.append(") ");
 
 			return true;
 		}
