@@ -27,7 +27,7 @@ public class HouseWSTest {
 		HouseService.updateHousePoints(house);
 	}
 
-	private void addHeroesToHouse() {
+	/*private void addHeroesToHouse() {
 		House house = new House();
 		house.setDomain("Essence Core");
 		List<Hero> heroes = HeroService.fetchHeroes();

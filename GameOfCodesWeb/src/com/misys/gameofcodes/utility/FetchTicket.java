@@ -188,7 +188,7 @@ public class FetchTicket {
 	 */
 	public SearchResult fetchJQLQuery(String jqlQuery) {
 		try {
-			restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "edgresma", "#01@MIsys3");	
+			restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "jpbautis", "icecreamMEL28:))");	
 			Promise<SearchResult> searchJqlPromise = restClient.getSearchClient().searchJql(jqlQuery, 999, null, null);
 		
 			return searchJqlPromise.claim();
