@@ -7,14 +7,14 @@
 			<h3>Kingdom Essence</h3>
 		</div>
 		<div class="row kingdomEssenceFragment">
-			<div class="col-md-4 centerBox intro-table-hover-house" ng-controller= "housesController">
+			<div class="col-md-4 centerBox intro-table-hover-house" ng-controller="housesController">
 				<div id="essenceDiv" class="expand">
 					<h4 id="essenceName" class="white heading">House Essence</h4>
 				</div>
 				<div class="flagContainer centerBox">
 					<a id="essence" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click= "housenamefilter('Essence Core')">
+						ng-click="housenamefilter('Essence Core')">
 
 						<img src="img/domain_logos/FBE/FBE_logo.png" class="flagPointer" />
 					</a>
@@ -34,7 +34,7 @@
 				<div class="flagContainer centerBox">
 					<a id="eqLending" data-toggle="modal" data-target="#houseModal"
 						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Essence Teller')">
+						ng-click="housenamefilter('Equation Lending')">
 
 						<img src="img/domain_logos/FBEQ/EQ_Lending.png"
 							class="flagPointer" />
@@ -171,11 +171,11 @@
 				<div ng-controller="heroesController"
 					class="houseBoardFragmentContainer">
 					<div class="row vertical-align houseBoardFragment"
-						ng-repeat="hero in heroes | orderBy : '-storyPoints'">
+						ng-repeat="(key, hero) in house.heroes | orderByStoryPoints:'storyPoints':'true'">
 						<div class="col-sm-4 subHeaderLeftAlign">
 							<div class="houseBoardContent">
 								<img class="houseBoard-avatar"
-									src="img/avatar/hero/goc_{{hero.username}}.png" alt="...">
+									src="img/avatar/hero/{{house.domain}}/goc_{{hero.username}}.png" alt="...">
 								<h4 class="houseBoardMediumText">{{hero.name}}</h4>
 							</div>
 						</div>
