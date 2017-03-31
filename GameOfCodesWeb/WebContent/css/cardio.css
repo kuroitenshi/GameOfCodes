@@ -249,6 +249,7 @@ h4.houseBoardMediumText{
 	width: 15vw;
 	height: 15vw;
 	border: 1px solid transparent;
+	border-color: red;	
 }
 
 .questFragment:hover {
@@ -260,6 +261,7 @@ h4.houseBoardMediumText{
 	margin-left: 17px;
 	border: 1px solid transparent;
   	width: 88%;
+  	height: 5px;
 }
 
 .questContent p{

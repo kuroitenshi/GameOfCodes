@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.bson.types.ObjectId;
-
 @XmlRootElement
 public class Ticket {
 	
@@ -22,9 +20,7 @@ public class Ticket {
 	private Date dateEnd;
 	private List<String> developers;
 	private int storyPoints;
-	private String isAssigned;
-	private Adventure adventure;
-	private Hero hero;	
+	private boolean isAssigned;
 
 	public Ticket (){}
 	
@@ -120,27 +116,12 @@ public class Ticket {
 		this.storyPoints = storyPoints;
 	}
 
-	public String getIsAssigned() {
+	public boolean getIsAssigned() {
 		return isAssigned;
 	}
 
-	public void setIsAssigned(String isAssigned) {
+	public void setIsAssigned(boolean isAssigned) {
 		this.isAssigned = isAssigned;
 	}
-	
-	public Adventure getAdventure() {
-		return adventure;
-	}
 
-	public void setAdventure(Adventure adventure) {
-		this.adventure = adventure;
-	}
-
-	public Hero getHero() {
-		return hero;
-	}
-
-	public void setHero(Hero hero) {
-		this.hero = hero;
-	}
 }

@@ -4,93 +4,58 @@
 	<div class="questContainer">
 		<div class="questBoard">
 			<br> <br> <br>
-			<div class="questPanel">
+			<div class="questPanel" ng-controller="ticketsController">
 				<div class="row questRow">
-					<div class="col-md-3">
-						<div class="questFragment">
+					<div class="col-md-3" ng-repeat="ticket in tickets">
+						<a id="questBox" data-toggle="modal" data-target="#questModal"
+							ng-click="questfilter(ticket.jiraId)">
+							<div class="questFragment">
+								<div class="questContent">
+									<h4 class="questHeader">Quest {{$index + 1}}</h4>
 
-							<div class="questContent">
-								<h4 class="questHeader">Quest 1</h4>
-
-								<p>
-									QUEST 1 details here <br> More details here<br>
-									Another one
-								</p>
-								<span class="inprogress">In Progress</span>
-								<p class="highlight">Jira Number : MD-4000</p>
-
+									<p>
+										{{ticket.jiraId}} <br> {{ticket.title}}<br>
+									</p>
+									<span class="inprogress">{{ticket.status}}</span>
+								</div>
 							</div>
-						</div>
+						</a>
+
+
 					</div>
-					<div class="col-md-3">
-						<div class="questFragment">
-							<div class="questContent">
-								<h4 class="questHeader">Quest 2</h4>
-
-								<p>
-									QUEST 1 details here <br> More details here<br>
-									Another one
-								</p>
-								<span class="inprogress">In Progress</span>
-								<p class="highlight">Jira Number : MD-4000</p>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="questFragment">
-							<div class="questContent">
-								<h4 class="questHeader">Quest 3</h4>
-
-								<p>
-									QUEST 1 details here <br> More details here<br>
-									Another one
-								</p>
-								<span class="inprogress">In Progress</span>
-								<p class="highlight">Jira Number : MD-4000</p>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="questFragment">
-							<div class="questContent">
-								<h4 class="questHeader">Quest 4</h4>
-
-								<p>
-									QUEST 1 details here <br> More details here<br>
-									Another one
-								</p>
-								<span class="inprogress">In Progress</span>
-								<p class="highlight">Jira Number : MD-4000</p>
-
-							</div>
-						</div>
-					</div>
-
 				</div>
-				<div class="row questRow">
-					<div class="col-md-3">
-						<div class="questFragment"></div>
-					</div>
-					<div class="col-md-3">
-						<div class="questFragment"></div>
-					</div>
 
-					<div class="col-md-3">
-						<div class="questFragment"></div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="questFragment"></div>
-					</div>
-
-				</div>
 			</div>
 
 		</div>
+
+
+
 	</div>
+
+	<!--  QUESTS MODAL - START -->
+	<div class="modal fade" id="questModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog"
+			style="margin-top: 100px; min-width: 900px; max-height: 400px;"
+			ng-controller="ticketsController">
+
+			<div class="modal-content modal-popup"
+				ng-repeat="ticket in tickets | filter:{jiraId:selectedQuest}">
+				<h1 class="
+				white headingcenterBox">QUEST {{ticket.jiraId}}</h1>
+				<h6> {{ticket.title}} </h6>
+				<h5> Objective/s: {{ticket.description}} </h5>
+				<h5> Priority: {{ticket.priority}} </h5>
+				<h5> Status: {{ticket.status}} </h5>
+				<h5> EXP to be earned: {{ticket.storyPoints}} </h5>
+				<h5> Quest Origin : <a href="https://almtools/jira/browse/{{ticket.jiraId}}">{{ticket.jiraId}}</a> </h5>
+
+
+			</div>
+		</div>
+	</div>
+	<!--  QUESTS MODAL - END  -->
+
 
 </section>

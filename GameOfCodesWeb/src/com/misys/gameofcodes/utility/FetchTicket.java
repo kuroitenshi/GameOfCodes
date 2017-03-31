@@ -8,20 +8,15 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
 import com.atlassian.jira.rest.client.api.JiraRestClient;
 import com.atlassian.jira.rest.client.api.domain.Issue;
 import com.atlassian.jira.rest.client.api.domain.SearchResult;
 import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientFactory;
 import com.atlassian.util.concurrent.Promise;
-import com.misys.gameofcodes.dao.TicketsDAOImpl;
 import com.misys.gameofcodes.model.CustomJQL;
 import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
@@ -47,6 +42,7 @@ public class FetchTicket {
 		computeEQLendingTicketsForISTISNA();
 		computeEQLendingTicketsForEPA1();
 	}
+
 	public void computeEssenceCoreTickets() {
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("FBE Core");
@@ -66,7 +62,7 @@ public class FetchTicket {
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
 		jql.setVerifiedDate("2016-06-01"); // YYYY-MM-DD
-		jql.setClosedDate("2016-06-01");// YYYY-MM-DD		
+		jql.setClosedDate("2016-06-01");// YYYY-MM-DD
 
 		FetchTicket ft = null;
 		try {
@@ -77,11 +73,11 @@ public class FetchTicket {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//ft.computeTickets();
+
+		// ft.computeTickets();
 
 	}
-	
+
 	public static void computeEQLendingTicketsForISTISNA() {
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("EQ");
@@ -115,22 +111,23 @@ public class FetchTicket {
 		jql.setAffectedVersion(affectedVersion);
 		jql.setModule(module);
 		jql.setVerifiedDate("2016-06-01"); // YYYY-MM-DD
-		jql.setClosedDate("2016-06-01");// YYYY-MM-DD		
+		jql.setClosedDate("2016-06-01");// YYYY-MM-DD
 
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
 			System.out.println(jql.returnJQLQuery() + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY);
-			//ft.fetchJQLQuery(jql.returnJQLQuery()); // ft.getTickets(tickets);
+			// ft.fetchJQLQuery(jql.returnJQLQuery()); //
+			// ft.getTickets(tickets);
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//ft.computeTickets();
+
+		// ft.computeTickets();
 
 	}
-	
+
 	public static void computeEQLendingTicketsForEPA1() {
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("EQ");
@@ -153,21 +150,23 @@ public class FetchTicket {
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
 		jql.setVerifiedDate("2016-06-01"); // YYYY-MM-DD
-		jql.setClosedDate("2016-06-01");// YYYY-MM-DD		
+		jql.setClosedDate("2016-06-01");// YYYY-MM-DD
 
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
 			System.out.println(jql.returnJQLQuery() + JQLConstants.EQ_LENDING_EPA1_SUMMARY);
-			//ft.fetchJQLQuery(jql.returnJQLQuery()); // ft.getTickets(tickets);
+			// ft.fetchJQLQuery(jql.returnJQLQuery()); //
+			// ft.getTickets(tickets);
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//ft.computeTickets();
+
+		// ft.computeTickets();
 
 	}
+
 	public void runScript() {
 		FetchTicket ft = null;
 		try {
@@ -188,9 +187,9 @@ public class FetchTicket {
 	 */
 	public SearchResult fetchJQLQuery(String jqlQuery) {
 		try {
-			restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "jpbautis", "icecreamMEL28:))");	
+			restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "jpbautis", "icecreamMEL28:))");
 			Promise<SearchResult> searchJqlPromise = restClient.getSearchClient().searchJql(jqlQuery, 999, null, null);
-		
+
 			return searchJqlPromise.claim();
 
 		} catch (Exception e) {
@@ -218,12 +217,12 @@ public class FetchTicket {
 			Issue issue = (Issue) iterator.next();
 			Ticket ticket = new Ticket();
 			// Jira ID
-			if (issue.getKey() != null) {				
+			if (issue.getKey() != null) {
 				ticket.setJiraId(issue.getKey());
 			}
 			// Title
 			if (issue.getSummary() != null) {
-				ticket.setTitle(issue.getSummary());				
+				ticket.setTitle(issue.getSummary());
 			} else {
 				ticket.setTitle("");
 			}
@@ -263,13 +262,14 @@ public class FetchTicket {
 				ticket.setStatus(issue.getStatus().getName());
 			} else {
 				ticket.setStatus("");
-			}		
+			}
 			// Priority
 			if (issue.getPriority() != null) {
 				ticket.setPriority(issue.getPriority().getName());
 			} else {
 				ticket.setPriority("");
 			}
+
 			// Closed Date
 			if (issue.getField(ConstantKeys.CUSTFIELD_CLOSED_DATE).getValue() != null) {
 				Date closedDate;
@@ -295,6 +295,9 @@ public class FetchTicket {
 					}
 				}
 				ticket.setDevelopers(devList);
+				ticket.setIsAssigned(true);
+			}else{
+				ticket.setIsAssigned(false);
 			}
 			// Story Points
 			if (issue.getField(ConstantKeys.CUSTFIELD_STORY_POINTS).getValue() != null) {
@@ -304,11 +307,14 @@ public class FetchTicket {
 				ticket.setStoryPoints(0);
 			}
 			tickets.add(ticket);
+			
 		}
 		return tickets;
 	}
 
 	public void addTicketsToDB(ArrayList<Ticket> tickets) {
+		//fetch ticket by JiraID
+		//If exists
 		for (Ticket ticket : tickets) {
 			TicketService.addTicket(ticket);
 		}

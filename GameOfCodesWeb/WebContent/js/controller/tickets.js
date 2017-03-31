@@ -1,28 +1,42 @@
-GOCApp.controller('ticketsController', function($scope, $http, API_URL) {
-    //retrieve employees listing from API
-    $http.get(API_URL + "ticket/all")
-            .success(function(response) {
-                $scope.tickets = response;
-            });
+GOCApp.service('ticketFilterService', function() {
+	var selectedQuest;
 
-    //delete record
-    $scope.confirmDelete = function(id) {
-        var isConfirmDelete = confirm('Are you sure you want this record?');
-        if (isConfirmDelete) {
-            $http({
-                method: 'DELETE',
-                url: API_URL + 'ticket/delete/' + id
-            }).
-                    success(function(data) {
-                        console.log(data);
-                        location.reload();
-                    }).
-                    error(function(data) {
-                        console.log(data);
-                        alert('Unable to delete');
-                    });
-        } else {
-            return false;
-        }
-    }
+	var filterQuest = function(quest) {
+		selectedQuest = "";
+		selectedQuest = quest;
+	};
+
+	var returnSelectedQuest = function() {
+		return selectedQuest;
+	};
+
+	return {
+		filterQuest : filterQuest,
+		returnSelectedQuest : returnSelectedQuest
+	};
+
 });
+
+GOCApp.controller('ticketsController', function($scope, $http, API_URL, ticketFilterService) {
+
+	// retrieve tickets
+	$http({
+		method : 'GET',
+		url : API_URL + 'ticket/all'
+	}).then(function successCallback(response) {
+		$scope.tickets = response.data;
+	}, function errorCallback(response) {
+
+	});
+
+	$scope.questfilter = function(questID) {		
+		ticketFilterService.filterQuest(questID);
+	}
+
+	$scope.$watch(function() {
+		return ticketFilterService.returnSelectedQuest();
+	}, function(value) {
+		$scope.selectedQuest = value;
+	});
+});
+

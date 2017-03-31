@@ -1,7 +1,5 @@
 package com.misys.gameofcodes.dao;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,7 +10,6 @@ import org.bson.types.ObjectId;
 
 import com.misys.gameofcodes.connection.CollectionProvider;
 import com.misys.gameofcodes.model.Ticket;
-import com.misys.gameofcodes.utility.EncoderUtility;
 import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
@@ -154,7 +151,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 		DBObject dbTicket = new BasicDBObject();	
 			dbTicket.put("$set", new BasicDBObject().append("jiraId", ticket.getJiraId())
 				.append("title", ticket.getTitle())
-				.append("description", "")
+				.append("description", ticket.getDescription())
 				.append("dateStarted", ticket.getDateStarted())
 				.append("dateVerified", ticket.getDateVerified())
 				.append("status", ticket.getStatus())				
