@@ -81,7 +81,7 @@ public class BadgeDAOImpl implements BadgeDAO {
 	/**
 	 * update badge name
 	 * @param Badge with object id value and new name
-	 * @return WriteResult default output for mongodb requests
+	 * @return WriteResult default output for mongodb requests test
 	 */
 	@Override
 	public WriteResult updateBadge(Badge badge) {
