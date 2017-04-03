@@ -14,7 +14,7 @@ public class Badge {
 	
 	private String id;
 	
-	private String badgename;
+	private String badgeName;
 	private String description;
 	private String badgeType;
 	private String imageId;
@@ -27,11 +27,11 @@ public class Badge {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getBadgename() {
-		return badgename;
+	public String getBadgeName() {
+		return badgeName;
 	}
-	public void setBadgename(String badgename) {
-		this.badgename = badgename;
+	public void setBadgeName(String badgeName) {
+		this.badgeName = badgeName;
 	}
 	public String getDescription() {
 		return description;
