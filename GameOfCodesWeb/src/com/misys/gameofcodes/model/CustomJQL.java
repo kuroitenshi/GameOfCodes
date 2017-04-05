@@ -98,6 +98,8 @@ public class CustomJQL {
 
 	public String returnJQLQuery() {
 
+		String result = null;
+		
 		if (addedProjects() && !isLast(0)) {
 			JQLbuilder.append(" AND ");
 		}
@@ -139,21 +141,24 @@ public class CustomJQL {
 		if (closedDate != "" ) {
 			JQLbuilder.append("\"Closed Date\" >= " + closedDate +")");		
 		}
-
-		return JQLbuilder.toString();
+		result = JQLbuilder.toString();
+		
+		this.clearfieldContents();
+		
+		return result;
 
 	}
 
 	private boolean addedProjects() {
 		if (projects != null) {
-			JQLbuilder.append("project in (");
+			JQLbuilder.append("project IN (");
 			for (int i = 0; i < projects.size(); i++) {
 				JQLbuilder.append("\"" + projects.get(i) + "\"");
 				if (i != projects.size() - 1) {
 					JQLbuilder.append(", ");
 				}
 			}
-			JQLbuilder.append(") ");
+			JQLbuilder.append(")");
 
 			return true;
 		}
@@ -163,14 +168,14 @@ public class CustomJQL {
 
 	private boolean addedDevelopers() {
 		if (developers != null) {
-			JQLbuilder.append("Developers in (");
+			JQLbuilder.append("Developers IN (");
 			for (int i = 0; i < developers.size(); i++) {
 				JQLbuilder.append(developers.get(i));
 				if (i != developers.size()-1) {
 					JQLbuilder.append(", ");
 				}
 			}
-			JQLbuilder.append(" ) ");
+			JQLbuilder.append(" )");
 
 			return true;
 		}
@@ -180,7 +185,7 @@ public class CustomJQL {
 
 	private boolean addedStatus() {
 		if (status != null) {
-			JQLbuilder.append("status in (");
+			JQLbuilder.append("status IN (");
 			for (int i = 0; i < status.size(); i++) {
 				JQLbuilder.append("\"" + status.get(i) + "\"");
 				if (i != status.size()-1) {
@@ -197,7 +202,7 @@ public class CustomJQL {
 	
 	private boolean addedAffectedVersion() {
 		if (affectedVersion != null) {
-			JQLbuilder.append("affectedVersion in (");
+			JQLbuilder.append("affectedVersion IN (");
 			for (int i = 0; i < affectedVersion.size(); i++) {
 				if(affectedVersion.get(i).equals("EMPTY")) {
 					JQLbuilder.append(affectedVersion.get(i));
@@ -219,7 +224,7 @@ public class CustomJQL {
 	
 	private boolean addedModule() {
 		if (module != null) {
-			JQLbuilder.append("module in (");
+			JQLbuilder.append("module IN (");
 			for (int i = 0; i < module.size(); i++) {
 				JQLbuilder.append("\"" + module.get(i) + "\"");
 				if (i != module.size() - 1) {
@@ -266,5 +271,30 @@ public class CustomJQL {
 		}
 		}
 		return isLast;
+	}
+	
+	private void clearfieldContents(){
+		
+		if(projects != null){
+			projects.clear();
+		}
+		if(developers != null){
+			developers.clear();
+		}
+		if(status != null){
+			status.clear();	
+		}
+		if(affectedVersion != null){
+			affectedVersion.clear();	
+		}
+		if(module != null){
+			module.clear();
+		}	
+	
+		storyPoints = 0;
+		priority = "";
+		verifiedDate = "";
+		closedDate = "";
+		JQLbuilder = new StringBuilder();
 	}
 }

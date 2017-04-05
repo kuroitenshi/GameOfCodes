@@ -5,23 +5,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
-import org.bson.BasicBSONObject;
 import org.bson.types.ObjectId;
 
 import com.misys.gameofcodes.connection.CollectionProvider;
 import com.misys.gameofcodes.model.Adventure;
-import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.model.Ticket;
 import com.misys.gameofcodes.service.HouseService;
-import com.misys.gameofcodes.service.TicketService;
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBAddress;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -51,6 +45,7 @@ public class AdventureDAOImpl implements AdventureDAO {
 	}
 
 
+
 	@Override
 	public Adventure getAdventure(DBObject dbAventure) {
 		Adventure adventure = new Adventure();
@@ -77,7 +72,6 @@ public class AdventureDAOImpl implements AdventureDAO {
 				ObjectId ticketObjId = (ObjectId) iterator.next().get("_id");
 				Ticket ticket = new Ticket();
 				ticket.setId(ticketObjId);
-//				quests.put(questObjId, QuestService.fetchQuest(quest));
 			}
 		}
 		adventure.setTickets(tickets); 
@@ -85,17 +79,27 @@ public class AdventureDAOImpl implements AdventureDAO {
 		
 		return adventure;
 	}
+	
 
 	@Override
 	public WriteResult addAdventure(Adventure adventure) {
+		BasicDBObject query = new BasicDBObject();
+		query.put("adventureName", adventure.getAdventurename());		
 		BasicDBObject adventureObject = new BasicDBObject("adventureName", adventure.getAdventurename())
 					.append("house", adventure.getHouse())
-					.append("dateStart", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(adventure.getDateStart()))
-					.append("dateEnd", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(adventure.getDateEnd()))
-					.append("storyPoints", adventure.getStoryPoints())
-					.append("ticket", adventure.getTickets())
-					.append("storyPointsMonth", adventure.getStoryPointsMonth());
-				
+					.append("dateStart", new SimpleDateFormat("yyyy-MM-dd").format(adventure.getDateStart()))
+					.append("dateEnd", new SimpleDateFormat("yyyy-MM-dd").format(adventure.getDateEnd()))
+					.append("ticket", new BasicDBList())
+					.append("storyPoints", adventure.getStoryPoints());
+		
+		BasicDBObject singleQuery = new BasicDBObject();
+		query.put("adventureName", adventure.getAdventurename());
+		DBObject dbAdventure = adventuresCollection.findOne(singleQuery);
+	
+		if(dbAdventure != null){
+			return adventuresCollection.update(query, adventureObject);
+		}
+		
 		return adventuresCollection.insert(adventureObject);
 	}
 
@@ -108,20 +112,42 @@ public class AdventureDAOImpl implements AdventureDAO {
 				dbAdventure.put("dateStart", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(adventure.getDateStart()));
 				dbAdventure.put("dateEnd", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(adventure.getDateEnd()));
 				dbAdventure.put("storyPoints", adventure.getStoryPoints());
-				
+						
 		return adventuresCollection.update(query, dbAdventure);
 	}
 
 	@Override
 	public Adventure getAdventure(Adventure adventure) {
-		// TODO Auto-generated method stub
-		return null;
+		BasicDBObject query = new BasicDBObject();
+		query.put("adventureName", adventure.getAdventurename());
+		DBObject dbTicket = adventuresCollection.findOne(query);
+		return this.getAdventure(dbTicket);		
 	}
 
 	@Override
 	public WriteResult deleteAdventure(Adventure adventure) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void addTicketToAdventure(Ticket ticket, String adventureName) {
+		
+		BasicDBObject query = new BasicDBObject();
+		query.put("adventureName", adventureName);
+		DBObject dbAdventure = adventuresCollection.findOne(query);
+		List<BasicDBObject> ticketsList = new ArrayList<>();
+		
+		if(dbAdventure.get("ticket") != null){
+			ticketsList = (List<BasicDBObject>) dbAdventure.get("ticket");
+		}
+		
+		ticketsList.add(new BasicDBObject("jiraId", ticket.getJiraId()));		
+	    
+		dbAdventure.put("ticket", ticketsList);
+		adventuresCollection.update(query, dbAdventure);		
+		
 	}
 
 

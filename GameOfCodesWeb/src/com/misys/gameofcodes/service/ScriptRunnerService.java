@@ -19,7 +19,6 @@ public class ScriptRunnerService {
 	public void runScripts() {
 		try {
 			FetchTicket ft = new FetchTicket();
-			ft.runScript();
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
