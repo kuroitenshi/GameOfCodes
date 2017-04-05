@@ -13,10 +13,10 @@ public class HouseWSTest {
 
 	public static void main(String[] args) {
 		HouseWSTest test = new HouseWSTest();
-		//test.newHouses();
+		test.newHouses();
 		//test.addHeroesToHouse();
 		//test.fetchAll();
-		test.getHousePoints();
+		//test.getHousePoints();
 	}
 	
 	private void getHousePoints() {

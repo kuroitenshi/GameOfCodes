@@ -40,7 +40,7 @@ public class FetchTicketTest {
 			ft = new FetchTicket();
 			ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 			tickets = ft.mapIssuesToTickets(ft.fetchJQLQuery(jql.returnJQLQuery())); // ft.getTickets(tickets);
-			ft.addTicketsToDB(tickets);
+			ft.addTicketsToSprintInDB(tickets);
 			
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block

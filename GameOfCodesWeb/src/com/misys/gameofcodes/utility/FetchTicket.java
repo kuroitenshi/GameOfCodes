@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
+
 import com.atlassian.jira.rest.client.api.JiraRestClient;
 import com.atlassian.jira.rest.client.api.domain.Issue;
 import com.atlassian.jira.rest.client.api.domain.SearchResult;
@@ -22,12 +24,14 @@ import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.model.JQLConstants;
 import com.misys.gameofcodes.model.Ticket;
+import com.misys.gameofcodes.service.AdventureService;
 import com.misys.gameofcodes.service.HeroService;
 import com.misys.gameofcodes.service.HouseService;
 import com.misys.gameofcodes.service.LevelService;
 import com.misys.gameofcodes.service.TicketService;
 
-public class FetchTicket {
+public class FetchTicket 
+{
 	private AsynchronousJiraRestClientFactory factory;
 	private URI jiraServerUri;
 	private JiraRestClient restClient;
@@ -35,50 +39,84 @@ public class FetchTicket {
 
 	public FetchTicket() throws URISyntaxException {
 		factory = new AsynchronousJiraRestClientFactory();
-		jiraServerUri = new URI("http://almtools/jira/");
+		jiraServerUri = new URI("https://almtools/jira/");
 	}
 
 	public static void main(String[] args) throws IOException {
-		computeEQLendingTicketsForISTISNA();
-		computeEQLendingTicketsForEPA1();
+		//retrieveEssenceCoreManilaTickets();
+		//retrieveEQLendingTicketsForISTISNA();
+		//retrieveEQLendingTicketsForEPA1();
 	}
 
-	public void computeEssenceCoreTickets() {
+	public void runRetrievalOfTickets (String sprintName){
+		retrieveEQLendingTicketsForISTISNA(sprintName);
+	}
+	/**
+	 * JQL Query to be used for ticket retrieval
+	 * 
+	 * @param jqlQuery
+	 * @return
+	 */
+	public SearchResult fetchJQLQuery(String jqlQuery) {		
+		
+		try {
+			restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "jpbautis", "icecreamMEL28:))");			
+			Promise<SearchResult> searchJqlPromise = restClient.getSearchClient().searchJql(jqlQuery, 999, null, null);			
+			
+			return searchJqlPromise.claim();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				restClient.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	
+	/**
+	 * Retrieves Essence Core Manila Tickets based on built JQL
+	 */
+	public static void retrieveEssenceCoreManilaTickets(String sprintName)
+	{
 		ArrayList<String> projects = new ArrayList<String>();
-		projects.add("FBE Core");
-		projects.add("Universal Banking Scrum");
+		projects.add("FBE Core");		
 		ArrayList<String> developers = new ArrayList<String>();
 		developers.add("agutierr");
-		developers.add("edgresma");
-		developers.add("rcajigas");
-		developers.add("arlozano");
-		developers.add("yasisr1");
-		developers.add("fegarcia");
 		developers.add("aclimaco");
 		developers.add("jayperez");
 		developers.add("jpbautis");
-		ArrayList<String> status = new ArrayList<String>();
+		
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
-		jql.setVerifiedDate("2016-06-01"); // YYYY-MM-DD
-		jql.setClosedDate("2016-06-01");// YYYY-MM-DD
+		jql.setVerifiedDate("2017-01-01"); // YYYY-MM-DD
+		jql.setClosedDate("2017-04-01");// YYYY-MM-DD
 
 		FetchTicket ft = null;
 		try {
-			ft = new FetchTicket();
-			System.out.println(jql.returnJQLQuery());
-			ft.fetchJQLQuery(jql.returnJQLQuery()); // ft.getTickets(tickets);
+			ft = new FetchTicket();					
+			
+			//System.out.println(jql.returnJQLQuery());
+			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(ft.fetchJQLQuery(jql.returnJQLQuery()));			
+			ft.addTicketsToSprintInDB(tickets, sprintName);
+			
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		// ft.computeTickets();
-
 	}
 
-	public static void computeEQLendingTicketsForISTISNA() {
+	/**
+	 * Retrieves EQ Lending ISTINA Tickets based on built JQL
+	 * 
+	 */
+	public static void retrieveEQLendingTicketsForISTISNA(String sprintName) {
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("EQ");
 		ArrayList<String> developers = new ArrayList<String>();
@@ -104,7 +142,7 @@ public class FetchTicket {
 		affectedVersion.add("EQ 4.3.3.04");
 		ArrayList<String> module = new ArrayList<String>();
 		module.add("EQ - Lending");
-		ArrayList<String> status = new ArrayList<String>();
+
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
@@ -116,19 +154,21 @@ public class FetchTicket {
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
-			System.out.println(jql.returnJQLQuery() + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY);
-			// ft.fetchJQLQuery(jql.returnJQLQuery()); //
-			// ft.getTickets(tickets);
+			//System.out.println(jql.returnJQLQuery() + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY);
+			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(ft.fetchJQLQuery(jql.returnJQLQuery() + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY));
+			ft.addTicketsToSprintInDB(tickets, sprintName);
+			
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		// ft.computeTickets();
-
 	}
 
-	public static void computeEQLendingTicketsForEPA1() {
+	/**
+	 * Retrieves EQ Lending EPA1 Tickets based on built JQL
+	 */
+	public static void retrieveEQLendingTicketsForEPA1(String sprintName) {
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("EQ");
 		ArrayList<String> developers = new ArrayList<String>();
@@ -145,7 +185,7 @@ public class FetchTicket {
 		developers.add("jcristob");
 		developers.add("ccalamba");
 		developers.add("bvictori");
-		ArrayList<String> status = new ArrayList<String>();
+
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
@@ -155,9 +195,10 @@ public class FetchTicket {
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
-			System.out.println(jql.returnJQLQuery() + JQLConstants.EQ_LENDING_EPA1_SUMMARY);
-			// ft.fetchJQLQuery(jql.returnJQLQuery()); //
-			// ft.getTickets(tickets);
+			//System.out.println(jql.returnJQLQuery() + JQLConstants.EQ_LENDING_EPA1_SUMMARY);
+			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(ft.fetchJQLQuery(jql.returnJQLQuery()));
+			ft.addTicketsToSprintInDB(tickets, sprintName);
+			
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -166,43 +207,8 @@ public class FetchTicket {
 		// ft.computeTickets();
 
 	}
-
-	public void runScript() {
-		FetchTicket ft = null;
-		try {
-			ft = new FetchTicket();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		ArrayList<Ticket> tickets = ft.mapIssuesToTickets(ft.fetchJQLQuery("test"));
-		ft.addTicketsToDB(tickets);
-		ft.computeTickets();
-	}
-
-	/**
-	 * JQL Query to be used for ticket retrieval
-	 * 
-	 * @param jqlQuery
-	 * @return
-	 */
-	public SearchResult fetchJQLQuery(String jqlQuery) {
-		try {
-			restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "jpbautis", "icecreamMEL28:))");
-			Promise<SearchResult> searchJqlPromise = restClient.getSearchClient().searchJql(jqlQuery, 999, null, null);
-
-			return searchJqlPromise.claim();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				restClient.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
+	
+	
 
 	/**
 	 * Issues retrieved should be mapped to the respective GOC Ticket Object
@@ -215,6 +221,8 @@ public class FetchTicket {
 		Iterator<Issue> iterator = searchResult.getIssues().iterator();
 		while (iterator.hasNext()) {
 			Issue issue = (Issue) iterator.next();
+			System.out.println(issue.getKey());			
+			
 			Ticket ticket = new Ticket();
 			// Jira ID
 			if (issue.getKey() != null) {
@@ -299,6 +307,7 @@ public class FetchTicket {
 			}else{
 				ticket.setIsAssigned(false);
 			}
+		
 			// Story Points
 			if (issue.getField(ConstantKeys.CUSTFIELD_STORY_POINTS).getValue() != null) {
 				ticket.setStoryPoints((int) Double
@@ -306,20 +315,26 @@ public class FetchTicket {
 			} else {
 				ticket.setStoryPoints(0);
 			}
-			tickets.add(ticket);
+			tickets.add(ticket);			
 			
 		}
 		return tickets;
 	}
+	
 
-	public void addTicketsToDB(ArrayList<Ticket> tickets) {
-		//fetch ticket by JiraID
-		//If exists
+	/**
+	 * Adds tickets to ticket collection and creates reference to the adventure collection
+	 * @param tickets
+	 */
+	public void addTicketsToSprintInDB(ArrayList<Ticket> tickets, String sprintName) {
+		
 		for (Ticket ticket : tickets) {
 			TicketService.addTicket(ticket);
+			AdventureService.addTicketToAdventure(ticket, sprintName);
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void computeTickets() {
 		getHeroPoints();
 		getHousePoints();

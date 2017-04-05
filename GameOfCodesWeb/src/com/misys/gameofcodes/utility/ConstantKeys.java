@@ -10,4 +10,6 @@ public class ConstantKeys {
 	public final static String CUSTFIELD_STORY_POINTS = "customfield_10002";
 	public final static String CUSTFIELD_VERIFIED_DATE = "customfield_10128";
 	public final static String CUSTFIELD_CLOSED_DATE = "customfield_13000";
+	public final static String CUSTFIELD_SPRINT = "customfield_12800";
+	
 }
