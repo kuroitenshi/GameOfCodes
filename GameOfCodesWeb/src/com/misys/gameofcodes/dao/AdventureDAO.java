@@ -13,7 +13,7 @@ public interface AdventureDAO  {
 	Adventure getAdventure(DBObject dbhero);
 	WriteResult addAdventure(Adventure adventure);
 	WriteResult updateAdventure(Adventure adventure);
-	WriteResult deleteAdventure(Adventure adventure);
+	void deleteAdventure(String adventureName);
 	void addTicketToAdventure(Ticket ticket, String adventureName);
 
 }

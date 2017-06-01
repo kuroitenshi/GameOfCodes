@@ -1,6 +1,5 @@
 package com.misys.gameofcodes.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.misys.gameofcodes.dao.AdventureDAO;
@@ -57,6 +56,14 @@ public class AdventureService {
 	 */
 	public static void updateAdventure(Adventure adventure){
 		adventureDAO.updateAdventure(adventure);
+	}
+	
+	/**
+	 * Updates all parameters for the adventure
+	 * @param adventure
+	 */
+	public static void deleteAdventure(String adventureName){
+		adventureDAO.deleteAdventure(adventureName);
 	}
 	
 	/**

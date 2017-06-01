@@ -4,10 +4,7 @@ import java.util.List;
 
 import com.misys.gameofcodes.dao.LevelDAO;
 import com.misys.gameofcodes.dao.LevelDAOImpl;
-import com.misys.gameofcodes.dao.TicketsDAO;
-import com.misys.gameofcodes.dao.TicketsDAOImpl;
 import com.misys.gameofcodes.model.Level;
-import com.misys.gameofcodes.model.Ticket;
 import com.mongodb.WriteResult;
 
 public class LevelService {

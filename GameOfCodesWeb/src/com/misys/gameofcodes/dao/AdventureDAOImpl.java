@@ -46,6 +46,7 @@ public class AdventureDAOImpl implements AdventureDAO {
 
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Adventure getAdventure(DBObject dbAventure) {
 		Adventure adventure = new Adventure();
@@ -108,9 +109,10 @@ public class AdventureDAOImpl implements AdventureDAO {
 		BasicDBObject query = new BasicDBObject();
 		query.put("adventureName", adventure.getAdventurename());
 		DBObject dbAdventure = adventuresCollection.findOne(query);
+				dbAdventure.put("adventureName", adventure.getAdventurename());	
 				dbAdventure.put("house", adventure.getHouse());		
-				dbAdventure.put("dateStart", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(adventure.getDateStart()));
-				dbAdventure.put("dateEnd", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(adventure.getDateEnd()));
+				dbAdventure.put("dateStart", new SimpleDateFormat("yyyy-MM-dd").format(adventure.getDateStart()));
+				dbAdventure.put("dateEnd", new SimpleDateFormat("yyyy-MM-dd").format(adventure.getDateEnd()));
 				dbAdventure.put("storyPoints", adventure.getStoryPoints());
 						
 		return adventuresCollection.update(query, dbAdventure);
@@ -125,9 +127,11 @@ public class AdventureDAOImpl implements AdventureDAO {
 	}
 
 	@Override
-	public WriteResult deleteAdventure(Adventure adventure) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteAdventure(String adventureName) {
+		BasicDBObject query = new BasicDBObject();
+		query.put("adventureName", adventureName);		
+		
+		adventuresCollection.findAndRemove(query);
 	}
 
 	@SuppressWarnings("unchecked")

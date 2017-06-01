@@ -1,24 +1,19 @@
 package com.misys.gameofcodes.dao;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.bson.BasicBSONObject;
 import org.bson.types.ObjectId;
 
 import com.misys.gameofcodes.connection.CollectionProvider;
 import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.service.HeroService;
-import com.misys.gameofcodes.utility.EncoderUtility;
-import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
