@@ -26,7 +26,7 @@ public class CollectionProvider
 	public DBCollection getCollection(String collectionName) 
 	{
         DBCollection dbCollection = gameOfCodesDB.getCollection(collectionName);
-        System.out.println("Collection mycol selected successfully");
+        System.out.println("COLLECTION: " + collectionName + " retrieved successfully");
 		return dbCollection;
 	}
 }

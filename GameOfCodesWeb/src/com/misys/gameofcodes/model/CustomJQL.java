@@ -13,6 +13,8 @@ public class CustomJQL {
 	private String priority;
 	private String verifiedDate;
 	private String closedDate;
+	private String endDate;
+	
 	private StringBuilder JQLbuilder;
 
 	public CustomJQL() {
@@ -21,6 +23,7 @@ public class CustomJQL {
 		priority = "";
 		verifiedDate = "";
 		closedDate = "";
+		endDate = "";
 	}
 
 	public ArrayList<String> getProjects() {
@@ -70,6 +73,15 @@ public class CustomJQL {
 	public void setClosedDate(String closedDate) {
 		this.closedDate = closedDate;
 	}
+	
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
 	
 	public ArrayList<String> getAffectedVersion() {
 		return affectedVersion;
@@ -124,14 +136,14 @@ public class CustomJQL {
 			}
 			
 		}
-		if (priority != "" ) {
+		if (!priority.isEmpty()) {
 			JQLbuilder.append("priority = " + priority);
 			if(!isLast(4)){
 				JQLbuilder.append(" AND ");
 			}			
 		}
 		
-		if (verifiedDate != "" ) {
+		if (!verifiedDate.isEmpty()) {
 			JQLbuilder.append("(Verified >= " + verifiedDate);
 			if(!isLast(5)){
 				JQLbuilder.append(" OR ");
@@ -139,7 +151,14 @@ public class CustomJQL {
 		}
 		
 		if (closedDate != "" ) {
-			JQLbuilder.append("\"Closed Date\" >= " + closedDate +")");		
+			JQLbuilder.append("\"Closed Date\" >= " + closedDate +")");	
+			if(!isLast(6)){
+				JQLbuilder.append(" AND ");
+			}	
+		}
+		
+		if(!endDate.isEmpty()){
+			JQLbuilder.append("(Verified <= " + endDate + " OR " + "\"Closed Date\" <= " + endDate + ")");
 		}
 		result = JQLbuilder.toString();
 		
@@ -243,27 +262,31 @@ public class CustomJQL {
 		boolean isLast;
 		switch (iteration) {
 		case 0: {
-			isLast = (developers == null && status == null && storyPoints == 0 && priority == "" && verifiedDate == "" && closedDate =="");
+			isLast = (developers == null && status == null && storyPoints == 0 && priority.isEmpty() && verifiedDate.isEmpty() && closedDate.isEmpty() && endDate.isEmpty());
 			break;
 		}
 		case 1: {
-			isLast = (status == null && storyPoints == 0 && priority == "" && verifiedDate == "" && closedDate =="");
+			isLast = (status == null && storyPoints == 0 && priority.isEmpty() && verifiedDate.isEmpty() && closedDate.isEmpty() && endDate.isEmpty());
 			break;
 		}
 		case 2: {
-			isLast = (storyPoints == 0 && priority == "" && verifiedDate == "" && closedDate =="");
+			isLast = (storyPoints == 0 && priority.isEmpty() && verifiedDate.isEmpty() && closedDate.isEmpty() && endDate.isEmpty());
 			break;
 		}
 		case 3: {
-			isLast = (priority == "" && verifiedDate == "" && closedDate =="");
+			isLast = (priority.isEmpty() && verifiedDate.isEmpty() && closedDate.isEmpty() && endDate.isEmpty());
 			break;
 		}
 		case 4: {
-			isLast = (verifiedDate == "" && closedDate =="");
+			isLast = (verifiedDate.isEmpty() && closedDate.isEmpty() && endDate.isEmpty());
 			break;
 		}
 		case 5: {
-			isLast = (closedDate == "");
+			isLast = (closedDate.isEmpty() && endDate.isEmpty());
+			break;
+		}
+		case 6:{
+			isLast = (endDate.isEmpty());
 			break;
 		}
 		default: {

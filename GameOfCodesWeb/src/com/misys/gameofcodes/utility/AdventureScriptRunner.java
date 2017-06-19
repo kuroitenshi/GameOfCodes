@@ -22,16 +22,16 @@ public class AdventureScriptRunner {
 			 * 
 			 * */
 			Adventure adventure = new Adventure();
-			adventure.setAdventurename("EQLENDING_ADVENTURE_EPA1");
+			adventure.setAdventurename(ConstantKeys.EQLENDING_ISTISNA_ADVENTURE);
 			
 			try {
-				adventure.setDateStart(new SimpleDateFormat("yyyy-MM-dd").parse("2017-01-01"));
-				adventure.setDateEnd(new SimpleDateFormat("yyyy-MM-dd").parse("2017-05-30"));
+				adventure.setDateStart(new SimpleDateFormat("yyyy-MM-dd").parse(ConstantKeys.VERIFIED_DATE_STARTYR));
+				adventure.setDateEnd(new SimpleDateFormat("yyyy-MM-dd").parse(ConstantKeys.FISCALYEAR_END));
 			} catch (ParseException e) {
 
 				e.printStackTrace();
 			}		
-			adventure.setHouse("EQ_LENDING");
+			adventure.setHouse(ConstantKeys.EQUATION_LENDING);
 			
 			/*
 			 * REQUIRED - TASKTYPE

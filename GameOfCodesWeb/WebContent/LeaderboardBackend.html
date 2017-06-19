@@ -88,7 +88,7 @@
 									<div class="col-md-8 col-sm-12 ">
 										<div class="col-sm-2">
 											<img class="houseFlagContainer"
-												src="img/houses/{{house.domain}}.png" alt="...">
+												ng-src="img/houses/{{house.domain}}.png" alt="...">
 										</div>
 										<div class="col-sm-8 subHeaderLeftAlign"
 											style="padding-top: 10px">
@@ -148,7 +148,7 @@
 											<div class="houseHeaderContent">
 												<img class="houseHeaderIcons iconRightAlign"
 													src="img/icon/month.png" alt="...">
-												<h2 class="tableHeaderText">FEBRUARY</h2>
+												<h2 class="tableHeaderText">{{date}}</h2>
 											</div>
 											<img class="floatRight" src="img/textures/dots.png" />
 										</div>
@@ -162,7 +162,7 @@
 											<div class="col-sm-3 subHeaderLeftAlign">
 												<div class="houseHeaderContent">
 													<img class="leaderboard-avatar"
-														src="img/avatar/hero/{{house.domain}}/goc_{{hero.username}}.png" alt="...">
+														ng-src="img/avatar/hero/{{house.domain}}/goc_{{hero.username}}.png" alt="...">
 													<h4 class="mediumContentText">{{hero.name}}</h4>
 												</div>
 
@@ -171,7 +171,7 @@
 												<div class="houseHeaderContent"
 													ng-repeat="level in heroLevels | filter:{level:hero.level}:true">
 													<img class="leaderboard-avatar"
-														src="img/ranks/{{level.icon}}.png" alt="...">
+														ng-src="img/ranks/{{level.icon}}.png" alt="...">
 													<h4 class="mediumContentText">{{level.name}}</h4>
 												</div>
 

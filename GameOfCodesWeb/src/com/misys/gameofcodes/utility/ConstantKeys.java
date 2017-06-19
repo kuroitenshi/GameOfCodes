@@ -36,8 +36,23 @@ public class ConstantKeys {
 	 * - This will change per Fiscal Year
 	 * 
 	 * */
-	public final static String VERIFIED_DATE = "2016-06-01";
-	public final static String CLOSED_DATE = "2016-06-01";
+	public final static String VERIFIED_DATE_STARTYR = "2016-06-01";
+	public final static String CLOSED_DATE_STARTYR = "2016-06-01";
+	public final static String FISCALYEAR_END = "2017-05-31";
+	
+	/*
+	 * EQUATION - LENDING Constants
+	 * Current Projects:
+	 * 	ISTISNA
+	 * 	EPA1
+	 * */
+	public final static String EQLENDING_ISTISNA_ADVENTURE = "EQLENDING_ADVENTURE_ISTISNA";
+	public final static String EQLENDING_EPA1_ADVENTURE = "EQLENDING_ADVENTURE_EPA1";
+	
+	/*
+	 * ESSENCE - CORE Constants
+	 * */
+	public final static String ESSENCE_CORE_ADVENTURE = "ESSENCE_ADVENTURE_CORE";
 	
 	
 }

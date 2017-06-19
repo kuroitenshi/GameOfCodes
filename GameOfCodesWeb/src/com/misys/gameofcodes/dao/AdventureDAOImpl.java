@@ -94,7 +94,7 @@ public class AdventureDAOImpl implements AdventureDAO {
 					.append("storyPoints", adventure.getStoryPoints());
 		
 		BasicDBObject singleQuery = new BasicDBObject();
-		query.put("adventureName", adventure.getAdventurename());
+		singleQuery.put("adventureName", adventure.getAdventurename());
 		DBObject dbAdventure = adventuresCollection.findOne(singleQuery);
 	
 		if(dbAdventure != null){
@@ -147,8 +147,9 @@ public class AdventureDAOImpl implements AdventureDAO {
 			ticketsList = (List<BasicDBObject>) dbAdventure.get("ticket");
 		}
 		
-		ticketsList.add(new BasicDBObject("jiraId", ticket.getJiraId()));		
-	    
+		if(!ticketsList.contains(new BasicDBObject("jiraId", ticket.getJiraId()))){
+			ticketsList.add(new BasicDBObject("jiraId", ticket.getJiraId()));		
+		}    
 		dbAdventure.put("ticket", ticketsList);
 		adventuresCollection.update(query, dbAdventure);		
 		

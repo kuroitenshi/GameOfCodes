@@ -8,6 +8,7 @@ import com.mongodb.DBObject;
 public interface TicketsDAO {
 	
 	List<Ticket> getAllTickets();
+	List<Ticket> getCompletedTicketsForDomain(String domain);
 	Ticket getTicket(Ticket ticket);
 	void addTicket(Ticket ticket);
 	void updateTicket(Ticket ticket);

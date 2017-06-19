@@ -40,6 +40,14 @@ public class TicketsDAOImpl implements TicketsDAO {
 		return tickets;
 	}
 	@Override
+	public List<Ticket> getCompletedTicketsForDomain(String domain) {
+		BasicDBObject query = new BasicDBObject();
+		DBCursor cursor = ticketCollection.find(query);
+		List<Ticket> tickets = new ArrayList<Ticket>();
+		return null;
+	}
+	
+	@Override
 	public int getUserTicketSum(String username) {
 		BasicDBObject query = new BasicDBObject();
 		query.put("developers", username);
@@ -60,9 +68,11 @@ public class TicketsDAOImpl implements TicketsDAO {
 	@Override
 	public int getUserTicketSumMonth(String username) {
 		DBObject query = new BasicDBObject();
+		Date startingDate = this.getMonthCurr();
+		Date endDate = this.getMonthNext();
 		query = QueryBuilder.start().put("developers").is(username)
-				.and("dateVerified").greaterThanEquals(this.getMonthCurr())
-				.and("dateVerified").lessThan(this.getMonthNext())
+				.and("dateVerified").greaterThanEquals(startingDate)
+				.and("dateVerified").lessThan(endDate)
 				.get();
 		BasicDBObject match = new BasicDBObject(
 			    "$match", query
@@ -197,5 +207,6 @@ public class TicketsDAOImpl implements TicketsDAO {
 		dbTicket.put("isAssigned", "N");
 		ticketCollection.update(query, dbTicket);
 	}
+	
 	
 }
