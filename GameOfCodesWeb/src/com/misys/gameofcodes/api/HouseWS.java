@@ -9,82 +9,102 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
 import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.model.bo.AddHouseHeroes;
-import com.misys.gameofcodes.service.HeroService;
 import com.misys.gameofcodes.service.HouseService;
 
-@Path("/house")  
+@Path("/house")
 public class HouseWS {
-  
+
 	/**
-	 * gets all houses
-	 * /house/all
+	 * gets all houses /house/all
 	 */
-	@GET  @Path("all")
-	@Produces(MediaType.APPLICATION_JSON)  
-	public List<House> getAll() {  
-		return  HouseService.fetchHouses();  
-	}   
+	@GET
+	@Path("all")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<House> getAll() {
+		return HouseService.fetchHouses();
+	}
+
 	/**
-	 * gets houses by id via POST
-	 * /house/id
-	 */  
-	  @POST  @Path("id")
-	  @Produces(MediaType.APPLICATION_JSON)
-	  @Consumes(MediaType.APPLICATION_JSON)
-	  public House getHouse(House house) {  
-		  return  HouseService.fetchHouse(house);  
-	  }
-	/**
-	 * create a new house via POST
-	 * /house/create
+	 * gets houses by id via POST /house/id
 	 */
-	@POST  @Path("create")
+	@POST
+	@Path("id")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createHouse(House house) {  
-		  HouseService.createHouse(house);;  
+	public House getHouse(House house) {
+		return HouseService.fetchHouse(house);
 	}
+
 	/**
-	 * delete a house via DELETE
-	 * /house/delete
+	 * gets house of the currentUser using Hero Object id via POST /house/id
 	 */
-	@DELETE  @Path("delete/{id}")
+	@GET
+	@Path("{heroid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void deleteHouseByID(@PathParam("id") String id) {  
-		  HouseService.deleteHouse(id);  
+	public House getHouseByHero(@PathParam("heroid") String heroID) {
+		Hero selectedHero = new Hero();
+		selectedHero.setId(heroID);
+		return HouseService.fetchHouseByHero(selectedHero);
 	}
+
 	/**
-	 * delete a house via POST
-	 * /house/delete
+	 * create a new house via POST /house/create
 	 */
-	@POST  @Path("delete")
+	@POST
+	@Path("create")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void deleteHouse(House house) {  
-		  HouseService.deleteHouse(house);  
+	public void createHouse(House house) {
+		HouseService.createHouse(house);
+		;
 	}
+
 	/**
-	 * update house via POST
-	 * /house/update
+	 * delete a house via DELETE /house/delete
 	 */
-	@POST  @Path("update")
+	@DELETE
+	@Path("delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void updateHouse(House house) {  
-		  HouseService.updateHouse(house);  
+	public void deleteHouseByID(@PathParam("id") String id) {
+		HouseService.deleteHouse(id);
 	}
+
 	/**
-	 * add a hero to a house via POST
-	 * /house/update/addhero
+	 * delete a house via POST /house/delete
 	 */
-	@POST  @Path("update/addhero")
+	@POST
+	@Path("delete")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void updateHouse(AddHouseHeroes addHouseHeroes) {  
-		  HouseService.addHouseHero(addHouseHeroes.getHouse(), addHouseHeroes.getHero());  
+	public void deleteHouse(House house) {
+		HouseService.deleteHouse(house);
 	}
-}  
+
+	/**
+	 * update house via POST /house/update
+	 */
+	@POST
+	@Path("update")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void updateHouse(House house) {
+		HouseService.updateHouse(house);
+	}
+
+	/**
+	 * add a hero to a house via POST /house/update/addhero
+	 */
+	@POST
+	@Path("update/addhero")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void updateHouse(AddHouseHeroes addHouseHeroes) {
+		HouseService.addHouseHero(addHouseHeroes.getHouse(), addHouseHeroes.getHero());
+	}
+}

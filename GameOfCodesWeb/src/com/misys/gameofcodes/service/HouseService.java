@@ -28,6 +28,10 @@ public class HouseService {
 	public static House fetchHouse(House house) {
 		return houseDAO.getHouse(house);		
 	}
+	
+	public static House fetchHouseByHero(Hero hero) {
+		return houseDAO.getHouseByHero(hero);		
+	}
 	public static void deleteHouse(String id) {
 		houseDAO.deleteHouse(id);
 	}

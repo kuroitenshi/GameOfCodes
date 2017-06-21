@@ -47,7 +47,7 @@ public class FetchTicket {
 		 * */
 		
 
-		//runRetrievalOfFinishedTickets(ConstantKeys.VERIFIED_DATE_STARTYR, ConstantKeys.CLOSED_DATE_STARTYR, ConstantKeys.FISCALYEAR_END);
+		runRetrievalOfFinishedTickets(ConstantKeys.VERIFIED_DATE_STARTYR, ConstantKeys.CLOSED_DATE_STARTYR, ConstantKeys.FISCALYEAR_END);
 	
 		/*
 		 * Updating House Points
@@ -60,7 +60,7 @@ public class FetchTicket {
 		/*
 		 * Updating Hero Points
 		 * */
-		getHeroPoints();
+		//getHeroPoints();
 		
 	}
 
@@ -180,7 +180,7 @@ public class FetchTicket {
 			System.out.println("ESSENCE CORE");
 			System.out.println("JQL USED: " + jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open) AND type not in (Task, \"Technical task\")");
 			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open) AND type not in (Task, \"Technical task\")"));
-			ft.addTicketsToSprintInDB(tickets, sprintName);
+			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.ESSENCE_CORE);
 
 		} catch (URISyntaxException e) {
 
@@ -243,7 +243,7 @@ public class FetchTicket {
 			System.out.println("JQL USED: " + jqlQuery);
 			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(
 					ft.fetchJQLQuery(jqlQuery + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY));
-			ft.addTicketsToSprintInDB(tickets, sprintName);
+			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
@@ -289,7 +289,7 @@ public class FetchTicket {
 		
 			ArrayList<Ticket> tickets = ft
 					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
-			ft.addTicketsToSprintInDB(tickets, sprintName);
+			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
@@ -415,10 +415,10 @@ public class FetchTicket {
 	 * 
 	 * @param tickets
 	 */
-	public void addTicketsToSprintInDB(ArrayList<Ticket> tickets, String sprintName) {
+	public void addTicketsToSprintInDB(ArrayList<Ticket> tickets, String sprintName, String house) {
 
 		for (Ticket ticket : tickets) {
-			TicketService.addTicket(ticket);
+			TicketService.addTicket(ticket, house);
 			if (!sprintName.isEmpty()) {
 				AdventureService.addTicketToAdventure(ticket, sprintName);
 			}

@@ -63,6 +63,40 @@ public class HousesDAOImpl implements HousesDAO {
 	    return getHouse(dbHouse);
 	}
 	/**
+	 * get a specific house by hero
+	 * @param Heroid
+	 * @return House with details from db
+	 */
+	@Override
+	public House getHouseByHero(Hero hero) {
+		BasicDBObject query = new BasicDBObject();
+		query.put("heroes._id", new ObjectId(hero.getId()));
+		DBObject dbHouse = houseCollection.findOne(query);
+		House house = new House();
+		house.setId(hero.getId());
+    	house.setHousename(dbHouse.get("housename").toString());
+    	house.setDomain(dbHouse.get("domain").toString());
+    	house.setBanner(dbHouse.get("banner").toString());
+    	house.setStoryPoints((int) dbHouse.get("storyPoints"));
+    	house.setLevel((int) dbHouse.get("level"));
+    	house.setIsActive(dbHouse.get("isActive").toString());
+    	Map<String, Hero> heroes = new HashMap<>();
+    	List<BasicDBObject> heroesList = new ArrayList<>();
+	    if(dbHouse.get("heroes")!= null) {
+	    	heroesList = (List<BasicDBObject>) dbHouse.get("heroes");
+		    Iterator<BasicDBObject> iterator = heroesList.iterator();
+		    while (iterator.hasNext()) {
+		    	ObjectId heroObjId = (ObjectId) iterator.next().get("_id");;
+		    	Hero heroObj = new Hero();
+		    	heroObj.setId(heroObjId.toString());
+		    	heroes.put(heroObjId.toString(), HeroService.fetchHero(heroObj));
+		    }
+	    }
+
+    	house.setHeroes(heroes);
+		return house;
+	}
+	/**
 	 * remap house from db to house model
 	 * @param DBObject object from db
 	 * @return House
@@ -221,5 +255,6 @@ public class HousesDAOImpl implements HousesDAO {
 	    dbHouse.put("heroes", heroesList);
 		return houseCollection.update(query, dbHouse);
 	}
+	
 }
 

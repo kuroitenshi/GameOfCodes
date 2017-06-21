@@ -1,5 +1,27 @@
-GOCApp.controller('heroesController', function($scope, HeroLevelsFactory, $http, API_URL) {
-    //retrieve heroes
+GOCApp.service('HouseHeroFilterService', function() {
+	var selectedHouseOfHero;
+
+	var filterSelectedHouseOfHero = function(house) {
+		selectedHouseOfHero = "";
+		selectedHouseOfHero = house;
+	};
+	
+	var getHouseOfHero = function(){
+		return selectedHouseOfHero;
+	};
+	
+	
+	return {
+		filterSelectedHouseOfHero : filterSelectedHouseOfHero,
+		getHouseOfHero : getHouseOfHero
+	};
+
+});
+
+GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFactory, $http, API_URL, SingleHeroFactory, HouseOfHeroFactory) {
+    
+	$scope.currentUser = $rootScope.globals.currentUser.username;
+	//retrieve heroes
 	$scope.heroLevels = HeroLevelsFactory.query();
 	
 	$http({
@@ -10,8 +32,18 @@ GOCApp.controller('heroesController', function($scope, HeroLevelsFactory, $http,
   	 }, function errorCallback(response) {
   
   	 });
-  
-    
+	
+	var user;
+	SingleHeroFactory.getSingleHero($scope.currentUser).then(function(heroToReturn){
+		$scope.currentHero=heroToReturn;
+		user = $scope.currentHero;
+		HouseOfHeroFactory.getSingleHouse(user.id).then(function(houseToReturn){
+			$scope.currentHouseOfHero=houseToReturn;
+			$rootScope.houseOfCurrentHero = $scope.currentHouseOfHero
+			
+		});
+	});
+	  
     //show modal form
     $scope.toggle = function(modalstate, username) {
         $scope.modalstate = modalstate;
@@ -84,4 +116,5 @@ GOCApp.controller('heroesController', function($scope, HeroLevelsFactory, $http,
             return false;
         }
     }
+	
 });

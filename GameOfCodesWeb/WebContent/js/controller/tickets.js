@@ -17,8 +17,9 @@ GOCApp.service('ticketFilterService', function() {
 
 });
 
-GOCApp.controller('ticketsController', function($scope, $http, API_URL, ticketFilterService) {
+GOCApp.controller('ticketsController', function($scope,$rootScope, $http, API_URL, ticketFilterService) {
 
+	$scope.houseOfHero = $rootScope.houseOfCurrentHero;
 	// retrieve tickets
 	$http({
 		method : 'GET',

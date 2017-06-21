@@ -12,7 +12,7 @@ public class HouseWSTest {
 
 	public static void main(String[] args) {
 		HouseWSTest test = new HouseWSTest();
-		//test.newHouses();
+		test.newHouses();
 		test.addHeroesToHouse();
 		// test.addHeroesToHouse();
 		// test.fetchAll();
@@ -38,7 +38,7 @@ public class HouseWSTest {
 		
 		House house = new House();
 		Hero hero = new Hero();
-		/*
+		
 		house.setDomain(ConstantKeys.EQUATION_LENDING);
 
 		hero.setUsername("domingw2");
@@ -132,10 +132,10 @@ public class HouseWSTest {
 		HeroService.createHero(hero);
 
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		 */
+		 
 		house = new House();
 		house.setDomain(ConstantKeys.ESSENCE_CORE);
-		/*
+		
 		hero.setUsername("agutierr");
 		hero.setName("Aldrich Philbert Gutierrez");
 		hero.setEmail("AldrichPhilbert.Gutierrez@misys.com");
@@ -163,7 +163,6 @@ public class HouseWSTest {
 		HeroService.createHero(hero);
 		 
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		*/
 		
 		hero.setUsername("edgresma");
 		hero.setName("Edgar Resma");
@@ -185,8 +184,7 @@ public class HouseWSTest {
 		HeroService.createHero(hero);
 
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		
-		
+			
 		
 	}
 

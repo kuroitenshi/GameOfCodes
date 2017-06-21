@@ -10,7 +10,7 @@ public interface TicketsDAO {
 	List<Ticket> getAllTickets();
 	List<Ticket> getCompletedTicketsForDomain(String domain);
 	Ticket getTicket(Ticket ticket);
-	void addTicket(Ticket ticket);
+	void addTicket(Ticket ticket, String house);
 	void updateTicket(Ticket ticket);
 	void deleteTicket(Ticket ticket);
 	void deleteTicketById(String ticket);

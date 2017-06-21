@@ -10,9 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.Ticket;
-import com.misys.gameofcodes.service.HeroService;
 import com.misys.gameofcodes.service.TicketService;
 
 @Path("/ticket")  
@@ -28,6 +26,17 @@ public class TicketWS {
 		return TicketService.fetchTickets();
 	}   
 	/**
+	 * gets all tickets by domain
+	 * /ticket/all/domain
+	 */
+	@GET  @Path("all/{domain}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<Ticket> getAll(@PathParam("domain") String domain) {  
+		return TicketService.fetchCompletedTicketsByDomain(domain);
+	} 
+	
+	/**
 	 * gets ticket by id via POST
 	 * /ticket/id
 	 */  
@@ -41,11 +50,11 @@ public class TicketWS {
 	 * create a new ticket via POST
 	 * /ticket/create
 	 */
-	@POST  @Path("create")
+	@POST  @Path("create/{domain}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createTicket(Ticket ticket) {  
-		TicketService.addTicket(ticket); 
+	public void createTicket(Ticket ticket, @PathParam("domain") String domain) {  
+		TicketService.addTicket(ticket, domain); 
 	}
 	/**
 	 * delete a ticket via DELETE

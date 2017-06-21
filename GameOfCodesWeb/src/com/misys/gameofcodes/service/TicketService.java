@@ -23,11 +23,14 @@ public class TicketService {
 	public static List<Ticket> fetchTickets(){
 		return ticketDAO.getAllTickets();
 	}
+	public static List<Ticket> fetchCompletedTicketsByDomain(String domain){
+		return ticketDAO.getCompletedTicketsForDomain(domain);
+	}
 	public static int getUserTicketSum(String username){
 		return ticketDAO.getUserTicketSum(username);
 	}
-	public static void addTicket(Ticket ticket){
-		ticketDAO.addTicket(ticket);
+	public static void addTicket(Ticket ticket, String house){
+		ticketDAO.addTicket(ticket, house);
 	}
 	public static void updateTicket(Ticket ticket){
 		ticketDAO.updateTicket(ticket);

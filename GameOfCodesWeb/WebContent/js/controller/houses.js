@@ -31,12 +31,12 @@ GOCApp.filter('orderByStoryPoints', function() {
 	  };
 	});
 
-GOCApp.controller('housesController', function($scope, $http, API_URL, houseFilterService) {
+GOCApp.controller('housesController', function($scope, $rootScope, $http, API_URL, houseFilterService) {
     var d = new Date();
     var months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
     
+    
     $scope.date = months[d.getMonth()];
-	
 	//retrieve houses
     $http({
     	  method : 'GET',

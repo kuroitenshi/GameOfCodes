@@ -1,8 +1,6 @@
 package com.misys.gameofcodes.dao;
 
 import java.util.List;
-import java.util.Map;
-
 import com.misys.gameofcodes.model.Hero;
 import com.misys.gameofcodes.model.House;
 import com.mongodb.DBObject;
@@ -12,6 +10,7 @@ public interface HousesDAO  {
 
 	List<House> getAllHouses();
 	House getHouse(House house);
+	House getHouseByHero(Hero hero);
 	WriteResult createHouse(House house);
 	WriteResult updateHouse(House house);
 	WriteResult deleteHouse(House house);

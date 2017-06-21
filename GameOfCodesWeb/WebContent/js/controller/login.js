@@ -18,11 +18,12 @@ GOCApp.controller('loginController', function($scope, $http, $state,
 
 	$scope.loginValidate = function() {
 
-		//var loginUsername = $scope.user.username;
-		//var loginPassword = $scope.user.password;
+		var loginUsername = $scope.user.username;
+		var loginPassword = $scope.user.password;
 
 		$('#modal1').modal('hide');
 
+		AuthenticationService.SetCredentials(loginUsername, loginPassword);
 		/*
 		AuthenticationService.Login(loginUsername, loginPassword, function(
 				response) {

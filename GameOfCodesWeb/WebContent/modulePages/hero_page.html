@@ -1,22 +1,22 @@
+<div ng-controller="heroesController">
+<div ng-repeat="hero in heroes | filter:{username:currentUser}">
 <section
 	class="mbr-section mbr-section--relative mbr-parallax-background"
-	id="msg-box5-79" style="background-image: url(assets/images/town.jpg);"
-	ng-controller="heroesController">
+	id="msg-box5-79" style="background-image: url(assets/images/town.jpg);">
 	<div class="mbr-overlay"
 		style="opacity: 0.7; background-color: rgb(159, 159, 159);"></div>
 		
 		<!-- Replace username with logged in user -->
 	<div
-		class="mbr-section__container mbr-section__container--isolated mbr-container"
-		ng-repeat="hero in heroes | filter:{username:'jpbautis'}">
+		class="mbr-section__container mbr-section__container--isolated mbr-container">
 		<div class="mbr-row">
-			<div class="mbr-box mbr-box--fixed mbr-box--adapted">
+			<div class="mbr-box mbr-box--fixed mbr-box--adapted" >
 				<div
 					class="mbr-box__magnet mbr-box__magnet--top-right mbr-section__left mbr-col-sm-6">
 					<figure
 						class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width">
 						<img class="mbr-figure__img"
-							src="img/avatar/hero/goc_{{hero.username}}.png">
+							ng-src="img/avatar/hero/{{currentHouseOfHero.domain}}/goc_{{hero.username}}.png">
 					</figure>
 				</div>
 				<div
@@ -89,204 +89,30 @@
 
 </section>
 
-
-
 <section
-	class="mbr-slider mbr-section mbr-section--no-padding carousel slide"
-	data-ride="carousel" data-wrap="true" data-interval="10000"
-	id="slider-38" style="background-color: rgb(159, 159, 159);">
-	<div class="mbr-section__container">
-		<div>
-
-			<!-- <div class="carousel-inner" role="listbox" style="background-image: url(img/bg/scroll1.jpg); background-repeat: no-repeat;background-position: center; background-size: cover !important;"> -->
-			<div class="carousel-inner" role="listbox">
-				<div
-					class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item center active">
-					<div class="content-2 col-4 container">
+	class="content-2 col-4"	id="slider-38" style="background-color: rgb(159, 159, 159);">
+	<div class="container" ng-controller="ticketsController">
+		
 						<div class="row">
 
-							<div class="thumbnail">
+							<div class="thumbnail" ng-repeat="ticket in tickets | filter:{developers:hero.username}">
 								<div class="image">
 									<img class="undefined" src="img/icon/dragon.ico">
 								</div>
-								<div class="caption">
-									<div style="text-overflow: ellipsis;">
-										<h3>Slay the Dragon!</h3>
-										<p>Sed vel vulputate lacus. Nulla et fringilla turpis.
-											Etiam non urna magna. Fusce rutrum nec eros id dapibus. In
-											tincidunt mi eget molestie condimentum.</p>
-									</div>
+								<div class="caption" id="ticketDiv">
+									<p>{{ticket.jiraId}}</p>
+									<p>{{ticket.title | cut:true:50:'...'}}</p>
 									<div class="mbr-buttons btn-inverse mbr-buttons--left">
-										<a
-											class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
-											data-toggle="modal" data-target="#modal3">View Quest
-											Details</a>
+										<a class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
+											data-toggle="modal" data-target="#modal3">View Quest Details</a>
 									</div>
 								</div>
 							</div>
-
-							<div class="thumbnail">
-								<div class="image">
-									<img class="undefined"
-										src="assets/images/anemone-350x350-67.png">
-								</div>
-								<div class="caption">
-									<div>
-										<h3>Clean the house</h3>
-										<p>Sed vel vulputate lacus. Nulla et fringilla turpis.
-											Etiam non urna magna. Fusce rutrum nec eros id dapibus. In
-											tincidunt mi eget molestie condimentum.</p>
-									</div>
-									<div class="mbr-buttons btn-inverse mbr-buttons--left">
-										<a
-											class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
-											data-toggle="modal" data-target="#modal3">View Quest
-											Details</a>
-									</div>
-								</div>
-							</div>
-
-
-							<div class="thumbnail">
-								<div class="image">
-									<img class="undefined" src="img/icon/dragon.ico">
-								</div>
-								<div class="caption">
-									<div>
-										<h3>Prepare Breakfast</h3>
-										<p>Sed vel vulputate lacus. Nulla et fringilla turpis.
-											Etiam non urna magna. Fusce rutrum nec eros id dapibus. In
-											tincidunt mi eget molestie condimentum.</p>
-									</div>
-									<div class="mbr-buttons btn-inverse mbr-buttons--left">
-										<a
-											class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
-											data-toggle="modal" data-target="#modal3">View Quest
-											Details</a>
-									</div>
-								</div>
-							</div>
-
-							<div class="thumbnail">
-								<div class="image">
-									<img class="undefined" src="img/icon/dragon.ico">
-								</div>
-								<div class="caption">
-									<div>
-										<h3>Slay the Dragon!</h3>
-										<p>Sed vel vulputate lacus. Nulla et fringilla turpis.
-											Etiam non urna magna. Fusce rutrum nec eros id dapibus. In
-											tincidunt mi eget molestie condimentum.</p>
-									</div>
-									<div class="mbr-buttons btn-inverse mbr-buttons--left">
-										<a
-											class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
-											data-toggle="modal" data-target="#modal3">View Quest
-											Details</a>
-									</div>
-								</div>
-							</div>
-
 						</div>
-					</div>
-				</div>
 
-				<div
-					class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center">
-					<div class="content-2 col-4 container">
-						<div class="row">
-
-							<div class="thumbnail">
-								<div class="image">
-									<img class="undefined"
-										src="assets/images/anemone-350x350-67.png">
-								</div>
-								<div class="caption">
-									<div>
-										<h3>Clean the house</h3>
-										<p>[TITLE]</p>
-										<p>[STATUS]</p>
-									</div>
-									<div class="mbr-buttons btn-inverse mbr-buttons--left">
-										<a
-											class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
-											data-toggle="modal" data-target="#modal3">View Quest
-											Details</a>
-									</div>
-								</div>
-							</div>
-
-							<div class="thumbnail">
-								<div class="image">
-									<img class="undefined" src="img/icon/dragon.ico">
-								</div>
-								<div class="caption">
-									<div>
-										<h3>Prepare Breakfast</h3>
-										<p>Sed vel vulputate lacus. Nulla et fringilla turpis.
-											Etiam non urna magna. Fusce rutrum nec eros id dapibus. In
-											tincidunt mi eget molestie condimentum.</p>
-									</div>
-									<div class="mbr-buttons btn-inverse mbr-buttons--left">
-										<a
-											class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
-											data-toggle="modal" data-target="#modal3">View Quest
-											Details</a>
-									</div>
-								</div>
-							</div>
-
-							<div class="thumbnail">
-								<div class="image">
-									<img class="undefined" src="img/icon/dragon.ico">
-								</div>
-								<div class="caption">
-									<div>
-										<h3>Slay the Dragon!</h3>
-										<p>Sed vel vulputate lacus. Nulla et fringilla turpis.
-											Etiam non urna magna. Fusce rutrum nec eros id dapibus. In
-											tincidunt mi eget molestie condimentum.</p>
-									</div>
-									<div class="mbr-buttons btn-inverse mbr-buttons--left">
-										<a
-											class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
-											data-toggle="modal" data-target="#modal3">View Quest
-											Details</a>
-									</div>
-								</div>
-							</div>
-
-							<div class="thumbnail">
-
-								<div class="caption">
-									<div>
-										<h3></h3>
-										<p></p>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-			<span data-app-prevent-settings="" class="left mbr-carousel-control"
-				role="button" data-slide="prev" data-target="#slider-38">
-				<span class="fa fa-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</span>
-			<span data-app-prevent-settings="" class="right mbr-carousel-control"
-				role="button" data-slide="next" data-target="#slider-38">
-				<span class="fa fa-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</span>
-		</div>
 	</div>
 
 </section>
-
 <!-- QUESTS MODAL SECTION -->
 
 <div class="modal fade" id="modal3" tabindex="-1" role="dialog"
@@ -533,4 +359,5 @@
 	</div>
 
 </section>
-
+</div>
+</div>
