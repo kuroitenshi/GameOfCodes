@@ -41,15 +41,24 @@ public class TicketsDAOImpl implements TicketsDAO {
 	}
 
 	@Override
-	public List<Ticket> getCompletedTicketsForDomain(String domain) {
+	public List<Ticket> getCompletedTicketsForDomainForCurrentMonth(String domain) {
 		BasicDBObject query = new BasicDBObject();
 		query.put("house", domain);
 		DBCursor cursor = ticketCollection.find(query);
 		List<Ticket> tickets = new ArrayList<Ticket>();
+		Date date= new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int currentMonth = cal.get(Calendar.MONTH);
 		while (cursor.hasNext()) {
 			DBObject dbTicket = cursor.next();
 			Ticket ticket = getTicket(dbTicket);
-			tickets.add(ticket);
+			cal.setTime(ticket.getDateVerified());
+			int ticketMonth = cal.get(Calendar.MONTH);
+			if(currentMonth == ticketMonth){
+				tickets.add(ticket);
+			}
+			
 		}
 		return tickets;
 	}

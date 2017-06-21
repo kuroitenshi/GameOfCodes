@@ -33,7 +33,7 @@ public class TicketWS {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Ticket> getAll(@PathParam("domain") String domain) {  
-		return TicketService.fetchCompletedTicketsByDomain(domain);
+		return TicketService.fetchCompletedTicketsByDomainForCurrentMonth(domain);
 	} 
 	
 	/**

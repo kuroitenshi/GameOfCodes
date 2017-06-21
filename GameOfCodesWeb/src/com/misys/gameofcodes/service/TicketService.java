@@ -23,8 +23,8 @@ public class TicketService {
 	public static List<Ticket> fetchTickets(){
 		return ticketDAO.getAllTickets();
 	}
-	public static List<Ticket> fetchCompletedTicketsByDomain(String domain){
-		return ticketDAO.getCompletedTicketsForDomain(domain);
+	public static List<Ticket> fetchCompletedTicketsByDomainForCurrentMonth(String domain){
+		return ticketDAO.getCompletedTicketsForDomainForCurrentMonth(domain);
 	}
 	public static int getUserTicketSum(String username){
 		return ticketDAO.getUserTicketSum(username);

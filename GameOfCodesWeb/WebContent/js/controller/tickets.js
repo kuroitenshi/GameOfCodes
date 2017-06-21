@@ -23,7 +23,7 @@ GOCApp.controller('ticketsController', function($scope,$rootScope, $http, API_UR
 	// retrieve tickets
 	$http({
 		method : 'GET',
-		url : API_URL + 'ticket/all'
+		url : API_URL + 'ticket/all/' + $scope.houseOfHero.domain
 	}).then(function successCallback(response) {
 		$scope.tickets = response.data;
 	}, function errorCallback(response) {
