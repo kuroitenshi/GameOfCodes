@@ -115,17 +115,17 @@ public class CustomJQL {
 		if (addedProjects() && !isLast(0)) {
 			JQLbuilder.append(" AND ");
 		}
-		if (addedDevelopers() && !isLast(1)) {
+		if (addedDevelopers() && !isLast(7)) {
 			JQLbuilder.append(" AND ");
 		}
 		if (addedStatus() && !isLast(2)) {
 			JQLbuilder.append(" AND ");
 		}
-		if(addedAffectedVersion() && !isLast(2))
+		if(addedAffectedVersion() && !isLast(7))
 		{
 			JQLbuilder.append(" AND ");
 		}
-		if(addedModule() && !isLast(2))
+		if(addedModule() && !isLast(7))
 		{
 			JQLbuilder.append(" AND ");
 		}
@@ -287,6 +287,10 @@ public class CustomJQL {
 		}
 		case 6:{
 			isLast = (endDate.isEmpty());
+			break;
+		}
+		case 7:{
+			isLast = (endDate.isEmpty() && affectedVersion == null && module == null);
 			break;
 		}
 		default: {

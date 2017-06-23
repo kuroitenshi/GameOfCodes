@@ -9,6 +9,7 @@ public interface TicketsDAO {
 	
 	List<Ticket> getAllTickets();
 	List<Ticket> getCompletedTicketsForDomainForCurrentMonth(String domain);
+	List<Ticket> getUserTickets(String username);
 	Ticket getTicket(Ticket ticket);
 	void addTicket(Ticket ticket, String house);
 	void updateTicket(Ticket ticket);

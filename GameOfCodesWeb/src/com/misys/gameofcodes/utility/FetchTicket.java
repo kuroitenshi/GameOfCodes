@@ -47,20 +47,21 @@ public class FetchTicket {
 		 * */
 		
 
-		runRetrievalOfFinishedTickets(ConstantKeys.VERIFIED_DATE_STARTYR, ConstantKeys.CLOSED_DATE_STARTYR, ConstantKeys.FISCALYEAR_END);
+		runRetrievalOfTickets(ConstantKeys.VERIFIED_DATE_STARTYR, ConstantKeys.CLOSED_DATE_STARTYR, ConstantKeys.FISCALYEAR_END);
 	
+			
+		/*
+		 * Updating Hero Points
+		 * */
+		//getHeroPoints();
+
+		
 		/*
 		 * Updating House Points
 		 * 
 		 * */
 		//getHousePoints(ConstantKeys.EQUATION_LENDING);
 		//getHousePoints(ConstantKeys.ESSENCE_CORE);
-		
-		
-		/*
-		 * Updating Hero Points
-		 * */
-		//getHeroPoints();
 		
 	}
 
@@ -98,7 +99,7 @@ public class FetchTicket {
 	 * @param verifiedDate
 	 * @param closedDate
 	 */
-	public static void runRetrievalOfFinishedTickets(String verifiedDate, String closedDate, String endDate) {
+	public static void runRetrievalOfTickets(String verifiedDate, String closedDate, String endDate) {
 
 		for(DomainEnumeration domain: DomainEnumeration.values()){
 
@@ -116,7 +117,7 @@ public class FetchTicket {
 
 			}
 
-			computeTickets(domain.toString());
+			//computeTickets(domain.toString());
 
 		}
 		
@@ -179,8 +180,8 @@ public class FetchTicket {
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("ESSENCE CORE");
 			System.out.println("JQL USED: " + jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open) AND type not in (Task, \"Technical task\")");
-			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open) AND type not in (Task, \"Technical task\")"));
-			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.ESSENCE_CORE);
+			//ArrayList<Ticket> tickets = ft.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open) AND type not in (Task, \"Technical task\")"));
+			//ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.ESSENCE_CORE);
 
 		} catch (URISyntaxException e) {
 
@@ -225,25 +226,28 @@ public class FetchTicket {
 		affectedVersion.add("EQ 4.3.3.04");
 		ArrayList<String> module = new ArrayList<String>();
 		module.add("EQ - Lending");
-
+		ArrayList<String> status = new ArrayList<String>();
+		status.add("In Progress");
+		
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
 		jql.setAffectedVersion(affectedVersion);
 		jql.setModule(module);
-		jql.setVerifiedDate(verifiedDate); // YYYY-MM-DD
-		jql.setClosedDate(closedDate);// YYYY-MM-DD
-		jql.setEndDate(endDate); //YYYY-MM-DD
+		//jql.setStatus(status);
+		//jql.setVerifiedDate(verifiedDate); // YYYY-MM-DD
+		//jql.setClosedDate(closedDate);// YYYY-MM-DD
+		//jql.setEndDate(endDate); //YYYY-MM-DD
 
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("EQUATION LENDING - ISTISNA");
-			System.out.println("JQL USED: " + jqlQuery);
-			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(
-					ft.fetchJQLQuery(jqlQuery + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY));
-			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			System.out.println("JQL USED: " + jqlQuery + " ((resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + ") OR " + "status IN (\"In Progress\"))");
+			//ArrayList<Ticket> tickets = ft.mapIssuesToTickets(
+				//	ft.fetchJQLQuery(jqlQuery + " ((resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + ") OR " + "status IN (\"In Progress\")) " + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY));
+			//ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
@@ -276,20 +280,20 @@ public class FetchTicket {
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
-		jql.setVerifiedDate(verifiedDate); // YYYY-MM-DD
-		jql.setClosedDate(closedDate);// YYYY-MM-DD
-		jql.setEndDate(endDate); //YYYY-MM-DD
+		//jql.setVerifiedDate(verifiedDate); // YYYY-MM-DD
+		//jql.setClosedDate(closedDate);// YYYY-MM-DD
+		//jql.setEndDate(endDate); //YYYY-MM-DD
 		
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("EQUATION LENDING - EPA1");
-			System.out.println("JQL USED: " + jqlQuery);
+			System.out.println("JQL USED: " + jqlQuery + " AND ((resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + ") OR " + "status IN (\"In Progress\"))");
 		
-			ArrayList<Ticket> tickets = ft
-					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
-			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			//ArrayList<Ticket> tickets = ft
+					//.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
+			//ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block

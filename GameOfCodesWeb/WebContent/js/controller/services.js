@@ -53,3 +53,20 @@ GOCApp.factory('HouseOfHeroFactory', function($http) {
 	return houseToReturn;
 });
 
+GOCApp.factory('TicketsOfHeroFactory', function($http) {
+
+	var ticketsToReturn = {};
+	ticketsToReturn.getHeroTickets = function(heroName) {
+		return $http.get(
+				'http://mancswfbedv0004:8081/GameOfCodesWeb-App/rest/'
+						+ 'ticket/all/hero/' + heroName).then(function(response) {
+			return response.data;
+
+		},function(error){
+		       console.log(error);
+		});
+
+	}
+	
+	return ticketsToReturn;
+});

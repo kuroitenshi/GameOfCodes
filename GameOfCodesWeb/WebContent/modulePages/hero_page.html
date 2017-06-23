@@ -91,11 +91,11 @@
 
 <section
 	class="content-2 col-4"	id="slider-38" style="background-color: rgb(159, 159, 159);">
-	<div class="container" ng-controller="ticketsController">
+	<div class="container">
 		
 						<div class="row">
 
-							<div class="thumbnail" ng-repeat="ticket in tickets | filter:{developers:hero.username}">
+							<div class="thumbnail" ng-repeat="ticket in tickets | filter:{developers:hero.username, status:'In Progress'}">
 								<div class="image">
 									<img class="undefined" src="img/icon/dragon.ico">
 								</div>

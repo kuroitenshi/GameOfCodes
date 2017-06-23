@@ -36,9 +36,9 @@ public class ConstantKeys {
 	 * - This will change per Fiscal Year
 	 * 
 	 * */
-	public final static String VERIFIED_DATE_STARTYR = "2016-06-01";
-	public final static String CLOSED_DATE_STARTYR = "2016-06-01";
-	public final static String FISCALYEAR_END = "2017-05-31";
+	public final static String VERIFIED_DATE_STARTYR = "2017-06-01";
+	public final static String CLOSED_DATE_STARTYR = "2017-06-01";
+	public final static String FISCALYEAR_END = "2018-05-31";
 	
 	/*
 	 * EQUATION - LENDING Constants

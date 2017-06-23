@@ -27,7 +27,7 @@ public class TicketScriptRunner {
 			 * Single House Update
 			 * 
 			 * */
-			ft.runRetrievalOfFinishedTickets(ConstantKeys.VERIFIED_DATE_STARTYR, ConstantKeys.CLOSED_DATE_STARTYR, ConstantKeys.FISCALYEAR_END);
+			ft.runRetrievalOfTickets(ConstantKeys.VERIFIED_DATE_STARTYR, ConstantKeys.CLOSED_DATE_STARTYR, ConstantKeys.FISCALYEAR_END);
 			
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block

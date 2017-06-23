@@ -34,6 +34,16 @@ public class TicketWS {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Ticket> getAll(@PathParam("domain") String domain) {  
 		return TicketService.fetchCompletedTicketsByDomainForCurrentMonth(domain);
+	} 	
+	/**
+	 * gets all tickets by username
+	 * /ticket/all/username
+	 */
+	@GET  @Path("all/hero/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<Ticket> getAllHeroTickets(@PathParam("username") String username) {  
+		return TicketService.fetchHeroTickets(username);
 	} 
 	
 	/**

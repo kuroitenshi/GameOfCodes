@@ -18,7 +18,7 @@ GOCApp.service('HouseHeroFilterService', function() {
 
 });
 
-GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFactory, $http, API_URL, SingleHeroFactory, HouseOfHeroFactory) {
+GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFactory, $http, API_URL, SingleHeroFactory, HouseOfHeroFactory, TicketsOfHeroFactory) {
     
 	$scope.currentUser = $rootScope.globals.currentUser.username;
 	//retrieve heroes
@@ -42,6 +42,11 @@ GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFac
 			$rootScope.houseOfCurrentHero = $scope.currentHouseOfHero
 			
 		});
+		
+		TicketsOfHeroFactory.getHeroTickets(user.username).then(function(ticketsToReturn){
+			$scope.tickets=ticketsToReturn;
+		});
+		
 	});
 	  
     //show modal form

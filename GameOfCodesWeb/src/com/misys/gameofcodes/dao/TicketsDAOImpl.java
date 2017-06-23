@@ -62,6 +62,22 @@ public class TicketsDAOImpl implements TicketsDAO {
 		}
 		return tickets;
 	}
+	
+	@Override
+	public List<Ticket> getUserTickets(String username) {
+		BasicDBObject query = new BasicDBObject();
+		query.put("developers", username);
+		DBCursor cursor = ticketCollection.find(query);
+		List<Ticket> tickets = new ArrayList<Ticket>();
+
+		while (cursor.hasNext()) {
+			DBObject dbTicket = cursor.next();
+			Ticket ticket = getTicket(dbTicket);
+			tickets.add(ticket);
+			
+		}
+		return tickets;
+	}
 
 	@Override
 	public int getUserTicketSum(String username) {
