@@ -39,151 +39,215 @@ public class HouseWSTest {
 		House house = new House();
 		Hero hero = new Hero();
 		
-		house.setDomain(ConstantKeys.EQUATION_LENDING);
-
-		hero.setUsername("domingw2");
-		hero.setName("Wilson Domingo");
-		hero.setEmail("Wilson.Domingo@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-
-		// Add second hero
-		hero.setUsername("rogedian");
-		hero.setName("Rogelio Dian");
-		hero.setEmail("Rogelio.Dian@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("mangunf1");
-		hero.setName("Felicisimo Mangundayao");
-		hero.setEmail("Felicisimo.Mangundayao@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("marquel1");
-		hero.setName("Luzviminda Marquez");
-		hero.setEmail("Luzviminda.Marquez@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("dalistal");
-		hero.setName("Lori Dalistan-Songco");
-		hero.setEmail("Lori.Dalistan-Songco@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("blandich");
-		hero.setName("Benjamin Joseph Landicho");
-		hero.setEmail("BenjaminJoseph.Landicho@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("jmarque2");
-		hero.setName("Joshua Marquez Lim");
-		hero.setEmail("Joshua.MarquezLim@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("jclemen2");
-		hero.setName("Jose Maria Clemente");
-		hero.setEmail("JoseMaria.Clemente@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("jpardill");
-		hero.setName("Jerico Pardillo");
-		hero.setEmail("Jerico.Pardillo@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("gladysyu");
-		hero.setName("Gladys Joyce Yu");
-		hero.setEmail("GladysJoyce.Yu@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("jcristob");
-		hero.setName("Jericho Cristobal");
-		hero.setEmail("Jericho.Cristobal@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("ccalamba");
-		hero.setName("Catherine Calamba");
-		hero.setEmail("Catherine.Calamba@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		// Add second hero
-		hero.setUsername("bvictori");
-		hero.setName("Bianca Ysabel Victoria");
-		hero.setEmail("BiancaYsabel.Victoria@misys.com");
-		HeroService.createHero(hero);
-
-		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		 
-		house = new House();
-		house.setDomain(ConstantKeys.ESSENCE_CORE);
+		house.setDomain(ConstantKeys.EQUATION_CASHIERDEALS);
 		
-		hero.setUsername("agutierr");
-		hero.setName("Aldrich Philbert Gutierrez");
-		hero.setEmail("AldrichPhilbert.Gutierrez@misys.com");
+		hero.setUsername("melvchan");
+		hero.setName("Melvin Chan");
+		hero.setEmail("Melvin.Chan@misys.com");
 		HeroService.createHero(hero);
 
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
 		
-		hero.setUsername("jpbautis");
-		hero.setName("Jan Peter Bautista");
-		hero.setEmail("JanPeter.Bautista@misys.com");
+		hero.setUsername("jcortado");
+		hero.setName("Junard Laurence Cortado");
+		hero.setEmail("JunardLaurence.Cortado@misys.com");
 		HeroService.createHero(hero);
 
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
 		
-		hero.setUsername("aclimaco");
-		hero.setName("April Alcantara");
-		hero.setEmail("April.Alcantara@misys.com");
+		hero.setUsername("kgangano");
+		hero.setName("Kristelle Joyce Gangano");
+		hero.setEmail("KristelleJoyce.Gangano@misys.com");
 		HeroService.createHero(hero);
 
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
 		
-		hero.setUsername("jayperez");
-		hero.setName("Jayson Perez");
-		hero.setEmail("Jayson.Perez@misys.com");
+		hero.setUsername("garcial");
+		hero.setName("Doy Garcia");
+		hero.setEmail("LaurelJoy.Garcia@misys.com");
 		HeroService.createHero(hero);
-		 
+
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
-		
-		hero.setUsername("edgresma");
-		hero.setName("Edgar Resma");
-		hero.setEmail("Edgar.Resma@misys.com");
+
+		hero.setUsername("lpracull");
+		hero.setName("Lorenzo Pracullos");
+		hero.setEmail("Lorenzo.Pracullos@misys.com");
+		HeroService.createHero(hero);
+
+		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+
+		hero.setUsername("kurtsiao");
+		hero.setName("Kurt Patrick Siao");
+		hero.setEmail("KurtPatrick.Siao@misys.com");
 		HeroService.createHero(hero);
 
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
 		
-		hero.setUsername("rcajigas");
-		hero.setName("Realeen Cajigas");
-		hero.setEmail("Realeen.Cajigas@misys.com");
+		hero.setUsername("tanj2");
+		hero.setName("John Patrick Tan");
+		hero.setEmail("John.Tan@misys.com");
 		HeroService.createHero(hero);
 
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
 		
-		hero.setUsername("arlozano");
-		hero.setName("Arman Lozano");
-		hero.setEmail("Arman.Lozano@misys.com");
+		hero.setUsername("calongc1");
+		hero.setName("Christian Calonge");
+		hero.setEmail("Christian.Calonge@misys.com");
 		HeroService.createHero(hero);
 
 		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+		
+		hero.setUsername("rjtedoco");
+		hero.setName("RJay Tedoco");
+		hero.setEmail("RJay.Tedoco@misys.com");
+		HeroService.createHero(hero);
+
+		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+
+		
+//		hero.setUsername("domingw2");
+//		hero.setName("Wilson Domingo");
+//		hero.setEmail("Wilson.Domingo@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//
+//		// Add second hero
+//		hero.setUsername("rogedian");
+//		hero.setName("Rogelio Dian");
+//		hero.setEmail("Rogelio.Dian@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("mangunf1");
+//		hero.setName("Felicisimo Mangundayao");
+//		hero.setEmail("Felicisimo.Mangundayao@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("marquel1");
+//		hero.setName("Luzviminda Marquez");
+//		hero.setEmail("Luzviminda.Marquez@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("dalistal");
+//		hero.setName("Lori Dalistan-Songco");
+//		hero.setEmail("Lori.Dalistan-Songco@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("blandich");
+//		hero.setName("Benjamin Joseph Landicho");
+//		hero.setEmail("BenjaminJoseph.Landicho@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("jmarque2");
+//		hero.setName("Joshua Marquez Lim");
+//		hero.setEmail("Joshua.MarquezLim@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("jclemen2");
+//		hero.setName("Jose Maria Clemente");
+//		hero.setEmail("JoseMaria.Clemente@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("jpardill");
+//		hero.setName("Jerico Pardillo");
+//		hero.setEmail("Jerico.Pardillo@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("gladysyu");
+//		hero.setName("Gladys Joyce Yu");
+//		hero.setEmail("GladysJoyce.Yu@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("jcristob");
+//		hero.setName("Jericho Cristobal");
+//		hero.setEmail("Jericho.Cristobal@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("ccalamba");
+//		hero.setName("Catherine Calamba");
+//		hero.setEmail("Catherine.Calamba@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		// Add second hero
+//		hero.setUsername("bvictori");
+//		hero.setName("Bianca Ysabel Victoria");
+//		hero.setEmail("BiancaYsabel.Victoria@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		 
+//		house = new House();
+//		house.setDomain(ConstantKeys.ESSENCE_CORE);
+//		
+//		hero.setUsername("agutierr");
+//		hero.setName("Aldrich Philbert Gutierrez");
+//		hero.setEmail("AldrichPhilbert.Gutierrez@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		
+//		hero.setUsername("jpbautis");
+//		hero.setName("Jan Peter Bautista");
+//		hero.setEmail("JanPeter.Bautista@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		
+//		hero.setUsername("aclimaco");
+//		hero.setName("April Alcantara");
+//		hero.setEmail("April.Alcantara@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		
+//		hero.setUsername("jayperez");
+//		hero.setName("Jayson Perez");
+//		hero.setEmail("Jayson.Perez@misys.com");
+//		HeroService.createHero(hero);
+//		 
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		
+//		hero.setUsername("edgresma");
+//		hero.setName("Edgar Resma");
+//		hero.setEmail("Edgar.Resma@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		
+//		hero.setUsername("rcajigas");
+//		hero.setName("Realeen Cajigas");
+//		hero.setEmail("Realeen.Cajigas@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
+//		
+//		hero.setUsername("arlozano");
+//		hero.setName("Arman Lozano");
+//		hero.setEmail("Arman.Lozano@misys.com");
+//		HeroService.createHero(hero);
+//
+//		HouseService.addHouseHero(HouseService.fetchHouse(house), HeroService.fetchHero(hero));
 			
 		
 	}
@@ -193,16 +257,16 @@ public class HouseWSTest {
 		System.out.println("Adding New Houses");
 		
 		House house = new House();
-		house.setHousename("House #EXODU");
-		house.setBanner("Wolf");
-		house.setDomain(ConstantKeys.EQUATION_LENDING);
+		house.setHousename("House Konoha");
+		house.setBanner("Konoha");
+		house.setDomain(ConstantKeys.EQUATION_CASHIERDEALS);
 		HouseService.createHouse(house);
 		
-		house = new House();
-		house.setHousename("House Stark");
-		house.setBanner("Wolf");
-		house.setDomain(ConstantKeys.ESSENCE_CORE);
-		HouseService.createHouse(house);
+//		house = new House();
+//		house.setHousename("House Stark");
+//		house.setBanner("Wolf");
+//		house.setDomain(ConstantKeys.ESSENCE_CORE);
+//		HouseService.createHouse(house);
 	}
 
 	public void deleteHouse() {

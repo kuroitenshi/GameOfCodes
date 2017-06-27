@@ -17,6 +17,7 @@ public class ConstantKeys {
 	 * */
 	public final static String ESSENCE_CORE = "Essence Core";
 	public final static String EQUATION_LENDING = "Equation Lending";
+	public final static String EQUATION_CASHIERDEALS = "Equation Cashier and Deals";
 	
 	/*
 	 * TASK TYPES
@@ -48,6 +49,11 @@ public class ConstantKeys {
 	 * */
 	public final static String EQLENDING_ISTISNA_ADVENTURE = "EQLENDING_ADVENTURE_ISTISNA";
 	public final static String EQLENDING_EPA1_ADVENTURE = "EQLENDING_ADVENTURE_EPA1";
+	
+	/*
+	 * EQUATION - CASHIER AND DEALS Constants
+	 */
+	public final static String EQ_CASHIERDEALS_ADVENTURE = "EQ_CASHIER_DEALS_ADVENTURE";
 	
 	/*
 	 * ESSENCE - CORE Constants

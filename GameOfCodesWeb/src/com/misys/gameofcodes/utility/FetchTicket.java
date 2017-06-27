@@ -114,6 +114,11 @@ public class FetchTicket {
 				retrieveEssenceCoreManilaTickets(ConstantKeys.ESSENCE_CORE_ADVENTURE, verifiedDate, closedDate, endDate);
 			}
 				break;
+				
+			case ConstantKeys.EQUATION_CASHIERDEALS: {
+				retrieveEQCashierAndDealsTickets(ConstantKeys.EQ_CASHIERDEALS_ADVENTURE, verifiedDate, closedDate, endDate);
+			}
+				break;	
 
 			}
 
@@ -300,6 +305,45 @@ public class FetchTicket {
 			e.printStackTrace();
 		}
 
+	}
+	
+	/**
+	 * Retrieves EQ Cashier and Deals Tickets based on built JQL
+	 */
+	private static void retrieveEQCashierAndDealsTickets(String sprintName, String verifiedDate, String closedDate, String endDate) {
+		ArrayList<String> projects = new ArrayList<String>();
+		projects.add("EQ");
+		projects.add("EQSC");
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("melvchan");
+		developers.add("jcortado");
+		developers.add("kgangano");
+		developers.add("garcial");
+		developers.add("lpracull");
+		developers.add("kurtsiao");
+		developers.add("tanj2");
+		developers.add("calongc1");
+		developers.add("rjtedoco");
+
+		CustomJQL jql = new CustomJQL();
+		jql.setProjects(projects);
+		jql.setDevelopers(developers);
+				
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("EQUATION CASHIER AND DEALS");
+			System.out.println("JQL USED: " + jqlQuery);
+		
+			ArrayList<Ticket> tickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + JQLConstants.EQ_CASHIER_AND_DEALS_SUMMARY));
+			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_CASHIERDEALS);
+
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
