@@ -53,7 +53,7 @@ public class FetchTicket {
 		/*
 		 * Updating Hero Points
 		 * */
-		//getHeroPoints();
+		getHeroPoints();
 
 		
 		/*
@@ -62,6 +62,7 @@ public class FetchTicket {
 		 * */
 		//getHousePoints(ConstantKeys.EQUATION_LENDING);
 		//getHousePoints(ConstantKeys.ESSENCE_CORE);
+		getHousePoints(ConstantKeys.EQUATION_CASHIERDEALS);
 		
 	}
 
@@ -105,13 +106,13 @@ public class FetchTicket {
 
 			switch (domain.toString()) {
 			case ConstantKeys.EQUATION_LENDING: {
-				retrieveEQLendingTicketsForISTISNA(ConstantKeys.EQLENDING_ISTISNA_ADVENTURE, verifiedDate, closedDate, endDate);
-				retrieveEQLendingTicketsForEPA1(ConstantKeys.EQLENDING_EPA1_ADVENTURE, verifiedDate, closedDate, endDate);
+				//retrieveEQLendingTicketsForISTISNA(ConstantKeys.EQLENDING_ISTISNA_ADVENTURE, verifiedDate, closedDate, endDate);
+				//retrieveEQLendingTicketsForEPA1(ConstantKeys.EQLENDING_EPA1_ADVENTURE, verifiedDate, closedDate, endDate);
 			}
 				break;
 
 			case ConstantKeys.ESSENCE_CORE: {
-				retrieveEssenceCoreManilaTickets(ConstantKeys.ESSENCE_CORE_ADVENTURE, verifiedDate, closedDate, endDate);
+				//retrieveEssenceCoreManilaTickets(ConstantKeys.ESSENCE_CORE_ADVENTURE, verifiedDate, closedDate, endDate);
 			}
 				break;
 				

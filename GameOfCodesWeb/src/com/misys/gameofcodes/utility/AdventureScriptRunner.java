@@ -22,7 +22,7 @@ public class AdventureScriptRunner {
 			 * 
 			 * */
 			Adventure adventure = new Adventure();
-			adventure.setAdventurename(ConstantKeys.ESSENCE_CORE_ADVENTURE);
+			adventure.setAdventurename(ConstantKeys.EQ_CASHIERDEALS_ADVENTURE);
 			
 			try {
 				adventure.setDateStart(new SimpleDateFormat("yyyy-MM-dd").parse(ConstantKeys.VERIFIED_DATE_STARTYR));
@@ -31,7 +31,7 @@ public class AdventureScriptRunner {
 
 				e.printStackTrace();
 			}		
-			adventure.setHouse(ConstantKeys.ESSENCE_CORE);
+			adventure.setHouse(ConstantKeys.EQUATION_CASHIERDEALS);
 			
 			/*
 			 * REQUIRED - TASKTYPE

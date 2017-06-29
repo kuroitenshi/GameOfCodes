@@ -17,7 +17,7 @@ public class ConstantKeys {
 	 * */
 	public final static String ESSENCE_CORE = "Essence Core";
 	public final static String EQUATION_LENDING = "Equation Lending";
-	public final static String EQUATION_CASHIERDEALS = "Equation Cashier and Deals";
+	public final static String EQUATION_CASHIERDEALS = "Cashier and Deals";
 	
 	/*
 	 * TASK TYPES
