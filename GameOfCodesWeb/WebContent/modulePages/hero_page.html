@@ -90,28 +90,50 @@
 </section>
 
 <section
-	class="content-2 col-4"	id="slider-38" style="background-color: rgb(159, 159, 159);">
-	<div class="container">
-		
-						<div class="row">
-
-							<div class="thumbnail" ng-repeat="ticket in tickets | filter:{developers:hero.username, status:'In Progress'}">
-								<div class="image">
-									<img class="undefined" src="img/icon/dragon.ico">
-								</div>
-								<div class="caption" id="ticketDiv">
-									<p>{{ticket.jiraId}}</p>
-									<p>{{ticket.title | cut:true:50:'...'}}</p>
-									<div class="mbr-buttons btn-inverse mbr-buttons--left">
-										<a class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
-											data-toggle="modal" data-target="#modal3">View Quest Details</a>
-									</div>
-								</div>
+	class="mbr-slider mbr-section mbr-section--no-padding carousel slide"
+	data-ride="carousel" data-wrap="true" data-interval="10000" id="slider-38" style="background-color: rgb(159, 159, 159);">
+	<div class="mbr-section__container">
+		<div>
+			
+	         <div class="carousel-inner" role="listbox">
+				<div ng-class="'mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item center ' {active:pager.currentPage === page}" >
+					
+			<div class="content-2 col-4 container">
+				<div class="row">
+					<div class="thumbnail" ng-repeat="ticket in progTickets | filter:{developers:hero.username}">
+						<div class="image">
+							<img class="undefined" src="img/icon/dragon.ico">
+						</div>
+						
+						<div class="caption" id="ticketDiv">
+							<h3>{{ticket.jiraId}}</h3>
+							<p>{{ticket.title}}</p>
+							<div class="mbr-buttons btn-inverse mbr-buttons--left">
+								<a class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
+									data-toggle="modal" data-target="#modal3">View Quest Details</a>
 							</div>
 						</div>
-
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+			
+ 			<span data-app-prevent-settings="" class="left mbr-carousel-control" role="button" data-slide="prev" data-target="#slider-38" data-ng-click="setPage(pager.currentPage - 1)">
+                <span class="fa fa-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </span>
+            <span data-app-prevent-settings="" class="right mbr-carousel-control" role="button" data-slide="next" data-target="#slider-38" data-ng-click="setPage(pager.currentPage + 1)">
+                <span class="fa fa-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </span>
+		</div>
+		
+		<ol class="carousel-indicators">
+	                <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}" data-ng-click="setPage(page)">
+					</li>
+	    </ol>
 	</div>
-
 </section>
 <!-- QUESTS MODAL SECTION -->
 

@@ -18,7 +18,7 @@ GOCApp.service('HouseHeroFilterService', function() {
 
 });
 
-GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFactory, $http, API_URL, SingleHeroFactory, HouseOfHeroFactory, TicketsOfHeroFactory) {
+GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFactory, $http, API_URL, SingleHeroFactory, HouseOfHeroFactory, TicketsOfHeroFactory, PagerServiceFactory) {
     
 	$scope.currentUser = $rootScope.globals.currentUser.username;
 	//retrieve heroes
@@ -45,8 +45,44 @@ GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFac
 		
 		TicketsOfHeroFactory.getHeroTickets(user.username).then(function(ticketsToReturn){
 			$scope.tickets=ticketsToReturn;
+			
+			// Pagination for Hero Quests
+		    var vm = this;
+		    vm.ticketItems = [];
+			for(i = 0; i < $scope.tickets.length; i++)
+			{
+				vm.ticketItems.push($scope.tickets[i]); // array of items to be paged
+			}
+		    
+		    $scope.setPage = function set(page) {
+		        if (page < 1 || page > vm.pager.totalPages) {
+		            return;
+		        }
+		 
+		        // get pager object from service
+		        vm.pager = PagerServiceFactory.GetPager(vm.ticketItems.length, page, 0);
+		        $scope.pager = vm.pager;
+		        // get current page of items
+		        $scope.progTickets = vm.ticketItems.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
+		    }
+		    
+		    vm.pager = {};
+		    
+		    initController();
+		 
+		    function initController() {
+		        // initialize to page 1
+		        $scope.setPage(1);
+		    }
+		 
+
 		});
 		
+		
+		
+		
+		
+	   
 	});
 	  
     //show modal form
