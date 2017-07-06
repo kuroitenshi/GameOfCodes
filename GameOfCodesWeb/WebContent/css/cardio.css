@@ -66,26 +66,33 @@ h4.houseBoardMediumText{
 	color: #FFFFFF;
 	display: inline;
 }
-/*House Page - Customizations END*/
 
 .centerBox {
 	 float: none;
      margin-left: auto;
      margin-right: auto;
+     border: 2px solid white;
+	 border-radius: 2px;
 }
 
 .flagPointer {
-	cursor:pointer;
-	display:block;
-    margin:auto;
-    height: 250px;
+    height: 100px;
 }
 
 .flagContainer {
 	width: 250px;
 }
 
-.intro-table-hover-house h4 {
+h4.houseHeading {
+	display: inline-block;
+}
+
+div.takeSpace {
+	width:100%;
+}
+
+/*House Page - Customizations END*/
+/*.intro-table-hover-house h4 {
 	-webkit-transform: translateY(170px);
 	transform: translateY(170px);
 	-webkit-transition: -webkit-transform 0.3s;
@@ -99,7 +106,7 @@ h4.houseBoardMediumText{
 	-webkit-transform: scale(0.6);
 	-ms-transform: scale(0.6);
 	transform: scale(0.6);
-}
+}*/
 
 .intro-table-hover-house .hide-hover {
 	-webkit-transition: opacity 0.3s ease;

@@ -6,19 +6,13 @@
 		<div class="row houseEssenceContainer">
 			<h3>Kingdom Essence</h3>
 		</div>
-		<div class="row kingdomEssenceFragment">
-			<div class="col-md-4 centerBox intro-table-hover-house" ng-controller="housesController">
-				<div id="essenceDiv" class="expand">
-					<h4 id="essenceName" class="white heading">House Essence</h4>
-				</div>
-				<div class="flagContainer centerBox">
-					<a id="essence" data-toggle="modal" data-target="#houseModal"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Essence Core')">
-
-						<img src="img/domain_logos/FBE/FBE_logo.png" class="flagPointer" />
-					</a>
-				</div>
+		<div class="row kingdomEssenceFragment">		
+			<div class="col-md-4 centerBox" ng-controller="housesController">
+				<a id="essence" data-toggle="collapse" data-target="#houseModal"
+					ng-click="housenamefilter('Essence Core')">
+					<img src="img/domain_logos/FBE/FBE_logo.png" class="flagPointer" />
+					<h4 id="essenceName" class="white heading houseHeading">House Essence</h4>
+				</a>
 			</div>
 		</div>
 
@@ -27,137 +21,114 @@
 		</div>
 
 		<div class="row kingdomEquationFragment">
-			<div class="col-md-4  intro-table-hover-house" ng-controller= "housesController">
-				<div id="eqLendingDiv" class="expand">
-					<h4 id="eqLendingName" class="white heading">House Lending</h4>
-				</div>
-				<div class="flagContainer centerBox">
-					<a id="eqLending" data-toggle="modal" data-target="#houseModal"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Equation Lending')">
-
-						<img src="img/domain_logos/FBEQ/EQ_Lending.png"
-							class="flagPointer" />
-					</a>
-				</div>
+			<table style="width:100%;">
+			<td>
+			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
+				<a id="eqLending" data-toggle="collapse" data-target="#houseModal"
+					ng-click="housenamefilter('Equation Lending')">
+					<img src="img/domain_logos/FBEQ/EQ_Lending.png"
+						class="flagPointer" />
+				<h4 id="eqLendingName" class="white heading houseHeading">House Lending</h4>
+				</a>
 			</div>
-			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
-				<div id="eqCashiersDiv" class="expand">
-					<h4 id="eqCashiersName" class="white heading">House Cashier &
-						Deals</h4>
-				</div>
-				<div class="flagContainer centerBox">
-					<a id="eqCashiers" data-toggle="modal" data-target="#houseModal"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Equation Cashier & Deals')">
-
-						<img src="img/domain_logos/FBEQ/EQ_CashierDeals.png"
-							class="flagPointer" />
-					</a>
-				</div>
+			</td>
+			<td>
+			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
+				<a id="eqCashiers" data-toggle="collapse" data-target="#houseModal"
+					ng-click="housenamefilter('Equation Cashier & Deals')">
+					<img src="img/domain_logos/FBEQ/EQ_CashierDeals.png"
+						class="flagPointer" />
+				<h4 id="eqCashiersName" class="white heading houseHeading">House Cashier &
+					Deals</h4>
+				</a>
 			</div>
-			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
-				<div id="eqAccountsDiv" class="expand">
-					<h4 id="eqAccountsName" class="white heading">House Accounts &
+			</td>
+			<td>
+			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
+				<a id="eqAccounts" data-toggle="collapse" data-target="#houseModal"
+					ng-click="housenamefilter('Equation Accounts & CMS')">
+					<img src="img/domain_logos/FBEQ/EQ_AccountsCMS.png"
+						class="flagPointer" />
+					<h4 id="eqAccountsName" class="white heading houseHeading">House Accounts &
 						CMS</h4>
-				</div>
-				<div class="flagContainer centerBox">
-					<a id="eqAccounts" data-toggle="modal" data-target="#houseModal"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Equation Accounts & CMS')">
-
-						<img src="img/domain_logos/FBEQ/EQ_AccountsCMS.png"
-							class="flagPointer" />
-					</a>
-				</div>
+				</a>
 			</div>
+			</td>
+			</table>
 		</div>
 
 		<div class="row houseMidasContainer">
 			<h3>Kingdom Midas</h3>
 		</div>
 		<div class="row kingdomMidasFragment">
-			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
-				<div id="midasGLDiv" class="expand">
-					<h4 id="midasGLName" class="white heading">House General
+			<table style="width:100%;">
+			<tr>
+			<td>
+			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
+				<a id="midasGL" data-toggle="collapse" data-target="#houseModal"
+					ng-click="housenamefilter('Midas General Ledger & Retail')">
+					<img src="img/domain_logos/FBM/Midas_GeneralLedger.png"
+						class="flagPointer" />
+					<h4 id="midasGLName" class="white heading houseHeading">House General
 						Ledger & Retail</h4>
-				</div>
-				<div class="flagContainer centerBox">
-					<a id="midasGL" data-toggle="modal" data-target="#houseModal"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Midas General Ledger & Retail')">
-
-						<img src="img/domain_logos/FBM/Midas_GeneralLedger.png"
-							class="flagPointer" />
-					</a>
-				</div>
+				</a>
 			</div>
-			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
-				<div id="midasTPDiv" class="expand">
-					<h4 id="midasTPName" class="white heading">House Technical
+			</td>
+			<td>
+			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
+				<a id="midasTP" data-toggle="collapse" data-target="#houseModal"
+					ng-click="housenamefilter('Midas Technical Platform')">
+					<img src="img/domain_logos/FBM/Midas_TP.png" class="flagPointer" />
+					<h4 id="midasTPName" class="white heading houseHeading">House Technical
 						Platform</h4>
-				</div>
-				<div class="flagContainer centerBox">
-					<a id="midasTP" data-toggle="modal" data-target="#houseModal"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Midas Technical Platform')">
-
-						<img src="img/domain_logos/FBM/Midas_TP.png" class="flagPointer" />
-					</a>
-				</div>
+				</a>	
 			</div>
-			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
-				<div id="midasLendingDiv" class="expand">
-					<h4 id="midasLendingName" class="white heading">House Lending</h4>
-				</div>
-				<div class="flagContainer centerBox">
-					<a id="midasLending" data-toggle="modal" data-target="#houseModal"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Midas Lending')">
-
-						<img src="img/domain_logos/FBM/Midas_lending.png"
-							class="flagPointer" />
-					</a>
-				</div>
+			</td>
+			<td>
+			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
+				<a id="midasLending" data-toggle="collapse" data-target="#houseModal"
+					ng-click="housenamefilter('Midas Lending')">
+					<img src="img/domain_logos/FBM/Midas_lending.png"
+						class="flagPointer" />
+					<h4 id="midasLendingName" class="white heading houseHeading">House Lending</h4>
+				</a>
 			</div>
-			<div class="col-md-2"></div>
-			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
-				<div id="midasDealingDiv" class="expand">
-					<h4 id="midasDealingName" class="white heading">House Dealing
+			</td>
+			</tr>
+			</table>
+			<table style="width:100%;">
+			<tr>
+			<td>
+			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
+				<a id="midasDealing" data-toggle="collapse" data-target="#houseModal"
+					ng-click="housenamefilter('Midas Dealing & Securities')">
+					<img src="img/domain_logos/FBM/Midas_Dealing.png"
+						class="flagPointer" />
+					<h4 id="midasDealingName" class="white heading houseHeading">House Dealing
 						& Securities</h4>
-				</div>
-				<div class="flagContainer centerBox">
-					<a id="midasDealing" data-toggle="modal" data-target="#houseModal"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Midas Dealing & Securities')">
-
-						<img src="img/domain_logos/FBM/Midas_Dealing.png"
-							class="flagPointer" />
-					</a>
-				</div>
+				</a>
 			</div>
-			<div class="col-md-4 intro-table-hover-house" ng-controller= "housesController">
-				<div id="midasFTDiv" class="expand">
-					<h4 id="midasFTName" class="white heading">House Funds
+			</td>
+			<td>
+			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
+				<a id="midasFT" data-toggle="collapse" data-target="#houseModal"
+					ng-click="housenamefilter('Midas Funds Transfer')">
+					<img src="img/domain_logos/FBM/Midas_FundsTransfer.png"
+						class="flagPointer" />
+					<h4 id="midasFTName" class="white heading houseHeading">House Funds
 						Transfer</h4>
-				</div>
-				<div class="flagContainer centerBox">
-					<a id="midasFT" data-toggle="modal" data-target="#houseModal"
-						onmouseover="showFlagName(this)" onmouseout="hideFlagName(this)"
-						ng-click="housenamefilter('Midas Funds Transfer')">
-
-						<img src="img/domain_logos/FBM/Midas_FundsTransfer.png"
-							class="flagPointer" />
-					</a>
-				</div>
+				</a>
 			</div>
+			</td>
+			</tr>
+			</table>
 		</div>
 
 	</div>
 
-	<div class="modal fade " id="houseModal" tabindex="-1" role="dialog"
+	<div class="collapse" id="houseModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog"
+		<div class="collapse-dialog"
 			style="margin-top: 100px; min-width: 900px; max-height: 400px;"
 			ng-controller= "houseBoardController" >
 			<!--  TO BE CHANGED ON CLICK OF A MODAL -->
