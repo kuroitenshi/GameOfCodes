@@ -27,6 +27,7 @@ body {
 	background-image: url('../img/textures/header.jpg');
 	background-clip: content-box;
 	background-repeat: no-repeat;
+	background-position: center;
 	background-size: contain;
 }
 
@@ -63,7 +64,6 @@ body {
 
 .num-row{
 	padding-top: 40%;
-	display: flex;
 }
 
 .num-block {
