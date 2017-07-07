@@ -95,7 +95,7 @@ GOCApp.config(function($stateProvider, $urlRouterProvider) {
 
 	// LEADERBOARD PAGE =================================
 	.state('leaderboard', {
-		url : 'http://localhost:8081/GameOfCodesWeb-App/Leaderboard.html',
+		url : 'http://mancswfbedv0004:8081/GameOfCodesWeb-App/Leaderboard.html',
 		external : true
 
 	});

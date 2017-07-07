@@ -29,67 +29,28 @@ import com.misys.gameofcodes.service.LevelService;
 import com.misys.gameofcodes.service.TicketService;
 
 public class FetchTicket {
-	
+
 	private RestClientUtility restClient;
 	final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD");
 
 	public FetchTicket() throws URISyntaxException {
-		restClient = new RestClientUtility(15, TimeUnit.MINUTES);
+		restClient = new RestClientUtility(2, TimeUnit.HOURS);
 
 	}
 
 	/* Main Class for fragmented testing */
 	public static void main(String[] args) throws IOException {
 		/*
-		 * Retrieval of FINISHED tickets from a start date to an end date
-		 * - ALL DOMAINS
-		 * - Start and End Dates are configurable in ConstantKeys class
-		 * */
+		 * Retrieval of FINISHED tickets from a start date to an end date - ALL
+		 * DOMAINS - Start and End Dates are configurable in ConstantKeys class
+		 * CHANGE IN ConstantKeys for new dates
+		 * 			
+		 */
+
+		runRetrievalOfTickets(ConstantKeys.VERIFIED_DATE_STARTYR, ConstantKeys.CLOSED_DATE_STARTYR,
+				ConstantKeys.FISCALYEAR_END);
 		
-
-		runRetrievalOfTickets(ConstantKeys.VERIFIED_DATE_STARTYR, ConstantKeys.CLOSED_DATE_STARTYR, ConstantKeys.FISCALYEAR_END);
-	
-			
-		/*
-		 * Updating Hero Points
-		 * */
-		getHeroPoints();
-
-		
-		/*
-		 * Updating House Points
-		 * 
-		 * */
-		//getHousePoints(ConstantKeys.EQUATION_LENDING);
-		//getHousePoints(ConstantKeys.ESSENCE_CORE);
-		getHousePoints(ConstantKeys.EQUATION_CASHIERDEALS);
-		
-	}
-
-	/**
-	 * Retrieves All Tickets Coming from the designated Start date and End date
-	 * and adds them to the specific Sprint
-	 * 
-	 * @param adventureName
-	 * @param domainName
-	 * @param startDate
-	 * @param endDate
-	 */
-	public void runRetrievalOfTicketsForSprint(String adventureName, String domainName, String startDate,
-			String endDate) {
-
-		switch (domainName) {
-		case ConstantKeys.EQUATION_LENDING: {
-			// retrieveEQLendingTicketsForISTISNA(adventureName);
-			// retrieveEQLendingTicketsForEPA1(adventureName);
-		}
-			break;
-
-		case ConstantKeys.ESSENCE_CORE: {
-			// retrieveEssenceCoreManilaTickets(adventureName);
-		}
-			break;
-		}
+		System.exit(0);
 
 	}
 
@@ -102,31 +63,38 @@ public class FetchTicket {
 	 */
 	public static void runRetrievalOfTickets(String verifiedDate, String closedDate, String endDate) {
 
-		for(DomainEnumeration domain: DomainEnumeration.values()){
+		for (DomainEnumeration domain : DomainEnumeration.values()) {
 
+			/*Retrieval conditions */
 			switch (domain.toString()) {
 			case ConstantKeys.EQUATION_LENDING: {
-				//retrieveEQLendingTicketsForISTISNA(ConstantKeys.EQLENDING_ISTISNA_ADVENTURE, verifiedDate, closedDate, endDate);
-				//retrieveEQLendingTicketsForEPA1(ConstantKeys.EQLENDING_EPA1_ADVENTURE, verifiedDate, closedDate, endDate);
+				retrieveEQLendingTicketsForISTISNA(ConstantKeys.EQLENDING_ISTISNA_ADVENTURE, verifiedDate, closedDate,
+						endDate);
+				retrieveEQLendingTicketsForEPA1(ConstantKeys.EQLENDING_EPA1_ADVENTURE, verifiedDate, closedDate,
+						endDate);
 			}
 				break;
 
 			case ConstantKeys.ESSENCE_CORE: {
-				//retrieveEssenceCoreManilaTickets(ConstantKeys.ESSENCE_CORE_ADVENTURE, verifiedDate, closedDate, endDate);
+				retrieveEssenceCoreManilaTickets(ConstantKeys.ESSENCE_CORE_ADVENTURE, verifiedDate, closedDate,
+						endDate);
 			}
 				break;
-				
+
 			case ConstantKeys.EQUATION_CASHIERDEALS: {
-				retrieveEQCashierAndDealsTickets(ConstantKeys.EQ_CASHIERDEALS_ADVENTURE, verifiedDate, closedDate, endDate);
+				retrieveEQCashierAndDealsTickets(ConstantKeys.EQ_CASHIERDEALS_ADVENTURE, verifiedDate, closedDate,
+						endDate);
 			}
-				break;	
+				break;
 
 			}
-
-			//computeTickets(domain.toString());
+			/*Updates house points per retrieval*/
+			getHousePoints(domain.toString());
 
 		}
-		
+		/*Updates all hero points based on retrieved tickets*/
+		getHeroPoints();
+
 	}
 
 	/**
@@ -139,8 +107,9 @@ public class FetchTicket {
 
 		try {
 
-			Promise<SearchResult> searchJqlPromise = restClient.getJiraRestClient().getSearchClient().searchJql(jqlQuery, 999, null, null);
-			
+			Promise<SearchResult> searchJqlPromise = restClient.getJiraRestClient().getSearchClient()
+					.searchJql(jqlQuery, 999, null, null);
+
 			return searchJqlPromise.claim();
 
 		} catch (Exception e) {
@@ -158,7 +127,8 @@ public class FetchTicket {
 	/**
 	 * Retrieves Essence Core Manila Tickets based on built JQL
 	 */
-	private static void retrieveEssenceCoreManilaTickets(String sprintName, String verifiedDate, String closedDate, String endDate) {
+	private static void retrieveEssenceCoreManilaTickets(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
 
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("FBE Core");
@@ -167,8 +137,8 @@ public class FetchTicket {
 		developers.add("aclimaco");
 		developers.add("jayperez");
 		developers.add("jpbautis");
-		
-		/*Non Active Members*/
+
+		/* Non Active Members */
 		developers.add("edgresma");
 		developers.add("rcajigas");
 		developers.add("arlozano");
@@ -176,18 +146,18 @@ public class FetchTicket {
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
-		//jql.setVerifiedDate(verifiedDate); // YYYY-MM-DD
-		//jql.setClosedDate(closedDate);// YYYY-MM-DD
-		//jql.setEndDate(endDate); // YYYY-MM-DD
 
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("ESSENCE CORE");
-			System.out.println("JQL USED: " + jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open) AND type not in (Task, \"Technical task\")");
-			//ArrayList<Ticket> tickets = ft.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open) AND type not in (Task, \"Technical task\")"));
-			//ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.ESSENCE_CORE);
+			System.out.println("JQL USED: " + jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= "
+					+ endDate + " AND status not in(Open) AND type not in (Task, \"Technical task\")");
+			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(
+					ft.fetchJQLQuery(jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
+							+ " AND status not in(Open) AND type not in (Task, \"Technical task\")"));
+			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.ESSENCE_CORE);
 
 		} catch (URISyntaxException e) {
 
@@ -206,7 +176,8 @@ public class FetchTicket {
 	 * @param closedDate
 	 * @param endDate
 	 */
-	private static void retrieveEQLendingTicketsForISTISNA(String sprintName, String verifiedDate, String closedDate, String endDate) {
+	private static void retrieveEQLendingTicketsForISTISNA(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("EQ");
 		ArrayList<String> developers = new ArrayList<String>();
@@ -234,26 +205,25 @@ public class FetchTicket {
 		module.add("EQ - Lending");
 		ArrayList<String> status = new ArrayList<String>();
 		status.add("In Progress");
-		
+
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
 		jql.setAffectedVersion(affectedVersion);
 		jql.setModule(module);
-		//jql.setStatus(status);
-		//jql.setVerifiedDate(verifiedDate); // YYYY-MM-DD
-		//jql.setClosedDate(closedDate);// YYYY-MM-DD
-		//jql.setEndDate(endDate); //YYYY-MM-DD
+
 
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("EQUATION LENDING - ISTISNA");
-			System.out.println("JQL USED: " + jqlQuery + " ((resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + ") OR " + "status IN (\"In Progress\"))");
-			//ArrayList<Ticket> tickets = ft.mapIssuesToTickets(
-				//	ft.fetchJQLQuery(jqlQuery + " ((resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + ") OR " + "status IN (\"In Progress\")) " + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY));
-			//ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			System.out.println("JQL USED: " + jqlQuery + " ((resolved  >= " + verifiedDate + " AND " + "resolved <= "
+					+ endDate + ") OR " + "status IN (\"In Progress\"))");
+			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(
+					ft.fetchJQLQuery(jqlQuery + " ((resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
+							+ ") OR " + "status IN (\"In Progress\")) " + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY));
+			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
@@ -265,7 +235,8 @@ public class FetchTicket {
 	/**
 	 * Retrieves EQ Lending EPA1 Tickets based on built JQL
 	 */
-	private static void retrieveEQLendingTicketsForEPA1(String sprintName, String verifiedDate, String closedDate, String endDate) {
+	private static void retrieveEQLendingTicketsForEPA1(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("EQ");
 		ArrayList<String> developers = new ArrayList<String>();
@@ -286,20 +257,19 @@ public class FetchTicket {
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
-		//jql.setVerifiedDate(verifiedDate); // YYYY-MM-DD
-		//jql.setClosedDate(closedDate);// YYYY-MM-DD
-		//jql.setEndDate(endDate); //YYYY-MM-DD
-		
+
+
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("EQUATION LENDING - EPA1");
-			System.out.println("JQL USED: " + jqlQuery + " AND ((resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + ") OR " + "status IN (\"In Progress\"))");
-		
-			//ArrayList<Ticket> tickets = ft
-					//.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
-			//ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			System.out.println("JQL USED: " + jqlQuery + " AND ((resolved  >= " + verifiedDate + " AND "
+					+ "resolved <= " + endDate + ") OR " + "status IN (\"In Progress\"))");
+
+			ArrayList<Ticket> tickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
+			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
@@ -307,11 +277,12 @@ public class FetchTicket {
 		}
 
 	}
-	
+
 	/**
 	 * Retrieves EQ Cashier and Deals Tickets based on built JQL
 	 */
-	private static void retrieveEQCashierAndDealsTickets(String sprintName, String verifiedDate, String closedDate, String endDate) {
+	private static void retrieveEQCashierAndDealsTickets(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
 		ArrayList<String> projects = new ArrayList<String>();
 		projects.add("EQ");
 		projects.add("EQSC");
@@ -329,14 +300,14 @@ public class FetchTicket {
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
-				
+
 		FetchTicket ft = null;
 		try {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("EQUATION CASHIER AND DEALS");
 			System.out.println("JQL USED: " + jqlQuery);
-		
+
 			ArrayList<Ticket> tickets = ft
 					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + JQLConstants.EQ_CASHIER_AND_DEALS_SUMMARY));
 			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_CASHIERDEALS);
@@ -474,15 +445,15 @@ public class FetchTicket {
 
 		}
 	}
-
-	private static void computeTickets(String domainName) {
-		getHeroPoints();
-		getHousePoints(domainName);
-	}
-
+	
+	/**
+	 * Updates hero points
+	 */
 	private static void getHeroPoints() {
 		List<Hero> heroes = HeroService.fetchHeroes();
 		for (Hero hero : heroes) {
+			hero.setStoryPoints(0);
+			HeroService.updateHeroPoints(hero);
 			hero.setStoryPoints(TicketService.getUserTicketSum(hero.getUsername()));
 			hero.setStoryPointsMonth(TicketService.getUserTicketSumMonth(hero.getUsername()));
 			hero.setLevel(LevelService.fetchHeroLevel(TicketService.getUserTicketSum(hero.getUsername())).getLevel());
@@ -491,9 +462,16 @@ public class FetchTicket {
 		}
 	}
 
+	/**
+	 * Updates house points
+	 * @param domainName
+	 */
 	private static void getHousePoints(String domainName) {
+		
 		House house = new House();
 		house.setDomain(domainName);
+		house.setStoryPoints(0);
+		HouseService.updateHousePoints(house);
 		house.setStoryPoints(HouseService.getHousePoints(domainName));
 		house.setLevel(LevelService.fetchHouseLevel(HouseService.getHousePoints(domainName)).getLevel());
 		HouseService.updateHousePoints(house);
