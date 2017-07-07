@@ -8,11 +8,14 @@
 		</div>
 		<div class="row kingdomEssenceFragment">		
 			<div class="col-md-4 centerBox" ng-controller="housesController">
-				<a id="essence" data-toggle="collapse" data-target="#houseModal"
+				<a id="essence" data-toggle="collapse" data-target="#essenceData"
 					ng-click="housenamefilter('Essence Core')">
 					<img src="img/domain_logos/FBE/FBE_logo.png" class="flagPointer" />
 					<h4 id="essenceName" class="white heading houseHeading">House Essence</h4>
 				</a>
+			</div>
+			<div class="collapse test" id="essenceData" tabindex="-1" role="dialog" aria-expanded="false">
+				<div ng-include="'modulePages/collapse_page.html'"></div>
 			</div>
 		</div>
 
@@ -24,17 +27,20 @@
 			<table style="width:100%;">
 			<td>
 			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
-				<a id="eqLending" data-toggle="collapse" data-target="#houseModal"
+				<a id="eqLending" data-toggle="collapse" data-target="#eqlendingData"
 					ng-click="housenamefilter('Equation Lending')">
 					<img src="img/domain_logos/FBEQ/EQ_Lending.png"
 						class="flagPointer" />
 				<h4 id="eqLendingName" class="white heading houseHeading">House Lending</h4>
 				</a>
 			</div>
+			<div class="collapse" id="eqlendingData" tabindex="-1" role="dialog" aria-expanded="false">
+				<div ng-include="'modulePages/collapse_page.html'"></div>
+			</div>
 			</td>
 			<td>
 			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
-				<a id="eqCashiers" data-toggle="collapse" data-target="#houseModal"
+				<a id="eqCashiers" data-toggle="collapse" data-target="#cashierAndDealsData"
 					ng-click="housenamefilter('Equation Cashier & Deals')">
 					<img src="img/domain_logos/FBEQ/EQ_CashierDeals.png"
 						class="flagPointer" />
@@ -42,16 +48,22 @@
 					Deals</h4>
 				</a>
 			</div>
+			<div class="collapse" id="cashierAndDealsData" tabindex="-1" role="dialog" aria-expanded="false">
+				<div ng-include="'modulePages/collapse_page.html'"></div>
+			</div>
 			</td>
 			<td>
 			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
-				<a id="eqAccounts" data-toggle="collapse" data-target="#houseModal"
+				<a id="eqAccounts" data-toggle="collapse" data-target="#accountsAndCMSData"
 					ng-click="housenamefilter('Equation Accounts & CMS')">
 					<img src="img/domain_logos/FBEQ/EQ_AccountsCMS.png"
 						class="flagPointer" />
 					<h4 id="eqAccountsName" class="white heading houseHeading">House Accounts &
 						CMS</h4>
 				</a>
+			</div>
+			<div class="collapse" id="accountsAndCMSData" tabindex="-1" role="dialog" aria-expanded="false">
+				<div ng-include="'modulePages/collapse_page.html'"></div>
 			</div>
 			</td>
 			</table>
@@ -65,7 +77,7 @@
 			<tr>
 			<td>
 			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
-				<a id="midasGL" data-toggle="collapse" data-target="#houseModal"
+				<a id="midasGL" data-toggle="collapse" data-target="#glreData"
 					ng-click="housenamefilter('Midas General Ledger & Retail')">
 					<img src="img/domain_logos/FBM/Midas_GeneralLedger.png"
 						class="flagPointer" />
@@ -73,25 +85,34 @@
 						Ledger & Retail</h4>
 				</a>
 			</div>
+			<div class="collapse" id="glreData" tabindex="-1" role="dialog" aria-expanded="false">
+				<div ng-include="'modulePages/collapse_page.html'"></div>
+			</div>
 			</td>
 			<td>
 			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
-				<a id="midasTP" data-toggle="collapse" data-target="#houseModal"
+				<a id="midasTP" data-toggle="collapse" data-target="#tpData"
 					ng-click="housenamefilter('Midas Technical Platform')">
 					<img src="img/domain_logos/FBM/Midas_TP.png" class="flagPointer" />
 					<h4 id="midasTPName" class="white heading houseHeading">House Technical
 						Platform</h4>
 				</a>	
 			</div>
+			<div class="collapse" id="tpData" tabindex="-1" role="dialog" aria-expanded="false">
+				<div ng-include="'modulePages/collapse_page.html'"></div>
+			</div>
 			</td>
 			<td>
 			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
-				<a id="midasLending" data-toggle="collapse" data-target="#houseModal"
+				<a id="midasLending" data-toggle="collapse" data-target="#mdLendingData"
 					ng-click="housenamefilter('Midas Lending')">
 					<img src="img/domain_logos/FBM/Midas_lending.png"
 						class="flagPointer" />
 					<h4 id="midasLendingName" class="white heading houseHeading">House Lending</h4>
 				</a>
+			</div>
+			<div class="collapse" id="mdLendingData" tabindex="-1" role="dialog" aria-expanded="false">
+				<div ng-include="'modulePages/collapse_page.html'"></div>
 			</div>
 			</td>
 			</tr>
@@ -100,7 +121,7 @@
 			<tr>
 			<td>
 			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
-				<a id="midasDealing" data-toggle="collapse" data-target="#houseModal"
+				<a id="midasDealing" data-toggle="collapse" data-target="#dlseData"
 					ng-click="housenamefilter('Midas Dealing & Securities')">
 					<img src="img/domain_logos/FBM/Midas_Dealing.png"
 						class="flagPointer" />
@@ -108,10 +129,13 @@
 						& Securities</h4>
 				</a>
 			</div>
+			<div class="collapse" id="dlseData" tabindex="-1" role="dialog" aria-expanded="false">
+				<div ng-include="'modulePages/collapse_page.html'"></div>
+			</div>
 			</td>
 			<td>
 			<div class="col-md-4 centerBox takeSpace" ng-controller= "housesController">
-				<a id="midasFT" data-toggle="collapse" data-target="#houseModal"
+				<a id="midasFT" data-toggle="collapse" data-target="#ftData"
 					ng-click="housenamefilter('Midas Funds Transfer')">
 					<img src="img/domain_logos/FBM/Midas_FundsTransfer.png"
 						class="flagPointer" />
@@ -119,63 +143,13 @@
 						Transfer</h4>
 				</a>
 			</div>
+			<div class="collapse" id="ftData" tabindex="-1" role="dialog" aria-expanded="false">
+				<div ng-include="'modulePages/collapse_page.html'"></div>
+			</div>
 			</td>
 			</tr>
 			</table>
 		</div>
 
-	</div>
-
-	<div class="collapse" id="houseModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="collapse-dialog"
-			style="margin-top: 100px; min-width: 900px; max-height: 400px;"
-			ng-controller= "houseBoardController" >
-			<!--  TO BE CHANGED ON CLICK OF A MODAL -->
-			<div class="modal-content modal-popup"
-				ng-repeat="house in houses | filter:{domain:selectedHouse}">
-
-				<h1 class="white heading centerBox">{{house.housename}}</h1>
-				<h4 class="houseBoardLargeText">Meet the heroes of
-					{{house.domain}}</h4>
-				<br>
-				<div ng-controller="heroesController"
-					class="houseBoardFragmentContainer">
-					<div class="row vertical-align houseBoardFragment"
-						ng-repeat="(key, hero) in house.heroes | orderByStoryPoints:'storyPoints':'true'">
-						<div class="col-sm-4 subHeaderLeftAlign">
-							<div class="houseBoardContent">
-								<img class="houseBoard-avatar"
-									src="img/avatar/hero/{{house.domain}}/goc_{{hero.username}}.png" alt="...">
-								<h4 class="houseBoardMediumText">{{hero.name}}</h4>
-							</div>
-						</div>
-						<div class="col-sm-3 subHeaderLeftAlign">
-							<div class="houseBoardContent"
-								ng-repeat="level in heroLevels | filter:{level:hero.level}:true">
-								<h4 class="houseBoardMediumText">{{level.name}}</h4>
-							</div>
-
-						</div>
-						<div class="col-sm-4">
-							<div class="progress"
-								ng-repeat="level in heroLevels | filter:{level:hero.level+1}:true">
-								<div
-									class="progress-bar progress-bar-striped progress-bar-danger active"
-									role="progressbar"
-									aria-valuenow="{{(hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)}}"
-									aria-valuemin="0"
-									aria-valuemax="{{level.points - heroLevels[heroLevels.indexOf(level) - 1].points}}"
-									style="font-weight: bold; margin-bottom: 20px; width: {{((hero.storyPoints- heroLevels[heroLevels.indexOf(level)- 1].points)/(level.points- heroLevels[heroLevels.indexOf(level)- 1].points))*100}}%">
-									{{level.points-hero.storyPoints}} to rank up</div>
-							</div>
-						</div>
-						<div class="col-sm-1"></div>
-
-					</div>
-				</div>
-
-			</div>
-		</div>
 	</div>
 </section>

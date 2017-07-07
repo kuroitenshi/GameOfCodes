@@ -18,6 +18,7 @@ body {
 .houseContainer{
 	width: 100%;
 	margin-top: 120px;
+	height: 100%;
 }
 
 .houseBoard-avatar {

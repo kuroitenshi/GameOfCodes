@@ -1,0 +1,48 @@
+
+		<div ng-controller= "houseBoardController" >
+			<!--  TO BE CHANGED ON CLICK OF A MODAL -->
+			<div class="modal-content modal-popup"
+				ng-repeat="house in houses | filter:{domain:selectedHouse}">
+
+				<h1 class="white heading centerBox">{{house.housename}}</h1>
+				<h4 class="houseBoardLargeText">Meet the heroes of
+					{{house.domain}}</h4>
+				<br>
+				<div ng-controller="heroesController"
+					class="houseBoardFragmentContainer">
+					<div class="row vertical-align houseBoardFragment"
+						ng-repeat="(key, hero) in house.heroes | orderByStoryPoints:'storyPoints':'true'">
+						<div class="col-sm-4 subHeaderLeftAlign">
+							<div class="houseBoardContent">
+								<img class="houseBoard-avatar"
+									src="img/avatar/hero/{{house.domain}}/goc_{{hero.username}}.png" alt="...">
+								<h4 class="houseBoardMediumText">{{hero.name}}</h4>
+							</div>
+						</div>
+						<div class="col-sm-3 subHeaderLeftAlign">
+							<div class="houseBoardContent"
+								ng-repeat="level in heroLevels | filter:{level:hero.level}:true">
+								<h4 class="houseBoardMediumText">{{level.name}}</h4>
+							</div>
+
+						</div>
+						<div class="col-sm-4">
+							<div class="progress"
+								ng-repeat="level in heroLevels | filter:{level:hero.level+1}:true">
+								<div
+									class="progress-bar progress-bar-striped progress-bar-danger active"
+									role="progressbar"
+									aria-valuenow="{{(hero.storyPoints - heroLevels[heroLevels.indexOf(level) - 1].points)}}"
+									aria-valuemin="0"
+									aria-valuemax="{{level.points - heroLevels[heroLevels.indexOf(level) - 1].points}}"
+									style="font-weight: bold; margin-bottom: 20px; width: {{((hero.storyPoints- heroLevels[heroLevels.indexOf(level)- 1].points)/(level.points- heroLevels[heroLevels.indexOf(level)- 1].points))*100}}%">
+									{{level.points-hero.storyPoints}} to rank up</div>
+							</div>
+						</div>
+						<div class="col-sm-1"></div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
