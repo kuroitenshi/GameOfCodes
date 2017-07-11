@@ -1,22 +1,3 @@
-GOCApp.service('ticketFilterService', function() {
-	var selectedQuest;
-
-	var filterQuest = function(quest) {
-		selectedQuest = "";
-		selectedQuest = quest;
-	};
-
-	var returnSelectedQuest = function() {
-		return selectedQuest;
-	};
-
-	return {
-		filterQuest : filterQuest,
-		returnSelectedQuest : returnSelectedQuest
-	};
-
-});
-
 GOCApp.controller('ticketsController', function($scope,$rootScope, $http, API_URL, ticketFilterService) {
 
 	$scope.houseOfHero = $rootScope.houseOfCurrentHero;

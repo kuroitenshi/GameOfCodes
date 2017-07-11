@@ -18,7 +18,8 @@ GOCApp.service('HouseHeroFilterService', function() {
 
 });
 
-GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFactory, $http, API_URL, SingleHeroFactory, HouseOfHeroFactory, TicketsOfHeroFactory, PagerServiceFactory) {
+GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFactory, $http, API_URL, SingleHeroFactory, HouseOfHeroFactory, 
+		TicketsOfHeroFactory, ticketFilterService, PagerServiceFactory) {
     
 	$scope.currentUser = $rootScope.globals.currentUser.username;
 	//retrieve heroes
@@ -44,8 +45,18 @@ GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFac
 		});
 		
 		TicketsOfHeroFactory.getHeroTickets(user.username).then(function(ticketsToReturn){
-			$scope.tickets=ticketsToReturn;
-			
+			$scope.tickets=filterInProgress(ticketsToReturn);
+			function filterInProgress(ticketsToReturn) {
+				var addTicket = [];
+				
+				for(i=0; i < ticketsToReturn.length;i++)
+				{
+					var inProg = ticketsToReturn[i];
+					if(inProg.status == 'In Progress')
+						addTicket.push(inProg);
+				}
+				return addTicket;
+			};
 			// Pagination for Hero Quests
 		    var vm = this;
 		    vm.ticketItems = [];
@@ -84,6 +95,16 @@ GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFac
 		
 	   
 	});
+	
+	$scope.questfilter = function(questID) {		
+		ticketFilterService.filterQuest(questID);
+	}
+
+	$scope.$watch(function() {
+		return ticketFilterService.returnSelectedQuest();
+	}, function(value) {
+		$scope.selectedQuest = value;
+	});
 	  
     //show modal form
     $scope.toggle = function(modalstate, username) {
@@ -110,6 +131,19 @@ GOCApp.controller('heroesController', function($scope, $rootScope, HeroLevelsFac
                 break;
         }
         console.log(username);
+    }
+    
+    $scope.currTicket = function(ticketID) {
+    	$http({
+       	  method : 'POST',
+    	  url: API_URL + 'ticket/id',
+    	  data: ticketID,
+    	  headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+    	 }).then(function successCallback(response) {
+    		 $scope.selectedTicket = response.data;
+    	 }, function errorCallback(response) {  		
+    		 $scope.selectedTick = response.data;	
+    	 });
     }
 
     //save new record / update existing record

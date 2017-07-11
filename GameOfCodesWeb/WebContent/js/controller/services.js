@@ -72,6 +72,26 @@ GOCApp.factory('TicketsOfHeroFactory', function($http) {
 	return ticketsToReturn;
 });
 
+GOCApp.factory('ticketFilterService', function() {
+	var selectedQuest;
+
+	var filterQuest = function(quest) {
+		selectedQuest = "";
+		selectedQuest = quest;
+	};
+
+	var returnSelectedQuest = function() {
+		return selectedQuest;
+	};
+
+	return {
+		filterQuest : filterQuest,
+		returnSelectedQuest : returnSelectedQuest
+	};
+
+});
+
+
 GOCApp.factory('PagerServiceFactory', function() {
     // service definition
     var service = {};
