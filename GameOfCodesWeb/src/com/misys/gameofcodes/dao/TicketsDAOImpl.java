@@ -10,6 +10,7 @@ import org.bson.types.ObjectId;
 
 import com.misys.gameofcodes.connection.CollectionProvider;
 import com.misys.gameofcodes.model.Ticket;
+import com.misys.gameofcodes.utility.ConstantKeys;
 import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
@@ -81,8 +82,8 @@ public class TicketsDAOImpl implements TicketsDAO {
 
 	@Override
 	public int getUserTicketSum(String username) {
-		BasicDBObject query = new BasicDBObject();
-		query.put("developers", username);
+		DBObject query = new BasicDBObject();		
+		query = QueryBuilder.start().put("developers").is(username).and("status").notEquals("In Progress").get();
 		BasicDBObject match = new BasicDBObject("$match", query);
 		BasicDBObject group = new BasicDBObject("$group",
 				new BasicDBObject("_id", "").append("total", new BasicDBObject("$sum", "$storyPoints")));
@@ -98,7 +99,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 		DBObject query = new BasicDBObject();
 		Date startingDate = this.getMonthCurr();
 		Date endDate = this.getMonthNext();
-		query = QueryBuilder.start().put("developers").is(username).and("dateVerified").greaterThanEquals(startingDate)
+		query = QueryBuilder.start().put("developers").is(username).and("status").notEquals("In Progress").and("dateVerified").greaterThanEquals(startingDate)
 				.and("dateVerified").lessThan(endDate).get();
 		BasicDBObject match = new BasicDBObject("$match", query);
 		BasicDBObject group = new BasicDBObject("$group",

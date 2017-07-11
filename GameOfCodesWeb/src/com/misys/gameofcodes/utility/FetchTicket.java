@@ -138,11 +138,6 @@ public class FetchTicket {
 		developers.add("jayperez");
 		developers.add("jpbautis");
 
-		/* Non Active Members */
-		developers.add("edgresma");
-		developers.add("rcajigas");
-		developers.add("arlozano");
-
 		CustomJQL jql = new CustomJQL();
 		jql.setProjects(projects);
 		jql.setDevelopers(developers);
@@ -152,12 +147,17 @@ public class FetchTicket {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("ESSENCE CORE");
-			System.out.println("JQL USED: " + jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
-					+ " AND status not in(Open) AND type not in (Task, \"Technical task\")");
-			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(
-					ft.fetchJQLQuery(jqlQuery + " AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
-							+ " AND status not in(Open) AND type not in (Task, \"Technical task\")"));
-			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.ESSENCE_CORE);
+			System.out.println("JQL USED [Finished Tickets]: " + jqlQuery + "AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\")");
+			System.out.println("JQL USED [Ongoing Tickets]: " + jqlQuery + " AND status in(\"In Progress\") AND type not in (Task, \"Technical task\")");
+			
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft.mapIssuesToTickets(
+					ft.fetchJQLQuery(jqlQuery + "AND resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\")"));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.ESSENCE_CORE);
+			/* Retrieve In Progress tickets*/
+			ArrayList<Ticket> ongoingTickets = ft.mapIssuesToTickets(
+					ft.fetchJQLQuery(jqlQuery + " AND status in(\"In Progress\") AND type not in (Task, \"Technical task\")"));
+			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.ESSENCE_CORE);
 
 		} catch (URISyntaxException e) {
 
@@ -216,12 +216,19 @@ public class FetchTicket {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("EQUATION LENDING - ISTISNA");
-			System.out.println("JQL USED: " + jqlQuery + " ((resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
-					+ ") AND " + "status not in(Open) AND type not in (Task, \"Technical task\"))" + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY);
-			ArrayList<Ticket> tickets = ft.mapIssuesToTickets(
-					ft.fetchJQLQuery(jqlQuery + " ((resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
-							+ ") AND " + "status not in(Open) AND type not in (Task, \"Technical task\"))" + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY));
-			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			System.out.println("JQL USED [Finished Tickets]: " + jqlQuery + " ( resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open,\"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\"))" + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY);
+			System.out.println("JQL USED [Ongoing Tickets]: " + jqlQuery + " ( status in(\"In Progress\") AND type not in (Task, \"Technical task\"))" + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY);
+			
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft.mapIssuesToTickets(
+					ft.fetchJQLQuery(jqlQuery + " ( resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open,\"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\"))" + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			
+			/* Retrieve Ongoing tickets */
+			ArrayList<Ticket> ongoingTickets = ft.mapIssuesToTickets(
+					ft.fetchJQLQuery(jqlQuery + " ( status in(\"In Progress\") AND type not in (Task, \"Technical task\"))" + JQLConstants.EQ_LENDING_ISTISNA_SUMMARY));
+			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.EQUATION_LENDING);
+
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
@@ -262,13 +269,19 @@ public class FetchTicket {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("EQUATION LENDING - EPA1");
-			System.out.println("JQL USED: " + jqlQuery + " AND (resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
-					+ ") AND " + "status not in(Open) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_EPA1_SUMMARY);
+			System.out.println("JQL USED [Finished Tickets]: " + jqlQuery + " AND " + " resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_EPA1_SUMMARY);
+			System.out.println("JQL USED [Ongoing Tickets]: " + jqlQuery + " AND " + "status in(\"In Progress\") AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_EPA1_SUMMARY);
+			
 
-			ArrayList<Ticket> tickets = ft
-					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND (resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
-							+ ") AND " + "status not in(Open) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
-			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND " + " resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			
+			/* Retrieve ongoing tickets */
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND " + "status in(\"In Progress\") AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
+			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.EQUATION_LENDING);
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
@@ -305,13 +318,18 @@ public class FetchTicket {
 			ft = new FetchTicket();
 			String jqlQuery = jql.returnJQLQuery();
 			System.out.println("EQUATION CASHIER AND DEALS");
-			System.out.println("JQL USED: " + jqlQuery + " AND (resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
-					+ ") AND " + "status not in(Open) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_CASHIER_AND_DEALS_SUMMARY);
+			System.out.println("JQL USED: " + jqlQuery + " AND " + " resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open,\"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_CASHIER_AND_DEALS_SUMMARY);
 
-			ArrayList<Ticket> tickets = ft
-					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND (resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate
-							+ ") AND " + "status not in(Open) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_CASHIER_AND_DEALS_SUMMARY));
-			ft.addTicketsToSprintInDB(tickets, sprintName, ConstantKeys.EQUATION_CASHIERDEALS);
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND " + " resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open,\"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_CASHIER_AND_DEALS_SUMMARY));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.EQUATION_CASHIERDEALS);
+			
+			/* Retrieve ongoing tickets */
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND " + "status in(\"In Progress\") AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_CASHIER_AND_DEALS_SUMMARY));
+			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.EQUATION_CASHIERDEALS);
+				
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
