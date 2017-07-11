@@ -232,7 +232,7 @@ div.takeSpace {
 	margin-right: 100px;
 	margin-bottom: 100px;
 	text-align: center;	
-	background-image: url("../img/bg/Quest_board_bg2.jpg");
+	/*background-image: url("../img/bg/Quest_board_bg2.jpg");*/
 	background-size: 100% 100%;
 	background-repeat: no-repeat;	
   	min-height: 900px;
@@ -247,17 +247,16 @@ div.takeSpace {
 }
 
 .questRow{
-	margin-top: 40px;
+	margin-top: 10px;
 }
 
 .questFragment{
 	background-image: url("../img/bg/Quest_box.png");
 	background-size: 100% 100%;
 	margin-left: 20%;
-	width: 15vw;
-	height: 15vw;
+	width: 16vw;
+	height: 16vw;
 	border: 1px solid transparent;
-	border-color: red;	
 }
 
 .questFragment:hover {
@@ -273,16 +272,12 @@ div.takeSpace {
 }
 
 .questContent p{
-	color: black;
-	font-family: 'Cardo-Regular';
+	color: #404040;
+	font-family: sans-serif;
 	text-align: left;
-	margin-left: 10px;
-	line-height: 20px;
-	padding-top: 10px;
-}
-
-.questContent p.highlight{
-	font-family: 'Cardo-Bold';
+	margin-left: 5%;
+	line-height: 18px;
+	font-size: 14px;
 }
 
 .questHeader{
@@ -324,12 +319,83 @@ div.takeSpace {
 	border-width: 5px;
 }
 
+.jiraID{
+	font-family: "Cardo-Regular";
+	font-size: 20px;
+	color: #303030;
+	display: inline-table;
+	margin-left: -50%;
+	margin-top: 5px;
+	font-weight: bold;	
+	transition: color .25s ease-in-out;
+}
+
+.jiraID:hover{
+	cursor: pointer;
+	color: gray;
+}
+
+.questHeaderModal{
+	color: gray;
+	margin-bottom: 10px;	
+}
+
+.modal p{
+	color: white;
+	
+}
+
+/*QUEST STATUS*/
 .questContent .inprogress{
+	font-family: "sans-serif";
 	font-size: 15px;
 	margin-left:-40%;
+	font-weight: bold;
+	color: #404040;
 }
 
 .questContent .inprogress::before{
+	background: url("../img/icon/yellow-icon.png") no-repeat 0 27px;
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    content: " ";
+    display:inline-block;
+    margin-top:-50px;
+}
+
+.questContent .closed{
+	font-family: "sans-serif";
+	font-size: 15px;
+	margin-left:-40%;
+	font-weight: bold;
+	color: #404040;
+	transition: color .25s ease-in-out;
+}
+
+.questContent .closed:hover{
+	color: gray;
+	cursor: pointer;
+}
+.questContent .closed::before{
+	background: url("../img/icon/gray-icon.png") no-repeat 0 27px;
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    content: " ";
+    display:inline-block;
+    margin-top:-50px;
+}
+
+.questContent .verified{
+	font-family: "sans-serif";
+	font-size: 15px;
+	margin-left:-40%;
+	font-weight: bold;
+	color: #404040;
+}
+
+.questContent .verified::before{
 	background: url("../img/icon/green-icon.png") no-repeat 0 27px;
     background-size: 100%;
     width: 50px;
@@ -363,7 +429,6 @@ div.takeSpace {
 	font-family: 'AgencyFB';
 	src: url('../fonts/AgencyFB/agency-fb.ttf') format('truetype');
 }
-
 
 /* Panel Customizations*/
 .panel-body{

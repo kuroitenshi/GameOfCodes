@@ -12,11 +12,9 @@
 							<div class="questFragment">
 								<div class="questContent">
 									<h4 class="questHeader">Quest {{$index + 1}}</h4>
-
-									<p>
-										{{ticket.jiraId}} <br> {{ticket.title}}<br>
-									</p>
-									<span class="inprogress">{{ticket.status}}</span>
+									<span class="jiraID"> {{ticket.jiraId}} </span>
+									<p>{{ticket.title}}</p>
+									<span class="{{ticket.status.replace(' ', '').toLowerCase()}}">{{ticket.status.toUpperCase()}}</span>
 								</div>
 							</div>
 						</a>
@@ -42,12 +40,11 @@
 
 			<div class="modal-content modal-popup"
 				ng-repeat="ticket in tickets | filter:{jiraId:selectedQuest}">
-				<h1 class="
-				white headingcenterBox">QUEST {{ticket.jiraId}}</h1>
+				<h1 class="questHeader questHeaderModal">{{ticket.jiraId}}</h1>
 				<h6> {{ticket.title}} </h6>
-				<h5> Objective/s: {{ticket.description}} </h5>
-				<h5> Priority: {{ticket.priority}} </h5>
-				<h5> Status: {{ticket.status}} </h5>
+				<p> Objective/s: {{ticket.description}} </p>
+				<p>Priority: {{ticket.priority}} </p>
+				Status: <span class="{{ticket.status.replace(' ', '').toLowerCase()}}"> {{ticket.status}} </span>
 				<h5> EXP to be earned: {{ticket.storyPoints}} </h5>
 				<h5> Quest Origin : <a href="https://almtools/jira/browse/{{ticket.jiraId}}">{{ticket.jiraId}}</a> </h5>
 
