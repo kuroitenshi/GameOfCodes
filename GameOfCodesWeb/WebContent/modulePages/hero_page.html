@@ -39,12 +39,6 @@
 							<p class="mbr-p">EXP: {{hero.storyPoints}}</p>
 						</div>
 					</div>
-					<div class="mbr-section__container mbr-section__container--middle">
-						<div
-							class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-							<p class="mbr-p">Maester Name:</p>
-						</div>
-					</div>
 
 					<div class="mbr-buttons btn-inverse mbr-buttons--left">
 						<a class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
@@ -93,23 +87,27 @@
 	class="mbr-slider mbr-section mbr-section--no-padding carousel slide"
 	data-ride="carousel" data-wrap="true" data-interval="10000" id="slider-38" style="background-color: rgb(159, 159, 159);">
 	<div class="mbr-section__container">
+		
+		<div ng-if="progTickets.length == 0" class="mbr-section__container container mbr-section__container--isolated">
+				<div class="mbr-header mbr-header--wysiwyg row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<h4 class="mbr-header__text" style="text-align: center;">Take on more quests! Winter is coming!</h4>
+					</div>
+				</div>
+			</div>		
 		<div>
 			
 	         <div class="carousel-inner" role="listbox">
 				<div ng-class="'mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item center ' {active:pager.currentPage === page}" >
 			
-			<div ng-if="progTickets.length == 0" class="content-2 container">
-				<div class="row">
-					<div class="caption">
-						<h3>You have finished all your quests! Take on more quests here!</h3>
-					</div>
-				</div>
-			</div>		
+		
 			<div class="content-2 col-4 container">
 				<div class="row">
 					<div class="thumbnail" ng-repeat="ticket in progTickets | filter:{developers:hero.username}">
 						<div class="image">
-							<img class="undefined" src="img/icon/dragon.ico">
+							<img ng-if="ticket.priority == 'Low'" class="undefined" src="img/icon/starkIcon.png">
+							<img ng-if="ticket.priority == 'Medium'" class="undefined" src="img/icon/lannisterIcon.png">
+							<img ng-if="ticket.priority == 'High'" class="undefined" src="img/icon/targaryenIcon.png">
 						</div>
 						
 						<div class="caption">
@@ -148,9 +146,9 @@
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" style="margin-top: 120px">
 		<div class="modal-content modal-popup" ng-repeat="ticket in progTickets | filter:{jiraId:selectedQuest}">
-			<h3 class="white">Quest {{ticket.jiraId}}</h3>
-
-			<div class="content-2 col-2">
+			<h3 class="white">Quest <a ng-href="https://almtools/jira/browse/{{ticket.jiraId}}">{{ticket.jiraId}}</a> </h3>
+				<p class="white">EXP: {{ticket.storyPoints}}</p>
+			<div class="content-2">
 				<div class="row">
 
 					<div class="thumbnail">
@@ -160,49 +158,24 @@
 							</div>
 						</div>
 					</div>
-					<div class="thumbnail">
-						<div class="caption">
-							<div>
-								<p>EXP: {{ticket.storyPoints}}</p>
-							</div>
-						</div>
-					</div>
 
 				</div>
 			</div>
-			<div class="content-2 col-2">
+			<div class="content-2">
 				<div class="row" style="align: left;">
 
 					<div class="thumbnail">
 						<div class="caption">
 							<div>
-								<p>Quest Description: {{ticket.description}}</p>
+								<p>Quest Description:</p>
+								<p>{{ticket.description}} </p>
 							</div>
 						</div>
 					</div>
-					<div class="thumbnail">
-						<div class="caption">
-							<div>
-								<p>[Full Quest Detail]: <a ng-href="https://almtools/jira/browse/{{ticket.jiraId}}">[JIRA LINK]</a></p>
-							</div>
-						</div>
-					</div>
-
+					
 				</div>
 			</div>
-			<div class="content-2 col-2">
-				<div class="row">
 
-					<div class="thumbnail">
-						<div class="caption">
-							<div>
-								<p>[Other Details]</p>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
 
 			<div class="mbr-buttons btn-inverse mbr-buttons--center">
 				<a class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
@@ -215,7 +188,7 @@
 
 
 <!-- ACHIEVEMENTS SECTION -->
-
+<!-- 
 <section
 	class="mbr-section mbr-section--relative mbr-section--fixed-size"
 	id="msg-box5-25" style="background-color: rgb(68, 68, 68);">
@@ -388,5 +361,6 @@
 	</div>
 
 </section>
+-->
 </div>
 </div>
