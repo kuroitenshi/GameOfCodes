@@ -66,7 +66,7 @@ GOCApp.config(function($stateProvider, $urlRouterProvider) {
 
 			},
 			'content' : { 
-				templateUrl : 'modulePages/quest_page.html', 
+				templateUrl : 'modulePages/adventure_page.html', 
 			
 			}
 		},
