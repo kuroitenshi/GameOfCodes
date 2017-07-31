@@ -14,6 +14,7 @@ import com.misys.gameofcodes.model.Adventure;
 import com.misys.gameofcodes.model.House;
 import com.misys.gameofcodes.model.Ticket;
 import com.misys.gameofcodes.service.HouseService;
+import com.misys.gameofcodes.service.TicketService;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
@@ -44,7 +45,21 @@ public class AdventureDAOImpl implements AdventureDAO {
 		return Adventures;	
 	}
 
-
+	/**
+	 * Get all adventures by domain
+	 */
+	public List<Adventure> getAllAdventuresByDomain(String domain) {
+		BasicDBObject query = new BasicDBObject();
+		query.put("house", domain);
+		DBCursor cursor = adventuresCollection.find(query);
+		List<Adventure> Adventures = new ArrayList<Adventure>();
+		while(cursor.hasNext()){
+			DBObject dbAdventure = cursor.next();
+			Adventure Adventure = this.getAdventure(dbAdventure);
+			Adventures.add(Adventure);
+		}
+		return Adventures;	
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -53,14 +68,16 @@ public class AdventureDAOImpl implements AdventureDAO {
 		ObjectId objId = (ObjectId) dbAventure.get("_id");
 		adventure.setId(objId);
 		adventure.setAdventurename(dbAventure.get("adventureName").toString());
-		adventure.setDateEnd((Date) dbAventure.get("dateEnd"));
-		adventure.setDateStart((Date) dbAventure.get("dateStart"));
+		//adventure.setDateEnd((Date) dbAventure.get("dateEnd"));
+		//adventure.setDateStart((Date) dbAventure.get("dateStart"));
 		
-		House house = new House();
+	/*	House house = new House();
 		BasicDBObject dbHouse = (BasicDBObject) dbAventure.get("house");
 		ObjectId houseObjId = (ObjectId) dbHouse.get("_id");
 		house.setId(houseObjId.toString());
 		adventure.setHouse(HouseService.fetchHouse(house).toString());
+	*/
+		adventure.setHouse((String) dbAventure.get("house"));
 		adventure.setStoryPoints((Integer) dbAventure.get("storyPoints"));
 //		adventure.setStoryPointsMonth(storyPointsMonth);
 		
@@ -70,9 +87,9 @@ public class AdventureDAOImpl implements AdventureDAO {
 			ticketsList = (List<BasicDBObject>) dbAventure.get("ticket");
 			Iterator<BasicDBObject> iterator = ticketsList.iterator();
 			while(iterator.hasNext()){
-				ObjectId ticketObjId = (ObjectId) iterator.next().get("_id");
 				Ticket ticket = new Ticket();
-				ticket.setId(ticketObjId);
+				ticket = TicketService.fetchTicketByJiraID((String) iterator.next().get("jiraId"));
+				tickets.put(ticket.getId().toString(), ticket);
 			}
 		}
 		adventure.setTickets(tickets); 

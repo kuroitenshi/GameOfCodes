@@ -55,7 +55,6 @@ GOCApp.factory('HouseOfHeroFactory', function($http) {
 
 GOCApp.factory('TicketsOfHeroFactory', function($http) {
 	
-	// UPDATE QUERY TO FETCH ONLY 'IN PROGRESS' TICKETS!!!
 	var ticketsToReturn = {};
 	ticketsToReturn.getHeroTickets = function(heroName) {
 		return $http.get(
@@ -70,6 +69,24 @@ GOCApp.factory('TicketsOfHeroFactory', function($http) {
 	}
 	
 	return ticketsToReturn;
+});
+
+GOCApp.factory('AdventuresOfHouseFactory', function($http) {
+	
+	var adventuresToReturn = {};
+	adventuresToReturn.getHouseAdventures = function(domain) {
+		return $http.get(
+				'http://mancswfbedv0004:8081/GameOfCodesWeb-App/rest/'
+						+ 'adventure/all/domain/' + domain).then(function(response) {
+			return response.data;
+
+		},function(error){
+		       console.log(error);
+		});
+
+	}
+	
+	return adventuresToReturn;
 });
 
 GOCApp.factory('ticketFilterService', function() {

@@ -8,6 +8,7 @@ import com.mongodb.DBObject;
 public interface TicketsDAO {
 	
 	List<Ticket> getAllTickets();
+	Ticket getTicketsByJiraID(String jiraID);
 	List<Ticket> getCompletedTicketsForDomainForCurrentMonth(String domain);
 	List<Ticket> getUserTickets(String username);
 	Ticket getTicket(Ticket ticket);

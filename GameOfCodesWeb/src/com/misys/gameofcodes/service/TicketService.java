@@ -20,6 +20,9 @@ public class TicketService {
 	public static Ticket fetchTicket(Ticket ticket){
 		return ticketDAO.getTicket(ticket);		
 	}
+	public static Ticket fetchTicketByJiraID(String jiraID){
+		return ticketDAO.getTicketsByJiraID(jiraID);
+	}
 	public static List<Ticket> fetchTickets(){
 		return ticketDAO.getAllTickets();
 	}

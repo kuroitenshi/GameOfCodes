@@ -9,6 +9,7 @@ import com.mongodb.WriteResult;
 public interface AdventureDAO  {
 
 	List<Adventure> getAllAdventures();
+	List<Adventure> getAllAdventuresByDomain(String domain);
 	Adventure getAdventure(Adventure adventure);
 	Adventure getAdventure(DBObject dbhero);
 	WriteResult addAdventure(Adventure adventure);

@@ -40,7 +40,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 		}
 		return tickets;
 	}
-
+	
 	@Override
 	public List<Ticket> getCompletedTicketsForDomainForCurrentMonth(String domain) {
 		BasicDBObject query = new BasicDBObject();
@@ -129,6 +129,14 @@ public class TicketsDAOImpl implements TicketsDAO {
 	public Ticket getTicket(Ticket ticket) {
 		BasicDBObject query = new BasicDBObject();
 		query.put("jiraId", ticket.getJiraId());
+		DBObject dbTicket = ticketCollection.findOne(query);
+		return getTicket(dbTicket);
+	}
+	
+	@Override
+	public Ticket getTicketsByJiraID(String jiraID) {
+		BasicDBObject query = new BasicDBObject();
+		query.put("jiraId", jiraID);
 		DBObject dbTicket = ticketCollection.findOne(query);
 		return getTicket(dbTicket);
 	}

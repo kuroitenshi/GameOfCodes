@@ -65,10 +65,10 @@ GOCApp.config(function($stateProvider, $urlRouterProvider) {
 				templateUrl : 'modulePages/home_page.html',
 
 			},
-		/*
-		 * 'content' : { templateUrl : 'modulePages/quest_page.html', }
-		 */
-
+			'content' : { 
+				templateUrl : 'modulePages/quest_page.html', 
+			
+			}
 		},
 		module : 'private'
 

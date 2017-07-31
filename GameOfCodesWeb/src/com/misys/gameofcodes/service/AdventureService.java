@@ -43,6 +43,15 @@ public class AdventureService {
 	}
 	
 	/**
+	 * Retrieves all existing adventures by domain
+	 * 
+	 * @return
+	 */
+	public static List<Adventure> getAllAdventuresByDomain(String domain){
+		return adventureDAO.getAllAdventuresByDomain(domain);
+	}
+	
+	/**
 	 * Creates new Adventure
 	 * @param adventure
 	 */
