@@ -2,9 +2,11 @@ GOCApp.controller('adventuresController', function($scope, $rootScope, $http, AP
 	
 	$scope.houseOfHero = $rootScope.houseOfCurrentHero;
 	
+	/* GET ALL ADVENTURES OF HOUSE */
 	AdventuresOfHouseFactory.getHouseAdventures($scope.houseOfHero.domain).then(function(adventuresToReturn){
 		$scope.houseAdventures=adventuresToReturn;
 		
+		/* INITIALIZE TICKETS ON PAGE LOAD */
 		$scope.tickets = $scope.houseAdventures[0].tickets;
 		$scope.adventure = $scope.houseAdventures[0];
 		$scope.length = Object.keys($scope.tickets).length;
@@ -19,6 +21,7 @@ GOCApp.controller('adventuresController', function($scope, $rootScope, $http, AP
    
     });
    
+	/* SET CURRENT ADVENTURE ON DROPDOWN CLICK EVENT */
 	$scope.setAdventure = function(adventureID) {
 		$http({
 		   	  method : 'GET',
@@ -30,6 +33,7 @@ GOCApp.controller('adventuresController', function($scope, $rootScope, $http, AP
 		});
 	}
 	
+	/* SEARCH EVENT ON BUTTON CLICK */
 	$scope.search = function(searchString) {
 		var filtered = [];
 		var tick = {};
@@ -41,15 +45,19 @@ GOCApp.controller('adventuresController', function($scope, $rootScope, $http, AP
 		
 		$scope.tickets = $scope.adventure.tickets;
 		
+		/* Filter tickets based on entered search string */
 		for(i = 0; i < Object.keys($scope.tickets).length; i++)
 		{
 			tick = Object.values($scope.tickets)[i];
+			
+			/* Compare search string to JIRA ID and TITLE of ticket */
 			if(tick.jiraId.toLowerCase().indexOf(searchString) >= 0 ||
 					tick.title.toLowerCase().indexOf(searchString) >= 0) {
 				filtered.push(tick);
 			}
 		}
 		
+		/* Update tickets based on search and check the length */
 		$scope.tickets = filtered;
 		$scope.length = Object.keys($scope.tickets).length;
 		
