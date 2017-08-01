@@ -66,7 +66,8 @@ public class AdventureDAOImpl implements AdventureDAO {
 	public Adventure getAdventure(DBObject dbAventure) {
 		Adventure adventure = new Adventure();
 		ObjectId objId = (ObjectId) dbAventure.get("_id");
-		adventure.setId(objId);
+		
+		adventure.setId(objId.toString());
 		adventure.setAdventurename(dbAventure.get("adventureName").toString());
 		//adventure.setDateEnd((Date) dbAventure.get("dateEnd"));
 		//adventure.setDateStart((Date) dbAventure.get("dateStart"));

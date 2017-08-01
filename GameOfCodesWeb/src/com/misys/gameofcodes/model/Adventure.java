@@ -11,7 +11,7 @@ import java.util.Map;
 @XmlRootElement
 public class Adventure {
 	
-	private ObjectId id;
+	private String id;
 	
 	private String adventurename;
 	private Date dateStart;
@@ -23,10 +23,10 @@ public class Adventure {
 	
 	public Adventure(){}
 	
-	public ObjectId getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(ObjectId objId) {
+	public void setId(String objId) {
 		this.id = objId;
 	}
 	public String getAdventurename() {

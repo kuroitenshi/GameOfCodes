@@ -13,19 +13,21 @@
 	                    <div class="col-sm-8 col-sm-offset-2" data-form-type="formoid">
 	                        <br/>
 	                        <br/>
-	                        <form action="#" method="POST" >
+	                        <form>
 	                            <div class="form-group col-sm-5">
-	                                <input class="form-control" name="searchTextBox" placeholder="Search..."  type="text">
+	                                <input class="form-control" name="searchTextBox" placeholder="Search..." ng-model="searchString" type="text">
 	                                
 	                            </div>
 	                            <div class="form-group col-sm-5">
 	                                 <select class="form-control" name="Sprint">
-										<option ng-repeat="adventure in houseAdventures">{{adventure.adventurename}}</option>
+										<option ng-repeat="adventure in houseAdventures" ng-click="setAdventure(adventure.adventurename)">{{adventure.adventurename}}</option>
 
 									</select>
 								</div>
 	                       
-	                            <div class="mbr-buttons mbr-buttons--right col-sm-2"><button type="submit" class="mbr-buttons__btn btn btn-lg btn-blue btn-warning">SEARCH</button></div>
+	                            <div class="mbr-buttons mbr-buttons--right col-sm-2">
+	                            	<button class="mbr-buttons__btn btn btn-lg btn-blue btn-warning" ng-click="search(searchString)">SEARCH</button>
+	                            </div>
 	                        </form>
 	                    </div>
 	                </div>
@@ -39,11 +41,14 @@
 	            <div class="col-sm-12">
 	            	<div id="table" class="mbr-table-editable">
 						<table class="table">
-						  	<tr>
+						  	<tr ng-if="length !==0">
 							  	<th>Jira ID</th>
 						      	<th>Title</th>
 						      	<th>Status</th>
 							   	<th>Developer</th>
+							</tr>
+							<tr ng-if="length == 0">
+								<th><h2 text-align="center">No Records Found!</h2></th>
 							</tr>
 							<tr ng-repeat="ticket in tickets">
 								<td>{{ticket.jiraId}}</td>

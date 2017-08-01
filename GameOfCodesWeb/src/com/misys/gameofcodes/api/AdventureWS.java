@@ -28,12 +28,14 @@ public class AdventureWS {
 	
 	/**
 	 * Gets specific adventure
-	 * /adventure/{id}
+	 * /adventure/{name}
 	 */  
-	@POST  @Path("id")
+	@GET  @Path("{name}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Adventure getAdventure(Adventure adventure) {  
+	public Adventure getAdventure(@PathParam("name") String name) {
+		Adventure adventure = new Adventure();
+		adventure.setAdventurename(name);
 		return  AdventureService.getAdventure(adventure);  
 	}
 	/**
