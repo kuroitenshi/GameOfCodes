@@ -1142,6 +1142,11 @@ footer .social-footer li:hover a {
 	border-radius: 0;
 	box-shadow: 0;
 }
+#blue.form-control {
+	-moz-appearance:none; 
+	-webkit-appearance:none; 
+	background: url(../img/icon/drop.png) no-repeat 98% 50% white;
+}
 
 .form-control.form-white {
 	color: #fff;

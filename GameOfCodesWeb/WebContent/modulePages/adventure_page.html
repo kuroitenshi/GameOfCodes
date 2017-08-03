@@ -19,13 +19,13 @@
 	                                
 	                            </div>
 	                            <div class="form-group col-sm-5">
-	                                 <select class="form-control" name="adventure" style="-moz-appearance:none; -webkit-appearance:none; background: url(img/icon/drop.png) no-repeat 98% 50% white">
+	                                 <select id="blue" class="form-control" name="adventure">
 										<option ng-repeat="adventure in houseAdventures" ng-click="setAdventure(adventure.adventurename)">{{adventure.adventurename}}</option>
 
 									</select>
 								</div>
 	                       		<div class="form-group col-sm-2">
-	                                 <select class="form-control" name="sprint" style="-moz-appearance:none; -webkit-appearance:none; background: url(img/icon/drop.png) no-repeat 98% 50% white">
+	                                 <select id="blue" class="form-control" name="sprint">
 										<option>All</option>
 										<option>Sprint 1</option>
 										<option>Sprint 2</option>
@@ -47,12 +47,12 @@
 	            	<div id="table" class="mbr-table-editable">
 						<table class="table">
 						  	<tr ng-if="length !==0">
-						  		<th colspan="2" style="text-align:center">QUEST</th>
-						      	<th style="text-align:center">STATUS</th>
-							   	<th style="text-align:center">HERO</th>
+						  		<th colspan="2">QUEST</th>
+						      	<th>STATUS</th>
+							   	<th>HERO</th>
 							</tr>
 							<tr ng-if="length == 0">
-								<th colspan="2" style="text-align:center"><h2>No Records Found!</h2></th>
+								<th colspan="2"><h2>No Records Found!</h2></th>
 							</tr>
 							<tr ng-repeat="ticket in tickets">
 								<td>{{ticket.jiraId}}</td>
@@ -60,7 +60,7 @@
 							    <td>{{ticket.status}}</td>
 							    <td>{{ticket.developers}}</td>
 							</tr>
-							<!-- This is our clonable table line -->
+							<!-- This is our clonable table line 
 							<tr class="hide">
 								<td contenteditable="true">Untitled</td>
 							    <td contenteditable="true">undefined</td>
@@ -71,7 +71,7 @@
 							    	<span class="table-up glyphicon glyphicon-arrow-up"></span>
 							        <span class="table-down glyphicon glyphicon-arrow-down"></span>
 								</td>
-							</tr>
+							</tr> -->
 						</table>
 					</div>
 				</div>
