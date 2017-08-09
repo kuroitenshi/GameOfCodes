@@ -72,6 +72,12 @@ public class FetchTicket {
 						endDate);
 				retrieveEQLendingTicketsForEPA1(ConstantKeys.EQLENDING_EPA1_ADVENTURE, verifiedDate, closedDate,
 						endDate);
+				retrieveEQLendingTicketsForBOC(ConstantKeys.EQLENDING_BOC_ADVENTURE, verifiedDate, closedDate,
+						endDate);
+				retrieveEQLendingTicketsForNBE(ConstantKeys.EQLENDING_NBE_ADVENTURE, verifiedDate, closedDate,
+						endDate);
+				retrieveEQLendingTicketsForDICA(ConstantKeys.EQLENDING_DICA_ADVENTURE, verifiedDate, closedDate,
+						endDate);
 			}
 				break;
 
@@ -277,12 +283,12 @@ public class FetchTicket {
 			ArrayList<Ticket> finishedTickets = ft
 					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND " + " resolved  >= " + verifiedDate + " AND " + "resolved <= " + endDate + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
 			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.EQUATION_LENDING);
-			
+		
 			/* Retrieve ongoing tickets */
 			ArrayList<Ticket> ongoingTickets = ft
 					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND " + "status in(\"In Progress\") AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_EPA1_SUMMARY));
 			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.EQUATION_LENDING);
-
+			
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -290,6 +296,166 @@ public class FetchTicket {
 
 	}
 
+	/**
+	 * Retrieves EQ Lending BoC fixing Tickets based on built JQL
+	 */
+	private static void retrieveEQLendingTicketsForBOC(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
+		ArrayList<String> projects = new ArrayList<String>();
+		projects.add("EQ");
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("domingw2");
+		developers.add("rogedian");
+		developers.add("mangunf1");
+		developers.add("marquel1");
+		developers.add("dalistal");
+		developers.add("blandich");
+		developers.add("jmarque2");
+		developers.add("jclemen2");
+		developers.add("jpardill");
+		developers.add("gladysyu");
+		developers.add("jcristob");
+		developers.add("ccalamba");
+		developers.add("bvictori");
+		// Cashier & Deals Import
+		developers.add("tanj2");
+		developers.add("kurtsiao");
+		// Accounts & CMS Import
+		//developers.add("vveluz");
+		//developers.add("mpaule");
+		CustomJQL jql = new CustomJQL();
+		jql.setProjects(projects);
+		jql.setDevelopers(developers);
+
+
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("EQUATION LENDING - BOC");
+			System.out.println("JQL USED [Finished Tickets]: " + jqlQuery + " AND " + "status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_BOC_SUMMARY);
+			System.out.println("JQL USED [Ongoing Tickets]: " + jqlQuery + " AND " + "status in(\"In Progress\") AND type not in (Task, \"Technical task\")" + " AND TYPE = Defect AND labels = BCYPNA_Upg AND labels = EQDevInternal AND (fixVersion != \"EQ 4.3.3.07\" OR fixVersion = EMPTY)");
+			
+
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND " + "status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type not in (Task, \"Technical task\")" + JQLConstants.EQ_LENDING_BOC_SUMMARY));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			
+			/* Retrieve ongoing tickets*/
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND " + "status in(\"In Progress\") AND type not in (Task, \"Technical task\")" + " AND type = Defect AND labels = BCYPNA_Upg AND labels = EQDevInternal AND (fixVersion != \"EQ 4.3.3.07\" OR fixVersion = EMPTY)"));
+			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Retrieves EQ Lending NBE LN Upgrade Tickets based on built JQL
+	 */
+	private static void retrieveEQLendingTicketsForNBE(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
+		
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("domingw2");
+		developers.add("rogedian");
+		developers.add("mangunf1");
+		developers.add("marquel1");
+		developers.add("dalistal");
+		developers.add("blandich");
+		developers.add("jmarque2");
+		developers.add("jclemen2");
+		developers.add("jpardill");
+		developers.add("gladysyu");
+		developers.add("jcristob");
+		developers.add("ccalamba");
+		developers.add("bvictori");
+
+		CustomJQL jql = new CustomJQL();
+		jql.setDevelopers(developers);
+
+
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("EQUATION LENDING - NBE");
+			System.out.println("JQL USED [Finished Tickets]: status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type = Story AND labels = NBELN_Upg");
+			System.out.println("JQL USED [Ongoing Tickets]: status in(\"In Progress\") AND type not in (Task, \"Technical task\") AND type = Story AND labels = NBELN_Upg");
+			
+
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery("status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type = Story AND labels = NBELN_Upg"));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			
+			/* Retrieve ongoing tickets */
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery("status in(\"In Progress\") AND type not in (Task, \"Technical task\") AND type = Story AND labels = NBELN_Upg"));
+			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Retrieves EQ Lending Deal Interest Calculation Accuracy Improvement Tickets based on built JQL
+	 */
+	private static void retrieveEQLendingTicketsForDICA(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
+		
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("domingw2");
+		developers.add("rogedian");
+		developers.add("mangunf1");
+		developers.add("marquel1");
+		developers.add("dalistal");
+		developers.add("blandich");
+		developers.add("jmarque2");
+		developers.add("jclemen2");
+		developers.add("jpardill");
+		developers.add("gladysyu");
+		developers.add("jcristob");
+		developers.add("ccalamba");
+		developers.add("bvictori");
+
+		CustomJQL jql = new CustomJQL();
+		jql.setDevelopers(developers);
+
+
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("EQUATION LENDING - DICA");
+			System.out.println("JQL USED [Finished Tickets]: status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type = \"Technical task\" AND labels = 'DICA'");
+			System.out.println("JQL USED [Ongoing Tickets]: status in(\"In Progress\") AND type not in (Task, \"Technical task\") AND type = \"Technical task\" AND labels = 'DICA'");
+			
+
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery("status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type = \"Technical task\" AND labels = 'DICA'"));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			
+			/* Retrieve ongoing tickets */
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery("status in(\"In Progress\") AND type not in (Task, \"Technical task\") AND type = \"Technical task\" AND labels = 'DICA'"));
+			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.EQUATION_LENDING);
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 	/**
 	 * Retrieves EQ Cashier and Deals Tickets based on built JQL
 	 */
@@ -495,3 +661,4 @@ public class FetchTicket {
 	}
 
 }
+

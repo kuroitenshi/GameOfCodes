@@ -49,6 +49,9 @@ public class ConstantKeys {
 	 * */
 	public final static String EQLENDING_ISTISNA_ADVENTURE = "EQLENDING_ADVENTURE_ISTISNA";
 	public final static String EQLENDING_EPA1_ADVENTURE = "EQLENDING_ADVENTURE_EPA1";
+	public final static String EQLENDING_BOC_ADVENTURE = "EQLENDING_ADVENTURE_BOC";
+	public final static String EQLENDING_NBE_ADVENTURE = "EQLENDING_ADVENTURE_NBE";
+	public final static String EQLENDING_DICA_ADVENTURE = "EQLENDING_ADVENTURE_DICA";
 	
 	/*
 	 * EQUATION - CASHIER AND DEALS Constants
