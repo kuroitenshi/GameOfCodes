@@ -33,7 +33,7 @@ public class RestClientUtility {
 
 	public RestClientUtility(int socketTimeout, TimeUnit timeunit) throws URISyntaxException {
 		username = "jpbautis";
-		password = "Welcome@99";
+		password = "Welcome@88";
 		jiraServerUri = new URI("https://almtools/jira/");
 		this.socketTimeout = socketTimeout;
 		this.timeunit = timeunit;

@@ -280,6 +280,10 @@ div.takeSpace {
 	font-size: 14px;
 }
 
+.questModalContent h6{
+	color: white
+}
+
 .questHeader{
 	padding-top: 10px;
 	padding-bottom: 5px;
@@ -339,6 +343,7 @@ div.takeSpace {
 	color: gray;
 	margin-bottom: 10px;	
 }
+
 
 .modal p{
 	color: white;

@@ -13,6 +13,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Entities;
+import org.jsoup.parser.Parser;
+import org.jsoup.safety.Whitelist;
 
 import com.atlassian.jira.rest.client.api.domain.Issue;
 import com.atlassian.jira.rest.client.api.domain.SearchResult;
@@ -76,8 +81,9 @@ public class FetchTicket {
 						endDate);
 				retrieveEQLendingTicketsForNBE(ConstantKeys.EQLENDING_NBE_ADVENTURE, verifiedDate, closedDate,
 						endDate);
-				retrieveEQLendingTicketsForDICA(ConstantKeys.EQLENDING_DICA_ADVENTURE, verifiedDate, closedDate,
-						endDate);
+				/* For Confimation from Lot and Cathy */
+				//retrieveEQLendingTicketsForDICA(ConstantKeys.EQLENDING_DICA_ADVENTURE, verifiedDate, closedDate,
+				//		endDate);
 			}
 				break;
 
@@ -529,7 +535,7 @@ public class FetchTicket {
 			}
 			// Description
 			if (issue.getDescription() != null) {
-				ticket.setDescription(issue.getDescription());
+				ticket.setDescription(parseHTMLToText(issue.getDescription()));
 			} else {
 				ticket.setDescription("");
 			}
@@ -612,6 +618,24 @@ public class FetchTicket {
 
 		}
 		return tickets;
+	}
+	
+	/**
+	 * Parses HTML Description to text
+	 * 
+	 * @param html
+	 * @return
+	 */
+	public static String parseHTMLToText(String html) {
+	    if(html==null)
+	        return html;
+	    Document document = Jsoup.parse(html);
+	    document.outputSettings(new Document.OutputSettings().prettyPrint(false));//makes html() preserve linebreaks and spacing
+	    document.select("br").append("\\n");
+	    document.select("p").prepend("\\n\\n");
+	    String s = document.html().replaceAll("\\\\n", "\n");
+	    String cleanedString = Jsoup.clean(s, "", Whitelist.none(), new Document.OutputSettings().prettyPrint(false));
+	    return Parser.unescapeEntities(cleanedString, false);
 	}
 
 	/**
