@@ -3,7 +3,8 @@ package com.misys.gameofcodes.utility;
 public enum DomainEnumeration {
 	ESSENCE_CORE (ConstantKeys.ESSENCE_CORE),
 	EQUATION_LENDING(ConstantKeys.EQUATION_LENDING),
-	EQUATION_CASHIERDEALS(ConstantKeys.EQUATION_CASHIERDEALS);
+	EQUATION_CASHIERDEALS(ConstantKeys.EQUATION_CASHIERDEALS),
+	EQUATION_ACCOUNTS(ConstantKeys.EQUATION_ACCOUNTS);
 	
 	private final String text;
 

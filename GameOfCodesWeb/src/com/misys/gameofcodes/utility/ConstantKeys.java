@@ -18,6 +18,7 @@ public class ConstantKeys {
 	public final static String ESSENCE_CORE = "Essence Core";
 	public final static String EQUATION_LENDING = "Equation Lending";
 	public final static String EQUATION_CASHIERDEALS = "Cashier and Deals";
+	public final static String EQUATION_ACCOUNTS = "Accounts and CMS";
 	
 	/*
 	 * TASK TYPES
@@ -52,6 +53,15 @@ public class ConstantKeys {
 	public final static String EQLENDING_BOC_ADVENTURE = "EQLENDING_ADVENTURE_BOC";
 	public final static String EQLENDING_NBE_ADVENTURE = "EQLENDING_ADVENTURE_NBE";
 	public final static String EQLENDING_DICA_ADVENTURE = "EQLENDING_ADVENTURE_DICA";
+	
+	/*
+	 * EQUATION - ACCOUNTS Constants
+	 * Current Projects:
+	 * 	NBP LN Upgrade
+	 * 	QTARDO Upgrade
+	 * */
+	public final static String EQACCOUNTS_NBPLN_ADVENTURE = "EQACCOUNTS_ADVENTURE_NBPLN";
+	public final static String EQACCOUNTS_QTARDO_ADVENTURE = "EQACCOUNTS_ADVENTURE_QTARDO";
 	
 	/*
 	 * EQUATION - CASHIER AND DEALS Constants

@@ -98,8 +98,17 @@ public class FetchTicket {
 						endDate);
 			}
 				break;
+				
+			case ConstantKeys.EQUATION_ACCOUNTS: {
+				retrieveEQACCOUNTSTicketsForNBPLN(ConstantKeys.EQACCOUNTS_NBPLN_ADVENTURE, verifiedDate, closedDate,
+						endDate);
+				retrieveEQACCOUNTSTicketsForQTARDO(ConstantKeys.EQACCOUNTS_QTARDO_ADVENTURE, verifiedDate, closedDate,
+						endDate);
+			}
+				break;
 
 			}
+			
 			/*Updates house points per retrieval*/
 			getHousePoints(domain.toString());
 
@@ -507,6 +516,106 @@ public class FetchTicket {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Retrieves EQ Accounts & CMS NBP LN Upgrade Tickets based on built JQL
+	 */
+	private static void retrieveEQACCOUNTSTicketsForNBPLN(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
+		
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("abiadm1");
+		developers.add("avecill1");
+		developers.add("cvillanu");
+		developers.add("domingj1");
+		developers.add("erolesm1");
+		developers.add("glennlim");
+		developers.add("jeguzman");
+		developers.add("justduka");
+		developers.add("marpaule");
+		developers.add("melgarev");
+		developers.add("palicpir");
+		developers.add("rtrillan");
+		developers.add("vinveluz");
+
+		CustomJQL jql = new CustomJQL();
+		jql.setDevelopers(developers);
+
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("EQUATION ACCOUNTS - NBP LN");
+			System.out.println("JQL USED [Finished Tickets]: status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type = Story AND labels = NBP_LN_UPG");
+			System.out.println("JQL USED [Ongoing Tickets]: status in(\"In Progress\") AND type not in (Task, \"Technical task\") AND type = Story AND labels = NBP_LN_UPG");
+			
+
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery("status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type = Story AND labels = NBP_LN_UPG"));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.EQUATION_ACCOUNTS);
+			
+			/* Retrieve ongoing tickets */
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery("status in(\"In Progress\") AND type not in (Task, \"Technical task\") AND type = Story AND labels = NBP_LN_UPG"));
+			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.EQUATION_ACCOUNTS);
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Retrieves EQ Accounts & CMS QTARDO Upgrade Tickets based on built JQL
+	 */
+	private static void retrieveEQACCOUNTSTicketsForQTARDO(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
+		
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("abiadm1");
+		developers.add("avecill1");
+		developers.add("cvillanu");
+		developers.add("domingj1");
+		developers.add("erolesm1");
+		developers.add("glennlim");
+		developers.add("jeguzman");
+		developers.add("justduka");
+		developers.add("marpaule");
+		developers.add("melgarev");
+		developers.add("palicpir");
+		developers.add("rtrillan");
+		developers.add("vinveluz");
+
+		CustomJQL jql = new CustomJQL();
+		jql.setDevelopers(developers);
+
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("EQUATION ACCOUNTS - QTARDO");
+			System.out.println("JQL USED [Finished Tickets]: status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type = Story AND labels = QTARDO_UPG");
+			System.out.println("JQL USED [Ongoing Tickets]: status in(\"In Progress\") AND type not in (Task, \"Technical task\") AND type = Story AND labels = QTARDO_UPG");
+			
+
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery("status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND type = Story AND labels = QTARDO_UPG"));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.EQUATION_ACCOUNTS);
+			
+			/* Retrieve ongoing tickets */
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery("status in(\"In Progress\") AND type not in (Task, \"Technical task\") AND type = Story AND labels = QTARDO_UPG"));
+			ft.addTicketsToSprintInDB(ongoingTickets, sprintName, ConstantKeys.EQUATION_ACCOUNTS);
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
