@@ -2,9 +2,9 @@
 <div ng-repeat="hero in heroes | filter:{username:currentUser}">
 <section
 	class="mbr-section mbr-section--relative mbr-parallax-background"
-	id="msg-box5-79" style="background-image: url(assets/images/town.jpg);">
+	id="msg-box5-79" style="background-image: url(assets/images/room.jpg);">
 	<div class="mbr-overlay"
-		style="opacity: 0.4; background-color: rgb(159, 159, 159);"></div>
+		style="opacity: 0.4;"></div>
 		
 		<!-- Replace username with logged in user -->
 	<div
@@ -56,7 +56,8 @@
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" style="margin-top: 120px">
 			<div class="modal-content modal-popup">
-				<h3 class="white">Hero Customization Screen</h3>
+				<h3 class="white">Hero Customization Screen </h3>
+				<h3> Coming Soon</h3>
 				<form name="userEntry" class="popup-form"></form>
 
 			</div>
@@ -144,9 +145,9 @@
 
 <div class="modal fade" id="modal3" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" style="margin-top: 120px">
+	<div class="modal-dialog" style="margin-top: 120px; min-width: 900px; max-height: 400px;">
 		<div class="modal-content modal-popup" ng-repeat="ticket in progTickets | filter:{jiraId:selectedQuest}">
-			<h3 class="white">Quest <a ng-href="https://almtools/jira/browse/{{ticket.jiraId}}">{{ticket.jiraId}}</a> </h3>
+			<h3 class="white">Quest <a ng-href="https://almtools/jira/browse/{{ticket.jiraId}}" target="_blank">{{ticket.jiraId}}</a> </h3>
 				<p class="white">EXP: {{ticket.storyPoints}}</p>
 			<div class="content-2">
 				<div class="row">
@@ -174,12 +175,6 @@
 					</div>
 					
 				</div>
-			</div>
-
-
-			<div class="mbr-buttons btn-inverse mbr-buttons--center">
-				<a class="mbr-buttons__btn btn btn-lg mbr-btn-default animated"
-					data-toggle="modal" data-target="#modal2">Begin Quest</a>
 			</div>
 
 		</div>

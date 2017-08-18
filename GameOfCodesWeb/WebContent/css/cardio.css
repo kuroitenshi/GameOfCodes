@@ -241,7 +241,7 @@ div.takeSpace {
 .questPanel{
 	overflow-y: auto;
 	overflow-x: hidden;
-	height: 800px;
+	height: 650px;
 	width: 1650px;
 	padding-top:2%;
 }

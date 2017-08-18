@@ -44,7 +44,7 @@ public class LevelDAOImpl implements LevelDAO {
 	@Override
 	public List<Level> getAllHouseLevels() {
 		BasicDBObject query = new BasicDBObject();
-	  	query.put("type", "hero");
+	  	query.put("type", "house");
 		DBCursor cursor = levelsCollection.find(query);
 		List<Level> levels = new ArrayList<Level>();
 	    while(cursor.hasNext()){

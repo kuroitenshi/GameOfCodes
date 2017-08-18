@@ -42,14 +42,14 @@
 				ng-repeat="ticket in tickets | filter:{jiraId:selectedQuest}">
 				<h1 class="questHeader questHeaderModal">{{ticket.jiraId}}</h1>
 				<div class= "questModalContent">
-					<h6 style="color: white"> {{ticket.title}} </h6>
+					<p> {{ticket.title}} </p>
 					<hr>
 					<p> {{ticket.description}} </p>
 					<hr>
 					<h5 style="color: white" >Priority: {{ticket.priority}} </h5>
 					<h5 style="color: white" >Status: <span class="{{ticket.status.replace(' ', '').toLowerCase()}}"> {{ticket.status}} </span> </h5></h5>
 					<h5 style="color: white" > EXP: {{ticket.storyPoints}} </h5>
-					<h5 style="color: white" > Quest Origin : <a href="https://almtools/jira/browse/{{ticket.jiraId}}">{{ticket.jiraId}}</a> </h5>
+					<h5 style="color: white" > Quest Origin : <a href="https://almtools/jira/browse/{{ticket.jiraId}}" target="_blank">{{ticket.jiraId}}</a> </h5>
 					
 				</div>
 				

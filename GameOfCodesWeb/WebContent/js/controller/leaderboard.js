@@ -12,15 +12,18 @@ GOCApp.filter('orderByStoryPoints', function() {
 	  };
 	});
 
-GOCApp.controller('leaderboardController', function($scope, $rootScope, HeroLevelsFactory, $http, API_URL) {
+GOCApp.controller('leaderboardController', function($scope, $rootScope, HeroLevelsFactory, HouseLevelsFactory, $http, API_URL) {
     var d = new Date();
     var months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
     
     
     $scope.date = months[d.getMonth()];
     
-	//retrieve heroes
+	//Retrieve hero levels
 	$scope.heroLevels = HeroLevelsFactory.query();
+	
+	//Retrieve house levels
+	$scope.houseLevels = HouseLevelsFactory.query();
 	
 	$http({
   	  method : 'GET',

@@ -22,7 +22,7 @@ public class LevelService {
 		return levelDAO.getAllHouseLevels();	
 	}
 	public static List<Level> fetchHeroLevels(){
-		return levelDAO.getAllHouseLevels();	
+		return levelDAO.getAllHeroLevels();	
 	}
 	public static Level fetchHeroLevel(int points){
 		return levelDAO.getHeroLevel(points);	
