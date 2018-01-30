@@ -25,15 +25,15 @@
 							<select id="blue" class="form-control" name="house">
 								<option selected disabled>Houses</option>
 								<option ng-repeat="house in houses" 
-										ng-click="setHouseHeroes(house._id)">{{house.domain}}</option>
+										ng-click="setDevelopers(house.heroes)">{{house.domain}}</option>
 								<!-- SET DEVELOPER LIST BY HOUSE SELECTED -->
 							</select>
 						</div>
 						<div class="form-group col-md-3">
 							<select id="blue" class="form-control" name="developer">
 								<option selected disabled>Developers</option>
-								<!-- <option ng-repeat="houseHeroes" 
-										ng-click="setHero(houseHeroes._id)">{{houseHeroes.name}}</option> -->
+								<option ng-repeat="hero in heroes" 
+										ng-click="setHero(houseHeroes._id)">{{hero.name}}</option>
 							</select>
 						</div>
 						<div class="mbr-buttons mbr-buttons--right col-md-2">
@@ -43,6 +43,31 @@
 	           
 	            </div>
 	        </div>
+	        
+	        <!-- TABLE DEFINITION {https://codepen.io/anon/pen/oejZbJ}-->
+	        <div class="row">
+				<div class="col-sm-12">
+					<div id="table" class="mbr-table-editable" style="background-color: #c2c4a8">
+						<table class="table" style="opacity: 1">
+						  	<tr ng-if="length !==0">
+						  		<th colspan="2">HERO</th>
+						      	<th>LEVEL</th>
+							   	<th>STORY POINTS</th>
+							</tr>
+							<tr ng-if="length == 0">
+								<th colspan="2"><h2>No Records Found!</h2></th>
+							</tr>
+							<tr ng-repeat="ticket in tickets">
+								<td>{{ticket.jiraId}}</td>
+							    <td>{{ticket.title}}</td>
+							    <td>{{ticket.status}}</td>
+							    <td>{{ticket.developers}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </section>

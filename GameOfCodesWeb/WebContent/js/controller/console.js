@@ -16,6 +16,12 @@ GOCApp.controller('consoleController', function($scope, $rootScope, $http, API_U
 	}
 	
 	
+	$scope.setDevelopers = function(heroes) {
+		$scope.heroes = heroes;
+	}
+	
+	
+	
 	//retrieve houses
     $http({
     	  method : 'GET',
