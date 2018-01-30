@@ -247,4 +247,12 @@ public class TicketsDAOImpl implements TicketsDAO {
 		ticketCollection.update(query, dbTicket);
 	}
 
+	@Override
+	public List<Ticket> customTicketsFilter(String periodType, String period) {
+		//TO DO
+		
+		
+		return null;
+	}
+
 }

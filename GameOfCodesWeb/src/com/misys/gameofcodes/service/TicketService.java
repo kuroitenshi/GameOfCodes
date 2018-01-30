@@ -55,5 +55,8 @@ public class TicketService {
 	}
 	public static int getUserTicketSumMonth(String username) {
 		return ticketDAO.getUserTicketSumMonth(username);
+	}	
+	public static List<Ticket> customFilter(String periodType, String period){
+		return ticketDAO.customTicketsFilter(periodType, period);		
 	}
 }

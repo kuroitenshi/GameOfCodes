@@ -96,4 +96,18 @@ public class TicketWS {
 	public void updateTicket(Ticket ticket) {  
 		TicketService.updateTicket(ticket);  
 	}
+	
+	
+	/**
+	 * GOC console custom filtering
+	 * /ticket/filter/{PeriodType}/{Period}
+	 */
+	@GET  @Path("filter/{periodtype}/{period}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<Ticket> gocConsoleFilter(@PathParam("periodtype") String periodType, @PathParam("period") String period) {  
+		return TicketService.customFilter(periodType, period);
+	} 
+	
+	
 }  

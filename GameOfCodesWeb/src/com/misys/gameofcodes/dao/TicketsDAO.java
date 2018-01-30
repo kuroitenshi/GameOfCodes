@@ -21,5 +21,6 @@ public interface TicketsDAO {
 	Ticket getTicket(DBObject dbTicket);
 	int getUserTicketSum(String username);
 	int getUserTicketSumMonth(String username);	
+	List<Ticket> customTicketsFilter(String periodType, String period);
 
 }
