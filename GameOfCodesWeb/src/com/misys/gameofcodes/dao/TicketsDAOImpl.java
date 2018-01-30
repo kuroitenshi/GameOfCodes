@@ -1,5 +1,6 @@
 package com.misys.gameofcodes.dao;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -249,7 +250,100 @@ public class TicketsDAOImpl implements TicketsDAO {
 
 	@Override
 	public List<Ticket> customTicketsFilter(String periodType, String period) {
-		//TO DO
+		
+		List<Ticket> ticketsToReturn = new ArrayList<Ticket>();
+		String[] monthNames = new DateFormatSymbols().getMonths();
+		String startDate = "";
+		String endDate = "";
+		Calendar now = Calendar.getInstance();
+		String currentYear = String.valueOf(now.get(Calendar.YEAR));
+		
+		if(periodType.equals("Quarterly")) {
+			
+			if(period.equals("Q1")) {
+				//USE Constants Key
+				
+			}else if (period.equals("Q2")) {
+				
+			}else if (period.equals("Q3")) {
+				
+			}else if (period.equals("Q4")) {
+				
+			}
+			
+		}else if(periodType.equals("Monthly")){			
+			
+			
+			if(period.equals(monthNames[0])) {
+				startDate = "1/1" + currentYear;
+				endDate = "2/1" + currentYear;
+				
+			}else if(period.equals(monthNames[1])) {
+				startDate = "2/1" + currentYear;
+				endDate = "3/1" + currentYear;
+				
+			}else if(period.equals(monthNames[2])) {
+				startDate = "3/1" + currentYear;
+				endDate = "4/1" + currentYear;
+				
+			} else if(period.equals(monthNames[3])) {
+				startDate = "4/1" + currentYear;
+				endDate = "5/1" + currentYear;
+				
+			} else if(period.equals(monthNames[4])) {
+				startDate = "5/1" + currentYear;
+				endDate = "6/1" + currentYear;
+				
+			} else if(period.equals(monthNames[5])) {
+				startDate = "6/1" + currentYear;
+				endDate = "7/1" + currentYear;
+				
+			} else if(period.equals(monthNames[6])) {
+				startDate = "7/1" + currentYear;
+				endDate = "8/1" + currentYear;
+				
+			} else if(period.equals(monthNames[7])) {
+				startDate = "8/1" + currentYear;
+				endDate = "9/1" + currentYear;
+				
+			} else if(period.equals(monthNames[8])) {
+				startDate = "9/1" + currentYear;
+				endDate = "10/1" + currentYear;
+				
+			} else if(period.equals(monthNames[9])) {
+				startDate = "10/1" + currentYear;
+				endDate = "11/1" + currentYear;
+				
+			} else if(period.equals(monthNames[10])) {
+				startDate = "11/1" + currentYear;
+				endDate = "12/1" + currentYear;
+				
+			} else if(period.equals(monthNames[11])) {
+				startDate = "12/1" + currentYear;
+				endDate = "1/1" + currentYear;
+			} 
+			
+			
+		}
+		
+		//Irrespective of house and developer
+		
+		/*db.getCollection('Ticket').aggregate({
+	        $match: {
+	                $and: [
+	                    { dateStarted: { $gte: ISODate("2017-06-01T00:00:00.000Z")}}, 
+	                    { dateVerified: { $lt: ISODate("2017-11-30T00:00:00.000Z")}},
+	                ]
+	        }
+	    },
+	    { $group: { _id: null, sum: { $sum: "$storyPoints"}}}
+		);  */
+/*		
+		db.getCollection('Ticket').find({$and:[
+		                                       { dateStarted: { $gte: new ISODate("2017-01-12T00:00:00Z")}} , 
+		                                       { dateVerified: { $lt: new ISODate("2017-02-12T00:00:00Z")}},
+		                                       { status: { $ne: "In Progress"}} ]})*/
+		
 		
 		
 		return null;
