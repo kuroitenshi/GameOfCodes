@@ -70,7 +70,7 @@ body {
 	border-radius: 12px;
 	background: #f0e2c5;	
 	border: 1px solid #c8b495;
-	width: 300px;
+	width: 350px;
 	height: 40px;
 	text-align: center;
 	vertical-align: middle;
@@ -181,7 +181,7 @@ h2 {
 
 h1.houseName {
 	font-family: 'Almendra';
-	font-size: 70px;
+	font-size: 50px;
 	font-weight: bold;
 	color: #660000;
 	margin-left:10%;

@@ -19,6 +19,9 @@ public class ConstantKeys {
 	public final static String EQUATION_LENDING = "Equation Lending";
 	public final static String EQUATION_CASHIERDEALS = "Cashier and Deals";
 	public final static String EQUATION_ACCOUNTS = "Accounts and CMS";
+	public final static String MIDAS_FUNDSTRANSFER = "Funds Transfer";
+	public final static String MIDAS_ADVOCATES = "Midas TPOs and Advocates";
+	public final static String MIDAS_LENDING = "Midas Lending";
 	
 	/*
 	 * TASK TYPES
@@ -40,7 +43,8 @@ public class ConstantKeys {
 	 * */
 	public final static String VERIFIED_DATE_STARTYR = "2017-06-01";
 	public final static String CLOSED_DATE_STARTYR = "2017-06-01";
-	public final static String FISCALYEAR_END = "2018-05-31";
+	public final static String FISCALYEAR_END = "2017-12-01";
+	//public final static String FISCALYEAR_END = "2018-06-01";
 	
 	/*
 	 * EQUATION - LENDING Constants
@@ -73,5 +77,20 @@ public class ConstantKeys {
 	 * */
 	public final static String ESSENCE_CORE_ADVENTURE = "ESSENCE_ADVENTURE_CORE";
 	
+	/*
+	 * MIDAS - FUNDS TRANSFER Constants
+	 */
+	public final static String MIDAS_FUNDS_TRANSFER_ADVENTURE = "MIDAS_FUNDS_TRANSFER_ADVENTURE";
+	
+	/*
+	 * MIDAS - ADVOCATES Constants
+	 */
+	public final static String MIDAS_ADVOCATES_IFRS9_ADVENTURE = "MIDAS_ADVOCATES_IFRS9_ADVENTURE";
+	
+	/*
+	 * MIDAS - LENDING Constants
+	 */
+	public final static String MIDAS_LENDING_IFRS9_ADVENTURE = "MIDAS_LENDING_IFRS9_ADVENTURE";
+	public final static String MIDAS_LENDING_ANACREDIT_ADVENTURE = "MIDAS_LENDING_ANACREDIT_ADVENTURE";
 	
 }

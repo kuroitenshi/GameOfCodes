@@ -33,6 +33,17 @@ GOCApp.controller('adventuresController', function($scope, $rootScope, $http, AP
 		});
 	}
 	
+	$scope.setQuarter = function(quarter){
+		switch(quarter) {
+			case "Q1":
+				// date + 3months
+				println("Q1");
+			case "Q2":
+				//date + 6months
+		}			
+	}
+	$scope.getPoints
+	
 	/* SEARCH EVENT ON BUTTON CLICK */
 	$scope.search = function(searchString) {
 		var filtered = [];

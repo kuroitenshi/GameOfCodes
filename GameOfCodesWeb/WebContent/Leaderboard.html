@@ -87,7 +87,7 @@
 									<div class="col-md-8">
 										<div class="col-sm-2">
 											<img class="houseFlagContainer"
-												ng-src="img/houses/{{house.domain}}.png" alt="...">
+												ng-src="img/houses/{{house.domain}}.png" alt="..." onerror="this.onerror=null;this.src='img/houses/goc_house.png';">
 										</div>
 										<div class="col-sm-8 subHeaderLeftAlign"
 											style="padding-top: 10px">
@@ -159,7 +159,8 @@
 											<div class="col-sm-3 subHeaderLeftAlign">
 												<div class="houseHeaderContent">
 													<img class="leaderboard-avatar"
-														ng-src="img/avatar/hero/{{house.domain}}/goc_{{hero.username}}.png" alt="...">
+														ng-src="img/avatar/hero/{{house.domain}}/goc_{{hero.username}}.png" alt="..." 
+														onerror="this.onerror=null;this.src='img/avatar/hero/goc_hero.png';">
 													<h4 class="mediumContentText">{{hero.name}}</h4>
 												</div>
 

@@ -115,6 +115,7 @@ public class TicketsDAOImpl implements TicketsDAO {
 	public Date getMonthCurr() {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		System.out.print("MARK CALENDAR = " + calendar.getTime());
 		return calendar.getTime();
 	}
 

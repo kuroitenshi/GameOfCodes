@@ -105,6 +105,16 @@ public class FetchTicket {
 				retrieveEQACCOUNTSTicketsForQTARDO(ConstantKeys.EQACCOUNTS_QTARDO_ADVENTURE, verifiedDate, closedDate,
 						endDate);
 			}
+			case ConstantKeys.MIDAS_FUNDSTRANSFER: {
+				retrieveMIDASFTicketsForL3(ConstantKeys.MIDAS_FUNDS_TRANSFER_ADVENTURE, verifiedDate, closedDate, endDate);
+			}
+			case ConstantKeys.MIDAS_ADVOCATES: {
+				retrieveMIDASAdvocateTicketsForIFRS9(ConstantKeys.MIDAS_ADVOCATES_IFRS9_ADVENTURE, verifiedDate, closedDate, endDate);
+			}
+			case ConstantKeys.MIDAS_LENDING: {
+				retrieveMIDASLendingForAnaCredit(ConstantKeys.MIDAS_LENDING_ANACREDIT_ADVENTURE, verifiedDate, closedDate, endDate);
+				retrieveMIDASLendingForIFRS9(ConstantKeys.MIDAS_LENDING_IFRS9_ADVENTURE, verifiedDate, closedDate, endDate);
+			}
 				break;
 
 			}
@@ -518,6 +528,7 @@ public class FetchTicket {
 		}
 	}
 	
+	
 	/**
 	 * Retrieves EQ Accounts & CMS NBP LN Upgrade Tickets based on built JQL
 	 */
@@ -618,6 +629,208 @@ public class FetchTicket {
 
 	}
 
+	private static void retrieveMIDASFTicketsForL3(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
+		
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("jaltajer");
+		developers.add("contir1");
+		developers.add("jodeleon");
+		developers.add("garciaa2");
+		developers.add("islam1");
+		developers.add("landicj1");
+		developers.add("lasalik1");
+		developers.add("niebrer1");
+		developers.add("salvamn1");
+		developers.add("tamayom1");
+		ArrayList<String> projects = new ArrayList<String>();
+		projects.add("MD");
+		projects.add("LM");
+		projects.add("MGCP");
+		projects.add("PBS");
+
+		CustomJQL jql = new CustomJQL();
+		jql.setDevelopers(developers);
+		jql.setProjects(projects);
+
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("MIDAS FUNDS TRANSFER - L3 Maintenance");
+			System.out.println("JQL USED [Finished Tickets]: " + jqlQuery + " status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND "
+					+ "(issuetype = Defect AND summary ~ \"[L3 Maintenance]\" and verified > " + verifiedDate + ") OR "
+					+ "(issuetype = Requirement and \"SFDC Customer Case\" is not EMPTY and \"Closed Date\" > " + closedDate + ")");
+
+			
+
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND "
+					+ " (issuetype = Defect AND summary ~ \"\\\\[L3 Maintenance\\\\]\" and verified > " + verifiedDate + ") OR "
+					+ "(issuetype = Requirement and \"SFDC Customer Case\" is not EMPTY and \"Closed Date\" > " + closedDate + ")" + JQLConstants.MIDAS_FUNDSTRANSFER_SUMMARY ));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.MIDAS_FUNDSTRANSFER);
+			
+			/* Retrieve ongoing tickets */ 
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND status in(\"In Progress\") AND "
+							+ "(issuetype = Defect AND summary ~ \"\\\\[L3 Maintenance\\\\]\" and verified > " + verifiedDate + ") OR "
+							+ "(issuetype = Requirement and \"SFDC Customer Case\" is not EMPTY and \"Closed Date\" > " + closedDate + ")" + JQLConstants.MIDAS_FUNDSTRANSFER_SUMMARY ));
+					ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.MIDAS_FUNDSTRANSFER);
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	private static void retrieveMIDASAdvocateTicketsForIFRS9(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
+		
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("cruzc2");
+		developers.add("luistrg1");
+		developers.add("micoe1"); // Import from Midas Lending
+		developers.add("montajp1");
+		developers.add("oblead1");
+		developers.add("parayna1");
+		developers.add("sixph");
+		developers.add("yalungw1");
+		developers.add("niebrer1"); // Import from FT
+		ArrayList<String> projects = new ArrayList<String>();
+		projects.add("MD");
+		projects.add("MDSC");
+
+		CustomJQL jql = new CustomJQL();
+		jql.setDevelopers(developers);
+		jql.setProjects(projects);
+
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("MIDAS ADVOCATES - IFRS9");
+			System.out.println("JQL USED [Finished Tickets]:" + jqlQuery + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND "
+					+ "verified > " + verifiedDate + " " + JQLConstants.MIDAS_ADVOCATES_IFRS9_SUMMARY);
+			
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND "
+							+ "verified > " + verifiedDate + " " + JQLConstants.MIDAS_ADVOCATES_IFRS9_SUMMARY));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.MIDAS_ADVOCATES);
+			
+			/* Retrieve ongoing tickets */ 
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND status in(\"In Progress\") AND verified > " + verifiedDate + " " + JQLConstants.MIDAS_ADVOCATES_IFRS9_SUMMARY));
+					ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.MIDAS_ADVOCATES);
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	private static void retrieveMIDASLendingForAnaCredit(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
+		
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("micoe1");
+		developers.add("jbinolac");
+		developers.add("cstarita");
+		developers.add("sottos1");
+		developers.add("pamfilj1");
+		developers.add("caguinto");
+		developers.add("alrivera");
+		developers.add("jatubino");
+		developers.add("risose1");
+		developers.add("parayno");
+		developers.add("mangalr1");
+		
+		CustomJQL jql = new CustomJQL();
+		jql.setDevelopers(developers);
+
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("MIDAS LENDING - AnaCredit");
+			System.out.println("JQL USED [Finished Tickets]: status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND "
+					+ "((labels in (CER073-AnaCredit) AND issuetype in (Story) AND Project in (\"Midas Scrum\")) OR "
+					+ "(labels=CER073AnaCredit AND issuetype=Defect AND Project=MD))");
+			//labels in (CER073-AnaCredit, CER073AnaCredit) AND issuetype in (Story, Defect) AND Project in ("Midas Scrum", MD)
+			
+
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) AND "
+							+ "((labels in (CER073-AnaCredit) AND issuetype in (Story) AND Project in (\"Midas Scrum\")) OR "
+							+ "(labels=CER073AnaCredit AND issuetype=Defect AND Project=MD))"));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.MIDAS_LENDING);
+			
+			/* Retrieve ongoing tickets */ 
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND status in(\"In Progress\") AND "
+							+ "((labels in (CER073-AnaCredit) AND issuetype in (Story) AND Project in (\"Midas Scrum\")) OR "
+							+ "(labels=CER073AnaCredit AND issuetype=Defect AND Project=MD))"));
+					ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.MIDAS_LENDING);
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	private static void retrieveMIDASLendingForIFRS9(String sprintName, String verifiedDate, String closedDate,
+			String endDate) {
+		
+		ArrayList<String> developers = new ArrayList<String>();
+		developers.add("micoe1");
+		developers.add("jbinolac");
+		developers.add("cstarita");
+		developers.add("sottos1");
+		developers.add("pamfilj1");
+		developers.add("caguinto");
+		developers.add("alrivera");
+		developers.add("jatubino");
+		developers.add("risose1");
+		developers.add("parayno");
+		developers.add("mangalr1");
+		ArrayList<String> projects = new ArrayList<String>();
+		projects.add("MD");
+		projects.add("MDSC");
+		
+		CustomJQL jql = new CustomJQL();
+		jql.setDevelopers(developers);
+		jql.setProjects(projects);
+		
+		FetchTicket ft = null;
+		try {
+			ft = new FetchTicket();
+			String jqlQuery = jql.returnJQLQuery();
+			System.out.println("MIDAS LENDING - IFRS9");
+			System.out.println("JQL USED [Finished Tickets]: status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) "
+					+ JQLConstants.MIDAS_LENDING_IFRS9_SUMMARY);
+			//labels in (CER073-AnaCredit, CER073AnaCredit) AND issuetype in (Story, Defect) AND Project in ("Midas Scrum", MD)
+			
+
+			/* Retrieve finished tickets */
+			ArrayList<Ticket> finishedTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND status not in(Open, \"In Progress\", Reviewed, \"Waiting for review\", \"Need Precision\", Confirmed) "
+							+ JQLConstants.MIDAS_LENDING_IFRS9_SUMMARY));
+			ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.MIDAS_LENDING);
+			
+			/* Retrieve ongoing tickets */ 
+			ArrayList<Ticket> ongoingTickets = ft
+					.mapIssuesToTickets(ft.fetchJQLQuery(jqlQuery + " AND status in(\"In Progress\") "
+							+ JQLConstants.MIDAS_LENDING_IFRS9_SUMMARY));
+					ft.addTicketsToSprintInDB(finishedTickets, sprintName, ConstantKeys.MIDAS_LENDING);
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	/**
 	 * Issues retrieved should be mapped to the respective GOC Ticket Object
 	 * 

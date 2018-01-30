@@ -92,6 +92,21 @@ GOCApp.config(function($stateProvider, $urlRouterProvider) {
 		module : 'private'
 
 	})
+	
+	// CONSOLE PAGE =================================
+	.state('console', {
+		url : '^/console',
+		views : {
+
+			'content' : {
+				templateUrl : 'modulePages/console_page.html',
+
+			}
+
+		},
+		module : 'private'
+
+	})
 
 	// LEADERBOARD PAGE =================================
 	.state('leaderboard', {

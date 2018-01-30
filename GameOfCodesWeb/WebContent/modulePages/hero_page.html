@@ -106,9 +106,10 @@
 				<div class="row">
 					<div class="thumbnail" ng-repeat="ticket in progTickets | filter:{developers:hero.username}">
 						<div class="image">
-							<img ng-if="ticket.priority == 'Low'" class="undefined" src="img/icon/starkIcon.png">
-							<img ng-if="ticket.priority == 'Medium'" class="undefined" src="img/icon/lannisterIcon.png">
-							<img ng-if="ticket.priority == 'High'" class="undefined" src="img/icon/targaryenIcon.png">
+							<img ng-if="ticket.priority == 'Low'"  src="img/priority/Low_priority.png">
+							<img ng-if="ticket.priority == 'Medium'" src="img/priority/Medium_priority.png">
+							<img ng-if="ticket.priority == 'High'"  src="img/priority/High_priority.png">
+							<img ng-if="ticket.priority == 'Critical'"  src="img/priority/Critical_priority.png">
 						</div>
 						
 						<div class="caption">
